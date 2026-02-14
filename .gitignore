@@ -1,0 +1,41 @@
+# ---- secrets ----
+.env
+.env.*
+*.env
+*.env.*
+
+# ---- node / frontend ----
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/.cache
+
+# ---- python / backend ----
+backend/__pycache__/
+backend/**/*.pyc
+backend/.venv
+backend/venv
+backend/.pytest_cache
+backend/.mypy_cache
+
+# ---- app runtime data ----
+storage/
+*.log
+
+# ---- OS ----
+.DS_Store
+
+# ---- DO NOT COMMIT KNOWLEDGEBASE / BIG FILES ----
+backend/app/data/
+backend/pdfs/
+backend/app/pdfs/
+backend/backend__old/
+*.sqlite3
+*.bin
+*.pickle
+*.pdf
+*.json
+
+# allow config/rules JSONs if needed (we will re-allow specific ones later)
+!backend/app/data/rules/
+!backend/app/data/rules/*.json

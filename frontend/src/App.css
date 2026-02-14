@@ -1,0 +1,228 @@
+/* frontend/src/App.css */
+
+:root{
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #0b1220;
+  --muted: #5a667a;
+  --border: rgba(15, 23, 42, 0.12);
+  --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  --primary: #0b5cff;
+  --primary2: #083aa6;
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 50% 0%, #ffffff 0%, var(--bg) 55%, #eef3fb 100%);
+}
+
+.page{
+  min-height: 100vh;
+  padding: 56px 16px;
+}
+
+.hero-card{
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 44px 40px;
+}
+
+.brand{ text-align:center; }
+.brandTitle{
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.brandSub{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+
+.searchRow{
+  margin-top: 28px;
+  display:flex;
+  gap: 12px;
+  align-items:center;
+}
+
+.searchInput{
+  flex: 1;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 0 16px;
+  font-size: 16px;
+  outline: none;
+  background: #f8fafc;
+}
+.searchInput:focus{
+  border-color: rgba(11, 92, 255, 0.45);
+  box-shadow: 0 0 0 4px rgba(11, 92, 255, 0.12);
+  background: #ffffff;
+}
+
+.primaryBtn{
+  height: 52px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  cursor: pointer;
+}
+.primaryBtn:disabled{ opacity: 0.55; cursor: not-allowed; }
+
+.segmented{
+  margin: 18px auto 0;
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.segBtn{
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor:pointer;
+}
+.segBtn.active{
+  background: rgba(11, 92, 255, 0.10);
+  color: #0b5cff;
+  border-color: rgba(11, 92, 255, 0.35);
+}
+
+.hint{
+  margin-top: 14px;
+  text-align:center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.suggestBox{
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.suggestItem{
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+.suggestItem:hover{ background: #f3f6ff; }
+
+.topBar{
+  max-width: 1100px;
+  margin: 0 auto 14px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.ghostBtn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight: 700;
+}
+.topMetaTitle{ font-weight: 800; }
+.topMetaSub{ color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+.topicCard{
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 28px 26px;
+}
+.topicTitle{
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.status{ color: var(--muted); padding: 10px 0; }
+.status.error{ color: #b42318; font-weight: 700; }
+
+.topicBody{
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+/* Markdown styling */
+.md{
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 15px;
+}
+.md h1, .md h2, .md h3{
+  margin: 18px 0 10px;
+  letter-spacing: -0.01em;
+}
+.md h1{ font-size: 26px; }
+.md h2{ font-size: 20px; }
+.md h3{ font-size: 17px; }
+
+.md p{ margin: 10px 0; }
+.md ul{ margin: 10px 0 10px 20px; }
+.md li{ margin: 6px 0; }
+
+.md code{
+  background: #f1f5f9;
+  border: 1px solid rgba(15,23,42,0.10);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-size: 0.92em;
+}
+
+.md pre{
+  background: #0b1220;
+  color: #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  overflow: auto;
+}
+
+/* Table borders + proper layout */
+.md table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.md th, .md td{
+  border: 1px solid var(--border);
+  padding: 10px 10px;
+  vertical-align: top;
+}
+.md th{
+  background: #f8fafc;
+  text-align: left;
+  font-weight: 800;
+}

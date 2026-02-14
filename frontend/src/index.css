@@ -1,0 +1,141 @@
+:root {
+  color-scheme: light;
+  --page-bg: radial-gradient(1200px 600px at 18% 0%, #f0f8ff 0%, #e3f2fd 38%, #f7fbff 100%);
+  --surface: #ffffff;
+  --surface-2: #f0f8ff;
+  --ink: #2c3e50;
+  --muted: #4f5f6d;
+  --muted-2: #6a7b8a;
+  --border: #e0e0e0;
+  --accent: #ff6b6b;
+  --accent-2: #e15554;
+  --accent-3: #a8403f;
+  --shadow: 0 24px 80px rgba(44, 62, 80, 0.16);
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+.display-font {
+  font-family: var(--font-display);
+}
+
+@keyframes hourglass-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.hourglass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  animation: hourglass-spin 1.2s infinite ease-in-out;
+}
+
+.tv-err {
+  margin-top: 12px;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.tv-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+}
+
+.tv-left {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 12px;
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.tv-left-head {
+  font-size: 12px;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tv-left-item {
+  display: block;
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.tv-left-item:hover {
+  border-color: rgba(14, 165, 164, 0.45);
+  background: #ffffff;
+}
+
+.tv-main {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.tv-section {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.tv-section-title {
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.tv-section-body {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  color: var(--muted);
+  font-size: 14px;
+}

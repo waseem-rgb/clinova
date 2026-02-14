@@ -1,0 +1,46 @@
+{
+  "books": [
+    {
+      "book_id": "harrison_22",
+      "title": "Harrison’s Principles of Internal Medicine (22e)",
+      "pdf_path": "pdfs/harrison_22.pdf",
+      "start_page_clinical": 45
+    },
+    {
+      "book_id": "mims_2023_24",
+      "title": "MIMS 2023–24",
+      "pdf_path": "pdfs/mims_2023_24.pdf",
+      "start_page_clinical": 1
+    },
+    {
+      "book_id": "kd_tripathi",
+      "title": "KD Tripathi",
+      "pdf_path": "pdfs/kd_tripathi.pdf",
+      "start_page_clinical": 1
+    },
+    {
+      "book_id": "oxford_clinical_medicine",
+      "title": "Oxford Clinical Medicine",
+      "pdf_path": "pdfs/oxford_clinical_medicine.pdf",
+      "start_page_clinical": 1
+    },
+    {
+      "book_id": "oxford_pediatrics",
+      "title": "Oxford Pediatrics",
+      "pdf_path": "pdfs/oxford_pediatrics.pdf",
+      "start_page_clinical": 1
+    },
+    {
+      "book_id": "oxford_surgery",
+      "title": "Oxford Handbook of Surgery",
+      "pdf_path": "pdfs/oxford_surgery.pdf",
+      "start_page_clinical": 1
+    },
+    {
+      "book_id": "dutta_obgyn",
+      "title": "Dutta OBGYN",
+      "pdf_path": "pdfs/dutta_obgyn.pdf",
+      "start_page_clinical": 1
+    }
+  ]
+}
