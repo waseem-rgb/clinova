@@ -39,3 +39,8 @@ backend/backend__old/
 # allow config/rules JSONs if needed (we will re-allow specific ones later)
 !backend/app/data/rules/
 !backend/app/data/rules/*.json
+# Local runtime data (v2)
+backend/storage/
+backend/venv/
+frontend/node_modules/
+backend/.env
