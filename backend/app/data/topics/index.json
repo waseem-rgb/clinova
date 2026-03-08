@@ -1,0 +1,18 @@
+{
+  "topics": [
+    {
+      "slug": "hyperpigmentation",
+      "title": "Hyperpigmentation",
+      "icd10": "L81.9",
+      "specialty": ["Dermatology", "General Medicine"],
+      "tags": ["skin", "melanin", "melasma", "PIH", "Addison's", "pigmentation"]
+    },
+    {
+      "slug": "hyponatremia",
+      "title": "Hyponatremia",
+      "icd10": "E87.1",
+      "specialty": ["General Medicine", "Nephrology", "Emergency Medicine", "Endocrinology"],
+      "tags": ["electrolyte", "sodium", "SIADH", "ADH", "osmolality", "correction", "ODS"]
+    }
+  ]
+}

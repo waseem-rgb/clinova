@@ -7,4 +7,5 @@ openai
 tiktoken
 pdfplumber
 numpy
+anthropic
 

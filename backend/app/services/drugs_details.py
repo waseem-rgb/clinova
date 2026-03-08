@@ -25,6 +25,7 @@ from app.services.service_cache import (
     get_drug_details_cached,
     set_drug_details_cached,
 )
+from app.services.timing import TimingContext
 
 
 # =============================================================================
@@ -34,13 +35,13 @@ from app.services.service_cache import (
 def _build_drug_queries(drug_name: str) -> Dict[str, List[str]]:
     """
     Build multi-query set for drug retrieval.
-    
+
     Returns dict with keys:
         - 'mims': queries for drug books (dosing, brands, formulations)
         - 'clinical': queries for clinical textbooks (mechanism, indications)
     """
     base = drug_name or "drug"
-    
+
     mims_queries = [
         f"{base}",
         f"{base} dose dosing",
@@ -49,7 +50,7 @@ def _build_drug_queries(drug_name: str) -> Dict[str, List[str]]:
         f"{base} adverse effect side effect",
         f"{base} contraindication",
     ]
-    
+
     clinical_queries = [
         f"{base} mechanism of action pharmacology",
         f"{base} indication use",
@@ -58,7 +59,7 @@ def _build_drug_queries(drug_name: str) -> Dict[str, List[str]]:
         f"{base} pregnancy lactation",
         f"{base} monitoring",
     ]
-    
+
     return {
         "mims": list(dict.fromkeys([q for q in mims_queries if q.strip()])),
         "clinical": list(dict.fromkeys([q for q in clinical_queries if q.strip()])),
@@ -75,17 +76,17 @@ def _retrieve_drug_chunks(
 ) -> tuple:
     """
     Retrieve chunks from both drug books and clinical textbooks.
-    
+
     Returns:
         (mims_chunks, clinical_chunks)
     """
     queries = _build_drug_queries(canonical_name or drug_name)
-    
+
     mims_chunks: List[Dict[str, Any]] = []
     clinical_chunks: List[Dict[str, Any]] = []
     seen_mims: Set[str] = set()
     seen_clinical: Set[str] = set()
-    
+
     # Retrieve from drug books (MIMS, Tripathi)
     for query in queries["mims"]:
         chunks = retrieve_chunks(query=query, collection_key="drugs_mims", top_k=10)
@@ -94,10 +95,10 @@ def _retrieve_drug_chunks(
             if cid and cid not in seen_mims:
                 seen_mims.add(cid)
                 mims_chunks.append(chunk)
-        
+
         if len(mims_chunks) >= 25:
             break
-    
+
     # Also try with original name if different
     if drug_name.lower() != canonical_name.lower():
         for query in [drug_name, f"{drug_name} dose", f"{drug_name} brand"]:
@@ -107,7 +108,7 @@ def _retrieve_drug_chunks(
                 if cid and cid not in seen_mims:
                     seen_mims.add(cid)
                     mims_chunks.append(chunk)
-    
+
     # Retrieve from clinical textbooks (for mechanism, clinical context)
     for query in queries["clinical"]:
         chunks = retrieve_chunks(query=query, collection_key="core_textbooks", top_k=6)
@@ -116,10 +117,10 @@ def _retrieve_drug_chunks(
             if cid and cid not in seen_clinical:
                 seen_clinical.add(cid)
                 clinical_chunks.append(chunk)
-        
+
         if len(clinical_chunks) >= 15:
             break
-    
+
     return mims_chunks, clinical_chunks
 
 
@@ -134,10 +135,11 @@ def get_drug_details(
     renal_status: Optional[str] = None,
     hepatic_status: Optional[str] = None,
     debug: bool = False,
+    timings: Optional[TimingContext] = None,
 ) -> Dict[str, Any]:
     """
     Get comprehensive drug details with caching.
-    
+
     Args:
         name: Drug name (generic or brand)
         age: Patient age (optional context)
@@ -145,13 +147,13 @@ def get_drug_details(
         renal_status: Renal function status
         hepatic_status: Hepatic function status
         debug: Include debug info
-    
+
     Returns:
         DrugDetailsResponse-compatible dict with timings
     """
     start_time = time.monotonic()
     cache_hit = False
-    
+
     # Check cache first (skip if debug mode)
     if not debug:
         cached = get_drug_details_cached(
@@ -169,22 +171,25 @@ def get_drug_details(
                 "cache_hit": True,
                 "total_ms": round((time.monotonic() - start_time) * 1000, 2),
             }
+            if timings is not None:
+                timings.set_duration("retrieval_ms", 0)
+                timings.set_duration("llm_ms", 0)
             return cached_result
-    
+
     # Resolve drug name
     resolve_start = time.monotonic()
     resolved = resolve_name(name)
     canonical = resolved.get("canonical") or name
     resolve_ms = (time.monotonic() - resolve_start) * 1000
-    
+
     # Retrieve chunks
     retrieval_start = time.monotonic()
     mims_raw, clinical_raw = _retrieve_drug_chunks(name, canonical)
     retrieval_ms = (time.monotonic() - retrieval_start) * 1000
-    
+
     # Combine all chunks
     all_raw = mims_raw + clinical_raw
-    
+
     # Clean and filter chunks
     clean_start = time.monotonic()
     query_terms = [canonical, name] + canonical.split()
@@ -194,11 +199,11 @@ def get_drug_details(
         query_terms=query_terms,
         max_chunks=30,
     )
-    
+
     # Sort by book priority (drug books first for drug details)
     cleaned_chunks = sort_by_book_priority(cleaned_chunks, feature="drug")
     clean_ms = (time.monotonic() - clean_start) * 1000
-    
+
     # Extract drug details using LLM
     llm_start = time.monotonic()
     result = extract_drug_details_from_chunks(
@@ -211,9 +216,9 @@ def get_drug_details(
         debug=debug,
     )
     llm_ms = (time.monotonic() - llm_start) * 1000
-    
+
     total_ms = (time.monotonic() - start_time) * 1000
-    
+
     # Add timing info
     result["timings"] = {
         "cache_hit": cache_hit,
@@ -223,7 +228,11 @@ def get_drug_details(
         "llm_ms": round(llm_ms, 2),
         "total_ms": round(total_ms, 2),
     }
-    
+
+    if timings is not None:
+        timings.set_duration("retrieval_ms", retrieval_ms)
+        timings.set_duration("llm_ms", llm_ms)
+
     # Add debug info if requested
     if debug:
         debug_info = result.get("debug") or {}
@@ -249,7 +258,7 @@ def get_drug_details(
             renal_status=renal_status,
             hepatic_status=hepatic_status,
         )
-    
+
     return result
 
 
@@ -258,5 +267,4 @@ def get_drug_details(
 # =============================================================================
 
 def get_drug_monograph(name: str, debug: bool = False) -> Dict[str, Any]:
-    """Alias for get_drug_details for backward compatibility."""
     return get_drug_details(name, debug=debug)

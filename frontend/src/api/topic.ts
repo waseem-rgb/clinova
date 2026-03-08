@@ -99,22 +99,8 @@ export function cleanTopicTitle(input: string): string {
   return s;
 }
 
-/**
- * Safely call apiGet() regardless of whether your apiGet signature is:
- *   apiGet<T>(path, signal?)
- * OR
- *   apiGet<T>(path, { signal }?)
- */
 async function apiGetSafe<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const fn: any = apiGet as any;
-
-  try {
-    // Try (path, {signal}) first
-    return await fn(path, signal ? { signal } : undefined);
-  } catch {
-    // Fallback to (path, signal)
-    return await fn(path, signal);
-  }
+  return apiGet<T>(path, signal);
 }
 
 export async function suggestByCollection(

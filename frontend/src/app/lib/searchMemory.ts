@@ -19,7 +19,7 @@ interface SearchState<TInput, TOutput> {
   timestamp: number;
 }
 
-const STORAGE_PREFIX = "medcompanion_search_";
+const STORAGE_PREFIX = "clinova_search_";
 const MAX_AGE_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 /**

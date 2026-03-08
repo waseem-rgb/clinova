@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import SidebarNav from "../components/SidebarNav";
+import LatestArticlesPanel from "../components/LatestArticlesPanel";
 import { COLLECTIONS, cleanTopicTitle, getTopicByCollection } from "../api/topic";
 import type { CollectionKey, TopicDoctorView, TopicResponse } from "../api/topic";
 
@@ -268,9 +269,21 @@ export default function TopicView() {
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--page-bg)", padding: "24px 24px 24px 0" }}>
-      <div style={{ maxWidth: "100%", minWidth: 1200, margin: 0, display: "grid", gridTemplateColumns: "260px 1fr", gap: 24 }}>
+      {/* 3-column grid: sidebar | topic content | articles panel */}
+      <div
+        style={{
+          maxWidth: "100%",
+          minWidth: 1200,
+          margin: 0,
+          display: "grid",
+          gridTemplateColumns: "260px 1fr 300px",
+          gap: 24,
+          alignItems: "start",
+        }}
+      >
         <SidebarNav />
 
+        {/* ── Centre: topic content ── */}
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
             <button
@@ -379,6 +392,9 @@ export default function TopicView() {
             )}
           </div>
         </div>
+
+        {/* ── Right: Latest Articles panel ── */}
+        {q.trim() && <LatestArticlesPanel topic={q} />}
       </div>
     </div>
   );

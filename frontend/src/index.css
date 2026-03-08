@@ -1,72 +1,102 @@
+/* Clinova — Design System Foundation */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@1,300;1,400;1,600;1,700&display=swap');
+
 :root {
   color-scheme: light;
-  --page-bg: radial-gradient(1200px 600px at 18% 0%, #f0f8ff 0%, #e3f2fd 38%, #f7fbff 100%);
-  --surface: #ffffff;
-  --surface-2: #f0f8ff;
-  --ink: #2c3e50;
-  --muted: #4f5f6d;
-  --muted-2: #6a7b8a;
-  --border: #e0e0e0;
-  --accent: #ff6b6b;
-  --accent-2: #e15554;
-  --accent-3: #a8403f;
-  --shadow: 0 24px 80px rgba(44, 62, 80, 0.16);
-  --font-display: "Playfair Display", serif;
-  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial;
+
+  /* ── Brand ── */
+  --brand:          #0A6E5E;
+  --brand-hover:    #085A4C;
+  --brand-light:    rgba(10, 110, 94, 0.07);
+  --brand-border:   rgba(10, 110, 94, 0.20);
+
+  /* ── Severity ── */
+  --critical:       #CF222E;
+  --critical-light: rgba(207, 34, 46, 0.06);
+  --critical-border:rgba(207, 34, 46, 0.20);
+  --amber:          #D97706;
+  --amber-light:    #FFFBF0;
+
+  /* ── Surfaces ── */
+  --bg-base:        #F9FAFB;
+  --bg-surface:     #FFFFFF;
+  --bg-raised:      #F3F4F6;
+  --bg-sidebar:     #0D1117;
+  --bg-sidebar-hover: #161B22;
+
+  /* ── Typography ── */
+  --text-primary:   #0D1117;
+  --text-secondary: #4B5563;
+  --text-muted:     #6B7280;
+  --text-subtle:    #9CA3AF;
+  --text-sidebar:   #C9D1D9;
+  --text-sidebar-m: #8B949E;
+
+  /* ── Borders ── */
+  --border:         #E5E7EB;
+  --border-strong:  #D1D5DB;
+  --border-sidebar: #21262D;
+
+  /* ── Shadows ── */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.07);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.08);
+
+  /* ── Typography Scale ── */
+  --font-sans:    "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, "Cascadia Code", monospace;
+  --font-display: "Fraunces", Georgia, serif;
+
+  /* ── Layout ── */
+  --sidebar-w:    240px;
+
+  /* ── Legacy aliases (backward compat for unchanged components) ── */
+  --primary:    var(--brand);
+  --primary-2:  var(--brand-hover);
+  --accent:     var(--brand);
+  --accent-2:   var(--brand-hover);
+  --accent-3:   var(--amber);
+  --page-bg:    var(--bg-base);
+  --surface:    var(--bg-surface);
+  --surface-2:  var(--bg-raised);
+  --surface-3:  #E5E7EB;
+  --ink:        var(--text-primary);
+  --muted:      var(--text-secondary);
+  --muted-2:    var(--text-muted);
+  --shadow:     var(--shadow-md);
+  --danger:     var(--critical);
+  --success:    #2DA44E;
+  --warning:    var(--amber);
+  --amber-2:    #B45309;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
-  background: var(--page-bg);
-  color: var(--ink);
+  background: var(--bg-base);
+  color: var(--text-primary);
   font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-button,
-input {
-  font: inherit;
-}
+button, input { font: inherit; }
 
-* {
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-.display-font {
+h1, h2, h3, .display-font {
   font-family: var(--font-display);
+  font-style: italic;
 }
 
-@keyframes hourglass-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
-
-.hourglass {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  animation: hourglass-spin 1.2s infinite ease-in-out;
-}
+/* ── TV (Topic View) layout classes ── */
 
 .tv-err {
   margin-top: 12px;
-  color: #b91c1c;
+  color: var(--critical);
   font-size: 13px;
 }
 
@@ -79,63 +109,83 @@ h3,
 
 .tv-left {
   border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 16px;
+  background: var(--bg-surface);
+  border-radius: 8px;
   padding: 12px;
   max-height: calc(100vh - 120px);
   overflow: auto;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-sm);
 }
 
 .tv-left-head {
-  font-size: 12px;
-  color: var(--muted-2);
+  font-size: 10px;
+  color: var(--text-subtle);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .tv-left-item {
   display: block;
-  padding: 10px 10px;
-  border-radius: 12px;
-  color: var(--ink);
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text-primary);
   text-decoration: none;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  margin-bottom: 8px;
-  font-weight: 700;
+  border: 1px solid transparent;
+  margin-bottom: 2px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.1s ease;
 }
 
 .tv-left-item:hover {
-  border-color: rgba(14, 165, 164, 0.45);
-  background: #ffffff;
+  background: var(--bg-raised);
+  border-color: var(--border);
 }
 
 .tv-main {
   border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  background: var(--bg-surface);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .tv-section {
   border: 1px solid var(--border);
-  background: var(--surface-2);
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 12px;
+  background: var(--bg-base);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
 }
 
 .tv-section-title {
-  font-weight: 750;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .tv-section-body {
   white-space: pre-wrap;
-  line-height: 1.6;
-  color: var(--muted);
-  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* ── Animations ── */
+
+@keyframes hourglass-spin {
+  0%   { transform: rotate(0deg); }
+  60%  { transform: rotate(0deg); }
+  100% { transform: rotate(180deg); }
+}
+
+.hourglass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  animation: hourglass-spin 1.2s infinite ease-in-out;
 }

@@ -1,11 +1,11 @@
 # backend/app/api/integrations.py
 """
-External Integration API for MedCompanion.
+External Integration API for Clinova.
 
 These endpoints allow external projects (like Health Bridge) to access
-MedCompanion's clinical features through a stable, API-key-protected interface.
+Clinova's clinical features through a stable, API-key-protected interface.
 
-All endpoints require the X-MedCompanion-Key header with a valid API key.
+All endpoints require the X-Clinova-Key header with a valid API key.
 """
 from __future__ import annotations
 
@@ -96,7 +96,7 @@ class EncounterContext(BaseModel):
 class IntegrationHealthResponse(BaseModel):
     """Health check response."""
     ok: bool = True
-    service: str = "medcompanion"
+    service: str = "clinova"
     version: str = "1.0.0"
 
 
@@ -155,7 +155,7 @@ async def integration_topic(
     """
     Retrieve medical topic information.
     
-    Uses the same topic retrieval pipeline as the MedCompanion UI.
+    Uses the same topic retrieval pipeline as the Clinova UI.
     
     Required fields in ctx:
         - query: The topic to search for (e.g., "pneumonia", "diabetes mellitus")
@@ -183,7 +183,7 @@ async def integration_ddx(
     """
     Run differential diagnosis analysis.
     
-    Uses the same DDx pipeline as the MedCompanion UI.
+    Uses the same DDx pipeline as the Clinova UI.
     
     Recommended fields in ctx:
         - symptoms or chief_complaint: Primary symptoms to analyze
@@ -229,7 +229,7 @@ async def integration_treatment(
     """
     Get treatment advice for a diagnosis or condition.
     
-    Uses the same Treatment Advisor pipeline as the MedCompanion UI.
+    Uses the same Treatment Advisor pipeline as the Clinova UI.
     
     Recommended fields in ctx:
         - diagnosis or query: The condition to get treatment for
@@ -279,7 +279,7 @@ async def integration_drug(
     """
     Get detailed drug information.
     
-    Uses the same Drug Details pipeline as the MedCompanion UI.
+    Uses the same Drug Details pipeline as the Clinova UI.
     
     Required fields in ctx:
         - drug_name or query: Name of the drug to look up
@@ -315,7 +315,7 @@ async def integration_interactions(
     """
     Check drug-drug interactions.
     
-    Uses the same Interactions pipeline as the MedCompanion UI.
+    Uses the same Interactions pipeline as the Clinova UI.
     
     Required fields in ctx:
         - drugs: List of drug names to check for interactions
@@ -364,7 +364,7 @@ async def integration_rx(
     """
     Generate prescription draft from clinical transcript.
     
-    Uses the same RxStudio pipeline as the MedCompanion UI.
+    Uses the same RxStudio pipeline as the Clinova UI.
     
     Required fields in ctx:
         - transcript: Clinical encounter transcript or notes

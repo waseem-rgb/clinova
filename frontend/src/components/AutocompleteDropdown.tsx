@@ -5,6 +5,8 @@ export interface AutocompleteItem {
   id: string;
   text: string;
   subtitle?: string;
+  badge?: string;   // e.g. "TOPIC" for structured topic pages
+  href?: string;    // if set, caller uses this for navigation in onSelect
 }
 
 interface AutocompleteDropdownProps {
@@ -307,8 +309,20 @@ export default function AutocompleteDropdown({
                 transition: "background 0.1s",
               }}
             >
-              <div style={{ fontWeight: 600, color: "var(--ink)" }}>
-                {highlightMatch(item.text, currentValue)}
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontWeight: 600, color: "var(--ink)", flex: 1 }}>
+                  {highlightMatch(item.text, currentValue)}
+                </span>
+                {item.badge && (
+                  <span style={{
+                    fontSize: 9, fontWeight: 700, padding: "2px 5px", borderRadius: 3,
+                    color: "var(--brand)", border: "1px solid var(--brand-border)",
+                    letterSpacing: 0.4, textTransform: "uppercase", flexShrink: 0,
+                    fontFamily: "var(--font-mono, monospace)",
+                  }}>
+                    {item.badge}
+                  </span>
+                )}
               </div>
               {item.subtitle && (
                 <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>

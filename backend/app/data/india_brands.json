@@ -1,0 +1,154 @@
+{
+  "generics": {
+    "amoxicillin": {
+      "brands": ["Amoxil", "Novamox"],
+      "forms_strengths": ["250 mg capsule", "500 mg capsule"],
+      "notes": "Examples only; verify availability."
+    },
+    "amoxicillin clavulanate": {
+      "brands": ["Augmentin"],
+      "forms_strengths": ["625 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "azithromycin": {
+      "brands": ["Azee", "Azithral"],
+      "forms_strengths": ["250 mg tablet", "500 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "ceftriaxone": {
+      "brands": ["Monocef"],
+      "forms_strengths": ["1 g injection"],
+      "notes": "Examples only; verify availability."
+    },
+    "piperacillin tazobactam": {
+      "brands": ["Piptaz"],
+      "forms_strengths": ["4.5 g injection"],
+      "notes": "Examples only; verify availability."
+    },
+    "meropenem": {
+      "brands": ["Meronem"],
+      "forms_strengths": ["1 g injection"],
+      "notes": "Examples only; verify availability."
+    },
+    "oseltamivir": {
+      "brands": ["Tamiflu"],
+      "forms_strengths": ["75 mg capsule"],
+      "notes": "Examples only; verify availability."
+    },
+    "salbutamol": {
+      "brands": ["Asthalin"],
+      "forms_strengths": ["100 mcg inhaler"],
+      "notes": "Examples only; verify availability."
+    },
+    "budesonide": {
+      "brands": ["Budecort"],
+      "forms_strengths": ["200 mcg inhaler"],
+      "notes": "Examples only; verify availability."
+    },
+    "prednisolone": {
+      "brands": ["Wysolone"],
+      "forms_strengths": ["5 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "metformin": {
+      "brands": ["Glycomet"],
+      "forms_strengths": ["500 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "insulin glargine": {
+      "brands": ["Lantus"],
+      "forms_strengths": ["100 IU/mL vial"],
+      "notes": "Examples only; verify availability."
+    },
+    "atorvastatin": {
+      "brands": ["Lipitor", "Atorlip"],
+      "forms_strengths": ["10 mg tablet", "20 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "aspirin": {
+      "brands": ["Ecosprin"],
+      "forms_strengths": ["75 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "clopidogrel": {
+      "brands": ["Plavix"],
+      "forms_strengths": ["75 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "lisinopril": {
+      "brands": ["Zestril"],
+      "forms_strengths": ["5 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "losartan": {
+      "brands": ["Losar"],
+      "forms_strengths": ["50 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "furosemide": {
+      "brands": ["Lasix"],
+      "forms_strengths": ["40 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "spironolactone": {
+      "brands": ["Aldactone"],
+      "forms_strengths": ["25 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "carvedilol": {
+      "brands": ["Cardivas"],
+      "forms_strengths": ["6.25 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "bisoprolol": {
+      "brands": ["Concor"],
+      "forms_strengths": ["2.5 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "pantoprazole": {
+      "brands": ["Pantocid"],
+      "forms_strengths": ["40 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "ondansetron": {
+      "brands": ["Ondem"],
+      "forms_strengths": ["4 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "paracetamol": {
+      "brands": ["Crocin", "Dolo"],
+      "forms_strengths": ["500 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "ibuprofen": {
+      "brands": ["Brufen"],
+      "forms_strengths": ["400 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "doxycycline": {
+      "brands": ["Doxy-1"],
+      "forms_strengths": ["100 mg capsule"],
+      "notes": "Examples only; verify availability."
+    },
+    "cefuroxime": {
+      "brands": ["Zinnat"],
+      "forms_strengths": ["500 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "levofloxacin": {
+      "brands": ["Levaquin"],
+      "forms_strengths": ["500 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "montelukast": {
+      "brands": ["Montair"],
+      "forms_strengths": ["10 mg tablet"],
+      "notes": "Examples only; verify availability."
+    },
+    "clindamycin": {
+      "brands": ["Dalacin"],
+      "forms_strengths": ["300 mg capsule"],
+      "notes": "Examples only; verify availability."
+    }
+  }
+}

@@ -25,6 +25,7 @@ from app.services.service_cache import (
     get_interactions_cached,
     set_interactions_cached,
 )
+from app.services.timing import TimingContext
 
 
 # =============================================================================
@@ -34,23 +35,23 @@ from app.services.service_cache import (
 def _build_interaction_queries(drugs: List[str]) -> List[str]:
     """
     Build queries for interaction retrieval.
-    
+
     Includes:
     - Pairwise interaction queries
     - Individual drug interaction profiles
     """
     queries = []
-    
+
     # Pairwise interaction queries
     for a, b in combinations(drugs, 2):
         queries.append(f"{a} {b} interaction")
         queries.append(f"{a} {b} drug interaction contraindicated")
-    
+
     # Individual drug interaction profiles
     for drug in drugs:
         queries.append(f"{drug} drug interaction")
         queries.append(f"{drug} contraindicated avoid combination")
-    
+
     return list(dict.fromkeys(queries))
 
 
@@ -61,14 +62,14 @@ def _build_interaction_queries(drugs: List[str]) -> List[str]:
 def _retrieve_interaction_chunks(drugs: List[str]) -> List[Dict[str, Any]]:
     """
     Retrieve interaction-related chunks.
-    
+
     Prioritizes drug books (MIMS, Tripathi) for interaction data.
     """
     queries = _build_interaction_queries(drugs)
-    
+
     all_chunks: List[Dict[str, Any]] = []
     seen_ids: Set[str] = set()
-    
+
     # Retrieve from drug books first
     for query in queries[:12]:  # Limit queries
         chunks = retrieve_chunks(query=query, collection_key="drugs_mims", top_k=6)
@@ -77,10 +78,10 @@ def _retrieve_interaction_chunks(drugs: List[str]) -> List[Dict[str, Any]]:
             if cid and cid not in seen_ids:
                 seen_ids.add(cid)
                 all_chunks.append(chunk)
-        
+
         if len(all_chunks) >= 30:
             break
-    
+
     # Also check clinical textbooks for major interactions
     if len(all_chunks) < 20:
         for query in queries[:6]:
@@ -90,10 +91,10 @@ def _retrieve_interaction_chunks(drugs: List[str]) -> List[Dict[str, Any]]:
                 if cid and cid not in seen_ids:
                     seen_ids.add(cid)
                     all_chunks.append(chunk)
-            
+
             if len(all_chunks) >= 40:
                 break
-    
+
     return all_chunks
 
 
@@ -101,36 +102,36 @@ def _retrieve_interaction_chunks(drugs: List[str]) -> List[Dict[str, Any]]:
 # MAIN INTERACTION CHECK FUNCTION (WITH CACHING)
 # =============================================================================
 
-def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str, Any]:
+def check_interactions(payload: Dict[str, Any], debug: bool = False, timings: Optional[TimingContext] = None) -> Dict[str, Any]:
     """
     Check drug interactions for a list of drugs with caching.
-    
+
     Args:
         payload: Dict with keys:
             - drugs: list[str] (required, at least 2)
             - context: dict (optional) with age, pregnancy, renal_status, comorbidities
         debug: Include debug info
-    
+
     Returns:
         InteractionResponse-compatible dict with timings
     """
     start_time = time.monotonic()
     cache_hit = False
-    
+
     drugs = payload.get("drugs") or []
     context = payload.get("context") or {}
-    
+
     # Validate input
     if not drugs:
         return _empty_response([], "No drugs provided")
-    
+
     if len(drugs) < 2:
         return _empty_response(drugs, "Need at least 2 drugs to check interactions")
-    
+
     # Normalize drug names
     drugs = [d.strip() for d in drugs if d and d.strip()]
     drugs = drugs[:10]  # Limit to 10 drugs max
-    
+
     # Check cache first (skip if debug mode)
     if not debug:
         cached = get_interactions_cached(drugs=drugs, context=context)
@@ -142,19 +143,22 @@ def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str
                 "cache_hit": True,
                 "total_ms": round((time.monotonic() - start_time) * 1000, 2),
             }
+            if timings is not None:
+                timings.set_duration("retrieval_ms", 0)
+                timings.set_duration("llm_ms", 0)
             return cached_result
-    
+
     # Extract context
     age = context.get("age")
     pregnancy = context.get("pregnancy")
     renal_status = context.get("renal_status")
     comorbidities = context.get("comorbidities") or []
-    
+
     # Retrieve chunks
     retrieval_start = time.monotonic()
     raw_chunks = _retrieve_interaction_chunks(drugs)
     retrieval_ms = (time.monotonic() - retrieval_start) * 1000
-    
+
     # Clean and filter
     clean_start = time.monotonic()
     query_terms = drugs + ["interaction", "contraindicated"]
@@ -164,11 +168,11 @@ def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str
         query_terms=query_terms,
         max_chunks=25,
     )
-    
+
     # Sort by book priority (drug books first)
     cleaned_chunks = sort_by_book_priority(cleaned_chunks, feature="drug")
     clean_ms = (time.monotonic() - clean_start) * 1000
-    
+
     # Extract interactions using LLM
     llm_start = time.monotonic()
     result = extract_interactions_from_chunks(
@@ -181,9 +185,9 @@ def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str
         debug=debug,
     )
     llm_ms = (time.monotonic() - llm_start) * 1000
-    
+
     total_ms = (time.monotonic() - start_time) * 1000
-    
+
     # Add timing info
     result["timings"] = {
         "cache_hit": cache_hit,
@@ -192,7 +196,11 @@ def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str
         "llm_ms": round(llm_ms, 2),
         "total_ms": round(total_ms, 2),
     }
-    
+
+    if timings is not None:
+        timings.set_duration("retrieval_ms", retrieval_ms)
+        timings.set_duration("llm_ms", llm_ms)
+
     # Add debug info if requested
     if debug:
         debug_info = result.get("debug") or {}
@@ -208,7 +216,7 @@ def check_interactions(payload: Dict[str, Any], debug: bool = False) -> Dict[str
     else:
         # Cache the result for future requests (only in non-debug mode)
         set_interactions_cached(drugs=drugs, result=result, context=context)
-    
+
     return result
 
 
@@ -237,35 +245,33 @@ def quick_interaction_check(drugs: List[str]) -> List[Dict[str, str]]:
     """
     Quick interaction check for inline warnings.
     Uses rule-based detection only, no LLM call.
-    
+
     Args:
         drugs: List of drug names
-    
+
     Returns:
         List of {drug, message} warnings
     """
     from app.rag.extractors.drug_interactions_extractor import RISK_CLUSTERS
-    
+
     warnings = []
     drugs_lower = [d.lower() for d in drugs if d]
-    
+
     if len(drugs_lower) < 2:
         return warnings
-    
+
     for cluster_name, cluster_info in RISK_CLUSTERS.items():
         cluster_drugs = cluster_info["drugs"]
         matched = []
-        
+
         for drug in drugs_lower:
             for cluster_drug in cluster_drugs:
-                if cluster_drug in drug or drug in cluster_drug:
+                if cluster_drug in drug:
                     matched.append(drug)
-                    break
-        
+
         if len(matched) >= 2:
-            warnings.append({
-                "drug": ", ".join(matched[:2]),
-                "message": f"{cluster_info['risk']} - {cluster_info['monitoring']}",
-            })
-    
+            msg = cluster_info.get("message") or "Potential interaction risk"
+            for drug in matched:
+                warnings.append({"drug": drug, "message": msg})
+
     return warnings

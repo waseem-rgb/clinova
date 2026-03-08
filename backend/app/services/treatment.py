@@ -11,6 +11,7 @@ This module provides comprehensive treatment recommendations based on:
 """
 from __future__ import annotations
 
+import time
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from app.rag.retrieve.query import retrieve_chunks
@@ -19,6 +20,7 @@ from app.rag.cleaners.text_cleaner import (
     sort_by_book_priority,
 )
 from app.rag.extractors.treatment_extractor import extract_treatment_from_chunks
+from app.services.timing import TimingContext
 
 
 # =============================================================================
@@ -28,7 +30,7 @@ from app.rag.extractors.treatment_extractor import extract_treatment_from_chunks
 def _build_treatment_queries(topic: str, ctx: Dict[str, Any]) -> List[str]:
     """
     Build multi-query set for treatment retrieval.
-    
+
     Query A: Core treatment / first-line regimen
     Query B: Severity/setting specific
     Query C: Special populations / contraindications
@@ -36,28 +38,28 @@ def _build_treatment_queries(topic: str, ctx: Dict[str, Any]) -> List[str]:
     base = topic or "treatment"
     severity = (ctx.get("severity") or "").strip()
     setting = (ctx.get("setting") or "").strip()
-    
+
     queries = [
         # Query A: Core treatment
         f"{base} treatment first line regimen dose duration",
         f"{base} treatment of choice recommended therapy",
         f"{base} management guideline",
         f"{base} pharmacological treatment",
-        
+
         # Query B: Severity/setting
         f"{base} acute management",
         f"{base} initial therapy",
-        
+
         # Query C: Special populations / contraindications
         f"{base} contraindications precautions",
         f"{base} pregnancy renal impairment hepatic",
         f"{base} monitoring follow-up",
     ]
-    
+
     # Add severity-specific query
     if severity:
         queries.append(f"{base} {severity} treatment management")
-    
+
     # Add setting-specific query
     if setting:
         setting_lower = setting.lower()
@@ -67,7 +69,7 @@ def _build_treatment_queries(topic: str, ctx: Dict[str, Any]) -> List[str]:
             queries.append(f"{base} emergency acute management")
         else:
             queries.append(f"{base} {setting} management")
-    
+
     return list(dict.fromkeys([q for q in queries if q.strip()]))
 
 
@@ -98,7 +100,7 @@ def _retrieve_with_priority(
     drug_chunks: List[Dict[str, Any]] = []
     seen_core: Set[str] = set()
     seen_drug: Set[str] = set()
-    
+
     # Retrieve from core textbooks
     for query in queries:
         chunks = retrieve_chunks(query=query, collection_key="core_textbooks", top_k=10)
@@ -107,10 +109,10 @@ def _retrieve_with_priority(
             if cid and cid not in seen_core:
                 seen_core.add(cid)
                 core_chunks.append(chunk)
-        
+
         if len(core_chunks) >= 40:
             break
-    
+
     # Retrieve from drug books
     for query in drug_queries:
         chunks = retrieve_chunks(query=query, collection_key="drugs_mims", top_k=8)
@@ -119,10 +121,10 @@ def _retrieve_with_priority(
             if cid and cid not in seen_drug:
                 seen_drug.add(cid)
                 drug_chunks.append(chunk)
-        
+
         if len(drug_chunks) >= 20:
             break
-    
+
     return core_chunks, drug_chunks
 
 
@@ -130,10 +132,10 @@ def _retrieve_with_priority(
 # MAIN TREATMENT FUNCTION
 # =============================================================================
 
-def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[str, Any]:
+def get_treatment_advice(payload: Dict[str, Any], debug: bool = False, timings: Optional[TimingContext] = None) -> Dict[str, Any]:
     """
     Get treatment advice for a given condition/diagnosis.
-    
+
     Args:
         payload: Dict with keys:
             - topic_or_diagnosis: str (required)
@@ -142,14 +144,16 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
             - confirmed_diagnosis: bool
             - source: str
         debug: bool - include debug info in response
-    
+
     Returns:
         TreatmentAdvisorResponse-compatible dict
     """
+    start_total = time.monotonic()
+
     # Extract inputs
     topic = (payload.get("topic_or_diagnosis") or "").strip()
     ctx = payload.get("context") or {}
-    
+
     age = ctx.get("age")
     sex = (ctx.get("sex") or "unknown").lower()
     pregnancy = (ctx.get("pregnancy") or "unknown").lower()
@@ -160,17 +164,24 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
     renal_status = ctx.get("renal_status") or ""
     hepatic_status = ctx.get("hepatic_status") or ""
     current_meds = ctx.get("current_meds") or []
-    
+
     if not topic:
-        return _empty_treatment_response(topic, "No topic or diagnosis provided")
-    
+        result = _empty_treatment_response(topic, "No topic or diagnosis provided")
+        result["timings"] = {"retrieval_ms": 0, "llm_ms": 0, "total_ms": 0}
+        if timings is not None:
+            timings.set_duration("retrieval_ms", 0)
+            timings.set_duration("llm_ms", 0)
+        return result
+
     # Build queries
     treatment_queries = _build_treatment_queries(topic, ctx)
     drug_queries = _build_drug_queries(topic)
-    
+
     # Retrieve chunks
+    retrieval_start = time.monotonic()
     core_raw, drug_raw = _retrieve_with_priority(treatment_queries, drug_queries)
-    
+    retrieval_ms = (time.monotonic() - retrieval_start) * 1000
+
     # Clean and filter core chunks
     query_terms = [topic] + topic.split()
     core_cleaned, core_dropped = filter_and_clean_chunks(
@@ -179,7 +190,7 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
         query_terms=query_terms,
         max_chunks=25,
     )
-    
+
     # Clean drug chunks (more lenient for drug books)
     drug_cleaned, drug_dropped = filter_and_clean_chunks(
         drug_raw,
@@ -187,11 +198,12 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
         query_terms=query_terms,
         max_chunks=15,
     )
-    
+
     # Sort by book priority
     core_cleaned = sort_by_book_priority(core_cleaned)
-    
+
     # Extract treatment using LLM
+    llm_start = time.monotonic()
     result = extract_treatment_from_chunks(
         topic=topic,
         age=age,
@@ -208,7 +220,19 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
         drug_chunks=drug_cleaned,
         debug=debug,
     )
-    
+    llm_ms = (time.monotonic() - llm_start) * 1000
+
+    total_ms = (time.monotonic() - start_total) * 1000
+
+    result["timings"] = {
+        "retrieval_ms": round(retrieval_ms, 2),
+        "llm_ms": round(llm_ms, 2),
+        "total_ms": round(total_ms, 2),
+    }
+    if timings is not None:
+        timings.set_duration("retrieval_ms", retrieval_ms)
+        timings.set_duration("llm_ms", llm_ms)
+
     # Add debug info if requested
     if debug:
         debug_info = result.get("debug") or {}
@@ -236,7 +260,7 @@ def get_treatment_advice(payload: Dict[str, Any], debug: bool = False) -> Dict[s
             },
         })
         result["debug"] = debug_info
-    
+
     return result
 
 

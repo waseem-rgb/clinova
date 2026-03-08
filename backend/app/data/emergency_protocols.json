@@ -1,0 +1,571 @@
+{
+  "version": "1.0",
+  "protocols": [
+    {
+      "id": "snake-bite",
+      "name": "Snake Bite",
+      "icon": "🐍",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Rapid assessment, immobilization, and polyvalent anti-snake venom (ASV) administration for venomous snake envenomation.",
+      "tags": ["toxicology", "envenomation", "rural"],
+      "timers": [
+        { "id": "wbct-20", "label": "20-min WBCT Check", "description": "Whole blood clotting test — check at 20 min", "minutes": 20, "critical": true },
+        { "id": "asv-infusion", "label": "ASV Infusion Duration", "description": "10 vials over 1 hour IV", "minutes": 60, "critical": false },
+        { "id": "wbct-6h", "label": "Repeat WBCT", "description": "Repeat clotting test every 6 hours", "minutes": 360, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "Activate emergency — call for help immediately", "critical": true, "details": "Alert senior physician, nurse, blood bank. Do NOT leave patient alone." },
+        { "id": 2, "phase": "immediate", "text": "Lay patient flat, immobilize bitten limb at heart level", "critical": true, "details": "Splint the limb. Remove jewellery, rings, watches from affected limb. Do NOT elevate above heart level (increases venom absorption)." },
+        { "id": 3, "phase": "immediate", "text": "Reassure patient — reduce movement and anxiety", "critical": false, "details": "Fear increases heart rate and venom spread. Calm, reassuring approach." },
+        { "id": 4, "phase": "immediate", "text": "Do NOT: incise wound, suck venom, apply tourniquet, apply ice", "critical": true, "details": "These actions cause harm. No tourniquets, no incisions, no herbal remedies." },
+        { "id": 5, "phase": "assessment", "text": "Establish IV access x2 (large bore), draw blood investigations", "critical": true, "details": "Investigations: CBC, BT/CT, PT/INR/APTT, fibrinogen, RFT (BUN/Cr), urine dipstick, ECG." },
+        { "id": 6, "phase": "assessment", "text": "Perform 20-minute Whole Blood Clotting Test (WBCT)", "critical": true, "details": "Place 2mL blood in clean glass tube. At 20 min: if blood is unclotted/partially clotted → hemotoxic envenomation confirmed. START WBCT TIMER.", "timer_id": "wbct-20" },
+        { "id": 7, "phase": "assessment", "text": "Assess for local envenomation signs", "critical": false, "details": "Pain, swelling, bruising, blistering, necrosis at bite site. Measure and mark swelling extent with time stamps." },
+        { "id": 8, "phase": "assessment", "text": "Assess for systemic envenomation signs", "critical": true, "details": "Neurological: ptosis, diplopia, dysphagia, respiratory weakness (neurotoxic — Krait/Cobra). Hemotoxic: bleeding gums, petechiae, hematuria, unclotted blood (Viper). Myotoxic: myalgia, myoglobinuria (Russell's Viper)." },
+        { "id": 9, "phase": "treatment", "text": "If envenomation confirmed: pre-treat with Adrenaline 0.25mg SC", "critical": true, "details": "Prophylactic subcutaneous adrenaline 0.25mg reduces ASV anaphylaxis risk. Give 5–10 minutes before ASV infusion.", "dose_calc": { "drug": "Adrenaline (Epinephrine)", "fixed_dose_mg": 0.25, "route": "SC", "concentration_mg_per_mL": 1.0, "note": "0.25mL of 1:1000 solution" } },
+        { "id": 10, "phase": "treatment", "text": "Administer Polyvalent ASV: 10 vials IV in 100mL Normal Saline over 1 hour", "critical": true, "details": "Standard dose: 10 vials polyvalent ASV. Dilute in 100mL NS. Run over 60 minutes. Monitor for anaphylaxis. Have adrenaline ready. START ASV INFUSION TIMER.", "timer_id": "asv-infusion" },
+        { "id": 11, "phase": "treatment", "text": "Monitor for ASV anaphylaxis reaction (first 30 min intensive monitoring)", "critical": true, "details": "Signs: urticaria, bronchospasm, hypotension. If reaction: stop ASV, give adrenaline 0.5mg IM, restart ASV at slower rate after stabilization." },
+        { "id": 12, "phase": "treatment", "text": "For neurotoxic envenomation: give Neostigmine + Atropine test", "critical": false, "details": "Atropine 0.6mg IV, then Neostigmine 0.5mg IV. If improvement in ptosis/strength within 30 min → continue every 30 min. (For Cobra bites especially)." },
+        { "id": 13, "phase": "monitoring", "text": "Repeat WBCT every 6 hours after ASV", "critical": false, "details": "Persistent non-clotting at 6h: repeat ASV course (10 more vials). Target: clotting restored within 6 hours.", "timer_id": "wbct-6h" },
+        { "id": 14, "phase": "treatment", "text": "Tetanus toxoid 0.5mL IM + wound care", "critical": false, "details": "If not immunized: also give Tetanus immunoglobulin 250U IM. Gentle wound cleaning with antiseptic." },
+        { "id": 15, "phase": "monitoring", "text": "Strict urine output monitoring (catheterize), monitor for AKI", "critical": false, "details": "Target urine output >0.5mL/kg/h. Russell's Viper bite: high risk of acute kidney injury. IV fluids for oliguria." }
+      ],
+      "medications": [
+        { "name": "Polyvalent Anti-Snake Venom (ASV)", "dose": "10 vials IV in 100mL NS over 60 min", "route": "IV", "note": "Bharat Serums / VINS polyvalent ASV (covers Cobra, Krait, Russell's Viper, Saw-scaled Viper)" },
+        { "name": "Adrenaline (Epinephrine) 1:1000", "dose": "0.25mg (0.25mL) SC before ASV", "route": "SC", "note": "Prophylaxis against ASV anaphylaxis" },
+        { "name": "Atropine", "dose": "0.6mg IV", "route": "IV", "note": "For Neostigmine test (cholinergic blockade before Neostigmine)" },
+        { "name": "Neostigmine", "dose": "0.5mg IV (repeat q30min if response)", "route": "IV", "note": "For neurotoxic snakes — Cobra/Krait (test response first)" },
+        { "name": "Chlorpheniramine", "dose": "10mg IV", "route": "IV", "note": "H1 blocker — prophylaxis with ASV" },
+        { "name": "Tetanus Toxoid", "dose": "0.5mL IM", "route": "IM", "note": "If not recently immunized" }
+      ],
+      "red_flags": [
+        "Bilateral ptosis, difficulty swallowing or breathing (neurotoxic — imminent respiratory failure)",
+        "Active bleeding from gums, nose, IV sites (hemotoxic coagulopathy)",
+        "Swelling reaching or crossing a joint above the bite within 2 hours",
+        "Urine output <0.5mL/kg/h (AKI — Russell's Viper)",
+        "Shock, hypotension, altered consciousness",
+        "Dark urine (myoglobinuria or hemoglobinuria)"
+      ],
+      "pre_referral": [
+        "Secure airway — jaw support/NPA if ptosis and breathing difficulty",
+        "At least 10 vials ASV given (if not previously given)",
+        "Stable IV access running",
+        "Blood samples sent to referral center",
+        "Document time of bite, time of first ASV, response to ASV"
+      ],
+      "referral_indications": [
+        "Respiratory failure / declining SpO2 despite oxygen",
+        "Persistent coagulopathy after 2 courses of ASV (20 vials)",
+        "Acute kidney injury (anuria >6h)",
+        "Massive local necrosis requiring surgical debridement",
+        "Signs of compartment syndrome"
+      ]
+    },
+    {
+      "id": "acute-mi",
+      "name": "Acute MI",
+      "icon": "❤️",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "STEMI/NSTEMI protocol: rapid reperfusion via thrombolysis or PCI, antiplatelet and anticoagulation therapy.",
+      "tags": ["cardiac", "chest-pain", "STEMI", "NSTEMI"],
+      "timers": [
+        { "id": "door-to-ecg", "label": "Door-to-ECG Target", "description": "12-lead ECG within 10 minutes of arrival", "minutes": 10, "critical": true },
+        { "id": "sk-infusion", "label": "Streptokinase Infusion", "description": "1.5 MU IV over 60 minutes", "minutes": 60, "critical": true },
+        { "id": "thrombolysis-window", "label": "Thrombolysis Window", "description": "Symptom onset to SK: ideally <3h, maximum 12h", "minutes": 720, "critical": true }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "MONA: Morphine, Oxygen, Nitrates, Aspirin — assess simultaneously", "critical": true, "details": "Establish IV access immediately. Monitor: continuous ECG, BP, SpO2, pulse oximetry." },
+        { "id": 2, "phase": "immediate", "text": "Perform 12-lead ECG within 10 minutes — interpret STAT", "critical": true, "details": "Look for: ST elevation ≥1mm in 2 contiguous leads (STEMI), new LBBB, ST depression (NSTEMI). START ECG TIMER.", "timer_id": "door-to-ecg" },
+        { "id": 3, "phase": "immediate", "text": "Aspirin 325mg — chew and swallow (if no allergy or active GI bleed)", "critical": true, "details": "Chewing gives faster absorption. This is the single most important medication." },
+        { "id": 4, "phase": "immediate", "text": "Clopidogrel 300mg PO loading dose (or Ticagrelor 180mg if available)", "critical": true, "details": "Dual antiplatelet therapy. Give within 30 min of diagnosis." },
+        { "id": 5, "phase": "assessment", "text": "Oxygen 2-4L/min if SpO2 < 94%. Do NOT give oxygen if SpO2 ≥94%", "critical": false, "details": "Hyperoxia is harmful in STEMI. Target SpO2 94-98%." },
+        { "id": 6, "phase": "treatment", "text": "Sublingual Nitroglycerin 0.4mg — if BP >90/60 and no inferior/right MI", "critical": false, "details": "Contraindicated in: suspected right ventricular MI (inferior STEMI), systolic BP <90, recent phosphodiesterase inhibitor use within 24-48h." },
+        { "id": 7, "phase": "treatment", "text": "Draw bloods: Troponin, CBC, RFT, electrolytes, lipid profile, coagulation", "critical": false, "details": "Troponin may be normal in first 4-6 hours. Serial troponin at 0 and 3-6 hours." },
+        { "id": 8, "phase": "treatment", "text": "LMWH (Enoxaparin) 1mg/kg SC — or UFH 60U/kg IV bolus (max 4000U)", "critical": true, "details": "Anticoagulation reduces further thrombosis. Enoxaparin preferred if no PCI planned. Reduce dose in CKD (eGFR <30).", "dose_calc": { "drug": "Enoxaparin", "mg_per_kg": 1.0, "max_mg": 100, "route": "SC", "note": "Do not exceed 100mg. Reduce to 0.5mg/kg if eGFR<30 or age>75" } },
+        { "id": 9, "phase": "treatment", "text": "Atorvastatin 80mg PO stat (high-intensity statin)", "critical": false, "details": "Start immediately. Continue long-term. Do not delay for fasting lipid profile." },
+        { "id": 10, "phase": "treatment", "text": "IF STEMI: Decision — PCI or Thrombolysis", "critical": true, "details": "PCI preferred if door-to-balloon ≤90 min (≤120 min for transfer). If PCI not available within 120 min → give Streptokinase." },
+        { "id": 11, "phase": "treatment", "text": "Streptokinase 1.5 MU in 100mL NS IV over 60 minutes (if PCI not available)", "critical": true, "details": "Contraindications: prior intracranial bleed, hemorrhagic stroke <3 months, BP >180/110, active major bleeding, prior SK within 6 months. START SK INFUSION TIMER.", "timer_id": "sk-infusion" },
+        { "id": 12, "phase": "monitoring", "text": "Post-SK monitoring: ECG at 60-90 min, look for ST resolution >50%", "critical": true, "details": "Resolution of ST elevation >50% + pain relief = reperfusion success. Reperfusion arrhythmia (accelerated idioventricular rhythm) = normal finding." },
+        { "id": 13, "phase": "monitoring", "text": "IV Beta-blocker if tachycardia/hypertension (and no contraindications)", "critical": false, "details": "Metoprolol 5mg IV slowly q5min x3, then oral. Contraindicated: HR<60, BP<100, AV block, severe bronchospasm, acute HF." },
+        { "id": 14, "phase": "monitoring", "text": "Transfer to CCU, insert urinary catheter, NPO initially", "critical": false, "details": "Continuous cardiac monitoring. Defibrillator available. IV access maintained." }
+      ],
+      "medications": [
+        { "name": "Aspirin", "dose": "325mg chewed stat, then 75mg OD", "route": "PO", "note": "First and most critical drug" },
+        { "name": "Clopidogrel", "dose": "300mg loading, then 75mg OD", "route": "PO", "note": "Or Ticagrelor 180mg loading if available" },
+        { "name": "Streptokinase", "dose": "1.5 MU in 100mL NS IV over 60 min", "route": "IV", "note": "For STEMI when PCI unavailable. Check contraindications." },
+        { "name": "Enoxaparin", "dose": "1mg/kg SC BD (max 100mg/dose)", "route": "SC", "note": "Reduce dose if CKD. Hold if surgical intervention planned" },
+        { "name": "Atorvastatin", "dose": "80mg PO stat, continue 40-80mg daily", "route": "PO", "note": "High-intensity statin. Start immediately." },
+        { "name": "Nitroglycerin", "dose": "0.4mg SL q5min x3, then IV infusion 10-200mcg/min", "route": "SL/IV", "note": "Avoid if right MI, hypotension, phosphodiesterase inhibitors" },
+        { "name": "Metoprolol", "dose": "5mg IV q5min x3 then 25-50mg PO BD", "route": "IV/PO", "note": "Avoid if HR<60, BP<100, AV block, severe bronchospasm" }
+      ],
+      "red_flags": [
+        "Cardiogenic shock: SBP <90, cold extremities, altered consciousness",
+        "Acute pulmonary edema (use APE protocol)",
+        "Complete heart block (bradycardia, wide complex escape rhythm)",
+        "Ventricular fibrillation (use cardiac arrest protocol)",
+        "ST re-elevation after initial resolution (re-occlusion)",
+        "Failure of SK reperfusion: ST not resolved by 50% at 90 min"
+      ],
+      "pre_referral": [
+        "Aspirin + Clopidogrel given",
+        "Anticoagulation initiated",
+        "Streptokinase given if STEMI and PCI delay >120 min",
+        "Continuous ECG monitoring during transfer",
+        "IV access x2, defibrillator available for transfer"
+      ],
+      "referral_indications": [
+        "All STEMI patients for PCI evaluation",
+        "NSTEMI with high-risk features (recurrent ischemia, hemodynamic instability)",
+        "Cardiogenic shock",
+        "Mechanical complications (VSD, papillary muscle rupture)",
+        "Failed thrombolysis"
+      ]
+    },
+    {
+      "id": "stroke",
+      "name": "Acute Stroke",
+      "icon": "🧠",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Rapid stroke recognition (FAST), neuroimaging, and thrombolysis within 4.5-hour window.",
+      "tags": ["neurology", "stroke", "thrombolysis"],
+      "timers": [
+        { "id": "tpa-window", "label": "Thrombolysis Window", "description": "Alteplase eligible within 4.5h of last known well", "minutes": 270, "critical": true },
+        { "id": "door-to-needle", "label": "Door-to-Needle Target", "description": "IV tPA within 60 minutes of arrival", "minutes": 60, "critical": true },
+        { "id": "bp-recheck", "label": "BP Recheck After Treatment", "description": "Recheck BP every 15 min for 2h after tPA", "minutes": 15, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "FAST: Face drooping, Arm weakness, Speech difficulty, Time to call", "critical": true, "details": "Note exact time of symptom onset or 'last known well'. This is critical for thrombolysis eligibility." },
+        { "id": 2, "phase": "immediate", "text": "Airway management — if GCS <8 or unable to protect airway: intubate", "critical": true, "details": "Position head 15-30 degrees up. Supplemental oxygen only if SpO2 <94%." },
+        { "id": 3, "phase": "immediate", "text": "Check blood glucose immediately", "critical": true, "details": "Hypoglycemia (BG <60 mg/dL) mimics stroke — treat with 25-50mL 50% dextrose IV. Hyperglycemia (>200) worsens outcome — treat with insulin." },
+        { "id": 4, "phase": "assessment", "text": "Perform NIHSS (NIH Stroke Scale) scoring", "critical": false, "details": "NIHSS assesses: consciousness (0-3), gaze (0-2), visual fields (0-3), facial palsy (0-3), arm motor (0-4 each), leg motor (0-4 each), limb ataxia, sensation, best language, dysarthria, extinction (0-2). Total 0-42." },
+        { "id": 5, "phase": "assessment", "text": "Non-contrast CT head STAT — rule out hemorrhage before thrombolysis", "critical": true, "details": "CT is mandatory before thrombolysis. Hemorrhagic stroke = absolute contraindication to tPA. ASPECTS score if available." },
+        { "id": 6, "phase": "assessment", "text": "Blood tests: CBC, INR/PT/APTT, glucose, electrolytes, renal function", "critical": false, "details": "Do NOT delay tPA for bloods unless coagulopathy suspected." },
+        { "id": 7, "phase": "treatment", "text": "Blood pressure management — do NOT routinely treat unless extremely high", "critical": true, "details": "If no tPA: treat only if BP >220/120. If giving tPA: target <185/110 before and during infusion. Use Labetalol 10mg IV or Nicardipine infusion." },
+        { "id": 8, "phase": "treatment", "text": "IF ischemic + within 4.5h + no contraindications: Alteplase 0.9mg/kg IV", "critical": true, "details": "Alteplase: 10% as IV bolus over 1 min, remaining 90% as infusion over 60 min. Max dose 90mg. Do NOT give antiplatelet/anticoagulant for 24h after tPA.", "dose_calc": { "drug": "Alteplase (rt-PA)", "mg_per_kg": 0.9, "max_mg": 90, "route": "IV", "note": "10% as bolus, 90% over 60 min. Max 90mg total" } },
+        { "id": 9, "phase": "treatment", "text": "Aspirin 300mg (if NO hemorrhage + NOT receiving tPA in next 24h)", "critical": false, "details": "Aspirin alone if tPA not given. Do NOT give within 24h of tPA." },
+        { "id": 10, "phase": "treatment", "text": "Temperature management: target normothermia (paracetamol if febrile)", "critical": false, "details": "Fever worsens outcome. Antipyretics if temp >37.5°C." },
+        { "id": 11, "phase": "monitoring", "text": "Post-tPA: BP every 15 min for 2h, then 30 min for 6h, then 1h for 16h", "critical": true, "details": "Watch for symptomatic intracranial hemorrhage: sudden deterioration, headache, BP spike. If suspected: STOP infusion, urgent CT.", "timer_id": "bp-recheck" },
+        { "id": 12, "phase": "monitoring", "text": "Nil by mouth until formal swallow assessment", "critical": false, "details": "Aspiration pneumonia is a leading cause of post-stroke death. Formal dysphagia screen before any oral intake." }
+      ],
+      "medications": [
+        { "name": "Alteplase (rt-PA)", "dose": "0.9mg/kg IV (max 90mg): 10% bolus, 90% over 60 min", "route": "IV", "note": "Only if ischemic stroke within 4.5h, CT cleared, no contraindications" },
+        { "name": "Aspirin", "dose": "300mg PO or NGT stat (if not receiving tPA)", "route": "PO/NGT", "note": "Do NOT give within 24h of alteplase" },
+        { "name": "Labetalol", "dose": "10-20mg IV over 1-2 min (repeat q10-20 min, max 300mg)", "route": "IV", "note": "For BP management if >220/120 (no tPA) or >185/110 (pre-tPA)" },
+        { "name": "Paracetamol", "dose": "1g IV/PO q6h", "route": "IV/PO", "note": "For temperature management if febrile" },
+        { "name": "50% Dextrose", "dose": "25-50mL IV (if glucose <60 mg/dL)", "route": "IV", "note": "Hypoglycemia must be treated urgently — it mimics stroke" }
+      ],
+      "red_flags": [
+        "Declining GCS — airway compromise imminent",
+        "BP not controllable below 185/110 pre-tPA (do not give tPA)",
+        "Post-tPA deterioration (stop infusion, urgent CT for hemorrhage)",
+        "Seizures (may indicate hemorrhagic transformation)",
+        "Signs of herniation: unequal pupils, Cushing's triad"
+      ],
+      "pre_referral": [
+        "CT head done (confirm ischemic or hemorrhagic)",
+        "Blood glucose stabilized",
+        "BP noted and documented (pre-treatment baseline)",
+        "Aspirin given if no thrombolysis",
+        "Time of last known well documented clearly"
+      ],
+      "referral_indications": [
+        "Any stroke patient for neuroimaging (if not available locally)",
+        "Candidate for thrombectomy (large vessel occlusion, NIHSS >6, within 24h)",
+        "Hemorrhagic stroke (neurosurgical evaluation)",
+        "Post-tPA monitoring in stroke unit",
+        "Posterior circulation stroke (brainstem/cerebellum)"
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "name": "Anaphylaxis",
+      "icon": "💉",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Life-threatening hypersensitivity reaction. Epinephrine IM is the cornerstone of treatment — give FIRST, other measures follow.",
+      "tags": ["allergy", "anaphylaxis", "shock"],
+      "timers": [
+        { "id": "epi-repeat", "label": "Repeat Epinephrine", "description": "If no improvement: repeat IM epinephrine after 5-15 min", "minutes": 10, "critical": true },
+        { "id": "observation", "label": "Minimum Observation", "description": "Observe for minimum 4h (8h if severe)", "minutes": 240, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "Intramuscular Epinephrine (Adrenaline) 0.01mg/kg in outer thigh — FIRST LINE", "critical": true, "details": "Use 1:1000 (1mg/mL) adrenaline. Outer mid-thigh IM. This is the ONLY first-line treatment. Do not delay for IV access.", "dose_calc": { "drug": "Epinephrine (Adrenaline) 1:1000", "mg_per_kg": 0.01, "max_mg": 0.5, "route": "IM (outer thigh)", "concentration_mg_per_mL": 1.0, "note": "Adult: 0.3-0.5mL. Child: 0.01mg/kg. Max 0.5mg" } },
+        { "id": 2, "phase": "immediate", "text": "Call for help — activate emergency team", "critical": true, "details": "Anaphylaxis can be fatal within minutes. Immediate team activation required." },
+        { "id": 3, "phase": "immediate", "text": "Position patient appropriately", "critical": true, "details": "If conscious and breathing: lie flat with legs elevated. If breathing difficulty: semi-recumbent position. Do NOT stand or sit upright suddenly (risk of cardiovascular collapse)." },
+        { "id": 4, "phase": "immediate", "text": "High-flow oxygen 15L/min via non-rebreather mask", "critical": true, "details": "Target SpO2 >95%. Consider bag-mask ventilation if inadequate breathing." },
+        { "id": 5, "phase": "treatment", "text": "Large bore IV x2 — IV fluid resuscitation", "critical": true, "details": "Normal Saline 500mL-1L rapid IV bolus (20mL/kg in children). Repeat if hypotension persists." },
+        { "id": 6, "phase": "treatment", "text": "If NO improvement after 5-15 min: REPEAT IM Epinephrine", "critical": true, "details": "Up to 3 IM doses of epinephrine may be given. If still no response → IV epinephrine infusion in ICU. START TIMER.", "timer_id": "epi-repeat" },
+        { "id": 7, "phase": "treatment", "text": "Antihistamine: Chlorpheniramine 10mg IV (adult)", "critical": false, "details": "Secondary treatment only — does NOT replace epinephrine. Child: 0.2mg/kg IV.", "dose_calc": { "drug": "Chlorpheniramine", "mg_per_kg": 0.2, "max_mg": 10, "route": "IV", "note": "Adult: 10mg IV. Child: 0.2mg/kg. Give slowly over 5 min" } },
+        { "id": 8, "phase": "treatment", "text": "Corticosteroid: Hydrocortisone 200mg IV stat (adult)", "critical": false, "details": "Prevents/reduces biphasic reaction (occurs in 20%). Not immediate effect. Child: 4mg/kg IV.", "dose_calc": { "drug": "Hydrocortisone", "mg_per_kg": 4, "max_mg": 200, "route": "IV", "note": "Adult: 200mg. Child: 4mg/kg. Prevents biphasic reaction" } },
+        { "id": 9, "phase": "treatment", "text": "Bronchospasm: Nebulized Salbutamol 2.5mg (child) / 5mg (adult)", "critical": false, "details": "If wheeze persists after epinephrine. Second dose may be given." },
+        { "id": 10, "phase": "treatment", "text": "If on Beta-blockers with inadequate response: Glucagon 1-2mg IV", "critical": false, "details": "Beta-blockers block epinephrine effects. Glucagon 1-2mg IV over 5 min, then infusion 5-15mcg/min." },
+        { "id": 11, "phase": "monitoring", "text": "Monitor: BP q5min, SpO2 continuous, ECG, urine output", "critical": false, "details": "Biphasic anaphylaxis occurs in up to 20% — symptoms return 1-8 hours after initial resolution." },
+        { "id": 12, "phase": "monitoring", "text": "Observe for minimum 4 hours (8 hours if severe reaction)", "critical": false, "details": "All patients must be observed for biphasic reaction. Discharge criteria: stable BP, SpO2 >95%, no ongoing symptoms.", "timer_id": "observation" },
+        { "id": 13, "phase": "monitoring", "text": "Prescribe epinephrine auto-injector on discharge + allergy alert", "critical": false, "details": "Refer to allergist. Document trigger. Advise MedAlert bracelet." }
+      ],
+      "medications": [
+        { "name": "Epinephrine (Adrenaline) 1:1000", "dose": "0.3-0.5mg IM (adult), 0.01mg/kg IM (child, max 0.5mg)", "route": "IM outer thigh", "note": "FIRST AND ONLY first-line drug. Repeat every 5-15 min if no improvement." },
+        { "name": "Normal Saline", "dose": "500mL-1L IV bolus (adult), 20mL/kg (child)", "route": "IV", "note": "Rapid infusion for hypotension. Repeat as needed." },
+        { "name": "Chlorpheniramine", "dose": "10mg IV (adult), 0.2mg/kg (child)", "route": "IV", "note": "Secondary treatment only — not first-line" },
+        { "name": "Hydrocortisone", "dose": "200mg IV (adult), 4mg/kg (child)", "route": "IV", "note": "Prevents biphasic reaction. Not immediate effect." },
+        { "name": "Salbutamol (Albuterol)", "dose": "2.5-5mg nebulized", "route": "Nebulization", "note": "For bronchospasm/wheeze refractory to epinephrine" },
+        { "name": "Glucagon", "dose": "1-2mg IV over 5 min, then 5-15mcg/min infusion", "route": "IV", "note": "Only if on beta-blockers and inadequate epinephrine response" }
+      ],
+      "red_flags": [
+        "No improvement after 2 doses of IM epinephrine (needs IV epinephrine in ICU)",
+        "Stridor, severe bronchospasm — impending airway loss",
+        "Unresponsive to treatment, worsening shock",
+        "Cardiac arrest (initiate BLS/ACLS)",
+        "Pregnancy (fetal compromise — epinephrine safe, do not withhold)"
+      ],
+      "pre_referral": [
+        "At least 1 dose IM epinephrine given",
+        "IV access established with fluid running",
+        "Airway secured if compromised",
+        "Continuous monitoring during transport",
+        "Repeat epinephrine available for transport"
+      ],
+      "referral_indications": [
+        "Refractory anaphylaxis (>2 doses epinephrine with no response)",
+        "Airway compromise requiring intubation",
+        "Persistent hypotension",
+        "Cardiac arrest"
+      ]
+    },
+    {
+      "id": "status-epilepticus",
+      "name": "Status Epilepticus",
+      "icon": "⚡",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Seizure lasting >5 minutes or ≥2 seizures without return to baseline. Benzodiazepine escalation to Phenytoin/Valproate.",
+      "tags": ["neurology", "seizure", "epilepsy"],
+      "timers": [
+        { "id": "first-benzo", "label": "First Benzo Response Time", "description": "If still seizing 5 min after first dose → repeat benzo", "minutes": 5, "critical": true },
+        { "id": "phenytoin-load", "label": "Phenytoin Loading", "description": "20mg/kg over 20 min (max 50mg/min) with ECG monitoring", "minutes": 20, "critical": true },
+        { "id": "se-treatment-window", "label": "Total Treatment Window", "description": "Target seizure cessation within 20-30 min", "minutes": 30, "critical": true }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "Note exact time — SE = seizure >5 min or 2+ seizures without recovery", "critical": true, "details": "Document time seizure started. Risk of neuronal injury increases significantly beyond 30-60 min." },
+        { "id": 2, "phase": "immediate", "text": "Airway: positioning, suction, NPA if needed. Oxygen 10-15L via mask", "critical": true, "details": "Lateral position (recovery position) to prevent aspiration. Do NOT put fingers in mouth. NPA if needed — do NOT intubate initially unless specifically indicated." },
+        { "id": 3, "phase": "immediate", "text": "Check blood glucose STAT (finger prick)", "critical": true, "details": "Hypoglycemia is a common, treatable cause. If <60 mg/dL: give 50mL 50% dextrose IV (adult) or 2-4mL/kg 25% dextrose (child) over 5 min." },
+        { "id": 4, "phase": "treatment", "text": "IV access — draw blood for investigations simultaneously", "critical": false, "details": "Investigations: glucose, electrolytes (Na, K, Ca, Mg), RFT, LFT, toxicology screen, drug levels (phenytoin if on it), CBC." },
+        { "id": 5, "phase": "treatment", "text": "First-line (0-5 min): Lorazepam 0.1mg/kg IV at 2mg/min (or Diazepam 0.2mg/kg IV)", "critical": true, "details": "If no IV: Midazolam 0.2mg/kg IM/buccal (highly effective). Diazepam 0.5mg/kg PR if neither available. START TIMER for 5 min response check.", "dose_calc": { "drug": "Lorazepam", "mg_per_kg": 0.1, "max_mg": 4, "route": "IV (at 2mg/min)", "note": "Adult: 4mg IV. Child: 0.1mg/kg (max 4mg). Preferred over Diazepam" }, "timer_id": "first-benzo" },
+        { "id": 6, "phase": "treatment", "text": "If still seizing at 5 min: REPEAT benzodiazepine once", "critical": true, "details": "One more dose of same benzodiazepine (same dose). If IV not available: Midazolam 10mg IM (adult)." },
+        { "id": 7, "phase": "treatment", "text": "Second-line (10 min): Phenytoin 20mg/kg IV loading dose", "critical": true, "details": "Dilute in Normal Saline (NOT dextrose). Rate: MAX 50mg/min in adults, 1mg/kg/min in children. ECG monitoring mandatory during infusion (cardiac monitoring). START PHENYTOIN TIMER.", "dose_calc": { "drug": "Phenytoin", "mg_per_kg": 20, "max_mg": 1500, "route": "IV (slow, ECG monitoring)", "note": "Max rate 50mg/min (adult). Use NS — incompatible with dextrose. Monitor BP and ECG." }, "timer_id": "phenytoin-load" },
+        { "id": 8, "phase": "treatment", "text": "Alternative second-line: Valproate 40mg/kg IV (preferred in children)", "critical": false, "details": "Sodium Valproate 40mg/kg IV over 10-15 min. Safe alternative to Phenytoin, especially in children. Avoid in liver disease, pregnancy.", "dose_calc": { "drug": "Sodium Valproate", "mg_per_kg": 40, "max_mg": 3000, "route": "IV (over 10-15 min)", "note": "Preferred in children. Avoid in liver disease, pregnant women, children <2y" } },
+        { "id": 9, "phase": "treatment", "text": "Thiamine 100mg IV before glucose — if alcoholism suspected", "critical": false, "details": "Prevents Wernicke's encephalopathy in alcoholic patients." },
+        { "id": 10, "phase": "treatment", "text": "Refractory SE (>20-30 min): Intubate, ICU transfer, anesthetic agent", "critical": true, "details": "Propofol infusion 1-2mg/kg then 2-10mg/kg/h OR Midazolam infusion 0.05-0.2mg/kg/h. Continuous EEG monitoring in ICU." }
+      ],
+      "medications": [
+        { "name": "Lorazepam", "dose": "0.1mg/kg IV (max 4mg); at 2mg/min", "route": "IV", "note": "First-line preferred. Longer action than Diazepam" },
+        { "name": "Diazepam", "dose": "0.2mg/kg IV (max 10mg) OR 0.5mg/kg PR", "route": "IV/PR", "note": "Alternative first-line. Rectal route if no IV" },
+        { "name": "Midazolam", "dose": "0.2mg/kg IM/buccal (adult: 10mg IM)", "route": "IM/Buccal", "note": "Highly effective when no IV access. Buccal Midazolam 5mg (child)" },
+        { "name": "Phenytoin", "dose": "20mg/kg IV loading (max 50mg/min rate)", "route": "IV slow", "note": "ECG monitoring mandatory. In NS only — NOT dextrose. Max 1500mg." },
+        { "name": "Levetiracetam", "dose": "60mg/kg IV over 10 min (max 4.5g)", "route": "IV", "note": "Alternative to Phenytoin; safer cardiac profile. Available as 500mg vials." },
+        { "name": "Sodium Valproate", "dose": "40mg/kg IV over 10-15 min (max 3g)", "route": "IV", "note": "Preferred in children. Avoid in pregnancy and liver disease." },
+        { "name": "50% Dextrose", "dose": "50mL IV (adult) if glucose <60 mg/dL", "route": "IV", "note": "Always check glucose first. Give after Thiamine if alcoholism possible" }
+      ],
+      "red_flags": [
+        "SE >30 min (super-refractory) — cerebral damage risk, needs ICU",
+        "Hypoxia (SpO2 <90%) — consider intubation",
+        "Post-ictal hemiplegia or focal deficit (Todd's paralysis vs. acute structural lesion)",
+        "New-onset SE in febrile child >1 month (consider meningitis, encephalitis)",
+        "SE despite 3 medications — needs anaesthetic",
+        "Glucose <40 mg/dL"
+      ],
+      "pre_referral": [
+        "Glucose check and correction done",
+        "At least 2 antiepileptic drugs given in sequence",
+        "Airway secured (intubation if refractory)",
+        "Document all medications given with times and doses",
+        "Check electrolytes: Na, Ca, Mg abnormality may be cause"
+      ],
+      "referral_indications": [
+        "Refractory SE (>20-30 min, not responding to 2 antiepileptics)",
+        "Suspected CNS infection (fever, stiff neck) — lumbar puncture needed",
+        "First-ever SE in adult without known epilepsy",
+        "Status in pregnancy (eclampsia?)",
+        "Post-cardiac arrest seizures"
+      ]
+    },
+    {
+      "id": "obstetric-emergency",
+      "name": "Obstetric Emergency",
+      "icon": "🤰",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Covers Postpartum Hemorrhage (PPH) and Eclampsia — the two leading causes of maternal mortality in India.",
+      "tags": ["obstetrics", "PPH", "eclampsia", "maternal"],
+      "timers": [
+        { "id": "mgs04-loading", "label": "MgSO4 Loading Dose Duration", "description": "4g MgSO4 IV over 20 minutes for eclampsia", "minutes": 20, "critical": true },
+        { "id": "oxytocin-pph", "label": "Uterotonics Reassessment", "description": "Reassess PPH response at 15 min after uterotonics", "minutes": 15, "critical": true }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "CALL: Activate obstetric emergency team (obstetrician, anesthetist, blood bank, neonatologist)", "critical": true, "details": "Clear communication: state 'Obstetric Emergency — PPH/Eclampsia' with location." },
+        { "id": 2, "phase": "immediate", "text": "ASSESS: Vital signs — BP, HR, SpO2, estimated blood loss", "critical": true, "details": "Postpartum hemorrhage = blood loss >500mL after vaginal delivery or >1000mL after C-section. Underestimation is common — double your estimated loss." },
+        { "id": 3, "phase": "treatment", "text": "PPH — Step 1: IV access x2 (large bore), aggressive fluid resuscitation", "critical": true, "details": "1-2L NS or Hartmann's rapid IV. Send blood for CBC, coagulation, type and cross-match. Foley catheter. Oxygen 15L/min." },
+        { "id": 4, "phase": "treatment", "text": "PPH — Step 2: Bimanual uterine massage + uterine compression", "critical": true, "details": "Massage the uterine fundus immediately. If uterus is soft/boggy (uterine atony — 80% of PPH): massage continuously while preparing uterotonics." },
+        { "id": 5, "phase": "treatment", "text": "PPH — Step 3: Oxytocin 10 IU IM stat + infusion 20 IU in 500mL NS at 60 drops/min", "critical": true, "details": "First-line uterotonic. IM injection at same time as IV infusion. Do not give as IV bolus — causes hypotension." },
+        { "id": 6, "phase": "treatment", "text": "PPH — Step 4: Misoprostol 800mcg sublingual/rectal (if Oxytocin unavailable or insufficient)", "critical": false, "details": "Where Oxytocin is unavailable (e.g., no cold chain), Misoprostol 800mcg is life-saving. Also add Carbetocin 100mcg IM if available." },
+        { "id": 7, "phase": "treatment", "text": "PPH — Step 5: Tranexamic acid 1g IV over 10 min (within 3 hours of delivery)", "critical": true, "details": "Anti-fibrinolytic — reduces PPH mortality by 30% (WHO WOMAN trial). Can repeat 1g in 30 min if bleeding continues. Must be given within 3 hours." },
+        { "id": 8, "phase": "treatment", "text": "PPH — Step 6: Ergometrine 0.5mg IM (if no hypertension, asthma, or cardiac disease)", "critical": false, "details": "Contraindicated in hypertension (causes severe BP rise). Causes sustained uterine contraction. IM route preferred." },
+        { "id": 9, "phase": "treatment", "text": "ECLAMPSIA — Step 1: Magnesium Sulfate (MgSO4) loading dose", "critical": true, "details": "MgSO4 4g IV in 200mL NS over 20 min. Monitor: respiratory rate (must be >16/min), deep tendon reflexes (must be present), urine output (>30mL/h). START MgSO4 TIMER.", "timer_id": "mgs04-loading", "dose_calc": { "drug": "MgSO4 (50% solution)", "fixed_dose_mg": 4000, "route": "IV in 200mL NS over 20 min", "note": "50% MgSO4 = 500mg/mL. 4g = 8mL. Dilute to 200mL. Antidote: Calcium gluconate 1g IV" } },
+        { "id": 10, "phase": "treatment", "text": "ECLAMPSIA — Step 2: MgSO4 maintenance infusion 1-2g/h IV", "critical": true, "details": "Continue for 24h after last seizure. Monitor every 15-30 min: RR, DTR, urine output. If toxicity signs: STOP MgSO4, give Calcium Gluconate 1g IV." },
+        { "id": 11, "phase": "treatment", "text": "ECLAMPSIA — Step 3: Antihypertensives if BP >160/110", "critical": true, "details": "Hydralazine 5mg IV over 5 min (repeat q20min, max 20mg). OR Labetalol 20mg IV (double dose q10min, max 300mg). OR Nifedipine 10mg PO (may repeat once)." },
+        { "id": 12, "phase": "treatment", "text": "Prepare for delivery — discuss with obstetrician for timing", "critical": false, "details": "Delivery is the definitive treatment for eclampsia. Steroid 12mg IM (betamethasone) if <34 weeks gestation for fetal lung maturity." },
+        { "id": 13, "phase": "monitoring", "text": "Blood transfusion: O-negative if urgent, type-matched as available", "critical": false, "details": "Transfuse if: Hb <7g/dL, ongoing major hemorrhage, symptomatic anemia. FFP and platelets if coagulopathy." }
+      ],
+      "medications": [
+        { "name": "Oxytocin", "dose": "10 IU IM stat + 20 IU in 500mL NS at 60 dpm", "route": "IM + IV infusion", "note": "First-line for PPH. Never IV bolus." },
+        { "name": "Misoprostol", "dose": "800mcg SL or rectal", "route": "SL/Rectal", "note": "Where Oxytocin unavailable (cold chain issues). Also WHO option." },
+        { "name": "Tranexamic Acid", "dose": "1g IV over 10 min; repeat once if needed", "route": "IV", "note": "Must give within 3 hours. Reduces maternal mortality (WOMAN trial)" },
+        { "name": "Ergometrine", "dose": "0.5mg IM or 0.25mg IV slowly", "route": "IM/IV", "note": "Contraindicated in hypertension, pre-eclampsia, cardiac disease" },
+        { "name": "MgSO4 (50% solution)", "dose": "4g IV loading over 20 min, then 1-2g/h infusion", "route": "IV", "note": "For eclampsia. Antidote: Calcium gluconate 1g IV if RR<16 or absent DTR" },
+        { "name": "Hydralazine", "dose": "5mg IV over 5 min, repeat q20min (max 20mg)", "route": "IV", "note": "For severe hypertension in eclampsia" },
+        { "name": "Calcium Gluconate", "dose": "1g (10mL of 10% solution) IV over 10 min", "route": "IV", "note": "MgSO4 ANTIDOTE — give if respiratory depression or absent reflexes" }
+      ],
+      "red_flags": [
+        "PPH >1000mL with continued bleeding (prepare for surgical intervention)",
+        "Hemodynamic instability despite 2L fluid replacement (transfuse)",
+        "MgSO4 toxicity: RR <16/min, absent deep tendon reflexes, SpO2 dropping",
+        "Eclamptic seizures not controlled after 2 doses MgSO4",
+        "BP >180/120 refractory to antihypertensives (hypertensive emergency)",
+        "Fetal bradycardia <100bpm (emergency delivery consideration)"
+      ],
+      "pre_referral": [
+        "IV access established, fluid running",
+        "Oxytocin/Misoprostol given for PPH",
+        "Tranexamic acid given within 3h",
+        "MgSO4 loading dose given for eclampsia",
+        "Document all medications, timing, and blood loss volume",
+        "Contact referral unit in advance"
+      ],
+      "referral_indications": [
+        "PPH >1000mL not responding to medical management (surgical options)",
+        "Coagulopathy (DIC) requiring blood products",
+        "Uncontrolled eclampsia or fetal compromise",
+        "HELLP syndrome",
+        "Hysterectomy required"
+      ]
+    },
+    {
+      "id": "pediatric-emergency",
+      "name": "Pediatric Emergency",
+      "icon": "👶",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Covers neonatal resuscitation, pediatric septic shock, febrile seizures, and acute respiratory distress in children.",
+      "tags": ["pediatrics", "neonatal", "sepsis", "seizure"],
+      "timers": [
+        { "id": "nrp-golden-minute", "label": "NRP Golden Minute", "description": "Complete initial steps within 60 seconds of birth", "minutes": 1, "critical": true },
+        { "id": "fever-seizure-benzo", "label": "Febrile Seizure Benzo Response", "description": "If seizure >5 min or no response at 5 min — repeat benzo", "minutes": 5, "critical": true }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "NEONATAL RESUSCITATION (NRP): Warm, Dry, Stimulate — within 60 seconds", "critical": true, "details": "Golden minute: Warm (radiant warmer), position airway (sniffing position), dry and stimulate. Assess: breathing (regular?), heart rate (>100?), colour (central cyanosis?). START GOLDEN MINUTE TIMER.", "timer_id": "nrp-golden-minute" },
+        { "id": 2, "phase": "immediate", "text": "NRP: If not breathing or HR<100: Positive Pressure Ventilation (PPV)", "critical": true, "details": "BVM at 40-60 breaths/min. FiO2 21% (room air) for term neonates. FiO2 30% for preterm. Check chest rise. If HR remains <60 after 30s: start chest compressions." },
+        { "id": 3, "phase": "treatment", "text": "NRP: HR <60 after PPV: Chest compressions (3:1 ratio with breaths)", "critical": true, "details": "Rate 90 compressions + 30 breaths per minute. Depth: 1/3 of AP chest diameter. Use 2-thumb encircling technique." },
+        { "id": 4, "phase": "treatment", "text": "PEDIATRIC SEPTIC SHOCK: Recognize early — 'warm shock' easily missed in children", "critical": true, "details": "Signs: fever + tachycardia + altered perfusion. 'Cold shock': mottling, prolonged cap refill >3s, weak pulses. 'Warm shock': flushed, bounding pulses, wide pulse pressure." },
+        { "id": 5, "phase": "treatment", "text": "Septic Shock — IV/IO access: Fluid bolus 10-20mL/kg NS over 5-10 min", "critical": true, "details": "CAUTION: FEAST trial shows excess fluids worsen mortality in African children. Start 10mL/kg, reassess after each bolus. Max 40-60mL/kg in first hour.", "dose_calc": { "drug": "Normal Saline (fluid bolus)", "mg_per_kg": null, "mL_per_kg": 10, "max_mL": 500, "route": "IV/IO over 5-10 min", "note": "10mL/kg per bolus. Reassess after each. Max 40-60mL/kg first hour" } },
+        { "id": 6, "phase": "treatment", "text": "Septic Shock — Antibiotics within 1 hour: Ceftriaxone 100mg/kg IV stat", "critical": true, "details": "Neonates (<28 days): Ampicillin 50mg/kg IV + Gentamicin 4-7mg/kg IV. Children: Ceftriaxone 100mg/kg IV (max 2g) OR Cefotaxime 150mg/kg/day IV divided q6h.", "dose_calc": { "drug": "Ceftriaxone", "mg_per_kg": 100, "max_mg": 2000, "route": "IV over 30 min", "note": "Neonates <28d: use Ampicillin + Gentamicin instead" } },
+        { "id": 7, "phase": "treatment", "text": "FEBRILE SEIZURE: Assess — is this simple or complex?", "critical": false, "details": "Simple: generalized, <15 min, one seizure per episode, no postictal deficit. Complex: focal, >15 min, recurrent within 24h, or Todd's paralysis. Complex = higher risk of meningitis/encephalitis." },
+        { "id": 8, "phase": "treatment", "text": "Febrile Seizure >5 min: Diazepam 0.5mg/kg rectal OR Midazolam 0.2mg/kg buccal/IM", "critical": true, "details": "Do not give IV benzodiazepine without IV access. Buccal Midazolam or rectal Diazepam are equally effective and faster to give. START RESPONSE TIMER.", "dose_calc": { "drug": "Midazolam (buccal)", "mg_per_kg": 0.3, "max_mg": 10, "route": "Buccal/IM", "note": "Buccal preferred. Also: Diazepam 0.5mg/kg rectal (max 10mg)" }, "timer_id": "fever-seizure-benzo" },
+        { "id": 9, "phase": "treatment", "text": "Hypoglycemia in children: Dextrose 10% 5mL/kg IV bolus", "critical": true, "details": "Use 10% dextrose for children (not 50% — causes hyperosmolarity). Target glucose 80-140 mg/dL.", "dose_calc": { "drug": "Dextrose 10%", "mL_per_kg": 5, "max_mL": 200, "route": "IV bolus over 5 min", "note": "Do NOT use 50% dextrose in children. Use 10% dextrose 5mL/kg." } },
+        { "id": 10, "phase": "treatment", "text": "Croup (stridor at rest): Adrenaline nebulization + Dexamethasone", "critical": true, "details": "Nebulized Adrenaline 0.5mL/kg (max 5mL) of 1:1000 solution. Dexamethasone 0.15-0.6mg/kg IM/PO/IV (max 10mg). Monitor for rebound stridor at 2 hours." },
+        { "id": 11, "phase": "monitoring", "text": "Paediatric vital sign interpretation — know normal ranges", "critical": false, "details": "Normal HR: Newborn 120-160; Infant 80-140; Toddler 80-130; Pre-school 80-120; School-age 75-115; Adolescent 60-100. Normal RR: Newborn 40-60; Infant 30-40; School 20-30; Adolescent 15-20. Low BP criteria: SBP <70+(2xage in years) mmHg" }
+      ],
+      "medications": [
+        { "name": "Ceftriaxone (Sepsis)", "dose": "100mg/kg IV (max 2g) stat", "route": "IV", "note": "Neonates <28 days: Ampicillin + Gentamicin instead" },
+        { "name": "Dextrose 10% (Hypoglycemia)", "dose": "5mL/kg IV bolus", "route": "IV", "note": "Target glucose 80-140. Repeat if needed. Do NOT use 50% dextrose in children." },
+        { "name": "Midazolam (Seizure)", "dose": "0.3mg/kg buccal/IM (max 10mg)", "route": "Buccal/IM", "note": "Buccal route highly effective. Also: Diazepam 0.5mg/kg rectal" },
+        { "name": "Diazepam", "dose": "0.5mg/kg rectal (max 10mg) OR 0.2mg/kg IV (max 10mg)", "route": "Rectal/IV", "note": "Rectal route when no IV access" },
+        { "name": "Adrenaline nebulization (Croup)", "dose": "0.5mL/kg of 1:1000 (max 5mL) nebulized", "route": "Nebulization", "note": "L-epinephrine preferred but regular 1:1000 works" },
+        { "name": "Dexamethasone (Croup)", "dose": "0.15-0.6mg/kg PO/IM/IV (max 10mg)", "route": "PO/IM/IV", "note": "Single dose is highly effective. PO as effective as IV." }
+      ],
+      "red_flags": [
+        "Neonatal HR <60 despite 30s effective PPV (cardiac arrest — chest compressions)",
+        "Meningococcal rash: non-blanching petechiae/purpura with fever",
+        "Bulging fontanelle (raised ICP — do NOT lumbar puncture until imaging)",
+        "Respiratory failure in child: paradoxical breathing, silent chest",
+        "Septic shock not responding to 40-60mL/kg IV fluids + antibiotics",
+        "Altered consciousness in febrile child (suspect encephalitis/meningitis)"
+      ],
+      "pre_referral": [
+        "Airway secured and stabilized",
+        "Blood glucose checked and corrected",
+        "IV/IO access established",
+        "Antibiotics given for suspected sepsis",
+        "Seizures controlled (at least one benzodiazepine dose given)",
+        "Fluid resuscitation initiated (max 40mL/kg boluses)"
+      ],
+      "referral_indications": [
+        "Suspected meningitis/encephalitis",
+        "Neonatal sepsis in any neonate <28 days",
+        "Complex febrile seizures",
+        "Respiratory failure (intubation consideration)",
+        "Hemodynamic instability despite resuscitation",
+        "DKA in child"
+      ]
+    },
+    {
+      "id": "acute-pulmonary-edema",
+      "name": "Acute Pulmonary Edema",
+      "icon": "🫁",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "Flash pulmonary edema: maximize sitting position, oxygen, diuresis, vasodilation. Identify and treat underlying cause.",
+      "tags": ["cardiac", "respiratory", "heart-failure"],
+      "timers": [
+        { "id": "furosemide-response", "label": "Furosemide Response Check", "description": "Assess urine output at 60 min after IV Furosemide", "minutes": 60, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "POSITION: Sit patient upright with legs dangling off bed (cardiac position)", "critical": true, "details": "Gravity reduces venous return and preload. This positioning alone can improve symptoms significantly." },
+        { "id": 2, "phase": "immediate", "text": "High-flow oxygen: 10-15L/min via non-rebreather mask (target SpO2 >95%)", "critical": true, "details": "If SpO2 <90% or worsening despite O2: CPAP/BiPAP is superior to intubation (reduces intubation rates by 50%). If no NIV: bag-mask ventilation." },
+        { "id": 3, "phase": "immediate", "text": "IV access x2, 12-lead ECG, check glucose, CXR (portable)", "critical": true, "details": "ECG: looking for STEMI (immediate reperfusion), new AF/flutter (rate control), arrhythmia. CXR: bat-wing shadowing, kerley B lines, cardiomegaly." },
+        { "id": 4, "phase": "treatment", "text": "IV Furosemide 40-80mg IV bolus (or double home oral dose)", "critical": true, "details": "START RESPONSE TIMER for urine output at 60 min. Onset of vasodilation: 5 min. Diuresis: 30-60 min. If no response: repeat dose or escalate.", "timer_id": "furosemide-response" },
+        { "id": 5, "phase": "treatment", "text": "Sublingual Nitroglycerin 0.4mg — if SBP >100 mmHg", "critical": false, "details": "Reduces preload and afterload. Can repeat q5min x3, then IV infusion 10-200mcg/min. Avoid if SBP <100, recent PDE5 inhibitor, RV infarction." },
+        { "id": 6, "phase": "treatment", "text": "If STEMI identified on ECG — activate cardiac catheterization or give SK (see Acute MI protocol)", "critical": true, "details": "APE in context of STEMI = cardiogenic shock risk. Immediate reperfusion is the priority." },
+        { "id": 7, "phase": "treatment", "text": "CPAP/NIV: if available and patient cooperative (SpO2 <90% despite O2)", "critical": false, "details": "CPAP 5-10cmH2O significantly reduces need for intubation. BiPAP: IPAP 10-15, EPAP 5." },
+        { "id": 8, "phase": "treatment", "text": "Morphine 2-4mg IV slowly — use with caution (controversial in APE)", "critical": false, "details": "Reduces anxiety and preload. Associated with increased mortality in some studies. Use only if severe agitation and respiratory distress, and only small doses." },
+        { "id": 9, "phase": "treatment", "text": "Identify and treat underlying cause", "critical": true, "details": "Common causes: Acute MI, hypertensive crisis, arrhythmia (AF with fast ventricular response), acute valvular dysfunction, non-compliance with diuretics." },
+        { "id": 10, "phase": "monitoring", "text": "Monitor: strict urine output, daily weight, electrolytes (K+ loss with furosemide)", "critical": false, "details": "Target urine output >0.5mL/kg/h. Watch for hypokalemia (K+ <3.5) — may precipitate arrhythmias." }
+      ],
+      "medications": [
+        { "name": "Furosemide (Frusemide)", "dose": "40-80mg IV bolus; repeat if no diuresis in 1 hour", "route": "IV", "note": "High-dose may be needed if on chronic diuretics. Monitor K+" },
+        { "name": "Nitroglycerin (GTN)", "dose": "0.4mg SL q5min x3, then IV 10-200mcg/min", "route": "SL/IV", "note": "Avoid if SBP<100, RV MI, or recent PDE5 inhibitor" },
+        { "name": "Morphine", "dose": "2-4mg IV slowly (titrate)", "route": "IV", "note": "Use cautiously — some evidence of harm. Only if severe distress" },
+        { "name": "Potassium Chloride (KCl)", "dose": "40-60mEq IV over 4-6h if K+ <3.5", "route": "IV (diluted)", "note": "Furosemide causes K+ depletion. Monitor electrolytes." }
+      ],
+      "red_flags": [
+        "SpO2 <90% despite maximal oxygen (NIV or intubation)",
+        "BP <90 systolic (cardiogenic shock — needs ICU, vasopressors)",
+        "STEMI on ECG (immediate reperfusion)",
+        "Rapid AF rate >150 with hemodynamic compromise (cardioversion)",
+        "Progressive respiratory failure despite CPAP"
+      ],
+      "pre_referral": [
+        "Sitting position maintained",
+        "Furosemide given IV",
+        "GTN given if SBP >100",
+        "Oxygen maintained with SpO2 monitoring",
+        "12-lead ECG done and interpreted"
+      ],
+      "referral_indications": [
+        "Need for ICU and mechanical ventilation",
+        "Cardiogenic shock (SBP <90 despite treatment)",
+        "STEMI requiring PCI",
+        "Suspected valvular emergency (acute MR, AR)",
+        "New severe arrhythmia"
+      ]
+    },
+    {
+      "id": "poisoning",
+      "name": "Poisoning",
+      "icon": "☠️",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "General poisoning management plus specific OPC (Organophosphate) protocol — the most common fatal poisoning in rural India.",
+      "tags": ["toxicology", "OPC", "poisoning", "rural"],
+      "timers": [
+        { "id": "atropine-interval", "label": "Atropine Re-dose Interval", "description": "Repeat Atropine every 5-10 min until secretions dry", "minutes": 10, "critical": true },
+        { "id": "pralidoxime-infusion", "label": "Pralidoxime Loading", "description": "1-2g IV over 30 minutes", "minutes": 30, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "PERSONNEL SAFETY: Use gloves, gown, eye protection for OPC decontamination", "critical": true, "details": "Organophosphate poisoning: secondary contamination of healthcare workers is REAL. Wear double gloves, gown, eye protection before handling patient." },
+        { "id": 2, "phase": "immediate", "text": "Remove patient from exposure; remove all contaminated clothing outdoors", "critical": true, "details": "Cut off contaminated clothing. Wash skin with soap and water x3. Flush eyes with water for 15 min if eye exposure." },
+        { "id": 3, "phase": "assessment", "text": "ABCDE assessment — secure airway (vomiting/secretions common)", "critical": true, "details": "OPC causes profuse secretions (SLUDGE). May need suction, NPA, or intubation. Assess GCS, pupils (miosis = OPC), HR, BP." },
+        { "id": 4, "phase": "assessment", "text": "Identify toxin if possible: empty containers, history from family", "critical": false, "details": "Common poisons in India: Organophosphates (pesticides: Chlorpyrifos, Monocrotophos), Carbamates, Oleander (Kaneru), Datura, Aluminum phosphide (grain preservative — NO antidote)." },
+        { "id": 5, "phase": "treatment", "text": "IV access x2, blood investigations: RFT, LFT, glucose, CBC, ABG, cholinesterase level if available", "critical": false, "details": "Cholinesterase (RBC and plasma) confirms OPC poisoning. ABG assesses respiratory failure." },
+        { "id": 6, "phase": "treatment", "text": "GENERAL: Activated charcoal 1g/kg (50g adult) if within 1-2h, airway protected, not corrosive", "critical": false, "details": "Contraindicated: corrosives (acids/alkalis), hydrocarbons, obtunded patient without secured airway, Aluminium phosphide." },
+        { "id": 7, "phase": "treatment", "text": "OPC SPECIFIC: Atropine 2-4mg IV immediately (titrate to effect)", "critical": true, "details": "Titrate to: dry secretions (no bronchospasm, no wheeze). NOT to HR or dry skin. Repeat every 5-10 min. May require 10-100mg+ in severe cases. START ATROPINE INTERVAL TIMER.", "timer_id": "atropine-interval", "dose_calc": { "drug": "Atropine", "fixed_dose_mg": 2, "route": "IV bolus; repeat q5-10min", "note": "Start with 2mg IV. Double dose every 5-10 min until secretions dry. No fixed ceiling dose." } },
+        { "id": 8, "phase": "treatment", "text": "OPC SPECIFIC: Pralidoxime (2-PAM) 1-2g IV over 30 min (within 24h of exposure)", "critical": true, "details": "Works only if started within 24h (before 'aging' of cholinesterase). Load 1-2g IV over 30 min, then maintenance 250-500mg/h. Ineffective for Carbamate poisoning.", "timer_id": "pralidoxime-infusion", "dose_calc": { "drug": "Pralidoxime (2-PAM Chloride)", "fixed_dose_mg": 1000, "route": "IV over 30 min", "note": "Must be given within 24h. Not effective if >48h or for Carbamate poisoning." } },
+        { "id": 9, "phase": "treatment", "text": "Benzodiazepines for seizures: Diazepam 10mg IV (avoid Phenytoin in OPC)", "critical": false, "details": "OPC-induced seizures: Diazepam IV. Phenytoin is less effective. Phenobarbital as second line." },
+        { "id": 10, "phase": "monitoring", "text": "Monitor for intermediate syndrome (OPC): Day 2-4, proximal limb weakness, respiratory failure", "critical": true, "details": "Intermediate syndrome occurs 24-96 hours after acute OPC poisoning. Watch for: neck flexion weakness, proximal limb weakness, respiratory failure. Patient may have appeared to improve then decompensate." },
+        { "id": 11, "phase": "treatment", "text": "ALUMINIUM PHOSPHIDE: NO antidote — supportive care, gastric lavage with KMnO4/NaHCO3", "critical": true, "details": "Celphos/Quickphos (grain preservative) releases PH3 (phosphine gas) when exposed to moisture. Rapidly fatal. IV lipids (intralipid) has been tried. Circulatory support." }
+      ],
+      "medications": [
+        { "name": "Atropine Sulfate", "dose": "2-4mg IV q5-10 min until secretions dry (may need 10-100mg+)", "route": "IV", "note": "Endpoint = dry secretions, NOT heart rate. No ceiling dose in severe OPC." },
+        { "name": "Pralidoxime (2-PAM)", "dose": "1-2g IV loading over 30 min, then 250-500mg/h", "route": "IV", "note": "Must give within 24h. Not for Carbamates. Dilute in 100mL NS." },
+        { "name": "Activated Charcoal", "dose": "1g/kg (max 50g) in 200mL water", "route": "PO/NGT", "note": "Only within 1-2h, airway protected. No use in caustic ingestion." },
+        { "name": "Diazepam (Seizures)", "dose": "10mg IV (repeat as needed)", "route": "IV", "note": "For OPC-induced seizures. Phenytoin less effective in this context." },
+        { "name": "Glycopyrrolate", "dose": "0.1-0.2mg IV q5-10 min (alternative to Atropine)", "route": "IV", "note": "Does not cross blood-brain barrier — less CNS effects than Atropine" }
+      ],
+      "red_flags": [
+        "SLUDGE + bronchospasm with secretions (severe OPC — high-dose atropine)",
+        "Respiratory failure (intubation + high-dose atropine)",
+        "Aluminium phosphide ingestion (universally fatal without ICU)",
+        "Delayed intermediate syndrome on day 2-4 (watch for proximal weakness)",
+        "GCS <8 with vomiting (aspiration risk — immediate airway securing)"
+      ],
+      "pre_referral": [
+        "Decontamination complete (clothing removed, skin washed)",
+        "Atropine given (secretions reduced)",
+        "Airway secured if GCS <8",
+        "Pralidoxime started if OPC within 24h",
+        "Vital signs documented with exact atropine doses and times"
+      ],
+      "referral_indications": [
+        "Respiratory failure (mechanical ventilation needed)",
+        "Refractory hemodynamic instability",
+        "Suspected Aluminium Phosphide (ICU for circulatory support)",
+        "Unknown poison with deteriorating GCS",
+        "Any ingestion requiring antidote not available locally"
+      ]
+    },
+    {
+      "id": "cardiac-arrest",
+      "name": "Cardiac Arrest (BLS/ACLS)",
+      "icon": "🫀",
+      "category": "CRITICAL",
+      "color": "#DC2626",
+      "summary": "CPR protocol: high-quality compressions, early defibrillation (shockable rhythms), epinephrine every 3-5 minutes, and reverse reversible causes.",
+      "tags": ["cardiac", "CPR", "ACLS", "BLS", "resuscitation"],
+      "timers": [
+        { "id": "cpr-cycle", "label": "CPR Cycle (2 minutes)", "description": "2 minutes CPR before rhythm check", "minutes": 2, "critical": true },
+        { "id": "epinephrine-interval", "label": "Epinephrine Interval", "description": "Next epinephrine dose (every 3-5 minutes)", "minutes": 4, "critical": true },
+        { "id": "compression-break", "label": "Compressor Switch", "description": "Switch compressor every 2 min to prevent fatigue", "minutes": 2, "critical": false }
+      ],
+      "steps": [
+        { "id": 1, "phase": "immediate", "text": "Confirm cardiac arrest: unresponsive, no normal breathing, no pulse (<10 sec check)", "critical": true, "details": "Do not delay CPR for prolonged pulse check. If in doubt: START CPR." },
+        { "id": 2, "phase": "immediate", "text": "Call for help, call Code, activate emergency response team", "critical": true, "details": "Designate roles: Team leader, compressor, airway, IV access, recorder." },
+        { "id": 3, "phase": "immediate", "text": "BEGIN CPR: 30 compressions : 2 breaths (30:2 ratio)", "critical": true, "details": "Rate: 100-120/min. Depth: 5-6cm (2-2.4 inches). Allow FULL chest recoil. Minimize interruptions (<10 seconds). SWITCH COMPRESSOR every 2 min." },
+        { "id": 4, "phase": "immediate", "text": "Attach AED/Defibrillator — analyze rhythm IMMEDIATELY", "critical": true, "details": "Minimize hands-off time. Continue CPR while defibrillator charging." },
+        { "id": 5, "phase": "treatment", "text": "SHOCKABLE RHYTHM (VF/pVT): Defibrillate 200J biphasic (360J monophasic)", "critical": true, "details": "Deliver shock, IMMEDIATELY resume CPR for 2 minutes without rhythm check. START CPR CYCLE TIMER.", "timer_id": "cpr-cycle" },
+        { "id": 6, "phase": "treatment", "text": "IV/IO access: Epinephrine 1mg IV q3-5 min", "critical": true, "details": "First epinephrine: AFTER 1st defibrillation (shockable) or immediately (non-shockable). START EPINEPHRINE INTERVAL TIMER.", "timer_id": "epinephrine-interval", "dose_calc": { "drug": "Epinephrine (Adrenaline) 1:10,000", "fixed_dose_mg": 1, "route": "IV/IO bolus", "note": "1mg IV = 10mL of 1:10,000 (0.1mg/mL). Child: 0.01mg/kg IV. Repeat every 3-5 min." } },
+        { "id": 7, "phase": "treatment", "text": "Airway: bag-mask ventilation; intubate when available provider present (do not stop CPR)", "critical": false, "details": "8-10 breaths/min after intubation (do NOT interrupt chest compressions). Waveform capnography to confirm placement and monitor CPR quality (EtCO2 >10 = good CPR)." },
+        { "id": 8, "phase": "treatment", "text": "After 3rd shock (VF/pVT): Amiodarone 300mg IV bolus", "critical": true, "details": "Amiodarone 300mg IV in 20mL 5% dextrose. Second dose: 150mg IV if refractory. Lidocaine is an alternative (1-1.5mg/kg IV)." },
+        { "id": 9, "phase": "treatment", "text": "NON-SHOCKABLE RHYTHM (Asystole/PEA): CPR + Epinephrine immediately", "critical": true, "details": "No shock for asystole/PEA. Epinephrine 1mg IV immediately. Search for reversible causes. Continue 2-min CPR cycles." },
+        { "id": 10, "phase": "treatment", "text": "SEARCH AND TREAT reversible causes: 4H + 4T", "critical": true, "details": "4H: Hypoxia (suction/airway), Hypovolemia (IV fluids), H+ (acidosis — NaHCO3 if pH<7.1), Hypo/Hyperkalemia (check electrolytes). 4T: Tension pneumothorax (needle decompression), Tamponade (pericardiocentesis), Toxins (antidotes), Thrombosis — PE (consider thrombolytics) or MI (cath lab)." },
+        { "id": 11, "phase": "treatment", "text": "Post-ROSC care: Targeted Temperature Management if remains unconscious", "critical": false, "details": "Return of Spontaneous Circulation (ROSC): treat hypotension (MAP >65), oxygen (SpO2 94-98%), blood glucose 140-180mg/dL. Targeted temperature management 32-36°C for 24h if available." }
+      ],
+      "medications": [
+        { "name": "Epinephrine (Adrenaline) 1:10,000", "dose": "1mg IV/IO q3-5 min (child: 0.01mg/kg)", "route": "IV/IO", "note": "1mg = 10mL of 1:10,000. First dose ASAP in non-shockable, after 1st shock in shockable" },
+        { "name": "Amiodarone", "dose": "300mg IV bolus after 3rd shock; 150mg for 2nd dose", "route": "IV in 5% Dextrose", "note": "For refractory VF/pVT. Dilute in 20mL D5W. Only for shockable rhythms." },
+        { "name": "Lidocaine (Lignocaine)", "dose": "1-1.5mg/kg IV bolus", "route": "IV", "note": "Alternative to Amiodarone if unavailable" },
+        { "name": "Sodium Bicarbonate", "dose": "1mEq/kg IV (50mL of 8.4% solution)", "route": "IV", "note": "Only if pH <7.1, hyperkalemia, or TCA toxicity. Not routine." },
+        { "name": "Calcium Chloride / Gluconate", "dose": "10mL of 10% calcium chloride IV", "route": "IV", "note": "For hyperkalemia, hypocalcemia, calcium channel blocker toxicity" }
+      ],
+      "red_flags": [
+        "EtCO2 <10mmHg despite CPR = poor prognosis / inadequate CPR quality",
+        "Signs of tension pneumothorax: absent breath sounds, tracheal deviation (needle decompress immediately)",
+        "Prolonged arrest with non-shockable rhythm and no reversible cause (consider stopping)"
+      ],
+      "pre_referral": [
+        "ROSC achieved with stable vital signs",
+        "Document total arrest time, interventions, medications with timing",
+        "Intubated with tube confirmation",
+        "Post-ROSC blood glucose and electrolytes checked",
+        "12-lead ECG for STEMI (activate cath lab if identified)"
+      ],
+      "referral_indications": [
+        "Post-ROSC STEMI (primary PCI)",
+        "Suspected PE as cause (thrombolysis or ECMO-assisted PCI)",
+        "Refractory cardiac arrest (ECMO candidacy evaluation)",
+        "Targeted temperature management requiring ICU"
+      ]
+    }
+  ]
+}

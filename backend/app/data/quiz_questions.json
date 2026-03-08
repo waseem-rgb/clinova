@@ -1,0 +1,512 @@
+[
+  {
+    "id": 1,
+    "day_of_year": 1,
+    "category": "Emergency",
+    "question": "A farmer is brought with snake bite. WBCT at 20 minutes shows no clot formation. What is your immediate management?",
+    "options": [
+      "Start anti-snake venom (ASV) 10 vials IV",
+      "Give adrenaline 0.5 mg IM",
+      "Observe for another 20 minutes and repeat WBCT",
+      "Apply tourniquet and transfer to higher center"
+    ],
+    "correct": 0,
+    "explanation": "WBCT at 20 minutes with no clot = coagulopathy from viper envenomation. Immediately start ASV. The initial dose for haematotoxic envenomation is 10 vials IV in adults. Tourniquet is harmful (worsens local tissue necrosis). Adrenaline is used for anaphylaxis to ASV, not as primary treatment. Do not delay for another WBCT if first is clearly positive.",
+    "reference": "WHO Snake Bite Management Guidelines 2016",
+    "difficulty": "intermediate",
+    "tags": ["snake bite", "ASV", "WBCT", "emergency"]
+  },
+  {
+    "id": 2,
+    "day_of_year": 2,
+    "category": "Cardiology",
+    "question": "A 55-year-old male with acute chest pain has ST depression in V1-V4 with tall R waves. What is the most important next step?",
+    "options": [
+      "Start IV heparin and admit for UA/NSTEMI",
+      "Perform posterior leads V7-V9 immediately",
+      "Start thrombolytics for NSTEMI",
+      "Order urgent echo for wall motion abnormalities"
+    ],
+    "correct": 1,
+    "explanation": "ST depression + tall R in V1-V4 is the 'mirror image' pattern of posterior STEMI. The next step is posterior leads (V7-V9) — ST elevation ≥0.5 mm confirms posterior STEMI, which is treated the same as any STEMI (primary PCI or thrombolytics). Treating as NSTEMI alone would delay reperfusion. Thrombolytics for NSTEMI are contraindicated.",
+    "reference": "ACC/AHA STEMI Guidelines 2022",
+    "difficulty": "advanced",
+    "tags": ["STEMI", "posterior MI", "ECG", "V7-V9"]
+  },
+  {
+    "id": 3,
+    "day_of_year": 3,
+    "category": "Pharmacology",
+    "question": "Which aminoglycoside dosing regimen is associated with LESS nephrotoxicity?",
+    "options": [
+      "Gentamicin 1.5 mg/kg every 8 hours",
+      "Tobramycin 2 mg/kg every 6 hours",
+      "Gentamicin 5-7 mg/kg once daily",
+      "Amikacin 7.5 mg/kg every 12 hours"
+    ],
+    "correct": 2,
+    "explanation": "Once-daily aminoglycoside dosing (5-7 mg/kg/day) achieves higher peak concentrations (maximizing concentration-dependent killing) while allowing drug-free intervals for renal tubular recovery. Multiple-daily dosing maintains persistent drug levels in renal cortex, increasing accumulation and toxicity. Exception: endocarditis synergy dosing uses traditional TID low-dose.",
+    "reference": "KD Tripathi Pharmacology 8th Ed",
+    "difficulty": "intermediate",
+    "tags": ["aminoglycosides", "gentamicin", "nephrotoxicity", "once-daily"]
+  },
+  {
+    "id": 4,
+    "day_of_year": 4,
+    "category": "Obstetrics",
+    "question": "A patient on MgSO4 infusion for eclampsia prophylaxis develops loss of deep tendon reflexes. What is the correct action?",
+    "options": [
+      "Reduce infusion rate and continue monitoring",
+      "Stop MgSO4 and give calcium gluconate 1g IV over 10 minutes",
+      "Give IV diazepam as backup anticonvulsant",
+      "Proceed to emergency C-section immediately"
+    ],
+    "correct": 1,
+    "explanation": "Loss of deep tendon reflexes is the earliest warning sign of magnesium toxicity (occurs at 7-10 mEq/L). The correct action is to STOP MgSO4 and immediately give calcium gluconate 1g IV slowly (10 minutes) as antagonist. Do not wait for respiratory depression to act. Always keep calcium gluconate at bedside when MgSO4 is running.",
+    "reference": "Dutta's Obstetrics 9th Ed",
+    "difficulty": "intermediate",
+    "tags": ["magnesium toxicity", "eclampsia", "calcium gluconate", "DTR"]
+  },
+  {
+    "id": 5,
+    "day_of_year": 5,
+    "category": "Pediatrics",
+    "question": "A 3-year-old child has MUAC of 11 cm. What is the classification and next step?",
+    "options": [
+      "Normal nutrition — reassure and routine follow-up",
+      "Moderate Acute Malnutrition — TSFP enrollment",
+      "Severe Acute Malnutrition — emergency referral to NRC",
+      "Mild underweight — dietary counseling only"
+    ],
+    "correct": 2,
+    "explanation": "MUAC <11.5 cm in children 6-59 months = Severe Acute Malnutrition (SAM). This child (11 cm) requires emergency referral to a Nutrition Rehabilitation Center (NRC) for RUTF and medical management. Check for bilateral pitting edema (kwashiorkor). Stabilize hypoglycemia before transport. MUAC 11.5-12.5 cm = MAM (enrolled in TSFP). >12.5 cm = normal.",
+    "reference": "IMNCI Guidelines India, WHO Growth Standards",
+    "difficulty": "basic",
+    "tags": ["SAM", "MUAC", "malnutrition", "pediatrics", "NRC"]
+  },
+  {
+    "id": 6,
+    "day_of_year": 6,
+    "category": "General Medicine",
+    "question": "A patient with Wells PE score of 6 has a negative D-dimer. What should you do?",
+    "options": [
+      "Rule out PE — D-dimer is negative",
+      "Proceed to CT pulmonary angiography (CTPA)",
+      "Start anticoagulation empirically",
+      "Repeat D-dimer in 6 hours"
+    ],
+    "correct": 1,
+    "explanation": "Wells PE score >4 = HIGH pre-test probability. D-dimer should NOT be used in high pre-test probability patients — its negative predictive value is insufficient at this pre-test probability. Proceed directly to CTPA. D-dimer is only useful when Wells score ≤4 (low-intermediate probability) where a negative result can rule out PE with acceptable safety.",
+    "reference": "ESC PE Guidelines 2019",
+    "difficulty": "intermediate",
+    "tags": ["pulmonary embolism", "D-dimer", "Wells score", "CTPA"]
+  },
+  {
+    "id": 7,
+    "day_of_year": 7,
+    "category": "Pharmacology",
+    "question": "A diabetic patient on metformin 1000 mg BD is scheduled for contrast-enhanced CT. When should metformin be withheld?",
+    "options": [
+      "Stop metformin 1 week before procedure",
+      "No need to stop — metformin is safe with contrast",
+      "Hold on day of procedure and restart after 48 hours if renal function normal",
+      "Switch to insulin 24 hours before procedure"
+    ],
+    "correct": 2,
+    "explanation": "Metformin should be withheld on the day of IV contrast administration and for 48 hours afterwards, then restarted only if renal function (creatinine) is unchanged. This prevents metformin accumulation secondary to contrast-induced AKI, which can cause fatal lactic acidosis. No need to hold for 1 week. Routine insulin switch is not necessary.",
+    "reference": "ACR Manual on Contrast Media 2023",
+    "difficulty": "basic",
+    "tags": ["metformin", "contrast", "lactic acidosis", "diabetes"]
+  },
+  {
+    "id": 8,
+    "day_of_year": 8,
+    "category": "Tropical Medicine",
+    "question": "A patient presents on day 7 of fever. Dengue is suspected. Which test is MOST appropriate?",
+    "options": [
+      "NS1 antigen test",
+      "Dengue IgM antibody",
+      "Dengue PCR (RT-PCR)",
+      "Peripheral blood smear for dengue"
+    ],
+    "correct": 1,
+    "explanation": "NS1 antigen is positive in days 1-5 (viremic phase). On day 7, NS1 is likely negative even in dengue. Dengue IgM antibody becomes positive from day 5-6 onwards and remains elevated for weeks. PCR is accurate in early disease but expensive and not widely available. There is no peripheral smear for dengue (this is for malaria).",
+    "reference": "WHO Dengue Guidelines 2012",
+    "difficulty": "intermediate",
+    "tags": ["dengue", "NS1", "IgM", "diagnosis", "timing"]
+  },
+  {
+    "id": 9,
+    "day_of_year": 9,
+    "category": "Neurology",
+    "question": "A patient with acute stroke has gaze deviation to the right and left hemiplegia. His FAST-ED score is 5. What is the most appropriate referral?",
+    "options": [
+      "Nearest hospital with CT scanner",
+      "Hospital with thrombolysis capability",
+      "Hospital with mechanical thrombectomy capability",
+      "ICU for supportive management"
+    ],
+    "correct": 2,
+    "explanation": "FAST-ED ≥4 suggests large vessel occlusion (LVO). Gaze deviation + hemiplegia indicates MCA or ICA territory occlusion. LVO requires mechanical thrombectomy (eligible up to 24h from onset in selected patients) — thrombolytics alone are insufficient. The patient should be transferred directly to a thrombectomy-capable center, bypassing intermediate hospitals if possible ('drip and ship' or 'mothership' model).",
+    "reference": "AHA Stroke Guidelines 2021",
+    "difficulty": "advanced",
+    "tags": ["stroke", "LVO", "thrombectomy", "FAST-ED"]
+  },
+  {
+    "id": 10,
+    "day_of_year": 10,
+    "category": "Emergency",
+    "question": "A child receives a peanut and immediately develops urticaria, wheeze, and hypotension. What is the first drug to give?",
+    "options": [
+      "Chlorpheniramine 4 mg IM",
+      "Hydrocortisone 200 mg IV",
+      "Adrenaline 0.01 mg/kg IM (anterolateral thigh)",
+      "Salbutamol nebulization"
+    ],
+    "correct": 2,
+    "explanation": "Anaphylaxis requires IMMEDIATE epinephrine (adrenaline). Dose: 0.01 mg/kg of 1:1000 solution IM into anterolateral thigh (max 0.5 mg adults). Antihistamines and steroids are adjuncts and do NOT treat airway edema or hypotension — never delay epinephrine for these. Salbutamol may be added for persistent bronchospasm after epinephrine.",
+    "reference": "WAO Anaphylaxis Guidelines 2020",
+    "difficulty": "basic",
+    "tags": ["anaphylaxis", "epinephrine", "adrenaline", "emergency"]
+  },
+  {
+    "id": 11,
+    "day_of_year": 11,
+    "category": "Cardiology",
+    "question": "A patient with inferior STEMI develops hypotension with clear lungs and raised JVP. ECG shows ST elevation in V4R. Which treatment is MOST appropriate?",
+    "options": [
+      "IV furosemide 40 mg",
+      "Sublingual nitroglycerin",
+      "IV normal saline 500 mL bolus",
+      "IV dobutamine infusion"
+    ],
+    "correct": 2,
+    "explanation": "This clinical triad (hypotension + clear lungs + high JVP + V4R ST elevation) = RV infarction. The RV is preload-dependent — it needs fluid to pump against the failing RV. IV fluid (500 mL NS) is first-line. Nitrates and diuretics are CONTRAINDICATED as they reduce preload and can cause catastrophic hypotension. Dobutamine is used only if fluid fails.",
+    "reference": "ACC/AHA STEMI Guidelines 2022",
+    "difficulty": "intermediate",
+    "tags": ["RV infarction", "inferior MI", "nitrates contraindicated", "preload"]
+  },
+  {
+    "id": 12,
+    "day_of_year": 12,
+    "category": "Renal",
+    "question": "A patient on furosemide develops AKI. Urine sodium is 45 mEq/L and FENa is 2.5%. What is the most likely cause of AKI?",
+    "options": [
+      "ATN (intrinsic renal failure)",
+      "Pre-renal AKI (volume depletion)",
+      "Post-renal (obstruction)",
+      "Cannot be determined from FENa alone"
+    ],
+    "correct": 3,
+    "explanation": "In patients on diuretics, FENa is unreliable for distinguishing pre-renal from ATN. Furosemide forces natriuresis (high urine Na) regardless of volume status, falsely elevating FENa. FEUrea should be used instead — FEUrea <35% suggests pre-renal AKI even in diuretic use. Clinical context (volume status assessment, fluid trial) is essential.",
+    "reference": "KDIGO AKI Guidelines 2012",
+    "difficulty": "advanced",
+    "tags": ["AKI", "FENa", "diuretics", "pre-renal", "FEUrea"]
+  },
+  {
+    "id": 13,
+    "day_of_year": 13,
+    "category": "General Medicine",
+    "question": "A 28-year-old farmer presents with 5 days of undifferentiated fever in a malaria-endemic area. What should be done FIRST?",
+    "options": [
+      "Start empiric ceftriaxone for typhoid",
+      "Perform malaria RDT before any antibiotics",
+      "Start empiric oseltamivir for influenza",
+      "Order a complete blood count and wait for results"
+    ],
+    "correct": 1,
+    "explanation": "In malaria-endemic areas, perform malaria RDT (or peripheral smear) before starting antibiotics. Empiric antibiotics can mask malaria while allowing fatal progression. Malaria RDT gives results in 15-20 minutes. Typhoid and malaria can coexist — complete the malaria workup first. If RDT negative with high suspicion, get thick smear.",
+    "reference": "NVBDCP National Malaria Treatment Guidelines 2023",
+    "difficulty": "basic",
+    "tags": ["malaria", "fever", "rural India", "empiric treatment"]
+  },
+  {
+    "id": 14,
+    "day_of_year": 14,
+    "category": "Pharmacology",
+    "question": "A patient is prescribed ciprofloxacin for UTI and also takes calcium antacid. When should ciprofloxacin be taken?",
+    "options": [
+      "Together with antacid for convenience",
+      "30 minutes after antacid",
+      "2 hours BEFORE or 6 hours AFTER antacid",
+      "Ciprofloxacin has no interaction with antacids"
+    ],
+    "correct": 2,
+    "explanation": "Fluoroquinolones (ciprofloxacin, levofloxacin) form insoluble chelates with divalent cations (Ca2+, Mg2+, Al3+, Fe2+, Zn2+), reducing absorption by 50-90%. Give fluoroquinolone 2 hours before or 6 hours after antacids, iron, zinc, or dairy products. This is a common cause of treatment failure and must be counselled explicitly.",
+    "reference": "KD Tripathi Pharmacology 8th Ed",
+    "difficulty": "basic",
+    "tags": ["ciprofloxacin", "antacids", "chelation", "drug interaction"]
+  },
+  {
+    "id": 15,
+    "day_of_year": 15,
+    "category": "Obstetrics",
+    "question": "A patient delivers vaginally and loses approximately 700 mL blood with a boggy uterus. Which drug is FIRST-LINE treatment?",
+    "options": [
+      "Ergometrine 0.5 mg IM",
+      "Misoprostol 800 mcg sublingual",
+      "Oxytocin 10 IU IV bolus followed by infusion",
+      "Tranexamic acid 1g IV"
+    ],
+    "correct": 2,
+    "explanation": "Uterine atony (boggy uterus) causing PPH: first-line is oxytocin (10 IU IV slowly or IM). Bimanual uterine compression simultaneously. If oxytocin fails: ergometrine (avoid in hypertension) or misoprostol 800 mcg sublingual. Tranexamic acid 1g IV within 3 hours reduces mortality and should be given as adjunct early. Ergometrine is first-line when oxytocin unavailable.",
+    "reference": "WHO PPH Prevention and Treatment Guidelines 2012",
+    "difficulty": "basic",
+    "tags": ["PPH", "oxytocin", "uterine atony", "obstetrics"]
+  },
+  {
+    "id": 16,
+    "day_of_year": 16,
+    "category": "Respiratory",
+    "question": "A 70-year-old man with CAP has: confusion, RR 32/min, BP 85/60, Urea 9 mmol/L. What is his CURB-65 score and appropriate management?",
+    "options": [
+      "Score 2 — outpatient antibiotics",
+      "Score 3 — hospital admission, IV antibiotics",
+      "Score 4 — ICU assessment",
+      "Score 5 — mechanical ventilation mandatory"
+    ],
+    "correct": 2,
+    "explanation": "CURB-65: Confusion (1) + Urea >7 (1) + RR ≥30 (1) + BP <90/60 (1) + Age ≥65 (1) = Score 4. Score ≥3 requires hospital admission. Score ≥4 should be considered for ICU assessment given 40% predicted 30-day mortality. Start IV antibiotics (beta-lactam + macrolide or fluoroquinolone monotherapy) after blood cultures.",
+    "reference": "BTS CAP Guidelines",
+    "difficulty": "basic",
+    "tags": ["CURB-65", "pneumonia", "CAP", "ICU"]
+  },
+  {
+    "id": 17,
+    "day_of_year": 17,
+    "category": "Endocrinology",
+    "question": "In suspected thyroid storm, what is the correct order of medications?",
+    "options": [
+      "Lugol's iodine first → then PTU after 1 hour",
+      "PTU first → wait 1 hour → then Lugol's iodine",
+      "IV methimazole + iodine simultaneously",
+      "Propranolol alone is sufficient first-line"
+    ],
+    "correct": 1,
+    "explanation": "PTU MUST be given before iodine. Iodine provides substrate for thyroid hormone synthesis — if given before PTU, organification is not blocked and iodine load worsens thyrotoxicosis. PTU blocks both new synthesis and peripheral T4→T3 conversion. After 1 hour, Lugol's iodine blocks thyroid hormone RELEASE. Then add propranolol (rate control + blocks T4→T3) and hydrocortisone.",
+    "reference": "ATA Thyroid Storm Guidelines 2016",
+    "difficulty": "advanced",
+    "tags": ["thyroid storm", "PTU", "Lugol's iodine", "sequence"]
+  },
+  {
+    "id": 18,
+    "day_of_year": 18,
+    "category": "Pediatrics",
+    "question": "A 2-year-old has a generalized tonic-clonic seizure lasting 8 minutes with fever of 39.2°C. He is now alert and playful. What is required?",
+    "options": [
+      "Urgent CT head",
+      "Lumbar puncture",
+      "Admission for EEG monitoring",
+      "Reassurance and parental education about recurrence"
+    ],
+    "correct": 3,
+    "explanation": "This is a simple febrile seizure: age 6m-5y, duration <15 min, generalized, single episode, full recovery. No CT, MRI, LP, or EEG required in a well-appearing child with simple febrile seizure. Reassure parents: 30-40% chance of recurrence with future fevers, risk of epilepsy is only marginally higher than general population (~2%). Treat the underlying fever cause.",
+    "reference": "AAP Febrile Seizure Clinical Practice Guideline 2011",
+    "difficulty": "basic",
+    "tags": ["febrile seizure", "pediatrics", "CT", "LP", "reassurance"]
+  },
+  {
+    "id": 19,
+    "day_of_year": 19,
+    "category": "Cardiology",
+    "question": "A patient with chronic stable HF on carvedilol 25 mg BD develops acute decompensated HF with pulmonary edema. What should be done with the carvedilol?",
+    "options": [
+      "Stop carvedilol immediately",
+      "Continue carvedilol at same dose",
+      "Reduce carvedilol dose by 50% and monitor",
+      "Switch to bisoprolol"
+    ],
+    "correct": 2,
+    "explanation": "In acute decompensated HF in a patient already on beta-blocker, do NOT stop abruptly (rebound tachycardia worsens outcomes). Reduce dose by 50% and manage the decompensation with diuretics and vasodilators. Never start beta-blocker during acute decompensation. Once stabilized and euvolemic, uptitrate back to target dose.",
+    "reference": "ESC HF Guidelines 2021",
+    "difficulty": "intermediate",
+    "tags": ["heart failure", "beta-blockers", "decompensation", "carvedilol"]
+  },
+  {
+    "id": 20,
+    "day_of_year": 20,
+    "category": "General Medicine",
+    "question": "Which component of ORS directly drives water absorption across the intestinal epithelium?",
+    "options": [
+      "Potassium",
+      "Citrate (as alkali)",
+      "Sodium-glucose cotransport (SGLT1)",
+      "Osmotic gradient from glucose alone"
+    ],
+    "correct": 2,
+    "explanation": "ORS works through SGLT1 (sodium-glucose cotransporter 1) on intestinal enterocytes. One glucose molecule + one sodium ion are cotransported intracellularly; water follows by osmosis. This mechanism is preserved even in cholera-toxin mediated secretory diarrhea. Glucose alone (without sodium) does not drive water absorption efficiently. Potassium and citrate replace deficits and correct acidosis.",
+    "reference": "WHO ORS Guidelines 2006; Lancet 1978",
+    "difficulty": "intermediate",
+    "tags": ["ORS", "SGLT1", "diarrhea", "oral rehydration"]
+  },
+  {
+    "id": 21,
+    "day_of_year": 21,
+    "category": "Emergency",
+    "question": "A 6-year-old with active generalized seizure for 8 minutes has no IV access. What is the best immediate intervention?",
+    "options": [
+      "Oral diazepam 0.5 mg/kg",
+      "Buccal midazolam 0.3 mg/kg",
+      "PR diazepam 0.5 mg/kg",
+      "Wait for IV access before giving anticonvulsant"
+    ],
+    "correct": 1,
+    "explanation": "Without IV access, buccal midazolam (0.3 mg/kg, max 10 mg) is the first-line intervention in active seizures (multiple trials show equal/superior efficacy to IV diazepam). PR diazepam (0.5 mg/kg) is an alternative but takes longer to absorb. Oral route is NOT appropriate during active seizure. Never delay treatment waiting for IV access.",
+    "reference": "ILAE Status Epilepticus Guidelines 2015; UKPONA Trial",
+    "difficulty": "intermediate",
+    "tags": ["status epilepticus", "midazolam", "buccal", "pediatrics", "no IV access"]
+  },
+  {
+    "id": 22,
+    "day_of_year": 22,
+    "category": "Hematology",
+    "question": "A patient has prolonged PT and APTT. Factor V level is LOW. What is the most likely diagnosis?",
+    "options": [
+      "Warfarin toxicity",
+      "Vitamin K deficiency",
+      "Hemophilia A",
+      "Severe liver disease"
+    ],
+    "correct": 3,
+    "explanation": "Factor V is liver-synthesized but NOT vitamin K-dependent. In vitamin K deficiency or warfarin, only K-dependent factors (II, VII, IX, X) fall — Factor V remains normal. If Factor V is LOW, this points to liver disease (all factors including V fall). Hemophilia A = isolated low Factor VIII with prolonged APTT, normal PT.",
+    "reference": "Harrison's 22nd Ed; Davidson's Haematology",
+    "difficulty": "advanced",
+    "tags": ["coagulation", "factor V", "liver disease", "vitamin K", "warfarin"]
+  },
+  {
+    "id": 23,
+    "day_of_year": 23,
+    "category": "Pharmacology",
+    "question": "A patient with HFrEF is started on ramipril + spironolactone. What monitoring is required?",
+    "options": [
+      "LFTs monthly for 6 months",
+      "ECG weekly for 4 weeks",
+      "Serum potassium and creatinine within 1 week, then monthly for 3 months",
+      "No specific monitoring needed — both drugs are safe together"
+    ],
+    "correct": 2,
+    "explanation": "ACE inhibitor + spironolactone together can cause life-threatening hyperkalemia (both potassium-sparing). Monitor K+ and creatinine within 1 week of starting, then monthly for 3 months, then quarterly. Stop spironolactone if K+ >5.5 mEq/L or creatinine rises >30%. Risk is higher with renal impairment, diabetes, or concurrent NSAIDs/K+ supplements.",
+    "reference": "RALES Trial NEJM 1999; ESC HF Guidelines 2021",
+    "difficulty": "intermediate",
+    "tags": ["hyperkalemia", "ACE inhibitor", "spironolactone", "monitoring"]
+  },
+  {
+    "id": 24,
+    "day_of_year": 24,
+    "category": "Tropical Medicine",
+    "question": "A farm worker presents with fever, conjunctival suffusion, and calf tenderness. Leptospirosis is suspected. Which drug is appropriate for outpatient treatment of mild disease?",
+    "options": [
+      "IV penicillin G for 7 days",
+      "Doxycycline 100 mg BD for 7 days",
+      "IV ceftriaxone 1g daily",
+      "Azithromycin 500 mg daily for 3 days"
+    ],
+    "correct": 1,
+    "explanation": "Mild leptospirosis: doxycycline 100 mg BD for 7 days (oral). This reduces duration of illness and leptospiruria. Severe Weil's disease (jaundice + AKI + hemorrhage): IV penicillin G or IV ceftriaxone. Azithromycin has some evidence but is second-line. The exposure history + conjunctival suffusion + myalgia is classic.",
+    "reference": "WHO Leptospirosis Guidelines",
+    "difficulty": "basic",
+    "tags": ["leptospirosis", "doxycycline", "treatment", "tropical medicine"]
+  },
+  {
+    "id": 25,
+    "day_of_year": 25,
+    "category": "General Medicine",
+    "question": "A patient has Na 122 mEq/L, urine osmolality 520 mOsm/kg, urine Na 38 mEq/L, and appears euvolemic. What is the diagnosis and treatment?",
+    "options": [
+      "Hypervolemic hyponatremia (heart failure) — restrict fluid + furosemide",
+      "Hypovolemic hyponatremia — IV normal saline",
+      "SIADH — fluid restriction to 800-1000 mL/day",
+      "Pseudo-hyponatremia from hyperlipidemia — no treatment needed"
+    ],
+    "correct": 2,
+    "explanation": "Euvolemic hyponatremia + inappropriately concentrated urine (Osm >100) + urine Na >20 mEq/L = SIADH. ADH is being secreted despite low serum osmolality. Treatment: fluid restriction (800-1000 mL/day) is first-line. For severe symptomatic hyponatremia (seizures, coma): 3% hypertonic saline. Correct Na slowly — maximum 8-10 mEq/L in 24h to avoid osmotic demyelination.",
+    "reference": "European Hyponatremia Consensus 2014",
+    "difficulty": "intermediate",
+    "tags": ["SIADH", "hyponatremia", "euvolemic", "urine osmolality"]
+  },
+  {
+    "id": 26,
+    "day_of_year": 26,
+    "category": "Pharmacology",
+    "question": "Which statin can be taken at ANY time of day with equal efficacy?",
+    "options": [
+      "Simvastatin",
+      "Pravastatin",
+      "Lovastatin",
+      "Atorvastatin"
+    ],
+    "correct": 3,
+    "explanation": "Atorvastatin has a long half-life (~14 hours) and can be taken at any time of day. Rosuvastatin (t½ 19h) similarly. Short-acting statins (simvastatin t½ 2h, pravastatin t½ 2h, lovastatin t½ 3h) should be taken at night because hepatic cholesterol synthesis peaks at night (2-4 AM). Atorvastatin and rosuvastatin maintain HMG-CoA inhibition throughout the day regardless of timing.",
+    "reference": "KD Tripathi Pharmacology 8th Ed",
+    "difficulty": "basic",
+    "tags": ["statins", "atorvastatin", "timing", "half-life"]
+  },
+  {
+    "id": 27,
+    "day_of_year": 27,
+    "category": "Emergency",
+    "question": "In organophosphate poisoning, what is the endpoint for atropine dosing?",
+    "options": [
+      "Heart rate <100 bpm",
+      "Pupil dilation to >4 mm",
+      "Drying of bronchial secretions and clear lungs",
+      "Patient becomes lucid and oriented"
+    ],
+    "correct": 2,
+    "explanation": "Atropine is titrated to DRYING OF SECRETIONS and clearing of lung crepitations, NOT heart rate or pupil size. Tachycardia is expected from atropine and should not limit dosing. Bronchospasm and hypersecretion cause respiratory failure. Start 2-4 mg IV, double every 5-10 min until secretions dry. Some severe cases require >100 mg. Atropine does not treat nicotinic effects (muscle weakness) — pralidoxime is needed for that.",
+    "reference": "WHO OPC Poisoning Management",
+    "difficulty": "intermediate",
+    "tags": ["organophosphate", "atropine", "endpoint", "bronchial secretions"]
+  },
+  {
+    "id": 28,
+    "day_of_year": 28,
+    "category": "Respiratory",
+    "question": "Multiple workers from a closed factory all present with altered consciousness and SpO2 99%. What is the most likely diagnosis?",
+    "options": [
+      "Cyanide poisoning",
+      "Carbon monoxide poisoning",
+      "Hydrogen sulfide poisoning",
+      "Solvent inhalation"
+    ],
+    "correct": 1,
+    "explanation": "Multiple casualties from an enclosed space with normal/high SpO2 despite neurological symptoms = carbon monoxide poisoning until proven otherwise. Standard pulse oximetry CANNOT distinguish carboxyhemoglobin from oxyhemoglobin. Diagnose with ABG co-oximetry. Treat all with 100% O2 immediately. Hyperbaric O2 if COHb >25% or neurological symptoms. CO reduces O2 delivery AND directly inhibits mitochondrial cytochrome oxidase.",
+    "reference": "ACEP CO Poisoning Guidelines",
+    "difficulty": "intermediate",
+    "tags": ["CO poisoning", "SpO2", "carboxyhemoglobin", "enclosed space"]
+  },
+  {
+    "id": 29,
+    "day_of_year": 29,
+    "category": "Pediatrics",
+    "question": "A 10-year-old with DKA (pH 7.05, glucose 520 mg/dL) needs fluid resuscitation. Which approach is correct?",
+    "options": [
+      "500 mL NS over 15 minutes then reassess",
+      "10 mL/kg NS over 60 minutes, deficit replaced over 48 hours",
+      "5% dextrose plus insulin drip simultaneously",
+      "D10W 250 mL bolus immediately"
+    ],
+    "correct": 1,
+    "explanation": "Pediatric DKA: give 10 mL/kg isotonic saline over 60 minutes (NOT rapid bolus). Replace remaining deficit over 48 hours (not 24h). Aggressive fluids cause cerebral edema — the leading cause of death in pediatric DKA. Insulin starts 1-2 hours after fluids begin. Add glucose to fluids when blood glucose <250-300 mg/dL. Never give bicarbonate unless pH <6.9.",
+    "reference": "ISPAD Pediatric DKA Guidelines 2022",
+    "difficulty": "advanced",
+    "tags": ["DKA", "pediatric", "fluid resuscitation", "cerebral edema"]
+  },
+  {
+    "id": 30,
+    "day_of_year": 30,
+    "category": "General Medicine",
+    "question": "A patient with pulmonary symptoms and positive smear is starting TB treatment. What test should be done BEFORE starting HRZE?",
+    "options": [
+      "Chest X-ray PA view",
+      "CBNAAT (Xpert MTB/RIF)",
+      "HIV test",
+      "Sputum culture (LJ medium)"
+    ],
+    "correct": 1,
+    "explanation": "CBNAAT (Xpert MTB/RIF) should be done before starting TB treatment to detect rifampicin resistance. If RR-TB is found, standard HRZE is ineffective. CBNAAT simultaneously confirms M.tuberculosis AND detects RR. HIV testing is also important (do both in parallel). CXR and culture can follow, but CBNAAT result in 2h guides treatment choice. All NTEP centers provide CBNAAT free.",
+    "reference": "NTEP India TB Guidelines 2023; WHO TB Treatment Guidelines 2022",
+    "difficulty": "intermediate",
+    "tags": ["tuberculosis", "CBNAAT", "rifampicin resistance", "NTEP"]
+  }
+]

@@ -70,7 +70,7 @@ export interface WorkspaceHandoffRequest {
 // CLIENT ID MANAGEMENT
 // =============================================================================
 
-const CLIENT_ID_KEY = "medcompanion_client_id";
+const CLIENT_ID_KEY = "clinova_client_id";
 
 function generateClientId(): string {
   return `client_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

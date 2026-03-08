@@ -1,0 +1,433 @@
+{
+  "id": "topic_hyponatremia_001",
+  "slug": "hyponatremia",
+  "title": "Hyponatremia",
+  "icd10": "E87.1",
+  "specialty": ["General Medicine", "Nephrology", "Emergency Medicine", "Endocrinology"],
+  "lastReviewed": "2025-01-01",
+  "evidenceLevel": "A",
+
+  "clinicalQuickView": {
+    "summary": [
+      "Hyponatremia is defined as serum sodium <135 mEq/L and is the most common electrolyte disorder encountered in clinical practice, affecting up to 15–30% of hospitalised patients.",
+      "The most immediately life-threatening complication is cerebral oedema from rapid water influx into brain cells, causing herniation; this is most dangerous in acute hyponatremia (<48 hours).",
+      "Classification by volume status (hypovolaemic, euvolaemic, hypervolaemic) is the essential first step in management and guides fluid therapy.",
+      "SIADH (syndrome of inappropriate antidiuretic hormone secretion) is the most common cause of euvolaemic hyponatremia; causes include CNS disease, pulmonary disease, drugs, and malignancy.",
+      "In India, common causes include diarrhoeal dehydration with hypotonic fluid replacement, diuretic use, tuberculosis-related SIADH, and hypothyroidism.",
+      "Correction rate is critical: chronic hyponatremia must be corrected slowly (≤8–10 mEq/L per 24 hours) to prevent osmotic demyelination syndrome (ODS/CPM).",
+      "Hypertonic saline (3% NaCl) is reserved for symptomatic acute hyponatremia (seizures, altered consciousness) — use with extreme caution and close monitoring.",
+      "Correction of the underlying cause is always the primary goal; sodium correction alone without treating the aetiology will result in recurrence."
+    ],
+    "qna": [
+      {
+        "question": "What is the safe correction rate for chronic hyponatremia?",
+        "answer": "No more than 8–10 mEq/L per 24 hours (some guidelines recommend ≤10–12 mEq/L per 24 hours). Exceeding this risks osmotic demyelination syndrome (ODS), an irreversible pontine injury. In high-risk patients (malnourished, alcoholics, hypokalemia), limit to ≤8 mEq/L/24h."
+      },
+      {
+        "question": "How do you classify hyponatremia by volume status?",
+        "answer": "Hypovolaemic (volume-depleted: dry mucous membranes, skin tenting, tachycardia — causes: diarrhoea, vomiting, diuretics, Addison's). Euvolaemic (no oedema, normal skin turgor — causes: SIADH, hypothyroidism, glucocorticoid deficiency, polydipsia). Hypervolaemic (oedema, ascites — causes: heart failure, cirrhosis, nephrotic syndrome, renal failure)."
+      },
+      {
+        "question": "What is SIADH and how is it diagnosed?",
+        "answer": "SIADH = inappropriate ADH secretion → renal water retention → dilutional hyponatremia. Diagnostic criteria: serum Na <135, serum osmolality <275, urine Na >20 mEq/L, urine osmolality >100 mOsm/kg, clinically euvolaemic, no diuretics, normal thyroid/adrenal function."
+      },
+      {
+        "question": "When is 3% hypertonic saline indicated?",
+        "answer": "Only in symptomatic acute hyponatremia: seizures, severe altered consciousness, respiratory failure from cerebral oedema. Give 100–150 mL of 3% NaCl over 15–20 minutes, may repeat 1–2 times. TARGET: raise Na by 3–5 mEq/L to control symptoms. Never use in chronic asymptomatic hyponatremia."
+      },
+      {
+        "question": "What is pseudohyponatremia and how do you identify it?",
+        "answer": "Pseudohyponatremia occurs when hyperproteinaemia (myeloma) or hyperlipidaemia artificially lower measured Na by older flame photometry methods. Plasma osmolality is NORMAL (275–295 mOsm/kg). Ion-selective electrode measurement shows true normal sodium. No treatment needed."
+      },
+      {
+        "question": "What are the symptoms of hyponatremia and when are they life-threatening?",
+        "answer": "Mild (Na 130–134): often asymptomatic, fatigue, nausea. Moderate (Na 125–129): headache, lethargy, cognitive slowing. Severe (<125 or rapid drop): confusion, seizures, coma, respiratory arrest. Severity correlates with rate of drop more than absolute value — acute fall of 10 mEq/L can cause cerebral herniation."
+      },
+      {
+        "question": "How do you manage hyponatremia in heart failure?",
+        "answer": "Treat underlying heart failure (ACE inhibitors, diuretics, fluid restriction <1–1.5 L/day). Free water restriction 500–1000 mL/day. Stop diuretics temporarily if severe hyponatremia. Tolvaptan (vasopressin antagonist) can be used but is expensive and requires specialist supervision. Target: improve cardiac output, not aggressive sodium correction."
+      },
+      {
+        "question": "Which drugs commonly cause hyponatremia?",
+        "answer": "SSRIs (most common drug cause in elderly), thiazide diuretics (NOT loop diuretics), carbamazepine, valproate, cyclophosphamide, vincristine, MDMA/ecstasy, oxytocin, desmopressin (DDAVP), NSAIDs (potentiate ADH). Always take a full drug history in every patient with hyponatremia."
+      }
+    ]
+  },
+
+  "definition": {
+    "text": "Hyponatremia is defined as a serum sodium concentration below 135 mEq/L (135 mmol/L). It represents a relative excess of water compared to sodium in the extracellular fluid and is the most common electrolyte abnormality in hospitalised patients. It may be acute (<48 hours) or chronic (≥48 hours or unknown duration), and the distinction critically affects management.",
+    "keyThreshold": "Na <135 mEq/L: hyponatremia. Na <125 mEq/L: severe, high risk of symptoms. Na <120 mEq/L: critical, risk of cerebral herniation"
+  },
+
+  "etiology": {
+    "categories": [
+      {
+        "category": "Hypovolaemic Hyponatremia (low total body Na, lower total body water)",
+        "causes": [
+          "Gastrointestinal losses: diarrhoea, vomiting, fistula, NG suction",
+          "Renal losses: thiazide diuretics, Addison's disease (primary adrenal insufficiency), cerebral salt wasting, osmotic diuresis",
+          "Third-space losses: pancreatitis, burns, trauma, peritonitis",
+          "Skin losses: excessive sweating with hypotonic replacement"
+        ]
+      },
+      {
+        "category": "Euvolaemic Hyponatremia (normal total body Na, excess water)",
+        "causes": [
+          "SIADH (syndrome of inappropriate ADH): CNS disease (meningitis, SAH, stroke, TB meningitis), pulmonary disease (pneumonia, TB, empyema), malignancy (small cell lung cancer), drugs",
+          "Hypothyroidism (severe) — myxoedema coma",
+          "Glucocorticoid deficiency (secondary adrenal insufficiency)",
+          "Primary polydipsia (psychogenic — >20 L/day water intake)",
+          "Beer potomania (low solute intake + high water intake)",
+          "SIADH-inducing drugs: SSRIs, carbamazepine, cyclophosphamide, oxytocin"
+        ]
+      },
+      {
+        "category": "Hypervolaemic Hyponatremia (high total body Na, higher total body water excess)",
+        "causes": [
+          "Congestive heart failure (reduced effective arterial volume → baroreceptor-mediated ADH release)",
+          "Hepatic cirrhosis with ascites",
+          "Nephrotic syndrome",
+          "Advanced chronic kidney disease / renal failure"
+        ]
+      },
+      {
+        "category": "Redistributive / Pseudo-hyponatremia",
+        "causes": [
+          "Hyperglycaemia (glucose draws water into extracellular space → dilutional; correct by adding 1.6 mEq/L Na for each 100 mg/dL glucose >100)",
+          "Mannitol infusion",
+          "Pseudohyponatremia: severe hyperproteinaemia (myeloma), severe hyperlipidaemia — laboratory artefact only"
+        ]
+      }
+    ],
+    "riskFactors": [
+      "Age >65 years (impaired renal concentrating ability, polypharmacy)",
+      "Female sex (higher risk of ODS from correction)",
+      "Thiazide diuretic use",
+      "SSRI/antidepressant use (common and underrecognised cause in elderly)",
+      "Malnutrition, alcoholism, liver disease",
+      "CNS or pulmonary disease (SIADH risk)",
+      "Malignancy (especially small cell lung cancer)",
+      "Hospitalisation (IV hypotonic fluids, pain, nausea — all stimulate ADH)",
+      "Tuberculosis (TB meningitis, pulmonary TB — common India-specific risk)"
+    ],
+    "commonCauses": [
+      "Hypovolaemic: diarrhoea with hypotonic fluid replacement (most common in India — rural settings)",
+      "Euvolaemic: SIADH (drugs — SSRIs, carbamazepine — or TB meningitis/pulmonary TB)",
+      "Hypervolaemic: congestive heart failure, cirrhosis",
+      "Thiazide diuretic excess",
+      "Hypothyroidism"
+    ],
+    "rareCauses": [
+      "Cerebral salt wasting (after SAH or brain injury)",
+      "Primary adrenal insufficiency (Addison's disease)",
+      "Beer potomania",
+      "MDMA toxicity",
+      "Reset osmostat syndrome"
+    ]
+  },
+
+  "pathophysiology": {
+    "summary": "Hyponatremia is fundamentally a disorder of water homeostasis, not sodium homeostasis. The body regulates serum osmolality between 275–295 mOsm/kg via ADH (vasopressin) secretion from the posterior pituitary and renal water handling. When serum osmolality falls, ADH is normally suppressed → free water excretion → osmolality normalises. Hyponatremia develops when this mechanism fails: either ADH is inappropriately elevated (SIADH, heart failure, cirrhosis), or water intake massively exceeds excretory capacity (polydipsia). As serum Na falls, water enters cells down an osmotic gradient → cellular swelling. In the brain, this causes cerebral oedema. In chronic hyponatremia (>48 hours), brain cells compensate by extruding organic osmoles (taurine, myoinositol, glutamate) — this adaptation reduces cerebral oedema but means rapid correction will dehydrate these now-adjusted cells, causing osmotic demyelination of pontine fibres (central pontine myelinolysis/ODS).",
+    "keyMechanisms": [
+      "Inappropriate ADH secretion or action → renal free water retention → dilutional hyponatremia",
+      "Reduced effective arterial volume (heart failure, cirrhosis) → baroreceptor activation → ADH release → water retention despite low Na",
+      "Water shift from intracellular to extracellular: hyperglycaemia raises extracellular osmolality → water moves out → dilutes Na",
+      "Brain cell swelling in acute hyponatremia → cerebral oedema → herniation (can occur within hours)",
+      "Brain cell adaptation in chronic hyponatremia (organic osmole extrusion) → rapid correction → osmotic demyelination",
+      "Thiazides block NaCl reabsorption in distal tubule but preserve ADH-mediated water reabsorption → Na depleted, water retained"
+    ],
+    "clinicalRelevance": "The rate of development matters more than the absolute level. Acute hyponatremia (developing in <48h) has no time for brain adaptation — even moderate hyponatremia can cause life-threatening cerebral oedema. Chronic hyponatremia (>48h) is better tolerated but carries the reverse risk during treatment: correct too fast → osmotic demyelination → quadriplegia, locked-in syndrome, death. Always determine chronicity before starting treatment."
+  },
+
+  "clinicalFeatures": {
+    "symptoms": [
+      { "feature": "Fatigue, malaise, decreased appetite", "severity": "mild", "note": "Na 130–134 mEq/L" },
+      { "feature": "Nausea, vomiting", "severity": "mild" },
+      { "feature": "Headache", "severity": "moderate", "note": "Early cerebral oedema" },
+      { "feature": "Cognitive slowing, difficulty concentrating, forgetfulness", "severity": "moderate" },
+      { "feature": "Gait instability, increased fall risk (independent of symptoms)", "severity": "moderate" },
+      { "feature": "Lethargy, drowsiness, confusion", "severity": "severe", "note": "Na <125 or rapid drop" },
+      { "feature": "Seizures — often focal or generalised", "severity": "severe" },
+      { "feature": "Coma, respiratory failure, cerebral herniation", "severity": "severe", "note": "EMERGENCY — immediate hypertonic saline" }
+    ],
+    "signs": [
+      { "feature": "Dry mucous membranes, decreased skin turgor, tachycardia, hypotension", "severity": "all", "note": "Hypovolaemic hyponatremia" },
+      { "feature": "Pitting oedema, raised JVP, ascites, basal crackles", "severity": "all", "note": "Hypervolaemic hyponatremia — heart failure, cirrhosis, nephrotic" },
+      { "feature": "No oedema, normal skin turgor, no orthostatic hypotension", "severity": "all", "note": "Euvolaemic — SIADH, hypothyroidism" },
+      { "feature": "Reduced deep tendon reflexes, bradycardia, periorbital oedema, slow relaxing reflexes, dry skin, coarse voice", "severity": "all", "note": "Hypothyroidism — myxoedema" },
+      { "feature": "Hyperpigmentation, vitiligo, postural hypotension, hyperkalemia", "severity": "severe", "note": "Addison's disease — urgent cortisol" },
+      { "feature": "Neurological signs — papilloedema, focal deficits, meningism", "severity": "severe", "note": "CNS cause of SIADH (TB meningitis, SAH)" },
+      { "feature": "Dysarthria, dysphagia, flaccid quadriparesis, pseudobulbar palsy — after rapid correction", "severity": "severe", "note": "Osmotic demyelination syndrome — iatrogenic" }
+    ],
+    "redFlags": [
+      "Seizures or coma in context of low sodium → EMERGENCY: 3% hypertonic saline immediately, ICU transfer",
+      "Sodium <120 mEq/L regardless of symptoms → treat as emergency even if apparently asymptomatic",
+      "Postural hypotension + hyponatremia + hyperpigmentation → rule out Addison's disease urgently (give hydrocortisone)",
+      "Hyponatremia + meningism + fever → TB meningitis until proven otherwise (lumbar puncture, start ATT)",
+      "New neurological deficit after sodium correction began → osmotic demyelination — STOP correction, discuss with nephrology",
+      "Hyponatremia + weight loss + haemoptysis + smoking history → SIADH from small cell lung cancer"
+    ],
+    "severity": [
+      {
+        "level": "mild",
+        "criteria": "Na 130–134 mEq/L, asymptomatic or mild symptoms (fatigue, nausea), chronic",
+        "management": "Identify and treat underlying cause. Fluid restrict if SIADH. Avoid rapid correction. Outpatient if stable."
+      },
+      {
+        "level": "moderate",
+        "criteria": "Na 125–129 mEq/L, or symptomatic (headache, confusion, vomiting), chronic",
+        "management": "Admit for monitoring. Treat cause. Isotonic saline if hypovolaemic. Fluid restriction if euvolaemic/hypervolaemic. Correct ≤8–10 mEq/L/24h."
+      },
+      {
+        "level": "severe",
+        "criteria": "Na <125 mEq/L with severe symptoms (seizures, coma, respiratory distress) regardless of chronicity",
+        "management": "ICU admission. 3% NaCl 100–150 mL bolus IV over 15–20 min. Repeat until symptoms resolve (target +3–5 mEq/L). Then slow correction. Do NOT exceed 10 mEq/L in 24h."
+      }
+    ]
+  },
+
+  "diagnosticApproach": {
+    "stepByStep": [
+      {
+        "step": 1,
+        "action": "Confirm hyponatremia and exclude pseudohyponatremia: check serum osmolality. If normal (275–295), consider hyperproteinaemia or hyperlipidaemia as artefact.",
+        "rationale": "True hyponatremia = low serum osmolality (<275 mOsm/kg). Normal osmolality with low Na = pseudohyponatremia — no treatment needed.",
+        "atPHC": false
+      },
+      {
+        "step": 2,
+        "action": "Check serum glucose: if hyperglycaemic, correct measured Na (add 1.6 mEq/L per 100 mg/dL glucose above 100). This is hypertonic hyponatremia — treat hyperglycaemia, not sodium.",
+        "rationale": "Hyperglycaemia causes water shift out of cells → dilutes sodium. Correcting glucose restores sodium.",
+        "atPHC": true
+      },
+      {
+        "step": 3,
+        "action": "Assess clinical volume status: examine for postural hypotension, skin turgor, mucous membranes, JVP, oedema, ascites, pulmonary crackles.",
+        "rationale": "Volume status is the single most important step — determines whether to give fluid (hypovolaemic), restrict fluid (euvolaemic/hypervolaemic), or treat heart failure/cirrhosis.",
+        "atPHC": true
+      },
+      {
+        "step": 4,
+        "action": "Send urine sodium and urine osmolality. Urine Na >20 mEq/L with euvolaemia → SIADH. Urine Na <20 mEq/L → hypovolaemia or poor cardiac output.",
+        "rationale": "Urine Na distinguishes renal from extra-renal causes and confirms SIADH.",
+        "atPHC": false
+      },
+      {
+        "step": 5,
+        "action": "If euvolaemic with urine Na >20 and urine osmolality >100: work up for SIADH — check TSH (hypothyroidism), 8AM cortisol (adrenal insufficiency), chest X-ray (TB, malignancy), full drug history.",
+        "rationale": "SIADH is a diagnosis of exclusion — must rule out hypothyroidism and adrenal insufficiency first as both mimic SIADH.",
+        "atPHC": false
+      },
+      {
+        "step": 6,
+        "action": "Determine chronicity: acute (<48 hours) vs chronic (≥48 hours or unknown). Hospitalised patients with new hyponatremia after a procedure or drug → likely acute. Chronic symptoms, stable community patient → likely chronic.",
+        "rationale": "Chronicity determines safe correction rate. Acute = can correct faster (up to 1–2 mEq/L/hour initially for life-threatening symptoms). Chronic = must be slow (max 8–10 mEq/L/24h).",
+        "atPHC": true
+      },
+      {
+        "step": 7,
+        "action": "Investigate underlying cause of SIADH if confirmed: CT chest/abdomen (malignancy), CSF if meningism (TB meningitis), ANA/ANCA if vasculitis suspected. Review all medications.",
+        "rationale": "Treating the underlying cause is the definitive treatment for SIADH.",
+        "atPHC": false
+      }
+    ],
+    "keyInvestigations": [
+      {
+        "name": "Serum electrolytes (Na, K, Cl, HCO3)",
+        "purpose": "Confirm hyponatremia, detect associated hypokalaemia (thiazides, vomiting) or hyperkalemia (Addison's)",
+        "interpretation": "Na <135: hyponatremia. K <3.5 with diuretics: thiazide-induced. K >5.5 with low Na: consider Addison's.",
+        "tier": "PHC",
+        "cost": "low"
+      },
+      {
+        "name": "Serum osmolality",
+        "purpose": "Confirm true vs pseudohyponatremia; classify as hypotonic, isotonic, or hypertonic",
+        "interpretation": "<275 mOsm/kg: true hypotonic hyponatremia. 275–295: pseudohyponatremia or hypertonic cause. >295: hyperglycaemia or mannitol.",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "Urine sodium (spot)",
+        "purpose": "Distinguish renal from extra-renal water/Na loss; confirm SIADH",
+        "interpretation": "Urine Na <20 mEq/L: extra-renal Na loss (diarrhoea, vomiting, burns) or poor cardiac output. Urine Na >20 mEq/L with euvolaemia: SIADH. Urine Na >20 with hypovolaemia: renal loss (diuretics, Addison's).",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "Urine osmolality",
+        "purpose": "Assess concentrating ability; essential for SIADH diagnosis",
+        "interpretation": "<100 mOsm/kg: primary polydipsia (appropriately dilute urine). >100 mOsm/kg with hyponatremia: ADH effect present (SIADH if euvolaemic).",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "Serum glucose",
+        "purpose": "Exclude hypertonic hyponatremia from hyperglycaemia",
+        "interpretation": "Correct Na by adding 1.6 mEq/L per 100 mg/dL glucose above 100 mg/dL. If corrected Na is normal, treat hyperglycaemia.",
+        "tier": "PHC",
+        "cost": "free"
+      },
+      {
+        "name": "TSH",
+        "purpose": "Exclude hypothyroidism as cause of SIADH-like picture",
+        "interpretation": "TSH >4.5 mIU/L: hypothyroidism. Treat thyroid → sodium will normalise.",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "8AM serum cortisol",
+        "purpose": "Exclude adrenal insufficiency (Addison's or secondary) as cause of hyponatremia",
+        "interpretation": "<140 nmol/L: likely adrenal insufficiency. >500 nmol/L: excludes. 140–500: needs ACTH stimulation test.",
+        "tier": "District",
+        "cost": "moderate"
+      },
+      {
+        "name": "Chest X-ray",
+        "purpose": "Screen for pulmonary TB, small cell lung cancer (causes SIADH), pneumonia",
+        "interpretation": "Hilar adenopathy + upper lobe infiltrate: TB. Hilar mass: small cell lung cancer.",
+        "tier": "PHC",
+        "cost": "low"
+      }
+    ],
+    "diagnosticAlgorithm": "Step 1: Serum osmolality normal? → pseudohyponatremia or hypertonic (hyperglycaemia). Step 2: Serum osmolality low? → TRUE hyponatremia → assess volume status. Step 3: HYPOVOLAEMIC (dry, tachycardic)? → urine Na <20: extra-renal loss (GI, skin). Urine Na >20: renal/adrenal loss (diuretics, Addison's). Step 4: EUVOLAEMIC? → TSH, cortisol → if normal: SIADH → urine Na >20, urine Osm >100. Step 5: HYPERVOLAEMIC (oedematous)? → CHF / cirrhosis / nephrotic / renal failure.",
+    "differentialDiagnosis": [
+      { "diagnosis": "SIADH", "distinguishingFeature": "Euvolaemic, urine Na >20, urine osmolality >100, normal TSH/cortisol, identifiable cause (drug, CNS, pulmonary)" },
+      { "diagnosis": "Hypothyroidism", "distinguishingFeature": "Euvolaemic, elevated TSH, clinical features (bradycardia, periorbital oedema, cold intolerance, slow reflexes)" },
+      { "diagnosis": "Addison's disease", "distinguishingFeature": "Hypovolaemic, hyperpigmentation, hyperkalemia, low cortisol, hypotension" },
+      { "diagnosis": "Heart failure", "distinguishingFeature": "Hypervolaemic, raised JVP, bilateral oedema, basal crackles, reduced LVEF on echo" },
+      { "diagnosis": "Hepatic cirrhosis", "distinguishingFeature": "Hypervolaemic, ascites, spider naevi, palmar erythema, raised LFTs, low albumin" },
+      { "diagnosis": "Primary polydipsia", "distinguishingFeature": "Euvolaemic, urine osmolality <100 mOsm/kg (maximally dilute urine), history of >8–10 L/day water intake, psychiatric history" },
+      { "diagnosis": "Thiazide-induced", "distinguishingFeature": "Hypovolaemic or euvolaemic, hypokalemia, clear drug history, urine Na elevated (renal sodium wasting)" },
+      { "diagnosis": "TB meningitis", "distinguishingFeature": "SIADH pattern, meningism, fever, lymphocytic pleocytosis on CSF, elevated ADA in CSF, India context" }
+    ]
+  },
+
+  "treatment": {
+    "principles": [
+      "The RATE of correction is more important than the absolute sodium level — never exceed 10–12 mEq/L per 24 hours in chronic hyponatremia.",
+      "Treat the underlying cause — sodium will correct spontaneously once the aetiology is addressed (e.g., stop thiazide, treat TB, start levothyroxine).",
+      "Match treatment to volume status: hypovolaemic → IV isotonic saline; euvolaemic (SIADH) → fluid restriction; hypervolaemic → fluid + sodium restriction + treat heart failure/cirrhosis.",
+      "Hypertonic 3% NaCl is only for SEVERE SYMPTOMATIC acute hyponatremia — seizures, coma, respiratory compromise.",
+      "Monitor serum sodium every 2–4 hours during active correction; reduce frequency once target rate confirmed.",
+      "If Na rises faster than intended: administer D5W or DDAVP to halt correction and prevent ODS."
+    ],
+    "byContext": [
+      {
+        "facility": "PHC",
+        "approach": "Identify and treat precipitating cause. If hypovolaemic: oral rehydration solution (ORS) or IV 0.9% NaCl. Refer moderate-severe or symptomatic cases. Stop thiazide/causative drug. Check glucose to exclude hyperglycaemia.",
+        "drugs": [
+          { "name": "Oral Rehydration Solution (ORS)", "dose": "As tolerated", "route": "Oral", "frequency": "Freely, sip by sip", "duration": "Until rehydrated", "notes": "For hypovolaemic hyponatremia with mild symptoms. WHO-ORS contains 90 mEq/L Na — appropriate." },
+          { "name": "0.9% Normal Saline", "dose": "500 mL over 2–4 hours initially", "route": "IV", "frequency": "Rate guided by response", "duration": "Until euvolaemic and Na improving", "notes": "Only for hypovolaemic hyponatremia. AVOID in euvolaemic or hypervolaemic — will worsen." }
+        ]
+      },
+      {
+        "facility": "CHC",
+        "approach": "Confirm diagnosis with urine Na/osmolality and serum osmolality. Fluid restrict if SIADH (500–750 mL/day). IV 0.9% NaCl if hypovolaemic. Monitor Na every 4–6 hours. Treat hypothyroidism, stop causative drugs.",
+        "drugs": [
+          { "name": "0.9% Normal Saline (isotonic)", "dose": "1–2 mL/kg/hour", "route": "IV", "frequency": "Continuous infusion", "duration": "Until euvolaemic (hypovolaemic cases only)", "notes": "Monitor serum Na every 4–6h. Stop when euvolaemic. Target: +6–8 mEq/L in 24h." },
+          { "name": "Levothyroxine 50–100 mcg", "dose": "50 mcg initially in elderly; 100 mcg in young adults", "route": "Oral", "frequency": "Once daily", "duration": "Lifelong (hypothyroidism)", "notes": "Na corrects over 1–2 weeks as thyroid function normalises." },
+          { "name": "Fluid restriction", "dose": "500–750 mL/day total", "route": "Oral + IV combined", "frequency": "Continuous restriction", "duration": "Until SIADH cause resolved", "notes": "Primary treatment for SIADH. Include all oral intake. Patient education essential." }
+        ]
+      },
+      {
+        "facility": "District",
+        "approach": "Above + ability to give 3% hypertonic saline for severe symptomatic cases under close monitoring. ICU admission for Na <120 with symptoms. Investigate and treat SIADH cause. Hydrocortisone if Addison's. DDAVP to slow over-rapid correction.",
+        "drugs": [
+          { "name": "3% Hypertonic Saline (NaCl)", "dose": "100–150 mL bolus over 15–20 minutes", "route": "IV (central line preferred; can use large peripheral IV)", "frequency": "May repeat 1–2 times for ongoing severe symptoms", "duration": "Until symptoms resolve; then switch to slow correction", "notes": "ONLY for seizures/coma/respiratory failure. Target +3–5 mEq/L to control acute symptoms. Monitor Na every 1–2h. NEVER use in chronic asymptomatic hyponatremia." },
+          { "name": "Hydrocortisone 100 mg", "dose": "100 mg", "route": "IV", "frequency": "Every 6–8 hours", "duration": "Until oral replacement possible", "notes": "If Addison's disease confirmed or strongly suspected. Do NOT delay for investigation in adrenal crisis." },
+          { "name": "DDAVP (Desmopressin) 2 mcg", "dose": "2 mcg", "route": "IV or SC", "frequency": "Every 8 hours (clamp strategy)", "duration": "As needed to control correction rate", "notes": "Used with D5W to prevent over-rapid correction. Clamp strategy: give DDAVP to fix urine output, then give measured water to control Na rise precisely." }
+        ]
+      }
+    ],
+    "firstLine": [
+      { "intervention": "Treat underlying cause (stop diuretic, treat TB, start levothyroxine, treat heart failure)", "evidence": "A", "note": "Definitive treatment — sodium normalises spontaneously" },
+      { "intervention": "Fluid restriction 500–750 mL/day for SIADH/euvolaemic", "evidence": "A", "note": "First-line for SIADH. Sustained restriction over weeks is required." },
+      { "drug": "0.9% Normal Saline", "dose": "1–2 mL/kg/hour", "evidence": "A", "note": "Only for hypovolaemic hyponatremia. Monitor closely — beware overshoot." }
+    ],
+    "secondLine": [
+      { "drug": "Tolvaptan 15 mg oral once daily (vasopressin V2 receptor antagonist)", "evidence": "A", "note": "For SIADH or hypervolaemic hyponatremia not responding to restriction. Expensive. Hepatotoxic with cirrhosis. Specialist use only." },
+      { "drug": "Demeclocycline 600–1200 mg/day", "evidence": "B", "note": "Causes nephrogenic DI → free water excretion. Alternative when fluid restriction fails in SIADH. Not available widely in India." },
+      { "drug": "Salt tablets 1–2 g three times daily", "evidence": "B", "note": "Adjunct in SIADH with urine osmolality >500 — increases solute load, promotes water excretion." },
+      { "intervention": "Urea (oral 15–30 g/day dissolved in water)", "evidence": "B", "note": "Increases urine solute → forces water excretion. Effective for SIADH. Widely available, inexpensive — underutilised in India." }
+    ],
+    "specialPopulations": [
+      {
+        "population": "Elderly",
+        "modification": "Higher risk of ODS from rapid correction. Limit correction to ≤8 mEq/L/24h (lower than standard). Risk factors: malnutrition, alcoholism, hypokalemia (common in elderly on diuretics). Monitor closely.",
+        "caution": "Many elderly patients have undiagnosed hypothyroidism — always check TSH."
+      },
+      {
+        "population": "Pregnancy",
+        "modification": "Normal Na in pregnancy is slightly lower (132–136 mEq/L). Severe hyponatremia (<125) is dangerous for foetus. Treat hypovolaemia with isotonic saline. SIADH treatment: careful fluid restriction; avoid tolvaptan.",
+        "caution": "Oxytocin infusion (used in labour) has antidiuretic properties — can cause acute iatrogenic hyponatremia."
+      },
+      {
+        "population": "Pediatric",
+        "modification": "Children at higher risk of cerebral oedema from acute hyponatremia (tighter skull). Correction rate: same ≤10 mEq/L/24h but initial 3% bolus may be appropriate for seizures. Menstruating adolescent females at particularly high risk of cerebral herniation.",
+        "caution": "Post-operative children given hypotonic IV fluids are at very high risk — always use isotonic saline for maintenance."
+      },
+      {
+        "population": "Renal",
+        "modification": "Nephrotic syndrome and CKD: fluid and sodium restriction. Dialysis may be required in severe hyponatremia with renal failure.",
+        "caution": "Tolvaptan is contraindicated in anuria. Isotonic saline may not be excreted → volume overload."
+      },
+      {
+        "population": "Hepatic",
+        "modification": "Cirrhosis: primary treatment is underlying liver disease + diuretics (spironolactone). Fluid restrict to 1–1.5 L/day. Tolvaptan: SHORT TERM only — risk of hepatotoxicity in cirrhosis.",
+        "caution": "Avoid normal saline in cirrhosis — will worsen ascites and oedema."
+      }
+    ],
+    "monitoring": [
+      { "parameter": "Serum sodium", "frequency": "Every 1–2h during hypertonic saline infusion; every 4–6h during isotonic saline; every 6–12h during fluid restriction", "target": "+6–8 mEq/L in 24h (max 10–12 mEq/L)", "action": "If rising faster than target: stop saline, administer D5W 5–10 mL/kg over 1–2h, consider DDAVP 2 mcg IV to clamp correction" },
+      { "parameter": "Serum potassium", "frequency": "Every 6–12h during active correction", "target": ">3.5 mEq/L", "action": "Correct hypokalaemia aggressively — hypokalaemia exacerbates sodium correction and increases ODS risk" },
+      { "parameter": "Urine output and osmolality", "frequency": "Every 4–6h", "action": "Falling urine osmolality suggests DDAVP loss or SIADH resolving — correction may accelerate" },
+      { "parameter": "Neurological status", "frequency": "Every 2–4h in symptomatic patients", "action": "Improvement expected within hours. Any new neurological signs after starting correction → suspect ODS → stop, discuss urgently with nephrology" },
+      { "parameter": "Fluid balance", "frequency": "Every 4–8h", "action": "Strict I&O. Avoid free water in all cases except deliberate slowing of correction." }
+    ],
+    "whenToRefer": [
+      "Na <120 mEq/L or any severe symptoms (seizures, coma) → ICU/nephrology immediately",
+      "Suspected Addison's disease → endocrinology (urgent if adrenal crisis)",
+      "SIADH with unclear aetiology → investigate for malignancy (especially small cell lung cancer)",
+      "Failure to correct with standard management or paradoxical worsening",
+      "Suspected osmotic demyelination syndrome (new neurological signs during correction) → neurology + nephrology",
+      "Cirrhosis with recurrent hyponatremia → hepatology (consider tolvaptan, liver transplant evaluation)",
+      "Chronic SIADH requiring long-term tolvaptan or urea therapy → nephrology/endocrinology"
+    ],
+    "pitfalls": [
+      "Correcting sodium faster than 10–12 mEq/L in 24 hours in chronic hyponatremia → risk of osmotic demyelination syndrome (ODS/CPM) — irreversible",
+      "Giving hypotonic saline (0.45% NaCl or D5W) to a hypovolaemic patient → worsens hyponatremia",
+      "Giving isotonic saline to a SIADH patient → urine Na concentration exceeds infused Na concentration → paradoxical fall in serum sodium",
+      "Missing adrenal insufficiency (Addison's) as a cause → patient develops adrenal crisis if only sodium is treated",
+      "Failing to stop diuretics before sodium correction — ongoing urinary Na loss will confound and accelerate correction unpredictably",
+      "Not correcting hypokalemia — potassium correction raises serum sodium (K+ replaces intracellular Na+) and must be counted toward the 10 mEq/L daily correction limit",
+      "Using 3% saline in chronic asymptomatic hyponatremia — will cause ODS without benefit",
+      "Not monitoring for overshoot — many patients self-correct after dDAVP is stopped or diuretic withdrawn; check Na every 4–6h in the first 24h"
+    ]
+  },
+
+  "clinicalPearlsAndPitfalls": {
+    "pearls": [
+      "In India, always ask about anti-TB medications — SIADH from TB (meningitis or pulmonary) and SIADH from rifampicin are both common and correctable.",
+      "The sodium content of potassium chloride supplementation adds to the daily sodium correction — account for K+ when calculating the safe daily limit.",
+      "A patient who self-corrects (e.g., thiazide stopped, SIADH resolving) can overshoot the safe rate without any active intervention — always recheck Na 4–6h after stopping the precipitant.",
+      "Urea 30 g/day dissolved in water or juice is an effective, cheap, and well-tolerated treatment for SIADH in India when fluid restriction fails — largely underused.",
+      "Beer potomania is a clinical trap: low Na despite large urine volumes — the urine is maximally dilute but the low-solute diet prevents adequate free water excretion. Treatment: increase dietary protein and sodium, not fluid restriction alone.",
+      "Post-operative hyponatremia is almost always SIADH from pain, nausea, and hypotonic IV fluids — switch to 0.9% NaCl maintenance immediately post-op in all surgical patients."
+    ],
+    "pitfalls": [
+      "The single most dangerous mistake: correcting chronic hyponatremia faster than 10 mEq/L/24h. This causes osmotic demyelination syndrome — quadriplegia, dysarthria, or death — and is irreversible.",
+      "Giving normal saline to a SIADH patient thinking 'isotonic saline is safe' — it is NOT. The kidney concentrates the infusate and wastes the sodium, causing net water retention and worsening hyponatremia.",
+      "Not checking TSH in every patient with euvolaemic hyponatremia — hypothyroidism is common in India, easily treatable, and exactly mimics SIADH.",
+      "Ignoring hypokalaemia during correction — every 1 mEq/L rise in K+ raises Na by approximately 1 mEq/L. Potassium replacement counts toward daily sodium correction limit.",
+      "Treating the sodium without treating the cause — the patient goes home and returns in 2 weeks with the same problem."
+    ]
+  },
+
+  "keyTakeaway": [
+    "Hyponatremia is a water excess problem, not a sodium deficit problem — management requires understanding why ADH is elevated or water intake is excessive.",
+    "Volume status assessment (hypovolaemic vs euvolaemic vs hypervolaemic) is the mandatory first step and determines whether to give saline, restrict fluid, or treat an underlying organ failure.",
+    "The rate of correction is paramount: never exceed 10–12 mEq/L per 24 hours in chronic hyponatremia — osmotic demyelination syndrome is an irreversible iatrogenic catastrophe.",
+    "In India, TB-related SIADH, thiazide diuretics, hypothyroidism, and diarrhoeal dehydration are the most common causes — a systematic approach to aetiology prevents recurrence.",
+    "3% hypertonic saline is a life-saving emergency tool for symptomatic severe acute hyponatremia — but its use in chronic asymptomatic hyponatremia is one of the most dangerous errors in medicine."
+  ]
+}

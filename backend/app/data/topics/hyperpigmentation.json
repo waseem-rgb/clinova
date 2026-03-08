@@ -1,0 +1,394 @@
+{
+  "id": "topic_hyperpigmentation_001",
+  "slug": "hyperpigmentation",
+  "title": "Hyperpigmentation",
+  "icd10": "L81.9",
+  "specialty": ["Dermatology", "General Medicine", "Endocrinology"],
+  "lastReviewed": "2025-01-01",
+  "evidenceLevel": "B",
+
+  "clinicalQuickView": {
+    "summary": [
+      "Hyperpigmentation refers to darkening of the skin due to excess melanin deposition, affecting any skin type but more visible in darker Fitzpatrick phototypes (III–VI), which predominate in India.",
+      "The most common causes are post-inflammatory hyperpigmentation (PIH), melasma, and drug-induced pigmentation.",
+      "Melasma predominantly affects women (90%) and is strongly associated with sun exposure, pregnancy, and oral contraceptive use.",
+      "Post-inflammatory hyperpigmentation follows any inflammatory skin condition — acne, eczema, insect bites, burns — and resolves slowly over months.",
+      "Addison's disease and other endocrine causes must be excluded in diffuse or accentuated hyperpigmentation, particularly in flexures.",
+      "Dermoscopy, Wood's lamp examination, and biopsy help characterise pigment depth (epidermal vs dermal) and guide prognosis.",
+      "First-line treatment is strict photoprotection (broad-spectrum SPF ≥30–50) combined with topical depigmenting agents; systemic treatment rarely needed.",
+      "Treatment response is slow (3–6 months minimum); patient counselling on realistic expectations is essential."
+    ],
+    "qna": [
+      {
+        "question": "What is the most common cause of hyperpigmentation in India?",
+        "answer": "Post-inflammatory hyperpigmentation (PIH) secondary to acne vulgaris is the most common cause, followed by melasma."
+      },
+      {
+        "question": "What is the first-line topical agent for hyperpigmentation?",
+        "answer": "Hydroquinone 2–4% is the gold standard topical depigmenting agent, often combined with tretinoin 0.025–0.05% and a mild topical steroid (Kligman's formula)."
+      },
+      {
+        "question": "Which investigations are essential to rule out systemic causes?",
+        "answer": "For diffuse or flexural hyperpigmentation: serum cortisol (8 AM), ACTH stimulation test, TSH, vitamin B12, LFTs, and blood film for haematological causes."
+      },
+      {
+        "question": "How do you distinguish epidermal from dermal pigmentation?",
+        "answer": "Wood's lamp accentuates epidermal pigmentation (appears brighter) but not dermal pigmentation. Dermoscopy shows brown colour for epidermal and grey/blue for dermal melanin."
+      },
+      {
+        "question": "What is the most important initial treatment regardless of cause?",
+        "answer": "Strict broad-spectrum photoprotection with SPF ≥30, reapplied every 2–3 hours on sun-exposed skin. Without this, all other treatments will fail."
+      },
+      {
+        "question": "When should a patient with hyperpigmentation be referred?",
+        "answer": "Refer if: suspected Addison's disease or systemic cause, failure of 3 months of first-line treatment, suspicion of malignant melanoma, or need for procedural treatment (chemical peels, lasers)."
+      },
+      {
+        "question": "What drugs commonly cause hyperpigmentation?",
+        "answer": "Antimalarials (chloroquine), amiodarone, minocycline, bleomycin, clofazamine, oral contraceptive pills, and heavy metals."
+      },
+      {
+        "question": "How does melasma differ from PIH?",
+        "answer": "Melasma is symmetrical, involves the centrofacial/malar/mandibular zones, has no preceding inflammation, is hormonally driven, and is chronic and recurrent. PIH follows a specific inflammatory event and is more localised."
+      }
+    ]
+  },
+
+  "definition": {
+    "text": "Hyperpigmentation is a common skin condition characterised by darkening of the skin or nails due to increased melanin synthesis, increased number of melanocytes, or deposition of exogenous pigments. It may be localised or diffuse, acquired or congenital, and can affect the epidermis, dermis, or both.",
+    "keyThreshold": "Clinically significant when affecting cosmetically sensitive areas or indicating an underlying systemic disorder"
+  },
+
+  "etiology": {
+    "categories": [
+      {
+        "category": "Post-inflammatory (PIH)",
+        "causes": ["Acne vulgaris", "Atopic dermatitis / eczema", "Insect bites", "Burns and trauma", "Psoriasis", "Lichen planus", "Tinea versicolor (post-treatment)"]
+      },
+      {
+        "category": "Hormonal / Endocrine",
+        "causes": ["Melasma (pregnancy, OCP, hormonal therapy)", "Addison's disease (primary adrenal insufficiency)", "Cushing's syndrome", "Hypothyroidism", "Acanthosis nigricans (insulin resistance)"]
+      },
+      {
+        "category": "Drug-induced",
+        "causes": ["Antimalarials (chloroquine, hydroxychloroquine)", "Amiodarone", "Minocycline", "Bleomycin", "Clofazamine", "Oral contraceptive pills", "NSAIDs (fixed drug eruption)"]
+      },
+      {
+        "category": "Nutritional / Metabolic",
+        "causes": ["Vitamin B12 deficiency (diffuse, nail involvement)", "Folate deficiency", "Pellagra (niacin deficiency — exposed areas)", "Haemochromatosis", "Wilson's disease"]
+      },
+      {
+        "category": "Genodermatoses / Congenital",
+        "causes": ["Café-au-lait macules (neurofibromatosis)", "Peutz-Jeghers syndrome (perioral, buccal mucosa)", "Albright syndrome", "Becker's naevus"]
+      },
+      {
+        "category": "Exogenous",
+        "causes": ["Cosmetic ingredient reactions (mercury-containing creams)", "Heavy metal exposure (arsenic, silver — argyria)", "Tattoo pigment"]
+      },
+      {
+        "category": "Neoplastic / Paraneoplastic",
+        "causes": ["Acanthosis nigricans (gastric adenocarcinoma)", "Melanoma", "Arsenical keratosis → Bowen's disease"]
+      }
+    ],
+    "riskFactors": [
+      "Darker skin phototype (Fitzpatrick III–VI) — higher melanocytic activity",
+      "Unprotected sun exposure",
+      "Female sex (melasma risk)",
+      "Pregnancy or exogenous oestrogen use",
+      "Chronic inflammatory skin conditions",
+      "Use of potentially pigmenting drugs",
+      "Nutritional deficiencies (B12, folate, niacin)",
+      "Family history of melasma"
+    ],
+    "commonCauses": [
+      "Post-inflammatory hyperpigmentation (acne-related)",
+      "Melasma",
+      "Drug-induced pigmentation",
+      "Vitamin B12 deficiency",
+      "Tinea versicolor residual pigment"
+    ],
+    "rareCauses": [
+      "Addison's disease",
+      "Haemochromatosis",
+      "Peutz-Jeghers syndrome",
+      "Argyria",
+      "Paraneoplastic acanthosis nigricans"
+    ]
+  },
+
+  "pathophysiology": {
+    "summary": "Hyperpigmentation results from dysregulation of melanogenesis — the process by which melanocytes in the basal layer of the epidermis produce melanin via tyrosinase-mediated oxidation of tyrosine to DOPA and subsequently to dopaquinone. UV radiation, inflammation, and hormonal signals (MSH, ACTH, oestrogen) all upregulate tyrosinase activity. In PIH, keratinocyte-derived cytokines (IL-1, TNF-α, prostaglandins) stimulate adjacent melanocytes following skin injury. In melasma, oestrogen and progesterone directly stimulate melanocyte proliferation and melanin synthesis, exacerbated by UV. Dermal melanophages (pigment-laden macrophages) develop when pigment is deposited in the dermis following disruption of the dermo-epidermal junction — this dermal pigmentation is far more resistant to treatment.",
+    "keyMechanisms": [
+      "Upregulation of tyrosinase activity → increased melanin synthesis",
+      "Keratinocyte inflammatory signalling → MSH release → melanocyte stimulation (PIH)",
+      "Oestrogen/progesterone receptor activation on melanocytes (melasma)",
+      "ACTH cross-reactivity with MSH receptors → diffuse pigmentation (Addison's)",
+      "Dermal melanophage accumulation → treatment-resistant deep pigment",
+      "UV-induced reactive oxygen species → direct melanocyte stimulation"
+    ],
+    "clinicalRelevance": "The depth of pigmentation (epidermal vs dermal) directly predicts treatment response. Epidermal pigmentation responds to topical agents in 3–6 months; dermal pigmentation requires prolonged treatment or procedural interventions (lasers, peels). This is the most important practical point in managing any hyperpigmentation."
+  },
+
+  "clinicalFeatures": {
+    "symptoms": [
+      { "feature": "Darkening of skin — may be gradual or follow a trigger event", "severity": "all" },
+      { "feature": "Cosmetic concern / psychological distress", "severity": "all" },
+      { "feature": "Preceding inflammatory event (acne, eczema flare, bite)", "severity": "all", "note": "Suggests PIH" },
+      { "feature": "Generalised fatigue, weight loss, postural dizziness", "severity": "severe", "note": "Suggests Addison's disease — do not miss" },
+      { "feature": "Worsening with sun exposure (seasonal variation)", "severity": "all", "note": "Melasma / epidermal pigmentation" }
+    ],
+    "signs": [
+      { "feature": "Brown macules — centrofacial / malar / mandibular", "severity": "all", "note": "Classic melasma distribution" },
+      { "feature": "Hyperpigmentation at sites of prior acne or inflammation", "severity": "all", "note": "PIH" },
+      { "feature": "Diffuse bronze/grey-brown pigmentation including buccal mucosa, palmar creases, areolae, scars", "severity": "severe", "note": "Addison's disease — URGENT referral" },
+      { "feature": "Velvety hyperpigmented plaques in flexures (axillae, neck, groin)", "severity": "all", "note": "Acanthosis nigricans → screen for insulin resistance / malignancy" },
+      { "feature": "Blue-grey pigmentation around mouth/lips + GI polyp history", "severity": "all", "note": "Peutz-Jeghers — refer for colonoscopy" },
+      { "feature": "Fixed drug eruption: oval/round hyperpigmented patches at same site after drug rechallenge", "severity": "all" },
+      { "feature": "Nail hyperpigmentation (longitudinal melanonychia) + diffuse skin pigmentation", "severity": "all", "note": "Vitamin B12 deficiency, Addison's, drug-induced" }
+    ],
+    "redFlags": [
+      "Buccal mucosa / palmar crease / scar pigmentation → EXCLUDE ADDISON'S DISEASE (life-threatening if missed)",
+      "Rapid onset with systemic symptoms (fatigue, weight loss, hypotension) → Addison's / malignancy",
+      "Acanthosis nigricans in non-obese adult → screen for occult malignancy (gastric cancer)",
+      "Irregular darkening with asymmetry, border irregularity, colour variation → exclude melanoma",
+      "Perioral pigmentation + bowel symptoms → Peutz-Jeghers syndrome",
+      "Hyperpigmentation in a child with café-au-lait macules + axillary freckling → neurofibromatosis"
+    ],
+    "severity": [
+      {
+        "level": "mild",
+        "criteria": "Localised, cosmetically acceptable, no systemic cause, recent onset PIH",
+        "management": "Photoprotection alone, reassurance, review in 3 months"
+      },
+      {
+        "level": "moderate",
+        "criteria": "Melasma, persistent PIH >3 months, cosmetically distressing",
+        "management": "Photoprotection + topical depigmenting agent (Kligman's or alternative)"
+      },
+      {
+        "level": "severe",
+        "criteria": "Diffuse/flexural/mucosal pigmentation suggesting systemic cause, failed 3 months therapy, psychosocial impact",
+        "management": "Urgent investigation for systemic causes, referral to dermatology/endocrinology"
+      }
+    ]
+  },
+
+  "diagnosticApproach": {
+    "stepByStep": [
+      {
+        "step": 1,
+        "action": "Detailed history: onset, distribution, preceding inflammation, drug history (including OCP, antimalarials), sun exposure, pregnancy, family history, systemic symptoms",
+        "rationale": "Establishes whether PIH, melasma, drug-induced, or systemic cause",
+        "atPHC": true
+      },
+      {
+        "step": 2,
+        "action": "Full skin examination: distribution pattern, lesion morphology, check buccal mucosa, palmar creases, areolae, scars, nails, and flexures",
+        "rationale": "Mucosal/palmar/scar pigmentation = red flag for Addison's; flexural = acanthosis nigricans",
+        "atPHC": true
+      },
+      {
+        "step": 3,
+        "action": "Wood's lamp examination (if available): epidermal pigment accentuated under UV; dermal pigment not accentuated",
+        "rationale": "Determines pigment depth — critical for treatment planning",
+        "atPHC": false
+      },
+      {
+        "step": 4,
+        "action": "If systemic cause suspected: FBC, blood film, serum B12/folate, TSH, LFTs, fasting glucose, HbA1c, 8AM cortisol",
+        "rationale": "Screens for haematological, endocrine, and metabolic causes",
+        "atPHC": false
+      },
+      {
+        "step": 5,
+        "action": "If 8AM cortisol low or clinical suspicion high: refer urgently for ACTH stimulation test and endocrinology review",
+        "rationale": "Addison's disease must not be missed — adrenal crisis risk",
+        "atPHC": false
+      },
+      {
+        "step": 6,
+        "action": "If acanthosis nigricans in non-obese adult: fasting insulin, CEA, endoscopy referral",
+        "rationale": "Exclude paraneoplastic cause",
+        "atPHC": false
+      },
+      {
+        "step": 7,
+        "action": "Skin biopsy: only if diagnosis uncertain, melanoma suspected, or to confirm diagnosis of specific dermatosis",
+        "rationale": "Histology confirms pigment type, depth, and melanocyte number",
+        "atPHC": false
+      }
+    ],
+    "keyInvestigations": [
+      {
+        "name": "Wood's lamp",
+        "purpose": "Determine pigment depth (epidermal vs dermal)",
+        "interpretation": "Epidermal: enhanced under Wood's lamp. Dermal: no enhancement.",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "8AM serum cortisol",
+        "purpose": "Screen for Addison's disease",
+        "interpretation": "<140 nmol/L: likely adrenal insufficiency. >500 nmol/L: excludes. 140–500: requires ACTH stimulation test.",
+        "tier": "District",
+        "cost": "moderate"
+      },
+      {
+        "name": "Serum B12 and folate",
+        "purpose": "Nutritional cause of diffuse pigmentation",
+        "interpretation": "B12 <200 pg/mL: deficiency. Common cause of diffuse pigmentation + nail changes in India.",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "TSH",
+        "purpose": "Thyroid dysfunction (hypothyroidism causes dull hyperpigmentation)",
+        "interpretation": "TSH >4.5 mIU/L: hypothyroidism",
+        "tier": "CHC",
+        "cost": "low"
+      },
+      {
+        "name": "Fasting glucose / HbA1c",
+        "purpose": "Insulin resistance in acanthosis nigricans",
+        "interpretation": "HbA1c ≥6.5%: diabetes; 5.7–6.4%: prediabetes",
+        "tier": "PHC",
+        "cost": "low"
+      },
+      {
+        "name": "Skin biopsy + histopathology",
+        "purpose": "Confirm diagnosis, determine pigment depth, exclude melanoma",
+        "interpretation": "Epidermal melanin vs dermal melanophages; melanocyte count",
+        "tier": "District",
+        "cost": "moderate"
+      }
+    ],
+    "diagnosticAlgorithm": "Step 1: Is there mucosal/palmar/scar pigmentation? → YES: urgent cortisol → exclude Addison's. Step 2: Is there a preceding inflammatory event? → YES: PIH. Step 3: Symmetrical facial pigmentation in woman on OCP/pregnant? → Melasma. Step 4: Drug history positive? → Drug-induced. Step 5: Flexural velvety pigmentation? → Acanthosis nigricans → check glucose/insulin/malignancy. Step 6: Diffuse with systemic symptoms → full metabolic screen.",
+    "differentialDiagnosis": [
+      { "diagnosis": "Melasma", "distinguishingFeature": "Symmetrical centrofacial/malar, women, sun-worsened, no prior inflammation" },
+      { "diagnosis": "Post-inflammatory hyperpigmentation", "distinguishingFeature": "Follows documented inflammatory event, matches distribution of original lesion" },
+      { "diagnosis": "Addison's disease", "distinguishingFeature": "Mucosal, palmar crease, scar pigmentation + systemic features (fatigue, hypotension, weight loss)" },
+      { "diagnosis": "Acanthosis nigricans", "distinguishingFeature": "Velvety, flexural, associated with insulin resistance or malignancy" },
+      { "diagnosis": "Drug-induced", "distinguishingFeature": "Temporal relation to drug, often blue-grey (amiodarone, minocycline), resolves on cessation" },
+      { "diagnosis": "Vitamin B12 deficiency", "distinguishingFeature": "Diffuse, nail involvement, megaloblastic anaemia, common in vegetarians in India" },
+      { "diagnosis": "Peutz-Jeghers", "distinguishingFeature": "Perioral/buccal/acral, family history, GI polyps" },
+      { "diagnosis": "Melanoma", "distinguishingFeature": "Irregular border, multiple colours, asymmetry, rapid change — ABCDE criteria" }
+    ]
+  },
+
+  "treatment": {
+    "principles": [
+      "Treat the underlying cause first — no topical treatment will work if the trigger (inflammation, drug, hormone) is not removed.",
+      "Strict photoprotection is the cornerstone of all hyperpigmentation treatment — without it, every other intervention fails.",
+      "Set realistic expectations: epidermal pigmentation responds in 3–6 months; dermal pigmentation may take 12–18 months or not respond to topicals.",
+      "Avoid skin-lightening products containing mercury or undisclosed steroids — widespread in India, cause irreversible steroid atrophy and mercury toxicity.",
+      "Depigmenting agents work by inhibiting tyrosinase or disrupting melanosome transfer — combination therapy is more effective than monotherapy."
+    ],
+    "byContext": [
+      {
+        "facility": "PHC",
+        "approach": "Identify and treat underlying cause. Prescribe strict photoprotection. Counsel on avoiding triggers. Treat active acne/eczema to prevent further PIH. Refer if systemic cause suspected.",
+        "drugs": [
+          { "name": "Sunscreen SPF 30–50+ broad spectrum", "dose": "Apply liberally", "route": "Topical", "frequency": "Every 2–3 hours on exposed areas", "duration": "Daily, lifelong maintenance", "notes": "PA+++ or UVA/UVB coverage. Non-negotiable in all types." },
+          { "name": "Hydroquinone 2% cream", "dose": "Thin application", "route": "Topical", "frequency": "Once nightly", "duration": "3 months maximum continuous use", "notes": "Stop for 1 month before restarting. Avoid in pregnancy." }
+        ]
+      },
+      {
+        "facility": "CHC",
+        "approach": "Above + commence Kligman's formula or modified triple combination. Screen for systemic causes (B12, cortisol, glucose). Wood's lamp if available.",
+        "drugs": [
+          { "name": "Kligman's formula (Hydroquinone 4% + Tretinoin 0.05% + Fluocinolone acetonide 0.01%)", "dose": "Thin application", "route": "Topical", "frequency": "Once nightly", "duration": "8–12 weeks, then maintenance with sunscreen", "notes": "Gold standard. Available as fixed combination (e.g. Tri-Luma). Do not use for >4 months continuously." },
+          { "name": "Azelaic acid 15–20% cream", "dose": "Thin application", "route": "Topical", "frequency": "Twice daily", "duration": "3–6 months", "notes": "Safe in pregnancy. Alternative to hydroquinone." },
+          { "name": "Niacinamide 4% cream", "dose": "Thin application", "route": "Topical", "frequency": "Twice daily", "duration": "3–6 months", "notes": "Well tolerated, suitable for sensitive skin, available OTC." }
+        ]
+      },
+      {
+        "facility": "District",
+        "approach": "Above + manage systemic causes (B12 supplementation, endocrine referral). Dermoscopy. Chemical peels (glycolic/lactic acid). Referral for laser if no response.",
+        "drugs": [
+          { "name": "Vitamin B12 (Methylcobalamin) 1500 mcg/day", "dose": "1500 mcg", "route": "Oral", "frequency": "Daily", "duration": "3–6 months", "notes": "If B12 deficiency confirmed. Pigmentation improves with supplementation." },
+          { "name": "Tranexamic acid 250 mg", "dose": "250 mg", "route": "Oral", "frequency": "Twice daily", "duration": "3 months", "notes": "Emerging evidence for melasma. Do not use in thromboembolic risk." }
+        ]
+      }
+    ],
+    "firstLine": [
+      { "intervention": "Broad-spectrum photoprotection SPF ≥30", "evidence": "A", "note": "Mandatory for all types. Reapply every 2–3 hours." },
+      { "intervention": "Treat underlying cause (stop causative drug, treat acne/eczema, correct B12 deficiency)", "evidence": "A" },
+      { "drug": "Hydroquinone 4% (or Kligman's triple combination)", "dose": "Once nightly, thin layer", "duration": "8–12 weeks", "evidence": "A", "note": "Gold standard for melasma and PIH. Maximum 4 months continuous." }
+    ],
+    "secondLine": [
+      { "drug": "Azelaic acid 15–20%", "dose": "Twice daily", "evidence": "A", "note": "Preferred in pregnancy, sensitive skin" },
+      { "drug": "Kojic acid 1–4%", "dose": "Once–twice daily", "evidence": "B", "note": "Often combined with hydroquinone" },
+      { "drug": "Niacinamide 4–5%", "dose": "Twice daily", "evidence": "B", "note": "Inhibits melanosome transfer; well tolerated" },
+      { "drug": "Tranexamic acid (oral 250 mg BD or topical 2–5%)", "dose": "250 mg BD", "duration": "3 months", "evidence": "B", "note": "Emerging evidence especially for melasma" },
+      { "intervention": "Chemical peels (glycolic acid 30–70%, lactic acid)", "evidence": "B", "note": "Dermatology referral for procedure" },
+      { "intervention": "Q-switched Nd:YAG laser / fractional laser", "evidence": "B", "note": "Referral to tertiary centre; risk of PIH if not done correctly in dark skin" }
+    ],
+    "specialPopulations": [
+      {
+        "population": "Pregnancy",
+        "modification": "Azelaic acid (first-line, FDA category B), Niacinamide. Strict photoprotection essential — melasma peaks in pregnancy.",
+        "caution": "AVOID hydroquinone, tretinoin, chemical peels, tranexamic acid, kojic acid. Melasma often improves postpartum."
+      },
+      {
+        "population": "Pediatric",
+        "modification": "Treat underlying inflammatory condition (eczema, insect bites). PIH will typically self-resolve. Photoprotection.",
+        "caution": "Avoid hydroquinone <12 years. Investigate café-au-lait macules for neurofibromatosis."
+      },
+      {
+        "population": "Elderly",
+        "modification": "Photoprotection. Evaluate drug causes carefully (amiodarone common in elderly). Treat B12 deficiency.",
+        "caution": "Skin atrophy risk with prolonged topical steroid-containing combinations; shorter courses."
+      }
+    ],
+    "monitoring": [
+      { "parameter": "Clinical response to topical treatment", "frequency": "Every 8–12 weeks", "action": "If no improvement at 3 months, reassess diagnosis, check adherence, consider second-line or refer" },
+      { "parameter": "Skin for steroid atrophy/telangiectasia", "frequency": "Every 4–8 weeks if on Kligman's", "action": "Stop steroid component if atrophy develops, continue hydroquinone + tretinoin" },
+      { "parameter": "Serum cortisol / ACTH stimulation (if Addison's suspected)", "frequency": "Once at diagnosis, then per endocrinology", "action": "Urgent referral if cortisol <140 nmol/L" },
+      { "parameter": "HbA1c in acanthosis nigricans", "frequency": "Every 6 months", "target": "<5.7%", "action": "Initiate diabetes management if criteria met" }
+    ],
+    "whenToRefer": [
+      "Suspected Addison's disease (mucosal/palmar/scar pigmentation ± systemic features) → URGENT endocrinology",
+      "Acanthosis nigricans in non-obese adult → exclude malignancy (gastric cancer)",
+      "Lesion suspicious for melanoma (ABCDE criteria) → URGENT dermatology/oncology",
+      "Peutz-Jeghers syndrome suspected → gastroenterology for surveillance colonoscopy",
+      "Failure of 3–4 months of optimised first-line treatment",
+      "Requiring procedural treatment (chemical peels, laser, dermabrasion)",
+      "Significant psychosocial distress requiring specialist input"
+    ],
+    "pitfalls": [
+      "Starting topical treatment without identifying and removing the underlying cause — treatment will fail",
+      "Prescribing hydroquinone without mandatory sunscreen — will worsen pigmentation",
+      "Continuous use of Kligman's >4 months — causes steroid atrophy, telangiectasia, tachyphylaxis",
+      "Missing Addison's disease in diffuse pigmentation — potentially life-threatening",
+      "Using fixed-dose steroid + bleaching creams without time limit in dark-skinned patients — common in India, causes severe steroid atrophy",
+      "Not warning patients about exogenous ochronosis from prolonged high-dose hydroquinone use",
+      "Assuming all facial pigmentation in women is melasma without excluding PIH, drug cause, or systemic disease"
+    ]
+  },
+
+  "clinicalPearlsAndPitfalls": {
+    "pearls": [
+      "In India, check for Vitamin B12 deficiency in any patient with diffuse hyperpigmentation — vegetarian diet makes this extremely common and easily treatable.",
+      "Melasma has a significant hormonal component — always ask about OCP use; switching to a non-hormonal contraceptive may be the most effective single intervention.",
+      "Niacinamide 4% is inexpensive, available OTC, safe in pregnancy, and effective — prescribe this while waiting for first-line agents or as adjunct.",
+      "The combination sunscreen + tretinoin alone (without hydroquinone) is effective for PIH and avoids the risks of continuous hydroquinone use.",
+      "Wood's lamp is cheap, non-invasive, and changes management — invest in one for your clinic. Dermal pigmentation (grey under Wood's lamp) will not respond to 6 months of topical therapy and needs early referral.",
+      "Melasma is chronic and relapsing — maintenance therapy with photoprotection and low-potency depigmenting agents is needed even after clearance."
+    ],
+    "pitfalls": [
+      "Missing Addison's disease — always check buccal mucosa, palmar creases, and old scars for pigmentation in any patient with hyperpigmentation + fatigue",
+      "Prescribing steroid-bleach combinations without a stop date — a widespread problem in Indian dermatology practice leading to steroid-damaged skin",
+      "Not warning about the slow timeline of treatment — patients stop treatment at 4 weeks assuming it is ineffective",
+      "Treating the pigmentation while ignoring active acne — PIH will keep recurring until acne is controlled",
+      "Over-prescribing hydroquinone 4% as monotherapy without tretinoin and a steroid — combination is superior and reduces side effects of each individual component"
+    ]
+  },
+
+  "keyTakeaway": [
+    "Hyperpigmentation in India is predominantly PIH from acne and melasma — both are manageable with systematic treatment.",
+    "Always exclude Addison's disease, B12 deficiency, and drug causes before attributing hyperpigmentation to a purely dermatological cause.",
+    "Photoprotection is non-negotiable and is the single most impactful intervention regardless of cause.",
+    "Kligman's triple combination (hydroquinone + tretinoin + low-potency steroid) remains the gold standard for melasma and PIH, used for a maximum of 12 weeks continuously.",
+    "Treatment response is slow; patient education on realistic timelines (3–6 months minimum) and maintenance therapy is as important as the prescription itself."
+  ]
+}

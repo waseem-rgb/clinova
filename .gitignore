@@ -1,46 +1,10 @@
-# ---- secrets ----
+node_modules/
+__pycache__/
+*.pyc
 .env
-.env.*
-*.env
-*.env.*
-
-# ---- node / frontend ----
-frontend/node_modules
-frontend/dist
-frontend/.vite
-frontend/.cache
-
-# ---- python / backend ----
-backend/__pycache__/
-backend/**/*.pyc
-backend/.venv
-backend/venv
-backend/.pytest_cache
-backend/.mypy_cache
-
-# ---- app runtime data ----
-storage/
-*.log
-
-# ---- OS ----
+.env.local
+dist/
+build/
+backend/app/data/chroma_db/
+backend/app/data/pdfs/
 .DS_Store
-
-# ---- DO NOT COMMIT KNOWLEDGEBASE / BIG FILES ----
-backend/app/data/
-backend/pdfs/
-backend/app/pdfs/
-backend/backend__old/
-*.sqlite3
-*.bin
-*.pickle
-*.pdf
-*.json
-
-# allow config/rules JSONs if needed (we will re-allow specific ones later)
-!backend/app/data/rules/
-!backend/app/data/rules/*.json
-# Local runtime data (v2)
-backend/storage/
-backend/venv/
-frontend/node_modules/
-backend/.env

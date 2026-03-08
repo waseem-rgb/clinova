@@ -252,7 +252,7 @@ def _final_format_markdown(topic: str, merged: Dict[str, List[str]]) -> str:
 # CORE RAG FUNCTION (EXHAUSTIVE)
 # -----------------------------
 
-def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
+def query_topic(*, collection_name: str, topic: str, timings: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     STRICT + EXHAUSTIVE RAG:
     - Queries ONE collection only
@@ -260,6 +260,7 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
     - Extracts chunk-by-chunk (map)
     - Merges into comprehensive doctor output (merge)
     """
+    total_start = time.monotonic()
 
     client = get_chroma_client()
     embed_fn = get_embedding_fn()
@@ -272,6 +273,7 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
     gathered: List[Tuple[str, Dict[str, Any], str]] = []  # (dedupe_id, meta, doc)
     seen_ids = set()
 
+    retrieval_start = time.monotonic()
     for q in queries:
         r = collection.query(
             query_texts=[q],
@@ -293,15 +295,22 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
                 break
         if len(gathered) >= MAX_UNIQUE_SOURCES:
             break
+    retrieval_ms = (time.monotonic() - retrieval_start) * 1000
 
     if not gathered:
-        return {
+        result = {
             "topic": topic,
             "source_collection": collection_name,
             "content": "No content found in textbook.",
             "citations": [],
             "debug": {"retrieved_sources": 0},
         }
+        if timings is not None:
+            timings["retrieval_ms"] = retrieval_ms
+            timings["llm_ms"] = 0.0
+            timings["total_ms"] = (time.monotonic() - total_start) * 1000
+            result["timings"] = dict(timings)
+        return result
 
     sources_for_llm: List[Dict[str, Any]] = []
     citations: List[Dict[str, Any]] = []
@@ -319,8 +328,11 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
     batches = _group_batches(sources_for_llm, BATCH_SIZE_SOURCES)
     extracted_packs: List[Dict[str, Any]] = []
 
+    llm_ms_total = 0.0
     for batch in batches:
+        llm_start = time.monotonic()
         pack = _extract_points_from_sources(llm=llm, topic=topic, sources=batch)
+        llm_ms_total += (time.monotonic() - llm_start) * 1000
         extracted_packs.append(pack)
         if SLEEP_BETWEEN_CALLS_SEC > 0:
             time.sleep(SLEEP_BETWEEN_CALLS_SEC)
@@ -328,7 +340,7 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
     merged = _merge_notes(extracted_packs)
     content_md = _final_format_markdown(topic, merged)
 
-    return {
+    result = {
         "topic": topic,
         "source_collection": collection_name,
         "content": content_md,
@@ -341,6 +353,14 @@ def query_topic(*, collection_name: str, topic: str) -> Dict[str, Any]:
             "max_unique_sources": MAX_UNIQUE_SOURCES,
         },
     }
+
+    if timings is not None:
+        timings["retrieval_ms"] = retrieval_ms
+        timings["llm_ms"] = llm_ms_total
+        timings["total_ms"] = (time.monotonic() - total_start) * 1000
+        result["timings"] = dict(timings)
+
+    return result
 
 
 # -----------------------------

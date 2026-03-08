@@ -1,0 +1,13 @@
+{
+  "duplicate_classes": {
+    "nsaid": ["ibuprofen", "diclofenac", "naproxen", "indomethacin"],
+    "acei": ["enalapril", "lisinopril", "ramipril", "ace inhibitor"],
+    "arb": ["losartan", "valsartan", "telmisartan", "arb"],
+    "k_sparing": ["spironolactone", "eplerenone"],
+    "anticoagulant": ["warfarin", "apixaban", "rivaroxaban", "dabigatran"],
+    "antiplatelet": ["aspirin", "clopidogrel"]
+  },
+  "qt_risk": ["azithromycin", "levofloxacin", "ciprofloxacin", "amiodarone"],
+  "bleeding_combo": ["warfarin", "apixaban", "rivaroxaban", "dabigatran", "aspirin", "clopidogrel"],
+  "hyperkalemia_combo": ["ace inhibitor", "arb", "spironolactone", "potassium", "kcl", "potassium chloride"]
+}

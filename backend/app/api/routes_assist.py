@@ -5,9 +5,10 @@ import difflib
 import json
 import os
 import re
+import time
 from typing import List, Optional
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query, Request, Response
 from pydantic import BaseModel, Field
 
 from app.rag.llm_client import client as llm_client
@@ -136,7 +137,7 @@ def _clean_list(items: List[str], limit: int, field: str) -> List[str]:
     """
     cleaned: List[str] = []
     seen = set()
-    
+
     # Patterns that indicate partial/truncated terms
     partial_patterns = [
         r"^\w{1,2}$",  # Very short (1-2 chars)
@@ -145,23 +146,23 @@ def _clean_list(items: List[str], limit: int, field: str) -> List[str]:
         r"^[A-Z]{1,2}$",  # Single capital letters
     ]
     partial_patterns = [p for p in partial_patterns if p]
-    
+
     for item in items:
         s = _normalize_term(field, str(item))
-        
+
         # Skip if too short
         if len(s) < 4:
             continue
-        
+
         # Skip if any word is just 1 character (partial word indicator)
         words = s.split()
         if any(len(w) <= 1 for w in words):
             continue
-        
+
         # Skip if looks like a partial/truncated term
         if any(re.match(p, s) for p in partial_patterns):
             continue
-        
+
         # Skip if starts with lowercase and looks incomplete
         # (e.g., "hortness" instead of "shortness")
         if field == "symptoms" and s and s[0].islower():
@@ -170,7 +171,7 @@ def _clean_list(items: List[str], limit: int, field: str) -> List[str]:
                 # Check if it looks like a truncated word
                 if len(s) < 6 and not s.endswith("ing") and not s.endswith("ed"):
                     continue
-        
+
         key = s.lower()
         if key in seen:
             continue
@@ -181,8 +182,26 @@ def _clean_list(items: List[str], limit: int, field: str) -> List[str]:
     return cleaned
 
 
+def _rule_based_suggestions(field: str, text: str, limit: int) -> List[str]:
+    if field == "symptoms":
+        base = _suggest_from_list(SYMPTOM_SUGGESTIONS, text, limit)
+        return _clean_list(base, limit, field)
+    if field == "comorbidities":
+        base = _suggest_from_list(COMORBID_SUGGESTIONS, text, limit)
+        return _clean_list(base, limit, field)
+    if field == "duration":
+        dur = _duration_from_number(text) or _suggest_from_list(DURATION_SUGGESTIONS, text, limit)
+        return _clean_list(dur, limit, field)
+    return []
+
+
 @router.post("/assist/terms", response_model=AssistResponse)
-async def assist_terms(payload: AssistRequest) -> AssistResponse:
+async def assist_terms(
+    payload: AssistRequest,
+    request: Request,
+    response: Response,
+    llm: bool = Query(False),
+) -> AssistResponse:
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
     field = payload.field.strip().lower()
     if field not in {"symptoms", "duration", "comorbidities"}:
@@ -190,23 +209,25 @@ async def assist_terms(payload: AssistRequest) -> AssistResponse:
 
     text = payload.text.strip()
     if len(text) < 2:
+        response.headers["X-Time-LLM-ms"] = "0"
+        response.headers["X-Time-Retrieval-ms"] = "0"
         return AssistResponse(suggestions=[])
 
-    if field == "symptoms":
-        base = _suggest_from_list(SYMPTOM_SUGGESTIONS, text, payload.limit)
-        if base:
-            return AssistResponse(suggestions=_clean_list(base, payload.limit, field))
-    if field == "comorbidities":
-        base = _suggest_from_list(COMORBID_SUGGESTIONS, text, payload.limit)
-        if base:
-            return AssistResponse(suggestions=_clean_list(base, payload.limit, field))
-    if field == "duration":
-        dur = _duration_from_number(text) or _suggest_from_list(DURATION_SUGGESTIONS, text, payload.limit)
-        if dur:
-            return AssistResponse(suggestions=_clean_list(dur, payload.limit, field))
+    # Rule-based suggestions only by default (fast path)
+    suggestions = _rule_based_suggestions(field, text, payload.limit)
+    if suggestions:
+        response.headers["X-Time-LLM-ms"] = "0"
+        response.headers["X-Time-Retrieval-ms"] = "0"
+        return AssistResponse(suggestions=suggestions)
 
-    if not api_key:
-        return AssistResponse(suggestions=[], note="OPENAI_API_KEY not set")
+    # If rule-based is empty, optionally fallback to LLM
+    if not llm or not api_key:
+        response.headers["X-Time-LLM-ms"] = "0"
+        response.headers["X-Time-Retrieval-ms"] = "0"
+        note = None if llm else None
+        if llm and not api_key:
+            note = "OPENAI_API_KEY not set"
+        return AssistResponse(suggestions=[], note=note)
 
     prompt = (
         "Return ONLY a JSON array of up to {limit} short, clinical suggestions.\n"
@@ -221,6 +242,7 @@ async def assist_terms(payload: AssistRequest) -> AssistResponse:
         "- Each suggestion should be complete and understandable on its own."
     ).format(limit=payload.limit, field=field, text=text)
 
+    llm_start = time.monotonic()
     resp = await llm_client.chat.completions.create(
         model=os.environ.get("OPENAI_CHAT_MODEL", "gpt-4.1-mini"),
         messages=[
@@ -229,16 +251,27 @@ async def assist_terms(payload: AssistRequest) -> AssistResponse:
         ],
         temperature=0.2,
     )
+    llm_ms = (time.monotonic() - llm_start) * 1000
+
+    response.headers["X-Time-LLM-ms"] = str(int(llm_ms))
+    response.headers["X-Time-Retrieval-ms"] = "0"
+
+    total_ctx = getattr(request.state, "timings", None)
+    if total_ctx is not None:
+        total_value = total_ctx.duration_ms("total")
+        if total_value is not None:
+            response.headers["X-Time-Total-ms"] = str(int(total_value))
+
     content = resp.choices[0].message.content or ""
 
-    suggestions: List[str] = []
+    suggestions_out: List[str] = []
     try:
         data = json.loads(content)
         if isinstance(data, list):
-            suggestions = [str(x) for x in data]
+            suggestions_out = [str(x) for x in data]
     except Exception:
         # Fallback: extract bullet/line items
         lines = [l.strip() for l in content.splitlines() if l.strip()]
-        suggestions = lines
+        suggestions_out = lines
 
-    return AssistResponse(suggestions=_clean_list(suggestions, payload.limit, field))
+    return AssistResponse(suggestions=_clean_list(suggestions_out, payload.limit, field))
