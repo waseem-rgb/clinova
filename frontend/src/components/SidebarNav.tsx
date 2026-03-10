@@ -15,6 +15,7 @@ import {
   ScanLine,
   BookOpen,
   Library,
+  Syringe,
 } from "lucide-react";
 
 const NAV_SECTIONS = [
@@ -30,6 +31,7 @@ const NAV_SECTIONS = [
       { icon: GitBranch,    label: "Differential Diagnosis", path: "/ddx" },
       { icon: ClipboardList,label: "Treatment Advisor",      path: "/treatment" },
       { icon: Pill,         label: "Drug Database",          path: "/drug" },
+      { icon: Syringe,     label: "Drug Dose Calculator",   path: "/dose-calculator" },
       { icon: Zap,          label: "Drug Interactions",      path: "/interactions" },
       { icon: Calculator,   label: "Calculators",            path: "/calculators" },
       { icon: FlaskConical, label: "Lab Interpretation",     path: "/lab" },
