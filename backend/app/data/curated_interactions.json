@@ -1,0 +1,4669 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-03-10",
+  "drug_classes": {
+    "nsaid": [
+      "ibuprofen",
+      "diclofenac",
+      "naproxen",
+      "indomethacin",
+      "piroxicam",
+      "ketorolac",
+      "celecoxib",
+      "meloxicam"
+    ],
+    "acei": [
+      "lisinopril",
+      "ramipril",
+      "enalapril",
+      "perindopril",
+      "captopril"
+    ],
+    "arb": [
+      "losartan",
+      "telmisartan",
+      "valsartan",
+      "olmesartan",
+      "candesartan",
+      "irbesartan"
+    ],
+    "statin": [
+      "atorvastatin",
+      "rosuvastatin",
+      "simvastatin",
+      "pravastatin",
+      "fluvastatin"
+    ],
+    "ssri": [
+      "fluoxetine",
+      "sertraline",
+      "paroxetine",
+      "escitalopram",
+      "citalopram",
+      "fluvoxamine"
+    ],
+    "snri": [
+      "venlafaxine",
+      "duloxetine",
+      "desvenlafaxine"
+    ],
+    "opioid": [
+      "morphine",
+      "tramadol",
+      "codeine",
+      "fentanyl",
+      "oxycodone",
+      "hydrocodone",
+      "pethidine",
+      "tapentadol"
+    ],
+    "benzodiazepine": [
+      "clonazepam",
+      "diazepam",
+      "lorazepam",
+      "alprazolam",
+      "midazolam"
+    ],
+    "anticoagulant": [
+      "warfarin",
+      "apixaban",
+      "rivaroxaban",
+      "dabigatran",
+      "enoxaparin",
+      "heparin"
+    ],
+    "antiplatelet": [
+      "aspirin",
+      "clopidogrel",
+      "prasugrel",
+      "ticagrelor"
+    ],
+    "fluoroquinolone": [
+      "ciprofloxacin",
+      "levofloxacin",
+      "moxifloxacin",
+      "ofloxacin"
+    ],
+    "macrolide": [
+      "azithromycin",
+      "clarithromycin",
+      "erythromycin"
+    ],
+    "sulfonylurea": [
+      "glimepiride",
+      "glipizide",
+      "gliclazide",
+      "glibenclamide"
+    ],
+    "k_sparing_diuretic": [
+      "spironolactone",
+      "eplerenone",
+      "amiloride"
+    ],
+    "loop_diuretic": [
+      "furosemide",
+      "torsemide",
+      "bumetanide"
+    ],
+    "maoi": [
+      "phenelzine",
+      "tranylcypromine",
+      "selegiline",
+      "linezolid",
+      "methylene_blue"
+    ],
+    "aminoglycoside": [
+      "gentamicin",
+      "amikacin",
+      "tobramycin",
+      "streptomycin"
+    ],
+    "antiepileptic": [
+      "carbamazepine",
+      "phenytoin",
+      "valproate",
+      "lamotrigine",
+      "phenobarbital"
+    ],
+    "oral_contraceptive": [
+      "oral_contraceptives"
+    ],
+    "tca": [
+      "amitriptyline",
+      "nortriptyline",
+      "imipramine",
+      "desipramine"
+    ],
+    "thiazide_diuretic": [
+      "hydrochlorothiazide",
+      "chlorthalidone",
+      "indapamide"
+    ],
+    "atypical_antipsychotic": [
+      "olanzapine",
+      "quetiapine",
+      "aripiprazole",
+      "clozapine"
+    ],
+    "typical_antipsychotic": [
+      "haloperidol"
+    ],
+    "tetracycline": [
+      "tetracycline",
+      "doxycycline",
+      "minocycline"
+    ],
+    "nitrate": [
+      "nitroglycerin",
+      "isosorbide_dinitrate",
+      "isosorbide_mononitrate"
+    ],
+    "pde5_inhibitor": [
+      "sildenafil",
+      "tadalafil",
+      "vardenafil"
+    ],
+    "carbapenem": [
+      "meropenem",
+      "imipenem",
+      "ertapenem"
+    ],
+    "fibrate": [
+      "fenofibrate",
+      "gemfibrozil"
+    ],
+    "beta_blocker": [
+      "metoprolol",
+      "atenolol",
+      "propranolol",
+      "bisoprolol",
+      "carvedilol"
+    ],
+    "calcium_channel_blocker": [
+      "verapamil",
+      "diltiazem",
+      "amlodipine",
+      "nifedipine"
+    ]
+  },
+  "interactions": [
+    {
+      "drug_a": "warfarin",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Major",
+      "mechanism": "Aspirin inhibits platelet function via COX-1 while warfarin inhibits clotting factors. Combined = additive bleeding risk.",
+      "clinical_effect": "Significantly increased risk of major bleeding, especially GI hemorrhage",
+      "management": "Use combination only when clearly indicated (e.g., mechanical valve + CAD). Use low-dose aspirin (75-100 mg). Add PPI for GI protection.",
+      "monitoring": [
+        "INR more frequently",
+        "Signs of bleeding (melena, hematemesis, bruising)",
+        "Hemoglobin/hematocrit",
+        "Stool guaiac"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ACC/AHA guidelines",
+        "WOEST trial"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "nsaid",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs inhibit platelet function, cause GI mucosal erosion, and may displace warfarin from protein binding.",
+      "clinical_effect": "2-3\u00d7 increased GI bleeding risk. INR may increase unpredictably.",
+      "management": "AVOID NSAIDs if possible. Use paracetamol for pain. If essential, use lowest dose + PPI + monitor INR closely.",
+      "monitoring": [
+        "INR within 3-5 days",
+        "GI bleeding symptoms",
+        "Hemoglobin"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple observational studies"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "ciprofloxacin",
+      "also_applies_to": {
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Major",
+      "mechanism": "Ciprofloxacin inhibits CYP1A2 and disrupts gut flora (reducing vitamin K synthesis), potentiating warfarin effect.",
+      "clinical_effect": "Significantly elevated INR (can double or triple). High bleeding risk.",
+      "management": "Use alternative antibiotic if possible. If unavoidable, reduce warfarin dose empirically and check INR every 2-3 days.",
+      "monitoring": [
+        "INR every 2-3 days during antibiotic course",
+        "Signs of bleeding",
+        "INR 3-5 days after completing antibiotic"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple case series and PK studies"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "metronidazole",
+      "severity": "Major",
+      "mechanism": "Metronidazole inhibits CYP2C9, the primary pathway for S-warfarin metabolism (the more potent enantiomer).",
+      "clinical_effect": "Markedly elevated INR. High bleeding risk.",
+      "management": "Reduce warfarin dose by 25-50%. Monitor INR every 2-3 days. Consider alternative antimicrobial.",
+      "monitoring": [
+        "INR every 2-3 days",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies",
+        "Clinical case reports"
+      ]
+    },
+    {
+      "drug_a": "acei",
+      "drug_b": "spironolactone",
+      "also_applies_to": {
+        "drug_a_class": "acei",
+        "drug_b_class": "k_sparing_diuretic"
+      },
+      "severity": "Major",
+      "mechanism": "Both reduce potassium excretion \u2014 ACEi by reducing aldosterone, spironolactone by blocking aldosterone receptor.",
+      "clinical_effect": "Life-threatening hyperkalemia \u2192 cardiac arrhythmias, cardiac arrest",
+      "management": "Use low-dose spironolactone (\u226425 mg). Check K+ before starting. Avoid if K+ >5.0 or eGFR <30. Avoid concurrent K+ supplements.",
+      "monitoring": [
+        "Potassium at baseline, 1 week, 1 month, then every 3 months",
+        "Renal function",
+        "ECG if K+ >5.5"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "RALES trial safety data",
+        "ACC/AHA HF guidelines"
+      ]
+    },
+    {
+      "drug_a": "acei",
+      "drug_b": "arb",
+      "also_applies_to": {
+        "drug_a_class": "acei",
+        "drug_b_class": "arb"
+      },
+      "severity": "Major",
+      "mechanism": "Dual RAAS blockade causes excessive potassium retention and hypotension.",
+      "clinical_effect": "Hyperkalemia, hypotension, acute kidney injury. ONTARGET trial showed no benefit but more harm.",
+      "management": "AVOID combination. Choose one agent (ACEi OR ARB, not both).",
+      "monitoring": [
+        "Not applicable \u2014 avoid combination"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ONTARGET trial",
+        "VA NEPHRON-D trial"
+      ]
+    },
+    {
+      "drug_a": "nsaid",
+      "drug_b": "acei",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "acei"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs reduce prostaglandin-mediated renal blood flow and blunt the antihypertensive effect of ACEi.",
+      "clinical_effect": "Acute kidney injury (especially with dehydration). Reduced BP lowering by 5-10 mmHg. Hyperkalemia risk.",
+      "management": "Avoid NSAIDs in patients on ACEi/ARB. Use paracetamol for pain. If NSAID essential, use lowest dose for shortest duration and ensure adequate hydration.",
+      "monitoring": [
+        "Creatinine and potassium within 1 week",
+        "Blood pressure",
+        "Urine output"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple clinical studies",
+        "Triple whammy concept"
+      ]
+    },
+    {
+      "drug_a": "nsaid",
+      "drug_b": "arb",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "arb"
+      },
+      "severity": "Major",
+      "mechanism": "Same as NSAID + ACEi. NSAIDs reduce prostaglandin-mediated renal perfusion.",
+      "clinical_effect": "Acute kidney injury, reduced antihypertensive effect, hyperkalemia.",
+      "management": "Avoid NSAIDs. Use paracetamol. If essential, monitor renal function and electrolytes.",
+      "monitoring": [
+        "Creatinine and potassium",
+        "Blood pressure",
+        "Hydration status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Triple whammy studies"
+      ]
+    },
+    {
+      "drug_a": "ssri",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": "ssri"
+      },
+      "severity": "Major",
+      "mechanism": "Both increase serotonin. Tramadol inhibits serotonin reuptake in addition to its opioid effects.",
+      "clinical_effect": "Serotonin syndrome: agitation, hyperthermia, hyperreflexia, tremor, myoclonus, diarrhea. Can be fatal.",
+      "management": "Use alternative analgesic if possible (paracetamol, ibuprofen, morphine). If combination needed, start low and monitor closely.",
+      "monitoring": [
+        "Mental status changes",
+        "Temperature",
+        "Neuromuscular symptoms (clonus, tremor)",
+        "Vital signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple case reports",
+        "FDA safety communication"
+      ]
+    },
+    {
+      "drug_a": "ssri",
+      "drug_b": "maoi",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "maoi"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "MAOIs prevent serotonin breakdown while SSRIs prevent reuptake \u2192 massive serotonin accumulation.",
+      "clinical_effect": "LIFE-THREATENING serotonin syndrome. Hyperthermia, rhabdomyolysis, DIC, multi-organ failure, death.",
+      "management": "ABSOLUTE CONTRAINDICATION. 2-week washout required between agents. 5-week washout if switching from fluoxetine (long half-life).",
+      "monitoring": [
+        "Do not combine \u2014 no monitoring can make this safe"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Textbook contraindication"
+      ]
+    },
+    {
+      "drug_a": "linezolid",
+      "drug_b": "ssri",
+      "also_applies_to": {
+        "drug_b_class": "ssri"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Linezolid has reversible MAO-inhibitor activity. Combined with SSRI \u2192 serotonin syndrome.",
+      "clinical_effect": "Serotonin syndrome \u2014 potentially fatal.",
+      "management": "Avoid combination. Use alternative antibiotic. If linezolid absolutely necessary, stop SSRI and monitor closely.",
+      "monitoring": [
+        "If unavoidable: continuous vitals, mental status, neuromuscular exam"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA safety communication 2011",
+        "Multiple case reports"
+      ]
+    },
+    {
+      "drug_a": "opioid",
+      "drug_b": "benzodiazepine",
+      "also_applies_to": {
+        "drug_a_class": "opioid",
+        "drug_b_class": "benzodiazepine"
+      },
+      "severity": "Major",
+      "mechanism": "Additive CNS and respiratory depression through different mechanisms (mu-opioid + GABA-A).",
+      "clinical_effect": "Respiratory depression, profound sedation, coma, DEATH. Leading cause of overdose deaths.",
+      "management": "AVOID combination if possible. If essential: use lowest effective doses, shortest duration. FDA boxed warning on both drug classes.",
+      "monitoring": [
+        "Respiratory rate (goal >12/min)",
+        "Oxygen saturation",
+        "Sedation level",
+        "Naloxone available at bedside"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA boxed warning 2016",
+        "CDC opioid guidelines"
+      ]
+    },
+    {
+      "drug_a": "gabapentin",
+      "drug_b": "opioid",
+      "also_applies_to": {
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Additive CNS and respiratory depression.",
+      "clinical_effect": "Increased risk of respiratory depression, especially in elderly and renal impairment.",
+      "management": "Start gabapentin at lower doses. Monitor respiratory status. Reduce opioid dose if adding gabapentin.",
+      "monitoring": [
+        "Respiratory rate",
+        "Sedation level",
+        "Oxygen saturation"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA warning 2019"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "contrast",
+      "severity": "Major",
+      "mechanism": "Iodinated contrast can cause acute kidney injury, reducing metformin clearance \u2192 lactic acidosis.",
+      "clinical_effect": "Lactic acidosis (rare but potentially fatal): nausea, vomiting, abdominal pain, hyperventilation, altered consciousness.",
+      "management": "Hold metformin on the day of and for 48 hours after iodinated contrast. Resume only after confirming stable creatinine.",
+      "monitoring": [
+        "Creatinine before and 48h after contrast",
+        "Symptoms of lactic acidosis",
+        "Lactate if symptomatic"
+      ],
+      "evidence_level": "Guideline-based",
+      "references": [
+        "ACR contrast manual",
+        "Radiology society guidelines"
+      ]
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "amiodarone",
+      "severity": "Major",
+      "mechanism": "Amiodarone inhibits P-glycoprotein and renal tubular secretion of digoxin, increasing levels by 70-100%.",
+      "clinical_effect": "Digoxin toxicity: nausea, vomiting, visual disturbances, arrhythmias (bidirectional VT, PAT with block).",
+      "management": "Reduce digoxin dose by 50% when starting amiodarone. Monitor digoxin levels closely. Target 0.5-0.9 ng/mL.",
+      "monitoring": [
+        "Digoxin level within 1 week",
+        "ECG",
+        "Signs of toxicity",
+        "Potassium (hypokalemia worsens toxicity)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies",
+        "Clinical guidelines"
+      ]
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "verapamil",
+      "severity": "Major",
+      "mechanism": "Verapamil inhibits P-glycoprotein and reduces renal clearance of digoxin. Increases digoxin levels by 50-75%.",
+      "clinical_effect": "Digoxin toxicity plus additive AV nodal depression \u2192 severe bradycardia, heart block.",
+      "management": "Reduce digoxin dose by 50%. Avoid in patients with heart block. Monitor levels and HR closely.",
+      "monitoring": [
+        "Digoxin level",
+        "Heart rate",
+        "ECG",
+        "Signs of toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "simvastatin",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Amiodarone inhibits CYP3A4, markedly increasing simvastatin levels (2-3 fold).",
+      "clinical_effect": "Myopathy, rhabdomyolysis (muscle breakdown \u2192 renal failure).",
+      "management": "Limit simvastatin to 20 mg/day with amiodarone. Preferably switch to pravastatin or rosuvastatin (not CYP3A4 dependent).",
+      "monitoring": [
+        "CK levels at baseline and if muscle symptoms",
+        "Muscle pain/weakness assessment",
+        "Renal function",
+        "Urine color (dark urine = myoglobinuria)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA label restriction",
+        "ACC/AHA statin guidelines"
+      ]
+    },
+    {
+      "drug_a": "statin",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": "statin"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin is a potent CYP3A4 inhibitor. Dramatically increases levels of atorvastatin, simvastatin, lovastatin.",
+      "clinical_effect": "Rhabdomyolysis risk. Most dangerous with simvastatin.",
+      "management": "HOLD statin during clarithromycin course. OR use azithromycin instead (minimal CYP3A4 inhibition). Pravastatin and rosuvastatin are safer options.",
+      "monitoring": [
+        "Muscle symptoms",
+        "CK if symptomatic",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA guidance",
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "nsaid",
+      "also_applies_to": {
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs reduce renal prostaglandins \u2192 decreased lithium clearance \u2192 25-60% increase in lithium levels.",
+      "clinical_effect": "Lithium toxicity: tremor, ataxia, confusion, seizures, arrhythmias. Can be fatal.",
+      "management": "AVOID NSAIDs. Use paracetamol for pain. If NSAID essential, reduce lithium dose and monitor levels within 5 days.",
+      "monitoring": [
+        "Lithium level within 5 days of NSAID start",
+        "Neurological symptoms",
+        "Renal function",
+        "Hydration status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple PK studies and case reports"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "acei",
+      "also_applies_to": {
+        "drug_b_class": "acei"
+      },
+      "severity": "Major",
+      "mechanism": "ACE inhibitors reduce GFR and increase proximal tubular reabsorption of lithium.",
+      "clinical_effect": "Lithium toxicity \u2014 can increase levels by 25-35%.",
+      "management": "Monitor lithium levels closely when starting/changing ACEi dose. Reduce lithium if needed.",
+      "monitoring": [
+        "Lithium level within 1 week",
+        "Renal function",
+        "Signs of lithium toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Clinical studies"
+      ]
+    },
+    {
+      "drug_a": "aminoglycoside",
+      "drug_b": "vancomycin",
+      "also_applies_to": {
+        "drug_a_class": "aminoglycoside"
+      },
+      "severity": "Major",
+      "mechanism": "Additive nephrotoxicity and ototoxicity.",
+      "clinical_effect": "Acute kidney injury (risk increases from ~5% to ~20-35%). Irreversible hearing loss.",
+      "management": "Monitor renal function closely. Use extended-interval aminoglycoside dosing. Limit duration. Consider alternatives.",
+      "monitoring": [
+        "Creatinine daily",
+        "Aminoglycoside and vancomycin levels",
+        "Urine output",
+        "Audiometry if prolonged"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple clinical studies"
+      ]
+    },
+    {
+      "drug_a": "aminoglycoside",
+      "drug_b": "furosemide",
+      "also_applies_to": {
+        "drug_a_class": "aminoglycoside",
+        "drug_b_class": "loop_diuretic"
+      },
+      "severity": "Major",
+      "mechanism": "Loop diuretics are independently ototoxic and may increase aminoglycoside uptake in cochlear hair cells.",
+      "clinical_effect": "Increased risk of irreversible ototoxicity (hearing loss, vestibular damage).",
+      "management": "Avoid concurrent high-dose IV furosemide with aminoglycosides. Use alternative diuretic if possible.",
+      "monitoring": [
+        "Hearing assessment",
+        "Drug levels",
+        "Renal function",
+        "Electrolytes"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Clinical studies and case reports"
+      ]
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "nsaid",
+      "also_applies_to": {
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs reduce renal clearance of methotrexate and may displace it from protein binding.",
+      "clinical_effect": "Methotrexate toxicity: pancytopenia, mucositis, hepatotoxicity, renal failure. Can be fatal with high-dose MTX.",
+      "management": "With low-dose MTX (RA): use caution, monitor closely. With high-dose MTX: AVOID all NSAIDs. Use paracetamol.",
+      "monitoring": [
+        "CBC with differential",
+        "Renal function",
+        "LFTs",
+        "Methotrexate levels (high-dose)",
+        "Mucositis"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Multiple studies and guidelines"
+      ]
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "omeprazole",
+      "severity": "Moderate",
+      "mechanism": "Omeprazole inhibits CYP2C19, which is required to convert clopidogrel prodrug to its active metabolite.",
+      "clinical_effect": "Reduced antiplatelet effect of clopidogrel. Possible increased cardiovascular events (debated).",
+      "management": "Use pantoprazole instead (minimal CYP2C19 effect). Avoid omeprazole and esomeprazole with clopidogrel.",
+      "monitoring": [
+        "Clinical cardiovascular events",
+        "Consider platelet function testing"
+      ],
+      "evidence_level": "Moderate (FDA warning, clinical significance debated)",
+      "references": [
+        "FDA safety communication 2009",
+        "COGENT trial"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "warfarin",
+      "severity": "Major",
+      "mechanism": "Complex bidirectional: phenytoin induces warfarin metabolism (long-term) but may initially displace from protein binding (transient INR increase).",
+      "clinical_effect": "Unpredictable INR changes. May initially increase then decrease warfarin effect.",
+      "management": "Monitor INR frequently when starting, stopping, or changing phenytoin dose. Adjust warfarin accordingly.",
+      "monitoring": [
+        "INR every 2-3 days during changes",
+        "Phenytoin levels",
+        "Signs of bleeding or thrombosis"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "warfarin",
+      "severity": "Major",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4, reducing warfarin metabolism. Effect persists for weeks after stopping amiodarone.",
+      "clinical_effect": "INR increases significantly (often doubles). Bleeding risk.",
+      "management": "Reduce warfarin dose by 30-50% when starting amiodarone. Monitor INR weekly for first month, then monthly.",
+      "monitoring": [
+        "INR weekly for 4-6 weeks, then monthly",
+        "Signs of bleeding",
+        "Note: interaction persists weeks after amiodarone stopped"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies",
+        "Clinical guidelines"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "alcohol",
+      "severity": "Major",
+      "mechanism": "Both metformin and alcohol increase lactate production and impair hepatic gluconeogenesis.",
+      "clinical_effect": "Increased risk of lactic acidosis (rare but potentially fatal). Hypoglycemia risk.",
+      "management": "Advise patients to limit alcohol intake. Avoid binge drinking. Do not take metformin during heavy alcohol consumption.",
+      "monitoring": [
+        "Lactate if symptomatic (malaise, myalgia, respiratory distress)",
+        "Blood glucose",
+        "Liver function"
+      ],
+      "evidence_level": "Guideline-based",
+      "references": [
+        "Product labels",
+        "Clinical guidelines"
+      ]
+    },
+    {
+      "drug_a": "potassium",
+      "drug_b": "acei",
+      "also_applies_to": {
+        "drug_b_class": "acei"
+      },
+      "severity": "Major",
+      "mechanism": "ACEi reduces aldosterone \u2192 K+ retention. Supplemental potassium adds to this.",
+      "clinical_effect": "Hyperkalemia \u2192 cardiac arrhythmias, cardiac arrest.",
+      "management": "Avoid potassium supplements unless documented hypokalemia. Check K+ before and after starting supplements.",
+      "monitoring": [
+        "Serum potassium",
+        "ECG if K+ >5.5",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Clinical guidelines"
+      ]
+    },
+    {
+      "drug_a": "potassium",
+      "drug_b": "arb",
+      "also_applies_to": {
+        "drug_b_class": "arb"
+      },
+      "severity": "Major",
+      "mechanism": "ARBs reduce aldosterone \u2192 K+ retention. Supplemental potassium adds to this.",
+      "clinical_effect": "Hyperkalemia \u2192 cardiac arrhythmias.",
+      "management": "Avoid K+ supplements unless documented hypokalemia. Monitor K+ closely.",
+      "monitoring": [
+        "Serum potassium",
+        "ECG if K+ >5.5"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Clinical guidelines"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "amoxicillin",
+      "severity": "Moderate",
+      "mechanism": "Broad-spectrum antibiotics disrupt gut flora, reducing bacterial vitamin K synthesis.",
+      "clinical_effect": "Possible INR increase during antibiotic course.",
+      "management": "Monitor INR during antibiotic course. Check INR after 3-5 days of antibiotic.",
+      "monitoring": [
+        "INR after 3-5 days of antibiotic",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Moderate",
+      "references": [
+        "Case reports and observational data"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "diltiazem",
+      "severity": "Moderate",
+      "mechanism": "Diltiazem inhibits CYP3A4, may increase warfarin levels.",
+      "clinical_effect": "Increased INR and potential bleeding risk.",
+      "management": "Monitor INR weekly when starting diltiazem. Adjust warfarin if needed.",
+      "monitoring": [
+        "INR weekly initially",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Moderate",
+      "references": [
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "calcium",
+      "severity": "Moderate",
+      "mechanism": "Calcium salts chelate levothyroxine in GI tract, reducing absorption by 25-40%.",
+      "clinical_effect": "Reduced levothyroxine bioavailability \u2192 hypothyroidism symptoms, elevated TSH.",
+      "management": "Separate levothyroxine and calcium by at least 4 hours. Take levothyroxine on empty stomach, calcium with meals.",
+      "monitoring": [
+        "TSH 6-8 weeks after any change",
+        "Symptoms of hypothyroidism"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "iron",
+      "severity": "Moderate",
+      "mechanism": "Iron salts chelate levothyroxine, reducing absorption.",
+      "clinical_effect": "Reduced levothyroxine levels \u2192 hypothyroidism.",
+      "management": "Separate by at least 4 hours.",
+      "monitoring": [
+        "TSH 6-8 weeks after any change"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "pantoprazole",
+      "also_applies_to": {
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "PPIs increase gastric pH, which may reduce dissolution and absorption of levothyroxine tablets.",
+      "clinical_effect": "Possible reduction in levothyroxine absorption \u2192 elevated TSH.",
+      "management": "Monitor TSH when adding or stopping PPI. May need levothyroxine dose increase.",
+      "monitoring": [
+        "TSH 6-8 weeks after PPI change"
+      ],
+      "evidence_level": "Moderate",
+      "references": [
+        "Clinical studies"
+      ]
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "tizanidine",
+      "severity": "Contraindicated",
+      "mechanism": "Ciprofloxacin strongly inhibits CYP1A2, increasing tizanidine levels by 10-fold.",
+      "clinical_effect": "Severe hypotension, profound sedation, respiratory depression.",
+      "management": "CONTRAINDICATED \u2014 do not combine. Use alternative antibiotic or alternative muscle relaxant.",
+      "monitoring": [
+        "Do not combine"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA label",
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "nsaid",
+      "drug_b": "loop_diuretic",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "loop_diuretic"
+      },
+      "severity": "Moderate",
+      "mechanism": "NSAIDs reduce prostaglandin-mediated renal blood flow, blunting diuretic response.",
+      "clinical_effect": "Reduced diuretic and antihypertensive effect. Fluid retention. Possible AKI (triple whammy with RAAS inhibitor).",
+      "management": "Avoid NSAIDs if possible. If essential, monitor weight, BP, and renal function. Beware of 'triple whammy' (NSAID + diuretic + ACEi/ARB).",
+      "monitoring": [
+        "Blood pressure",
+        "Weight",
+        "Renal function",
+        "Edema assessment"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Triple whammy studies"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "sulfonylurea",
+      "also_applies_to": {
+        "drug_b_class": "sulfonylurea"
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive glucose-lowering effect. Sulfonylureas cause insulin-independent hypoglycemia while metformin enhances insulin sensitivity.",
+      "clinical_effect": "Increased hypoglycemia risk (primarily from sulfonylurea component).",
+      "management": "Common and appropriate combination. Educate about hypoglycemia symptoms. Consider lower sulfonylurea dose in elderly/renal impairment.",
+      "monitoring": [
+        "Blood glucose",
+        "HbA1c",
+        "Hypoglycemia episodes",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Diabetes management guidelines"
+      ]
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "azithromycin",
+      "also_applies_to": {
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Both prolong the QT interval through different mechanisms (amiodarone: K+ channel block; azithromycin: hERG channel).",
+      "clinical_effect": "Additive QT prolongation \u2192 Torsades de Pointes, ventricular arrhythmias, sudden cardiac death.",
+      "management": "Avoid combination if possible. If essential, obtain baseline ECG, correct electrolytes, continuous cardiac monitoring.",
+      "monitoring": [
+        "ECG with QTc measurement",
+        "Electrolytes (K+, Mg2+)",
+        "Cardiac monitoring"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "CredibleMeds QT drug list"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "carbamazepine",
+      "severity": "Major",
+      "mechanism": "Both are CYP3A4 inducers. Each reduces the other's levels through enzyme induction.",
+      "clinical_effect": "Reduced efficacy of both drugs \u2192 breakthrough seizures. Complex and unpredictable interactions.",
+      "management": "Monitor levels of both drugs. May need dose increases. Consider if combination is truly necessary.",
+      "monitoring": [
+        "Drug levels of both agents",
+        "Seizure frequency",
+        "Adjust doses based on levels and clinical response"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Epilepsy guidelines"
+      ]
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "ibuprofen",
+      "severity": "Moderate",
+      "mechanism": "Ibuprofen competes with aspirin for COX-1 binding site, preventing aspirin's irreversible platelet inhibition.",
+      "clinical_effect": "Reduced antiplatelet effect of aspirin \u2192 potential cardiovascular events. Also additive GI bleeding risk.",
+      "management": "Take aspirin at least 30 minutes before or 8 hours after ibuprofen. Or use alternative analgesic (paracetamol).",
+      "monitoring": [
+        "Cardiovascular events",
+        "GI bleeding symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA advisory 2006",
+        "PK studies"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "diclofenac",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "Additive anticoagulant effect combined with NSAID-induced GI mucosal erosion increases bleeding risk significantly.",
+      "clinical_effect": "Significantly increased risk of GI bleeding and hemorrhage. INR may rise unpredictably.",
+      "management": "Avoid combination. Use paracetamol for pain. If NSAID essential, use lowest dose for shortest duration with PPI cover and close INR monitoring.",
+      "monitoring": [
+        "INR within 3-5 days",
+        "Signs of GI bleeding",
+        "Hemoglobin/hematocrit"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "fluconazole",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Fluconazole inhibits CYP2C9 and CYP3A4, markedly reducing warfarin metabolism and increasing INR.",
+      "clinical_effect": "Significantly elevated INR with high risk of bleeding. Effect can persist after fluconazole is stopped.",
+      "management": "Reduce warfarin dose by 25-50% when starting fluconazole. Monitor INR every 2-3 days. Consider alternative antifungal.",
+      "monitoring": [
+        "INR every 2-3 days",
+        "Signs of bleeding",
+        "INR after fluconazole completion"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4, substantially reducing warfarin clearance. Effect persists for weeks due to long amiodarone half-life.",
+      "clinical_effect": "INR often doubles. Significant bleeding risk that can persist weeks after amiodarone discontinuation.",
+      "management": "Reduce warfarin dose by 30-50% when initiating amiodarone. Monitor INR weekly for at least 6 weeks.",
+      "monitoring": [
+        "INR weekly for 6 weeks then monthly",
+        "Signs of bleeding",
+        "Note prolonged interaction after amiodarone stopped"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "phenytoin",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Mutual displacement from plasma protein binding sites. Phenytoin may initially increase free warfarin, then induce its metabolism long-term.",
+      "clinical_effect": "Unpredictable changes in both warfarin and phenytoin levels. Risk of both bleeding and subtherapeutic anticoagulation.",
+      "management": "Monitor INR and phenytoin levels frequently when starting, adjusting, or stopping either drug.",
+      "monitoring": [
+        "INR every 2-3 days",
+        "Free and total phenytoin levels",
+        "Signs of bleeding or thrombosis"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine is a potent CYP3A4 inducer, significantly reducing rivaroxaban plasma concentrations.",
+      "clinical_effect": "Subtherapeutic DOAC levels leading to increased risk of thromboembolic events including stroke.",
+      "management": "Avoid combination. Consider warfarin with INR monitoring or use a non-enzyme-inducing antiepileptic.",
+      "monitoring": [
+        "Clinical signs of thromboembolism",
+        "Anti-Xa levels if combination unavoidable"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "rivaroxaban",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Ketoconazole is a potent dual CYP3A4 and P-glycoprotein inhibitor, markedly increasing rivaroxaban levels.",
+      "clinical_effect": "Significantly elevated DOAC levels with increased risk of major bleeding.",
+      "management": "Avoid combination. Use alternative antifungal (fluconazole at lower doses or terbinafine for dermatophytes).",
+      "monitoring": [
+        "Signs of bleeding",
+        "Anti-Xa levels if combination unavoidable"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "apixaban",
+      "drug_b": "phenytoin",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Phenytoin induces CYP3A4 and P-glycoprotein, substantially reducing apixaban plasma concentrations.",
+      "clinical_effect": "Subtherapeutic apixaban levels with increased thromboembolic risk.",
+      "management": "Avoid combination. Consider warfarin with INR monitoring or a non-enzyme-inducing antiepileptic.",
+      "monitoring": [
+        "Clinical signs of thromboembolism",
+        "Anti-Xa levels if combination unavoidable"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "heparin",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive bleeding risk from anticoagulant effect of heparin combined with NSAID-induced platelet inhibition and GI erosion.",
+      "clinical_effect": "Increased risk of bleeding, particularly GI hemorrhage.",
+      "management": "Use paracetamol for pain when possible. If NSAID required, use lowest effective dose and add PPI.",
+      "monitoring": [
+        "aPTT",
+        "Signs of bleeding",
+        "Hemoglobin/hematocrit"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "enoxaparin",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive bleeding risk from anticoagulant and antiplatelet mechanisms.",
+      "clinical_effect": "Increased bleeding risk. Combination may be used intentionally in acute coronary syndromes.",
+      "management": "Use cautiously post-ACS where combination is guideline-recommended. Monitor for bleeding. Add PPI for GI protection.",
+      "monitoring": [
+        "Anti-Xa levels",
+        "Signs of bleeding",
+        "Hemoglobin",
+        "Platelet count"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "cranberry juice",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "Cranberry flavonoids may inhibit CYP2C9 and CYP3A4, potentially increasing warfarin effect.",
+      "clinical_effect": "May increase INR with large or regular cranberry consumption. Risk of bleeding.",
+      "management": "Advise patients to maintain consistent cranberry intake or avoid large quantities. Monitor INR if significant dietary changes.",
+      "monitoring": [
+        "INR if cranberry consumption changes significantly"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "trimethoprim",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Trimethoprim inhibits CYP2C9, the primary enzyme responsible for S-warfarin metabolism.",
+      "clinical_effect": "Significantly elevated INR with high bleeding risk.",
+      "management": "Reduce warfarin dose empirically by 25-50%. Monitor INR every 2-3 days during trimethoprim course.",
+      "monitoring": [
+        "INR every 2-3 days",
+        "Signs of bleeding",
+        "INR after antibiotic completion"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "warfarin",
+      "drug_b": "erythromycin",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Moderate",
+      "mechanism": "Erythromycin inhibits CYP3A4, which metabolizes R-warfarin, and may also disrupt gut flora reducing vitamin K synthesis.",
+      "clinical_effect": "Moderately elevated INR with increased bleeding risk.",
+      "management": "Monitor INR closely during erythromycin course. Consider azithromycin as a safer macrolide alternative.",
+      "monitoring": [
+        "INR every 3-5 days",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "dabigatran",
+      "drug_b": "verapamil",
+      "also_applies_to": {
+        "drug_a_class": "anticoagulant",
+        "drug_b_class": "calcium_channel_blocker"
+      },
+      "severity": "Moderate",
+      "mechanism": "Verapamil inhibits P-glycoprotein, increasing dabigatran absorption and plasma levels by 12-180% depending on timing.",
+      "clinical_effect": "Elevated dabigatran levels with increased bleeding risk.",
+      "management": "Reduce dabigatran dose to 110 mg twice daily when co-administered with verapamil. Take dabigatran 2 hours before verapamil to minimize interaction.",
+      "monitoring": [
+        "Signs of bleeding",
+        "Renal function",
+        "Thrombin time or ecarin clotting time if available"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "oral_contraceptives",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "oral_contraceptive"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine is a potent CYP3A4 inducer, markedly increasing metabolism of ethinyl estradiol and progestogens.",
+      "clinical_effect": "Reduced oral contraceptive efficacy leading to contraceptive failure and unintended pregnancy.",
+      "management": "Use alternative non-hormonal contraception (copper IUD) or high-dose OCP. Avoid low-dose hormonal methods.",
+      "monitoring": [
+        "Breakthrough bleeding as indicator of reduced efficacy",
+        "Pregnancy testing if breakthrough bleeding occurs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "erythromycin",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Erythromycin inhibits CYP3A4, the primary metabolic pathway for carbamazepine, causing rapid accumulation.",
+      "clinical_effect": "Carbamazepine toxicity: dizziness, ataxia, diplopia, nystagmus, nausea, drowsiness. Can be severe.",
+      "management": "Avoid combination. Use azithromycin as a safer macrolide alternative (minimal CYP3A4 inhibition).",
+      "monitoring": [
+        "Carbamazepine levels",
+        "Signs of CBZ toxicity",
+        "Neurological examination"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin is a potent CYP3A4 inhibitor, substantially increasing carbamazepine levels.",
+      "clinical_effect": "Carbamazepine toxicity: ataxia, diplopia, dizziness, nausea, drowsiness, confusion.",
+      "management": "Avoid combination. Use azithromycin instead. If unavoidable, reduce carbamazepine dose and monitor levels closely.",
+      "monitoring": [
+        "Carbamazepine levels",
+        "Signs of CBZ toxicity",
+        "Neurological status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "valproate",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Valproate displaces phenytoin from protein binding sites and inhibits its metabolism, increasing free phenytoin levels.",
+      "clinical_effect": "Phenytoin toxicity despite apparently normal total levels (free levels elevated). Nystagmus, ataxia, confusion.",
+      "management": "Monitor free phenytoin levels (not total). Reduce phenytoin dose if needed. Monitor valproate levels as phenytoin induces valproate metabolism.",
+      "monitoring": [
+        "Free phenytoin levels",
+        "Valproate levels",
+        "Signs of phenytoin toxicity",
+        "Seizure control"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "isoniazid",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Isoniazid inhibits CYP2C19, the primary enzyme metabolizing phenytoin, causing accumulation.",
+      "clinical_effect": "Phenytoin toxicity: nystagmus, ataxia, confusion, seizure worsening paradoxically. Slow acetylators at higher risk.",
+      "management": "Monitor phenytoin levels within 1-2 weeks of starting isoniazid. Reduce phenytoin dose as needed.",
+      "monitoring": [
+        "Phenytoin levels",
+        "Signs of toxicity",
+        "Acetylator status if available"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "fluconazole",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Fluconazole inhibits CYP2C9, significantly reducing phenytoin metabolism and raising levels.",
+      "clinical_effect": "Phenytoin toxicity: nystagmus, ataxia, drowsiness, confusion.",
+      "management": "Monitor phenytoin levels closely. Reduce phenytoin dose by 25-50% if fluconazole is necessary.",
+      "monitoring": [
+        "Phenytoin levels within 3-5 days",
+        "Signs of toxicity",
+        "Neurological status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "valproate",
+      "drug_b": "meropenem",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "carbapenem"
+      },
+      "severity": "Major",
+      "mechanism": "Carbapenems drastically reduce valproate levels (up to 80%) by inhibiting glucuronidase-mediated hydrolysis of valproate glucuronide, preventing enterohepatic recirculation.",
+      "clinical_effect": "Critically subtherapeutic valproate levels leading to breakthrough seizures or status epilepticus.",
+      "management": "AVOID combination. Use alternative antibiotic or alternative antiepileptic during carbapenem course. Valproate dose increases are generally insufficient.",
+      "monitoring": [
+        "Valproate levels daily",
+        "Seizure frequency",
+        "Consider alternative anticonvulsant prophylactically"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "valproate",
+      "drug_b": "lamotrigine",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Valproate inhibits lamotrigine glucuronidation (UGT1A4), doubling the half-life and increasing levels significantly.",
+      "clinical_effect": "Increased risk of lamotrigine toxicity including life-threatening Stevens-Johnson syndrome and toxic epidermal necrolysis.",
+      "management": "Reduce lamotrigine starting dose by 50% and titrate more slowly when co-administered with valproate. Target dose is approximately half of monotherapy dose.",
+      "monitoring": [
+        "Lamotrigine levels",
+        "Skin rash (stop immediately if rash appears)",
+        "Signs of SJS/TEN"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lamotrigine",
+      "drug_b": "oral_contraceptives",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "oral_contraceptive"
+      },
+      "severity": "Moderate",
+      "mechanism": "Ethinyl estradiol induces lamotrigine glucuronidation, reducing lamotrigine levels by up to 50%. Levels rise during pill-free week.",
+      "clinical_effect": "Reduced seizure control during active pill weeks. Potential toxicity during pill-free week from fluctuating levels.",
+      "management": "Adjust lamotrigine dose when starting or stopping OCP. Consider continuous OCP regimen or non-hormonal contraception.",
+      "monitoring": [
+        "Lamotrigine levels during active pill and pill-free weeks",
+        "Seizure frequency",
+        "Signs of toxicity during pill-free week"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine induces CYP3A4, CYP2C9, and CYP1A2, accelerating warfarin metabolism and reducing its effect.",
+      "clinical_effect": "Subtherapeutic INR with increased risk of thromboembolic events.",
+      "management": "Monitor INR frequently when starting, adjusting, or stopping carbamazepine. Warfarin dose increases often required.",
+      "monitoring": [
+        "INR every 2-3 days during changes",
+        "Signs of thromboembolism",
+        "Warfarin dose requirements"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "phenytoin",
+      "drug_b": "methotrexate",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Phenytoin is highly protein-bound; methotrexate can displace phenytoin from albumin, increasing free phenytoin levels.",
+      "clinical_effect": "Increased free phenytoin levels causing toxicity. Methotrexate levels may also be affected.",
+      "management": "Monitor free phenytoin levels. Adjust dose based on clinical signs and free levels. Monitor for methotrexate toxicity.",
+      "monitoring": [
+        "Free phenytoin levels",
+        "Methotrexate levels",
+        "CBC",
+        "Signs of phenytoin toxicity"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "doxycycline",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "tetracycline"
+      },
+      "severity": "Moderate",
+      "mechanism": "Carbamazepine induces hepatic enzymes that increase doxycycline metabolism, reducing its half-life by up to 50%.",
+      "clinical_effect": "Reduced doxycycline efficacy and potential treatment failure.",
+      "management": "Use higher doxycycline doses or choose an alternative antibiotic not affected by enzyme induction.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "phenobarbital",
+      "drug_b": "oral_contraceptives",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "oral_contraceptive"
+      },
+      "severity": "Major",
+      "mechanism": "Phenobarbital is a potent CYP3A4 inducer, markedly increasing metabolism of ethinyl estradiol and progestogens.",
+      "clinical_effect": "Reduced oral contraceptive efficacy with risk of unintended pregnancy.",
+      "management": "Use non-hormonal contraception (copper IUD) or high-dose OCP formulations. Avoid low-dose hormonal methods.",
+      "monitoring": [
+        "Breakthrough bleeding",
+        "Pregnancy testing if breakthrough bleeding occurs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "valproate",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Moderate",
+      "mechanism": "Aspirin displaces valproate from plasma protein binding sites, increasing free valproate fraction.",
+      "clinical_effect": "Increased free valproate levels potentially causing toxicity (tremor, sedation, hepatotoxicity) despite normal total levels.",
+      "management": "Monitor free valproate levels if aspirin is co-administered. Use paracetamol as alternative analgesic when possible.",
+      "monitoring": [
+        "Free valproate levels",
+        "Signs of valproate toxicity",
+        "LFTs",
+        "Ammonia if symptomatic"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "carbamazepine",
+      "drug_b": "lithium",
+      "also_applies_to": {
+        "drug_a_class": "antiepileptic",
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive neurotoxicity without significant changes in plasma levels of either drug.",
+      "clinical_effect": "Neurotoxicity: confusion, drowsiness, tremor, ataxia, hyperreflexia even at therapeutic levels of both drugs.",
+      "management": "Monitor for neurotoxic symptoms especially during initiation. Use lower doses of both agents. Reduce dose if symptoms appear.",
+      "monitoring": [
+        "Neurological status",
+        "Lithium and carbamazepine levels",
+        "Thyroid function (both can affect)"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin inhibits P-glycoprotein and may also inhibit gut flora that normally inactivate digoxin, markedly increasing digoxin levels.",
+      "clinical_effect": "Digoxin toxicity: nausea, vomiting, visual disturbances (yellow halos), cardiac arrhythmias.",
+      "management": "Reduce digoxin dose by 50% when starting clarithromycin. Use azithromycin as safer macrolide alternative.",
+      "monitoring": [
+        "Digoxin level within 5 days",
+        "ECG",
+        "Signs of digoxin toxicity",
+        "Potassium"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "digoxin",
+      "drug_b": "spironolactone",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "k_sparing_diuretic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Spironolactone may increase digoxin levels by reducing renal tubular secretion. It can also interfere with digoxin assays.",
+      "clinical_effect": "Modestly elevated digoxin levels. Falsely elevated digoxin assay readings possible.",
+      "management": "Monitor digoxin levels (use assay not affected by spironolactone). Reduce digoxin dose if levels elevated.",
+      "monitoring": [
+        "Digoxin level (using specific assay)",
+        "Heart rate",
+        "ECG",
+        "Potassium"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "amiodarone",
+      "drug_b": "simvastatin",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "statin"
+      },
+      "severity": "Major",
+      "mechanism": "Amiodarone inhibits CYP3A4, significantly increasing simvastatin levels and risk of myopathy.",
+      "clinical_effect": "Rhabdomyolysis risk: muscle pain, weakness, dark urine, acute renal failure.",
+      "management": "Limit simvastatin to 20 mg/day with amiodarone. Preferably switch to pravastatin or rosuvastatin (not CYP3A4-dependent).",
+      "monitoring": [
+        "CK if muscle symptoms",
+        "Muscle pain/weakness assessment",
+        "Renal function",
+        "Urine color"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "metoprolol",
+      "drug_b": "verapamil",
+      "also_applies_to": {
+        "drug_a_class": "beta_blocker",
+        "drug_b_class": "calcium_channel_blocker"
+      },
+      "severity": "Major",
+      "mechanism": "Both agents depress AV nodal conduction and myocardial contractility through different mechanisms (beta-blockade + calcium channel blockade).",
+      "clinical_effect": "Severe bradycardia, heart block, and potentially fatal asystole. Risk of acute heart failure.",
+      "management": "Avoid combination. If rate control needed, choose one agent. If combination absolutely required, use with extreme caution and continuous monitoring.",
+      "monitoring": [
+        "Heart rate",
+        "ECG (PR interval)",
+        "Blood pressure",
+        "Signs of heart failure"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "atenolol",
+      "drug_b": "clonidine",
+      "also_applies_to": {
+        "drug_a_class": "beta_blocker",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Beta-blockers block peripheral vasodilation, allowing unopposed alpha-mediated vasoconstriction during clonidine withdrawal rebound.",
+      "clinical_effect": "Severe rebound hypertensive crisis if clonidine is abruptly withdrawn while on beta-blocker.",
+      "management": "If discontinuing clonidine, taper gradually over 1 week. Withdraw beta-blocker several days before tapering clonidine.",
+      "monitoring": [
+        "Blood pressure during any dose changes",
+        "Heart rate",
+        "Symptoms of hypertensive crisis (headache, visual changes)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "enalapril",
+      "drug_b": "spironolactone",
+      "also_applies_to": {
+        "drug_a_class": "acei",
+        "drug_b_class": "k_sparing_diuretic"
+      },
+      "severity": "Major",
+      "mechanism": "Both reduce potassium excretion \u2014 ACE inhibitor by reducing aldosterone secretion, spironolactone by blocking the aldosterone receptor.",
+      "clinical_effect": "Life-threatening hyperkalemia with risk of cardiac arrhythmias and cardiac arrest.",
+      "management": "Use low-dose spironolactone (\u226425 mg). Check K+ at baseline, 1 week, and regularly thereafter. Avoid if K+ >5.0 or eGFR <30.",
+      "monitoring": [
+        "Potassium at baseline, 1 week, 1 month, then every 3 months",
+        "Renal function",
+        "ECG if K+ >5.5"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "enalapril",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "acei",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Moderate",
+      "mechanism": "NSAIDs inhibit renal prostaglandins, reducing ACE-inhibitor efficacy and impairing renal blood flow regulation.",
+      "clinical_effect": "Reduced antihypertensive effect (BP increase of 5-10 mmHg). Increased risk of acute kidney injury, especially with dehydration.",
+      "management": "Use paracetamol instead of NSAIDs. If NSAID essential, use lowest dose for shortest duration with adequate hydration.",
+      "monitoring": [
+        "Blood pressure",
+        "Creatinine and potassium within 1 week",
+        "Urine output"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "amlodipine",
+      "drug_b": "simvastatin",
+      "also_applies_to": {
+        "drug_a_class": "calcium_channel_blocker",
+        "drug_b_class": "statin"
+      },
+      "severity": "Moderate",
+      "mechanism": "Amlodipine weakly inhibits CYP3A4, increasing simvastatin exposure and myopathy risk.",
+      "clinical_effect": "Increased risk of myopathy and rhabdomyolysis with higher simvastatin doses.",
+      "management": "Limit simvastatin to 20 mg/day when co-administered with amlodipine. Consider atorvastatin or rosuvastatin as alternatives.",
+      "monitoring": [
+        "Muscle symptoms",
+        "CK if symptomatic",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "fenofibrate",
+      "also_applies_to": {
+        "drug_a_class": "statin",
+        "drug_b_class": "fibrate"
+      },
+      "severity": "Major",
+      "mechanism": "Fibrates independently cause myopathy; combined with statins the risk is additive. Fenofibrate is safer than gemfibrozil in this regard.",
+      "clinical_effect": "Increased risk of myopathy and rhabdomyolysis. Risk is lower with fenofibrate than gemfibrozil.",
+      "management": "If combination needed, fenofibrate is preferred over gemfibrozil. Use lowest effective statin dose. Educate patient about muscle symptoms.",
+      "monitoring": [
+        "CK at baseline",
+        "Muscle symptoms",
+        "Renal function",
+        "LFTs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": "statin",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin is a potent CYP3A4 inhibitor, markedly increasing atorvastatin levels.",
+      "clinical_effect": "Significantly increased risk of rhabdomyolysis: muscle pain, weakness, dark urine, acute renal failure.",
+      "management": "Hold atorvastatin during clarithromycin course. Use azithromycin as safer macrolide alternative.",
+      "monitoring": [
+        "Muscle symptoms",
+        "CK if symptomatic",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "omeprazole",
+      "also_applies_to": {
+        "drug_a_class": "antiplatelet",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Omeprazole inhibits CYP2C19, which is required to convert the clopidogrel prodrug to its active antiplatelet metabolite.",
+      "clinical_effect": "Reduced clopidogrel activation and diminished antiplatelet effect. Potential increase in cardiovascular events.",
+      "management": "Use pantoprazole instead (minimal CYP2C19 inhibition). Avoid omeprazole and esomeprazole with clopidogrel.",
+      "monitoring": [
+        "Cardiovascular events",
+        "Consider platelet function testing in high-risk patients"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "clopidogrel",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "antiplatelet",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive antiplatelet effects through different mechanisms (P2Y12 inhibition + COX-1 inhibition).",
+      "clinical_effect": "Increased bleeding risk. However, dual antiplatelet therapy (DAPT) is often intentional post-ACS or post-stenting.",
+      "management": "Use only when clearly indicated (ACS, post-PCI). Add PPI for GI protection. Limit DAPT duration per guidelines.",
+      "monitoring": [
+        "Signs of bleeding",
+        "Hemoglobin",
+        "GI symptoms",
+        "Stool guaiac"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "nitrates",
+      "drug_b": "sildenafil",
+      "also_applies_to": {
+        "drug_a_class": "nitrate",
+        "drug_b_class": "pde5_inhibitor"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Both increase cGMP-mediated vasodilation. PDE5 inhibitors prevent breakdown of cGMP while nitrates stimulate its production.",
+      "clinical_effect": "Severe, potentially fatal hypotension. Refractory to vasopressors.",
+      "management": "ABSOLUTE CONTRAINDICATION. Do not administer nitrates within 24 hours of sildenafil or 48 hours of tadalafil. Educate patients about this interaction.",
+      "monitoring": [
+        "Do not combine \u2014 no monitoring can make this safe"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "metronidazole",
+      "drug_b": "alcohol",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Metronidazole inhibits aldehyde dehydrogenase, causing accumulation of acetaldehyde when alcohol is consumed (disulfiram-like reaction).",
+      "clinical_effect": "Disulfiram-like reaction: facial flushing, nausea, vomiting, tachycardia, abdominal cramps, headache.",
+      "management": "Avoid all alcohol (including alcohol-containing medications and mouthwash) during and for 48 hours after metronidazole.",
+      "monitoring": [
+        "Patient education regarding alcohol avoidance"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "antacids",
+      "also_applies_to": {
+        "drug_a_class": "fluoroquinolone",
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "Divalent and trivalent cations (Al3+, Mg2+, Ca2+) in antacids chelate fluoroquinolones in the GI tract, drastically reducing absorption.",
+      "clinical_effect": "Reduced fluoroquinolone bioavailability by up to 90%, leading to treatment failure.",
+      "management": "Administer fluoroquinolone at least 2 hours before or 6 hours after antacids. Same applies to iron and calcium supplements.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "theophylline",
+      "also_applies_to": {
+        "drug_a_class": "fluoroquinolone",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Ciprofloxacin inhibits CYP1A2, the primary enzyme metabolizing theophylline, causing significant accumulation.",
+      "clinical_effect": "Theophylline toxicity: nausea, vomiting, tremor, tachycardia, seizures. Can be life-threatening.",
+      "management": "Reduce theophylline dose by 30-50% if ciprofloxacin is essential. Monitor theophylline levels. Consider levofloxacin as alternative (less CYP1A2 inhibition).",
+      "monitoring": [
+        "Theophylline levels within 2-3 days",
+        "Heart rate",
+        "Signs of toxicity (nausea, tremor, seizures)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "ciprofloxacin",
+      "drug_b": "tizanidine",
+      "also_applies_to": {
+        "drug_a_class": "fluoroquinolone",
+        "drug_b_class": null
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Ciprofloxacin potently inhibits CYP1A2, increasing tizanidine AUC by up to 10-fold and Cmax by up to 7-fold.",
+      "clinical_effect": "Severe hypotension, excessive sedation, somnolence, respiratory depression.",
+      "management": "ABSOLUTE CONTRAINDICATION. Do not combine. Use alternative antibiotic or alternative muscle relaxant.",
+      "monitoring": [
+        "Do not combine"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "levofloxacin",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "fluoroquinolone",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Both agents prolong the QT interval through different cardiac ion channel effects, with additive risk.",
+      "clinical_effect": "Additive QT prolongation increasing risk of Torsades de Pointes and sudden cardiac death.",
+      "management": "Avoid combination. If essential, obtain baseline ECG, correct K+ and Mg2+, and monitor QTc continuously.",
+      "monitoring": [
+        "ECG with QTc measurement",
+        "Electrolytes (K+, Mg2+)",
+        "Continuous cardiac monitoring if combination used"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "azithromycin",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "macrolide",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Both prolong the QT interval. Amiodarone blocks potassium channels; azithromycin affects hERG channels.",
+      "clinical_effect": "Additive QT prolongation with risk of Torsades de Pointes, ventricular arrhythmias, and sudden cardiac death.",
+      "management": "Avoid combination if possible. If essential, perform baseline ECG, correct electrolytes, and monitor QTc.",
+      "monitoring": [
+        "ECG with QTc measurement",
+        "Electrolytes (K+, Mg2+)",
+        "Cardiac monitoring"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "atorvastatin",
+      "also_applies_to": {
+        "drug_a_class": "macrolide",
+        "drug_b_class": "statin"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin potently inhibits CYP3A4, dramatically increasing atorvastatin exposure.",
+      "clinical_effect": "Significantly increased risk of rhabdomyolysis and acute renal failure.",
+      "management": "Hold atorvastatin during clarithromycin course. Use azithromycin as a safer macrolide alternative.",
+      "monitoring": [
+        "Muscle symptoms",
+        "CK if symptomatic",
+        "Renal function",
+        "Urine color"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "rifampicin",
+      "drug_b": "oral_contraceptives",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "oral_contraceptive"
+      },
+      "severity": "Major",
+      "mechanism": "Rifampicin is the most potent known CYP3A4 inducer, dramatically increasing metabolism of ethinyl estradiol and progestogens.",
+      "clinical_effect": "Complete loss of oral contraceptive efficacy. High risk of unintended pregnancy.",
+      "management": "Use non-hormonal contraception (copper IUD, barrier methods) during and for 28 days after rifampicin. No hormonal method is reliable.",
+      "monitoring": [
+        "Breakthrough bleeding",
+        "Pregnancy testing"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "rifampicin",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "Rifampicin potently induces CYP2C9, CYP3A4, and CYP1A2, dramatically accelerating warfarin metabolism.",
+      "clinical_effect": "Dramatically reduced warfarin effect. INR may become subtherapeutic within days, increasing thromboembolic risk.",
+      "management": "Monitor INR very frequently (every 2-3 days). Warfarin dose increases of 2-5 fold may be needed. Monitor INR for weeks after rifampicin stopped (de-induction).",
+      "monitoring": [
+        "INR every 2-3 days during and after rifampicin",
+        "Signs of thromboembolism",
+        "Note: de-induction takes 2-3 weeks after stopping"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "isoniazid",
+      "drug_b": "phenytoin",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Isoniazid inhibits CYP2C19, the major enzyme metabolizing phenytoin, causing accumulation particularly in slow acetylators.",
+      "clinical_effect": "Phenytoin toxicity: nystagmus, ataxia, confusion, drowsiness, seizure exacerbation.",
+      "management": "Monitor phenytoin levels within 1-2 weeks of isoniazid initiation. Reduce phenytoin dose as needed. Slow acetylators at highest risk.",
+      "monitoring": [
+        "Phenytoin levels",
+        "Signs of toxicity",
+        "Neurological examination"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "gentamicin",
+      "drug_b": "furosemide",
+      "also_applies_to": {
+        "drug_a_class": "aminoglycoside",
+        "drug_b_class": "loop_diuretic"
+      },
+      "severity": "Major",
+      "mechanism": "Additive ototoxicity (both damage cochlear hair cells) and nephrotoxicity (furosemide-induced volume depletion concentrates aminoglycoside in renal tubules).",
+      "clinical_effect": "Increased risk of irreversible hearing loss, vestibular damage, and acute kidney injury.",
+      "management": "Avoid high-dose IV furosemide with aminoglycosides. Ensure adequate hydration. Use extended-interval aminoglycoside dosing.",
+      "monitoring": [
+        "Hearing assessment",
+        "Gentamicin trough levels",
+        "Creatinine daily",
+        "Urine output",
+        "Electrolytes"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tetracycline",
+      "drug_b": "antacids",
+      "also_applies_to": {
+        "drug_a_class": "tetracycline",
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "Divalent and trivalent cations in antacids chelate tetracyclines, forming insoluble complexes that cannot be absorbed.",
+      "clinical_effect": "Markedly reduced tetracycline absorption and potential treatment failure.",
+      "management": "Separate administration by at least 2 hours (tetracycline first). Same applies to iron, calcium, and dairy products.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "linezolid",
+      "drug_b": "fluoxetine",
+      "also_applies_to": {
+        "drug_a_class": "maoi",
+        "drug_b_class": "ssri"
+      },
+      "severity": "Major",
+      "mechanism": "Linezolid is a reversible non-selective MAO inhibitor. Combined with SSRI causes excessive serotonin accumulation.",
+      "clinical_effect": "Serotonin syndrome: hyperthermia, agitation, myoclonus, hyperreflexia, diaphoresis. Can be fatal.",
+      "management": "Avoid combination. Use alternative antibiotic. If linezolid is absolutely necessary, stop fluoxetine (allow 5-week washout due to long half-life).",
+      "monitoring": [
+        "If unavoidable: continuous vitals, mental status, neuromuscular exam for 2 weeks after fluoxetine stopped"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "trimethoprim",
+      "drug_b": "methotrexate",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Both are folate antagonists. Trimethoprim inhibits dihydrofolate reductase, adding to methotrexate's antifolate effect.",
+      "clinical_effect": "Additive folate antagonism causing severe pancytopenia, megaloblastic anemia, and potentially fatal bone marrow suppression.",
+      "management": "AVOID combination. Use alternative antibiotic. If unavoidable, supplement with folinic acid (leucovorin) and monitor CBC very closely.",
+      "monitoring": [
+        "CBC with differential every 2-3 days",
+        "Signs of infection",
+        "Mucositis",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "doxycycline",
+      "drug_b": "iron_supplements",
+      "also_applies_to": {
+        "drug_a_class": "tetracycline",
+        "drug_b_class": null
+      },
+      "severity": "Moderate",
+      "mechanism": "Iron chelates with doxycycline in the GI tract, forming insoluble complexes that reduce absorption of both agents.",
+      "clinical_effect": "Reduced doxycycline absorption leading to potential treatment failure.",
+      "management": "Separate administration by at least 2-3 hours. Take doxycycline first, then iron supplement later.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers",
+        "Iron studies"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Both increase serotonin. Additionally, fluoxetine inhibits CYP2D6, reducing tramadol conversion to active metabolite (reduced analgesia) while increasing serotonergic parent compound.",
+      "clinical_effect": "Serotonin syndrome risk (agitation, hyperthermia, myoclonus) combined with reduced analgesic efficacy of tramadol.",
+      "management": "Use alternative analgesic (paracetamol, morphine). If combination unavoidable, start at low doses and monitor closely.",
+      "monitoring": [
+        "Mental status",
+        "Temperature",
+        "Neuromuscular symptoms",
+        "Pain control adequacy"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Both inhibit serotonin reuptake, causing additive serotonergic stimulation.",
+      "clinical_effect": "Serotonin syndrome: agitation, hyperthermia, hyperreflexia, tremor, myoclonus, diaphoresis.",
+      "management": "Use alternative analgesic if possible. If combination needed, use lowest effective doses and monitor closely.",
+      "monitoring": [
+        "Mental status changes",
+        "Temperature",
+        "Neuromuscular symptoms",
+        "Vital signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "amitriptyline",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "tca"
+      },
+      "severity": "Major",
+      "mechanism": "Fluoxetine potently inhibits CYP2D6, the primary enzyme metabolizing tricyclic antidepressants, causing TCA accumulation.",
+      "clinical_effect": "TCA toxicity: cardiac arrhythmias (QRS/QTc prolongation), seizures, anticholinergic crisis, potentially fatal cardiotoxicity.",
+      "management": "Avoid combination. If necessary, reduce TCA dose by at least 50-75% and monitor TCA levels and ECG. Note fluoxetine's long half-life.",
+      "monitoring": [
+        "TCA levels",
+        "ECG (QRS, QTc)",
+        "Anticholinergic symptoms",
+        "Cardiac rhythm"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs reduce renal prostaglandin synthesis, decreasing lithium clearance by 25-60%.",
+      "clinical_effect": "Lithium toxicity: tremor, ataxia, confusion, seizures, cardiac arrhythmias. Can be fatal.",
+      "management": "AVOID NSAIDs. Use paracetamol. If NSAID essential, reduce lithium dose and check lithium level within 5 days.",
+      "monitoring": [
+        "Lithium level within 5 days",
+        "Neurological symptoms",
+        "Renal function",
+        "Hydration status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "enalapril",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "acei"
+      },
+      "severity": "Major",
+      "mechanism": "ACE inhibitors reduce GFR and increase proximal tubular reabsorption of lithium, raising levels by 25-35%.",
+      "clinical_effect": "Lithium toxicity: tremor, confusion, ataxia, renal impairment, cardiac arrhythmias.",
+      "management": "Monitor lithium levels closely when starting or adjusting ACE inhibitor dose. Reduce lithium dose if needed.",
+      "monitoring": [
+        "Lithium level within 1 week",
+        "Renal function",
+        "Signs of lithium toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "hydrochlorothiazide",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "thiazide_diuretic"
+      },
+      "severity": "Major",
+      "mechanism": "Thiazide diuretics reduce lithium clearance by increasing proximal tubular reabsorption (sodium depletion causes compensatory lithium reabsorption).",
+      "clinical_effect": "Lithium levels increase by 25-40%. Risk of lithium toxicity: tremor, confusion, seizures.",
+      "management": "Reduce lithium dose by 25-50% when starting thiazide. Monitor lithium levels within 5 days. Ensure adequate hydration and sodium intake.",
+      "monitoring": [
+        "Lithium level within 5 days",
+        "Electrolytes (Na+, K+)",
+        "Renal function",
+        "Signs of lithium toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Additive neurotoxicity without significant changes in plasma levels of either drug.",
+      "clinical_effect": "Neurotoxicity: confusion, drowsiness, tremor, ataxia, hyperreflexia, even at therapeutic levels of both drugs.",
+      "management": "Monitor for neurotoxic symptoms. Use lower initial doses when combining. Reduce dose if neurotoxicity appears.",
+      "monitoring": [
+        "Neurological status",
+        "Lithium and carbamazepine levels",
+        "Thyroid function"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "clozapine",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "atypical_antipsychotic",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Both drugs independently cause agranulocytosis/neutropenia. Combined risk is additive and potentially synergistic.",
+      "clinical_effect": "Severely increased risk of life-threatening agranulocytosis and neutropenia.",
+      "management": "ABSOLUTE CONTRAINDICATION. Never combine. Use alternative mood stabilizer (valproate, lamotrigine) or alternative antipsychotic.",
+      "monitoring": [
+        "Do not combine \u2014 risk cannot be mitigated by monitoring"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "haloperidol",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "typical_antipsychotic",
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Both agents prolong the QT interval through cardiac potassium channel blockade.",
+      "clinical_effect": "Additive QT prolongation with increased risk of Torsades de Pointes and sudden cardiac death.",
+      "management": "Avoid combination. If essential, obtain baseline ECG, correct electrolytes (K+, Mg2+), and monitor QTc continuously.",
+      "monitoring": [
+        "ECG with QTc measurement",
+        "Electrolytes (K+, Mg2+)",
+        "Continuous cardiac monitoring"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "diazepam",
+      "drug_b": "morphine",
+      "also_applies_to": {
+        "drug_a_class": "benzodiazepine",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Additive CNS and respiratory depression via different receptor mechanisms (GABA-A and mu-opioid).",
+      "clinical_effect": "Profound sedation, respiratory depression, coma, and death. FDA boxed warning.",
+      "management": "AVOID combination if possible. If essential, use lowest effective doses for shortest duration. Ensure naloxone availability.",
+      "monitoring": [
+        "Respiratory rate (goal >12/min)",
+        "Oxygen saturation",
+        "Sedation level",
+        "Naloxone at bedside"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "fluoxetine",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Moderate",
+      "mechanism": "SSRIs impair platelet serotonin uptake (reducing aggregation), and NSAIDs cause GI erosion and inhibit platelets \u2014 additive bleeding risk.",
+      "clinical_effect": "Increased risk of GI bleeding (estimated 3-6 fold increase compared to either alone).",
+      "management": "Use paracetamol instead of NSAIDs when possible. If NSAID required, add PPI for GI protection.",
+      "monitoring": [
+        "Signs of GI bleeding",
+        "Hemoglobin",
+        "Stool guaiac"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "sertraline",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "ssri",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Moderate",
+      "mechanism": "SSRIs impair platelet serotonin uptake, and NSAIDs cause GI mucosal erosion and inhibit platelet function \u2014 additive bleeding risk.",
+      "clinical_effect": "Increased risk of GI bleeding (3-6 fold increased risk).",
+      "management": "Use paracetamol instead of NSAIDs. If NSAID required, add PPI for gastroprotection.",
+      "monitoring": [
+        "Signs of GI bleeding",
+        "Hemoglobin",
+        "Stool guaiac"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "bupropion",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Both bupropion and tramadol lower the seizure threshold. Bupropion also inhibits CYP2D6, altering tramadol metabolism.",
+      "clinical_effect": "Significantly increased seizure risk. Reduced tramadol analgesic efficacy due to CYP2D6 inhibition.",
+      "management": "Avoid combination. Use alternative analgesic or alternative antidepressant. If unavoidable, use lowest effective doses.",
+      "monitoring": [
+        "Seizure activity",
+        "Pain control",
+        "Neurological status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "venlafaxine",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": "snri",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Both inhibit serotonin reuptake, causing additive serotonergic stimulation. Venlafaxine also weakly inhibits CYP2D6.",
+      "clinical_effect": "Serotonin syndrome: agitation, hyperthermia, myoclonus, hyperreflexia, tremor, diaphoresis.",
+      "management": "Use alternative analgesic if possible. If combination needed, use lowest effective doses and monitor closely.",
+      "monitoring": [
+        "Mental status",
+        "Temperature",
+        "Neuromuscular symptoms",
+        "Vital signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "olanzapine",
+      "drug_b": "diazepam",
+      "also_applies_to": {
+        "drug_a_class": "atypical_antipsychotic",
+        "drug_b_class": "benzodiazepine"
+      },
+      "severity": "Major",
+      "mechanism": "Additive CNS depression through different mechanisms (dopamine/serotonin antagonism + GABA-A potentiation).",
+      "clinical_effect": "Excessive sedation, respiratory depression, severe hypotension. Particularly dangerous with IM olanzapine + parenteral benzodiazepine.",
+      "management": "Avoid parenteral combination (FDA warning for IM olanzapine with parenteral benzodiazepines). If oral combination needed, use lowest effective doses.",
+      "monitoring": [
+        "Respiratory rate",
+        "Blood pressure",
+        "Sedation level",
+        "Oxygen saturation"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "quetiapine",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "atypical_antipsychotic",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine induces CYP3A4, dramatically increasing quetiapine metabolism and reducing its levels by up to 80%.",
+      "clinical_effect": "Markedly reduced quetiapine efficacy. Risk of psychotic relapse or inadequate mood stabilization.",
+      "management": "Increase quetiapine dose significantly if carbamazepine is essential. Consider alternative mood stabilizer or antipsychotic less affected by CYP3A4.",
+      "monitoring": [
+        "Psychiatric symptoms",
+        "Quetiapine levels if available",
+        "Dose adjustment when carbamazepine started or stopped"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "aripiprazole",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "atypical_antipsychotic",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine induces CYP3A4 and CYP2D6, substantially reducing aripiprazole plasma levels.",
+      "clinical_effect": "Reduced aripiprazole efficacy with risk of psychotic relapse or worsening of psychiatric symptoms.",
+      "management": "Double the aripiprazole dose when co-administered with carbamazepine. Reduce back when carbamazepine is stopped.",
+      "monitoring": [
+        "Psychiatric symptoms",
+        "Dose adjustment when carbamazepine started or stopped"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "lithium",
+      "drug_b": "metronidazole",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": null
+      },
+      "severity": "Major",
+      "mechanism": "Metronidazole reduces renal lithium clearance, possibly through effects on renal prostaglandins or tubular function.",
+      "clinical_effect": "Elevated lithium levels with risk of toxicity: tremor, confusion, ataxia, renal impairment.",
+      "management": "Monitor lithium levels within 3-5 days of starting metronidazole. Reduce lithium dose if levels elevated. Consider alternative antibiotic.",
+      "monitoring": [
+        "Lithium level within 3-5 days",
+        "Signs of lithium toxicity",
+        "Renal function"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "mirtazapine",
+      "drug_b": "tramadol",
+      "also_applies_to": {
+        "drug_a_class": null,
+        "drug_b_class": "opioid"
+      },
+      "severity": "Moderate",
+      "mechanism": "Mirtazapine increases serotonergic activity (5-HT receptor modulation) and tramadol inhibits serotonin reuptake \u2014 additive serotonergic risk.",
+      "clinical_effect": "Serotonin syndrome risk: agitation, tremor, hyperthermia, myoclonus, though lower risk than SSRI/SNRI combinations.",
+      "management": "Use with caution. Monitor for serotonergic symptoms. Consider alternative analgesic.",
+      "monitoring": [
+        "Mental status",
+        "Temperature",
+        "Neuromuscular symptoms",
+        "Vital signs"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "clozapine",
+      "drug_b": "fluvoxamine",
+      "also_applies_to": {
+        "drug_a_class": "atypical_antipsychotic",
+        "drug_b_class": "ssri"
+      },
+      "severity": "Major",
+      "mechanism": "Fluvoxamine is a potent CYP1A2 inhibitor, and CYP1A2 is the primary enzyme metabolizing clozapine. Clozapine levels can increase 5-10 fold.",
+      "clinical_effect": "Dramatic clozapine toxicity: excessive sedation, seizures, myocarditis, respiratory depression, potentially fatal.",
+      "management": "Avoid combination if possible. If essential, reduce clozapine dose by 50-67% and monitor levels very closely. Some centers use this interaction therapeutically with extreme caution.",
+      "monitoring": [
+        "Clozapine levels (target 350-600 ng/mL)",
+        "Sedation",
+        "Seizure activity",
+        "WBC/ANC",
+        "ECG",
+        "Cardiac markers"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "iodinated_contrast",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Iodinated contrast can cause acute kidney injury, impairing metformin clearance and leading to lactic acidosis.",
+      "clinical_effect": "Risk of metformin-associated lactic acidosis due to impaired renal elimination",
+      "management": "Hold metformin 48 hours before and after iodinated contrast administration. Check renal function before restarting.",
+      "monitoring": [
+        "Serum creatinine",
+        "eGFR",
+        "Lactate levels",
+        "Signs of lactic acidosis"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ACR Manual on Contrast Media",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "alcohol",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Alcohol inhibits hepatic gluconeogenesis and may increase lactate production, compounding metformin's effect on lactate metabolism.",
+      "clinical_effect": "Increased risk of lactic acidosis and hypoglycemia",
+      "management": "Advise patients to limit alcohol intake. Avoid binge drinking. Monitor for symptoms of lactic acidosis.",
+      "monitoring": [
+        "Blood glucose",
+        "Lactate levels",
+        "Symptoms of lactic acidosis"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "glimepiride",
+      "drug_b": "fluconazole",
+      "also_applies_to": {
+        "drug_a_class": "sulfonylurea",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Fluconazole is a potent CYP2C9 inhibitor. Glimepiride is primarily metabolized by CYP2C9, leading to increased sulfonylurea levels.",
+      "clinical_effect": "Severe and prolonged hypoglycemia",
+      "management": "Reduce glimepiride dose or consider alternative antifungal. Monitor blood glucose closely during and after fluconazole course.",
+      "monitoring": [
+        "Blood glucose (frequent)",
+        "Signs of hypoglycemia",
+        "Glimepiride dose adjustment"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "glimepiride",
+      "drug_b": "metoprolol",
+      "also_applies_to": {
+        "drug_a_class": "sulfonylurea",
+        "drug_b_class": "beta_blocker"
+      },
+      "severity": "Moderate",
+      "mechanism": "Beta-blockers mask adrenergic symptoms of hypoglycemia (tremor, tachycardia) except sweating. May also impair glycogenolysis.",
+      "clinical_effect": "Masked hypoglycemia symptoms leading to delayed recognition and treatment",
+      "management": "Educate patient to recognize non-adrenergic hypoglycemia symptoms. Prefer cardioselective beta-blockers. Monitor glucose more frequently.",
+      "monitoring": [
+        "Blood glucose",
+        "Heart rate",
+        "Hypoglycemia symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "insulin",
+      "drug_b": "enalapril",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "acei"
+      },
+      "severity": "Moderate",
+      "mechanism": "ACE inhibitors may increase insulin sensitivity via improved blood flow to muscle and bradykinin-mediated glucose uptake.",
+      "clinical_effect": "Increased risk of hypoglycemia, especially during ACE-I initiation",
+      "management": "Monitor blood glucose when starting or adjusting ACE-I. May need to reduce insulin dose.",
+      "monitoring": [
+        "Blood glucose",
+        "Signs of hypoglycemia",
+        "Potassium levels"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "insulin",
+      "drug_b": "metoprolol",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "beta_blocker"
+      },
+      "severity": "Moderate",
+      "mechanism": "Beta-blockers mask adrenergic symptoms of hypoglycemia (tremor, palpitations, tachycardia) while sweating may be increased.",
+      "clinical_effect": "Masked hypoglycemia symptoms, delayed recognition, and prolonged hypoglycemic episodes",
+      "management": "Educate patient about non-adrenergic hypoglycemia symptoms. Use cardioselective beta-blockers when possible. Monitor glucose frequently.",
+      "monitoring": [
+        "Blood glucose (frequent)",
+        "Heart rate",
+        "Hypoglycemia awareness"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "empagliflozin",
+      "drug_b": "furosemide",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "loop_diuretic"
+      },
+      "severity": "Moderate",
+      "mechanism": "SGLT2 inhibitors cause osmotic diuresis and natriuresis. Combined with loop diuretics, additive volume depletion occurs.",
+      "clinical_effect": "Increased risk of dehydration, orthostatic hypotension, and acute kidney injury",
+      "management": "Assess volume status before initiation. Consider reducing diuretic dose. Ensure adequate hydration.",
+      "monitoring": [
+        "Blood pressure (orthostatic)",
+        "Serum creatinine",
+        "Electrolytes",
+        "Signs of dehydration"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "pioglitazone",
+      "drug_b": "insulin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Pioglitazone causes fluid retention via renal sodium reabsorption. Combined with insulin (which also promotes sodium retention), risk is amplified.",
+      "clinical_effect": "Significant fluid retention, peripheral edema, and increased risk of congestive heart failure",
+      "management": "Avoid combination in NYHA Class III-IV heart failure. Monitor weight and edema. Consider lower pioglitazone dose.",
+      "monitoring": [
+        "Weight",
+        "Peripheral edema",
+        "Signs of heart failure",
+        "BNP if symptomatic"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA Black Box Warning",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "sitagliptin",
+      "drug_b": "glimepiride",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "sulfonylurea"
+      },
+      "severity": "Moderate",
+      "mechanism": "DPP-4 inhibitors augment incretin-mediated insulin secretion, which adds to sulfonylurea-stimulated insulin release.",
+      "clinical_effect": "Increased risk of hypoglycemia",
+      "management": "Consider reducing sulfonylurea dose when adding sitagliptin. Monitor blood glucose closely.",
+      "monitoring": [
+        "Blood glucose",
+        "HbA1c",
+        "Hypoglycemia episodes"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "cimetidine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Cimetidine competes with metformin for renal tubular secretion via organic cation transporters, reducing metformin clearance by ~25%.",
+      "clinical_effect": "Increased metformin plasma levels and potential lactic acidosis risk",
+      "management": "Consider alternative H2-blocker (ranitidine, famotidine). If cimetidine required, monitor renal function and metformin levels.",
+      "monitoring": [
+        "Serum creatinine",
+        "Blood glucose",
+        "Signs of lactic acidosis"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "glimepiride",
+      "drug_b": "rifampicin",
+      "also_applies_to": {
+        "drug_a_class": "sulfonylurea",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Rifampicin is a potent inducer of CYP2C9 and CYP3A4, significantly increasing glimepiride metabolism and reducing its efficacy.",
+      "clinical_effect": "Loss of glycemic control with significant hyperglycemia",
+      "management": "Monitor glucose closely. Significantly increase sulfonylurea dose or switch to insulin during rifampicin therapy.",
+      "monitoring": [
+        "Blood glucose (frequent)",
+        "HbA1c",
+        "Hyperglycemia symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "insulin_glargine",
+      "drug_b": "pioglitazone",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Pioglitazone causes fluid retention via PPARgamma activation in renal collecting ducts. Insulin also promotes sodium retention.",
+      "clinical_effect": "Significant fluid retention, peripheral edema, and risk of new or worsening heart failure",
+      "management": "Avoid in NYHA Class III-IV heart failure. Monitor weight gain and edema closely. Use lowest effective pioglitazone dose.",
+      "monitoring": [
+        "Daily weight",
+        "Peripheral edema",
+        "Dyspnea",
+        "BNP levels"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA Black Box Warning",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "empagliflozin",
+      "drug_b": "hydrochlorothiazide",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "thiazide_diuretic"
+      },
+      "severity": "Moderate",
+      "mechanism": "SGLT2 inhibitors cause osmotic diuresis. Combined with thiazide diuretics, additive volume and electrolyte depletion may occur.",
+      "clinical_effect": "Increased risk of dehydration, hypotension, and electrolyte imbalances",
+      "management": "Monitor blood pressure and volume status. Ensure adequate hydration. Consider dose adjustment of diuretic.",
+      "monitoring": [
+        "Blood pressure",
+        "Electrolytes",
+        "Serum creatinine",
+        "Signs of dehydration"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "vildagliptin",
+      "drug_b": "glimepiride",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "sulfonylurea"
+      },
+      "severity": "Moderate",
+      "mechanism": "DPP-4 inhibitors enhance incretin-mediated insulin secretion, adding to sulfonylurea-driven insulin release.",
+      "clinical_effect": "Increased risk of hypoglycemia",
+      "management": "Consider reducing sulfonylurea dose when adding vildagliptin. Educate patient on hypoglycemia recognition.",
+      "monitoring": [
+        "Blood glucose",
+        "HbA1c",
+        "Hypoglycemia episodes"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "dapagliflozin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Minor",
+      "mechanism": "Complementary mechanisms (hepatic glucose output reduction + renal glucose excretion). No significant pharmacokinetic interaction.",
+      "clinical_effect": "Generally safe and effective combination. Minimal additional hypoglycemia risk.",
+      "management": "Standard monitoring. No dose adjustment needed. Monitor renal function as both require adequate eGFR.",
+      "monitoring": [
+        "Renal function",
+        "HbA1c",
+        "Blood glucose"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "DECLARE-TIMI 58 trial"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "Corticosteroids impair gastric mucosal defense and inhibit prostaglandin synthesis. NSAIDs independently damage gastric mucosa via COX inhibition.",
+      "clinical_effect": "Greatly increased risk of GI bleeding, ulceration, and perforation (risk 4-12x higher than either alone)",
+      "management": "Avoid combination if possible. If necessary, add PPI prophylaxis. Use lowest effective doses for shortest duration.",
+      "monitoring": [
+        "Signs of GI bleeding (melena, hematemesis)",
+        "Hemoglobin",
+        "Stool guaiac",
+        "Abdominal symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Moderate",
+      "mechanism": "Corticosteroids may have variable effects on warfarin metabolism and clotting factor synthesis, leading to unpredictable INR changes.",
+      "clinical_effect": "Variable effect on INR\u2014may increase or decrease. Higher doses of corticosteroids tend to increase INR.",
+      "management": "Monitor INR closely when starting, changing dose, or stopping corticosteroids. Adjust warfarin dose as needed.",
+      "monitoring": [
+        "INR (frequent during dose changes)",
+        "Signs of bleeding or thrombosis"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "metformin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Corticosteroids increase hepatic gluconeogenesis, promote insulin resistance, and may cause significant hyperglycemia.",
+      "clinical_effect": "Worsening glycemic control, potentially requiring dose adjustment of antidiabetic medications",
+      "management": "Monitor blood glucose closely. May need to increase metformin dose or add supplemental insulin during steroid course.",
+      "monitoring": [
+        "Blood glucose (frequent)",
+        "HbA1c",
+        "Signs of hyperglycemia"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "dexamethasone",
+      "drug_b": "fluoroquinolone",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Major",
+      "mechanism": "Both fluoroquinolones and corticosteroids independently increase risk of tendon damage. Combined effect is additive or synergistic.",
+      "clinical_effect": "Significantly increased risk of tendinitis and tendon rupture, especially Achilles tendon",
+      "management": "Avoid combination if possible. If necessary, warn patient about tendon symptoms. Discontinue fluoroquinolone at first sign of tendon pain.",
+      "monitoring": [
+        "Tendon pain or swelling",
+        "Joint symptoms",
+        "Mobility changes"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA Black Box Warning (FQ)",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "live_vaccines",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Immunosuppressive doses of corticosteroids (>=20mg/day prednisone equivalent for >=2 weeks) impair immune response to live vaccines.",
+      "clinical_effect": "Risk of disseminated vaccine infection due to inability to mount adequate immune response",
+      "management": "Do NOT administer live vaccines during immunosuppressive corticosteroid therapy. Wait at least 1 month after discontinuation. Inactivated vaccines may be given.",
+      "monitoring": [
+        "Immunosuppression status",
+        "Vaccination schedule review"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "CDC Immunization Guidelines",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "dexamethasone",
+      "drug_b": "phenytoin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Phenytoin is a potent CYP3A4 inducer, significantly increasing dexamethasone metabolism and reducing its half-life.",
+      "clinical_effect": "Reduced dexamethasone efficacy. May require 2-3x dose increase to achieve therapeutic effect.",
+      "management": "Increase dexamethasone dose when co-administered with phenytoin. Monitor for therapeutic response.",
+      "monitoring": [
+        "Clinical response to dexamethasone",
+        "Phenytoin levels",
+        "Signs of adrenal insufficiency"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Moderate",
+      "mechanism": "Corticosteroids reduce gastric mucosal protection. Aspirin inhibits COX-1-mediated prostaglandin synthesis in gastric mucosa.",
+      "clinical_effect": "Increased risk of GI bleeding and ulceration",
+      "management": "Add PPI prophylaxis if combination is required. Use lowest effective aspirin dose. Monitor for GI symptoms.",
+      "monitoring": [
+        "Signs of GI bleeding",
+        "Hemoglobin",
+        "Stool guaiac"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "methylprednisolone",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Ketoconazole is a potent CYP3A4 inhibitor, significantly reducing methylprednisolone metabolism and increasing systemic exposure.",
+      "clinical_effect": "Increased corticosteroid effects including adrenal suppression, Cushing's features, and immunosuppression",
+      "management": "Reduce corticosteroid dose when adding ketoconazole. Monitor for steroid side effects. Consider alternative antifungal.",
+      "monitoring": [
+        "Steroid side effects (glucose, blood pressure, edema)",
+        "Adrenal function",
+        "Signs of Cushing's syndrome"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "dexamethasone",
+      "drug_b": "rifampicin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Rifampicin is one of the most potent CYP3A4 inducers, reducing dexamethasone AUC by up to 75%.",
+      "clinical_effect": "Drastically reduced dexamethasone efficacy, potentially leading to treatment failure",
+      "management": "Increase dexamethasone dose 2-3 fold during rifampicin co-administration. Monitor clinical response closely. Consider alternative steroid or antimycobacterial.",
+      "monitoring": [
+        "Clinical response",
+        "Signs of adrenal insufficiency",
+        "Disease activity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "prednisolone",
+      "drug_b": "cyclosporine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Mutual inhibition of CYP3A4 metabolism. Prednisolone clearance is reduced by cyclosporine; corticosteroids may also increase cyclosporine levels.",
+      "clinical_effect": "Increased levels of both drugs, higher risk of toxicity from each (infections, nephrotoxicity, seizures)",
+      "management": "Monitor levels of both drugs. Adjust doses based on clinical response and toxicity. Watch for additive immunosuppression.",
+      "monitoring": [
+        "Cyclosporine trough levels",
+        "Renal function",
+        "Blood pressure",
+        "Signs of infection"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "ibuprofen",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "nsaid"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs reduce renal blood flow and tubular secretion of methotrexate, decreasing its clearance by 20-40%.",
+      "clinical_effect": "Elevated methotrexate levels leading to pancytopenia, mucositis, hepatotoxicity, and nephrotoxicity",
+      "management": "Avoid NSAIDs with high-dose MTX. With low-dose MTX, use caution: avoid NSAIDs for 24h before and after MTX dose if possible.",
+      "monitoring": [
+        "CBC with differential",
+        "Renal function",
+        "Liver function",
+        "Methotrexate levels (high-dose)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "trimethoprim",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Trimethoprim is a folate antagonist like methotrexate. Combined antifolate effect leads to additive bone marrow suppression.",
+      "clinical_effect": "Severe pancytopenia, megaloblastic anemia, and potentially fatal bone marrow suppression",
+      "management": "Avoid combination if possible. If necessary, increase folate supplementation and monitor CBC very closely (twice weekly).",
+      "monitoring": [
+        "CBC with differential (twice weekly)",
+        "Signs of infection",
+        "Mucositis",
+        "Folate levels"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "azathioprine",
+      "drug_b": "allopurinol",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, which is a major pathway for azathioprine/6-mercaptopurine metabolism. This raises active metabolite levels 3-4x.",
+      "clinical_effect": "Severe and potentially fatal myelosuppression (pancytopenia)",
+      "management": "If combination unavoidable, reduce azathioprine dose by 75% (use 25% of original dose). Monitor CBC weekly for first 2 months, then monthly.",
+      "monitoring": [
+        "CBC with differential (weekly initially)",
+        "Signs of infection",
+        "Liver function tests"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp",
+        "CPIC Guidelines"
+      ]
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "atorvastatin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "statin"
+      },
+      "severity": "Major",
+      "mechanism": "Cyclosporine inhibits CYP3A4, P-glycoprotein, and OATP1B1, dramatically increasing statin exposure (5-10x for some statins).",
+      "clinical_effect": "Markedly increased risk of rhabdomyolysis and myopathy",
+      "management": "If statin needed, use pravastatin or fluvastatin at lowest dose. Limit atorvastatin to 10mg/day. Avoid simvastatin entirely.",
+      "monitoring": [
+        "CK levels",
+        "Muscle symptoms (pain, weakness)",
+        "Renal function",
+        "Urine color (dark = myoglobinuria)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp",
+        "FDA labeling"
+      ]
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "amlodipine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "calcium_channel_blocker"
+      },
+      "severity": "Moderate",
+      "mechanism": "Amlodipine may inhibit CYP3A4-mediated cyclosporine metabolism, and cyclosporine may reduce amlodipine clearance.",
+      "clinical_effect": "Increased cyclosporine levels with risk of nephrotoxicity; possible increased amlodipine effect",
+      "management": "Monitor cyclosporine trough levels when starting or adjusting amlodipine. Adjust doses accordingly.",
+      "monitoring": [
+        "Cyclosporine trough levels",
+        "Blood pressure",
+        "Renal function",
+        "Signs of cyclosporine toxicity"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "mycophenolate",
+      "drug_b": "antacids",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Aluminum/magnesium-containing antacids bind mycophenolate in the GI tract, reducing its absorption by up to 35%.",
+      "clinical_effect": "Reduced mycophenolate bioavailability and potential loss of immunosuppressive efficacy",
+      "management": "Separate administration by at least 2 hours. Take mycophenolate on an empty stomach. Consider PPI instead of antacids.",
+      "monitoring": [
+        "Mycophenolic acid levels",
+        "Signs of rejection or disease flare",
+        "Clinical response"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "methotrexate",
+      "drug_b": "omeprazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "PPIs may inhibit the breast cancer resistance protein (BCRP) transporter and renal H+/K+-ATPase, delaying methotrexate elimination.",
+      "clinical_effect": "Delayed methotrexate clearance with increased risk of toxicity, especially with high-dose MTX",
+      "management": "Consider withholding PPI during high-dose methotrexate cycles. Use H2-blocker as alternative. Monitor MTX levels closely.",
+      "monitoring": [
+        "Methotrexate levels",
+        "Renal function",
+        "CBC",
+        "Mucositis"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "potassium_supplements",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Cyclosporine causes hyperkalemia by reducing renal potassium excretion (type IV RTA-like effect). Potassium supplementation compounds this.",
+      "clinical_effect": "Risk of severe hyperkalemia with potential cardiac arrhythmias and cardiac arrest",
+      "management": "Avoid potassium supplements unless documented hypokalemia. Monitor potassium levels frequently. Dietary potassium counseling.",
+      "monitoring": [
+        "Serum potassium (frequent)",
+        "ECG if potassium elevated",
+        "Renal function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tacrolimus",
+      "drug_b": "fluconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Fluconazole inhibits CYP3A4 and CYP2C19, which are key metabolic pathways for tacrolimus, leading to significantly elevated levels.",
+      "clinical_effect": "Markedly increased tacrolimus levels with risk of nephrotoxicity, neurotoxicity, and hyperkalemia",
+      "management": "Reduce tacrolimus dose by 40-50% when starting fluconazole. Monitor trough levels daily for first week, then frequently.",
+      "monitoring": [
+        "Tacrolimus trough levels (daily initially)",
+        "Renal function",
+        "Potassium",
+        "Neurological symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tacrolimus",
+      "drug_b": "erythromycin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Erythromycin inhibits CYP3A4 and P-glycoprotein, both of which are involved in tacrolimus metabolism and transport.",
+      "clinical_effect": "Significantly increased tacrolimus levels with risk of nephrotoxicity and other tacrolimus toxicities",
+      "management": "Reduce tacrolimus dose and monitor levels closely. Consider azithromycin as alternative (weaker CYP3A4 inhibitor).",
+      "monitoring": [
+        "Tacrolimus trough levels",
+        "Renal function",
+        "Potassium",
+        "Signs of tacrolimus toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "erythromycin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Erythromycin inhibits CYP1A2 and CYP3A4, which are the primary metabolic pathways for theophylline.",
+      "clinical_effect": "Theophylline toxicity: nausea, vomiting, tachycardia, seizures, and potentially fatal arrhythmias",
+      "management": "Reduce theophylline dose by 25-50%. Monitor theophylline levels closely. Consider azithromycin as alternative.",
+      "monitoring": [
+        "Theophylline levels (target 5-15 mcg/mL)",
+        "Heart rate",
+        "Signs of toxicity (nausea, tremor, seizures)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "ciprofloxacin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Major",
+      "mechanism": "Ciprofloxacin is a potent CYP1A2 inhibitor, significantly reducing theophylline metabolism and increasing levels by 20-100%.",
+      "clinical_effect": "Theophylline toxicity: seizures, cardiac arrhythmias, nausea, and vomiting",
+      "management": "Reduce theophylline dose by 30-50% or use alternative fluoroquinolone (levofloxacin has less interaction). Monitor levels closely.",
+      "monitoring": [
+        "Theophylline levels",
+        "Heart rate/rhythm",
+        "Signs of toxicity",
+        "Seizure activity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Carbamazepine induces CYP1A2 and CYP3A4, increasing theophylline metabolism. Theophylline may also reduce carbamazepine levels.",
+      "clinical_effect": "Reduced theophylline efficacy and potentially reduced seizure control",
+      "management": "Monitor theophylline levels and adjust dose upward. Also monitor carbamazepine levels.",
+      "monitoring": [
+        "Theophylline levels",
+        "Carbamazepine levels",
+        "Respiratory symptoms",
+        "Seizure control"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "salbutamol",
+      "drug_b": "propranolol",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "beta_blocker"
+      },
+      "severity": "Major",
+      "mechanism": "Propranolol (non-selective beta-blocker) blocks beta-2 receptors in bronchial smooth muscle, directly antagonizing salbutamol's bronchodilatory effect.",
+      "clinical_effect": "Loss of bronchodilator efficacy, potentially life-threatening bronchospasm in asthmatics",
+      "management": "AVOID non-selective beta-blockers in asthma/COPD. Use cardioselective agents (bisoprolol, metoprolol) at lowest effective dose if beta-blocker indicated.",
+      "monitoring": [
+        "Respiratory function (peak flow, FEV1)",
+        "Bronchospasm symptoms",
+        "Rescue inhaler use"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "GINA Guidelines",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "montelukast",
+      "drug_b": "phenobarbital",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Phenobarbital induces CYP3A4 and CYP2C8, which are involved in montelukast metabolism, potentially reducing its levels.",
+      "clinical_effect": "Reduced montelukast efficacy with worsening asthma control",
+      "management": "Monitor asthma control. May need to increase montelukast dose or add alternative controller therapy.",
+      "monitoring": [
+        "Asthma symptom control",
+        "Peak flow measurements",
+        "Rescue inhaler use"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tiotropium",
+      "drug_b": "ipratropium",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Both are muscarinic antagonists. Combining two anticholinergic bronchodilators increases anticholinergic burden without additional bronchodilation.",
+      "clinical_effect": "Additive anticholinergic side effects: dry mouth, urinary retention, constipation, tachycardia, and angle-closure glaucoma risk",
+      "management": "Avoid routine combination. Use one long-acting anticholinergic (tiotropium). Ipratropium may be used as rescue only in acute exacerbations.",
+      "monitoring": [
+        "Anticholinergic side effects",
+        "Heart rate",
+        "Urinary retention symptoms",
+        "Intraocular pressure"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "GOLD Guidelines",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "budesonide",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Ketoconazole potently inhibits CYP3A4, which is the primary metabolic pathway for budesonide, increasing systemic exposure significantly.",
+      "clinical_effect": "Increased systemic corticosteroid effects including adrenal suppression, even with inhaled budesonide",
+      "management": "Avoid combination if possible. If necessary, monitor for systemic steroid effects. Consider alternative antifungal.",
+      "monitoring": [
+        "Cortisol levels (morning)",
+        "Signs of Cushing's syndrome",
+        "Adrenal function",
+        "Blood glucose"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "theophylline",
+      "drug_b": "cimetidine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Cimetidine inhibits CYP1A2 and CYP3A4, the major metabolic enzymes for theophylline, reducing its clearance by up to 40%.",
+      "clinical_effect": "Elevated theophylline levels with risk of toxicity: nausea, tachycardia, seizures, and arrhythmias",
+      "management": "Use alternative H2-blocker (ranitidine, famotidine) which do not inhibit CYP enzymes. If cimetidine required, reduce theophylline dose 30-50%.",
+      "monitoring": [
+        "Theophylline levels",
+        "Heart rate/rhythm",
+        "Signs of toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tramadol",
+      "drug_b": "ondansetron",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Tramadol's analgesic effect partly depends on serotonin reuptake inhibition. Ondansetron (5-HT3 antagonist) may reduce this serotonergic analgesic component.",
+      "clinical_effect": "Potentially reduced tramadol analgesic efficacy",
+      "management": "Monitor pain control. Consider alternative antiemetic (metoclopramide, dexamethasone) if analgesic response is inadequate.",
+      "monitoring": [
+        "Pain scores",
+        "Analgesic response",
+        "Need for rescue analgesia"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tramadol",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Major",
+      "mechanism": "Carbamazepine potently induces CYP3A4, significantly increasing tramadol metabolism and reducing active metabolite (M1) formation via CYP2D6 competition.",
+      "clinical_effect": "Markedly reduced tramadol analgesic efficacy. Also increased seizure risk with both drugs.",
+      "management": "Avoid combination. Use alternative analgesic. If unavoidable, significantly increase tramadol dose with close monitoring.",
+      "monitoring": [
+        "Pain control",
+        "Seizure activity",
+        "Signs of opioid withdrawal or toxicity"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "diclofenac",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Major",
+      "mechanism": "Diclofenac competes with aspirin for COX-1 binding site, potentially blocking aspirin's irreversible antiplatelet effect. Both damage gastric mucosa.",
+      "clinical_effect": "Increased GI bleeding risk and potential loss of aspirin's cardioprotective antiplatelet effect",
+      "management": "Avoid combination. If NSAID needed with aspirin, use ibuprofen with 30-minute spacing or consider celecoxib. Always add PPI.",
+      "monitoring": [
+        "Signs of GI bleeding",
+        "Platelet function",
+        "Cardiovascular events",
+        "Hemoglobin"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "FDA advisory"
+      ]
+    },
+    {
+      "drug_a": "ibuprofen",
+      "drug_b": "aspirin",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Major",
+      "mechanism": "Ibuprofen competitively blocks aspirin's access to COX-1 serine-529, preventing irreversible acetylation needed for antiplatelet effect.",
+      "clinical_effect": "Loss of aspirin's cardioprotective antiplatelet effect, increasing risk of cardiovascular events",
+      "management": "Take aspirin at least 30 minutes BEFORE ibuprofen, or wait 8 hours after ibuprofen before aspirin. Consider alternative analgesic.",
+      "monitoring": [
+        "Cardiovascular symptoms",
+        "Platelet function (if available)",
+        "GI bleeding signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA advisory",
+        "UpToDate",
+        "Catella-Lawson et al. NEJM 2001"
+      ]
+    },
+    {
+      "drug_a": "colchicine",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Major",
+      "mechanism": "Clarithromycin inhibits both CYP3A4 and P-glycoprotein, which are the major elimination pathways for colchicine, dramatically increasing colchicine levels.",
+      "clinical_effect": "Fatal colchicine toxicity reported: multi-organ failure, pancytopenia, rhabdomyolysis",
+      "management": "AVOID combination, especially in renal or hepatic impairment. If essential, reduce colchicine to 0.3mg and monitor very closely.",
+      "monitoring": [
+        "CBC with differential",
+        "Renal function",
+        "Liver function",
+        "CK levels",
+        "Signs of toxicity (diarrhea, myopathy)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp",
+        "FDA safety communication"
+      ]
+    },
+    {
+      "drug_a": "colchicine",
+      "drug_b": "atorvastatin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "statin"
+      },
+      "severity": "Moderate",
+      "mechanism": "Both colchicine and statins can cause myopathy independently. Colchicine may also affect statin metabolism via P-glycoprotein.",
+      "clinical_effect": "Additive risk of myopathy and rhabdomyolysis",
+      "management": "Use combination with caution. Educate patient about muscle symptoms. Report muscle pain/weakness immediately.",
+      "monitoring": [
+        "CK levels",
+        "Muscle symptoms",
+        "Renal function",
+        "Urine color"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "hydroxychloroquine",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Both hydroxychloroquine and amiodarone prolong the QT interval through potassium channel blockade. Combined effect is additive.",
+      "clinical_effect": "Significantly increased risk of QT prolongation, Torsades de Pointes, and sudden cardiac death",
+      "management": "Avoid combination if possible. If essential, obtain baseline ECG and monitor QTc closely. Correct electrolyte abnormalities.",
+      "monitoring": [
+        "ECG (QTc interval)",
+        "Electrolytes (K+, Mg2+, Ca2+)",
+        "Heart rate",
+        "Symptoms (syncope, palpitations)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "CredibleMeds QT database"
+      ]
+    },
+    {
+      "drug_a": "celecoxib",
+      "drug_b": "fluconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Fluconazole is a potent CYP2C9 inhibitor. Celecoxib is primarily metabolized by CYP2C9, leading to significantly elevated celecoxib levels.",
+      "clinical_effect": "Increased celecoxib levels with heightened risk of cardiovascular events, GI bleeding, and renal toxicity",
+      "management": "Reduce celecoxib dose by 50%. Consider alternative NSAID or antifungal. Monitor for NSAID toxicity.",
+      "monitoring": [
+        "Blood pressure",
+        "Renal function",
+        "Signs of GI bleeding",
+        "Edema"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "etoricoxib",
+      "drug_b": "lithium",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "COX-2 inhibitors reduce renal prostaglandin synthesis, decreasing renal blood flow and lithium clearance by up to 25%.",
+      "clinical_effect": "Elevated lithium levels with risk of lithium toxicity (tremor, confusion, renal impairment, seizures)",
+      "management": "Monitor lithium levels closely when starting, stopping, or changing etoricoxib dose. Reduce lithium dose as needed.",
+      "monitoring": [
+        "Lithium levels (frequent)",
+        "Renal function",
+        "Signs of lithium toxicity",
+        "Tremor, ataxia"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "diclofenac",
+      "drug_b": "enoxaparin",
+      "also_applies_to": {
+        "drug_a_class": "nsaid",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "NSAIDs impair platelet function and damage gastric mucosa. Enoxaparin inhibits factor Xa. Combined effect greatly increases bleeding risk.",
+      "clinical_effect": "Significantly increased risk of major bleeding, particularly GI hemorrhage",
+      "management": "Avoid combination if possible. If NSAID required, use lowest dose for shortest duration. Add PPI for GI protection.",
+      "monitoring": [
+        "Signs of bleeding",
+        "Hemoglobin/hematocrit",
+        "Platelet count",
+        "Anti-Xa levels if needed"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "sumatriptan",
+      "drug_b": "fluoxetine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "ssri"
+      },
+      "severity": "Moderate",
+      "mechanism": "Triptans are 5-HT1B/1D agonists. SSRIs increase synaptic serotonin. Combined serotonergic activity may rarely cause serotonin syndrome.",
+      "clinical_effect": "Risk of serotonin syndrome (rare but potentially serious): agitation, hyperthermia, clonus, hyperreflexia",
+      "management": "Combination is commonly used and generally considered safe. Monitor for serotonin syndrome symptoms. FDA advisory issued but risk is low.",
+      "monitoring": [
+        "Serotonin syndrome symptoms",
+        "Mental status changes",
+        "Neuromuscular signs",
+        "Vital signs"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "FDA Drug Safety Communication",
+        "UpToDate",
+        "AHS position statement"
+      ]
+    },
+    {
+      "drug_a": "sumatriptan",
+      "drug_b": "ergotamine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Both triptans and ergotamine cause vasoconstriction via 5-HT1B receptor agonism. Combined effect may cause severe, prolonged vasospasm.",
+      "clinical_effect": "Risk of severe coronary and peripheral vasospasm, potentially leading to myocardial infarction or limb ischemia",
+      "management": "CONTRAINDICATED combination. Space at least 24 hours between triptan and ergotamine use in either direction.",
+      "monitoring": [
+        "Cardiovascular symptoms",
+        "Chest pain",
+        "Peripheral circulation"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp",
+        "Product labeling"
+      ]
+    },
+    {
+      "drug_a": "flunarizine",
+      "drug_b": "carbamazepine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiepileptic"
+      },
+      "severity": "Moderate",
+      "mechanism": "Both drugs have CNS depressant properties. Carbamazepine may also induce flunarizine metabolism via CYP enzymes.",
+      "clinical_effect": "Additive CNS depression: drowsiness, dizziness, impaired coordination",
+      "management": "Use lowest effective doses. Warn patient about additive sedation. Avoid driving or hazardous activities initially.",
+      "monitoring": [
+        "CNS depression symptoms",
+        "Sedation level",
+        "Motor coordination",
+        "Cognitive function"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "donepezil",
+      "drug_b": "beta_blockers",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "beta_blocker"
+      },
+      "severity": "Moderate",
+      "mechanism": "Donepezil increases acetylcholine via cholinesterase inhibition, which can cause bradycardia. Beta-blockers also reduce heart rate.",
+      "clinical_effect": "Additive bradycardia risk, potentially leading to syncope or falls in elderly patients",
+      "management": "Monitor heart rate regularly. Use lowest effective beta-blocker dose. Consider cardiology consultation if symptomatic.",
+      "monitoring": [
+        "Heart rate",
+        "ECG (PR interval)",
+        "Syncope episodes",
+        "Falls risk assessment"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "donepezil",
+      "drug_b": "anticholinergics",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Anticholinergics directly oppose the mechanism of donepezil (cholinesterase inhibitor), negating its therapeutic benefit.",
+      "clinical_effect": "Pharmacological antagonism leading to loss of donepezil efficacy and worsening cognitive function",
+      "management": "Avoid anticholinergic medications in patients on donepezil. Review medication list for hidden anticholinergic burden.",
+      "monitoring": [
+        "Cognitive function (MMSE/MoCA)",
+        "Anticholinergic burden score",
+        "Behavioral symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Beers Criteria",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "baclofen",
+      "drug_b": "opioids",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Major",
+      "mechanism": "Baclofen acts as GABA-B agonist causing CNS depression. Opioids cause respiratory depression via mu-receptor agonism. Effects are additive.",
+      "clinical_effect": "Severe respiratory depression, excessive sedation, coma, and death",
+      "management": "Avoid combination if possible. If necessary, use lowest effective doses and titrate slowly. Have naloxone available.",
+      "monitoring": [
+        "Respiratory rate and depth",
+        "Oxygen saturation",
+        "Sedation level",
+        "Mental status"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "FDA opioid REMS"
+      ]
+    },
+    {
+      "drug_a": "tizanidine",
+      "drug_b": "ciprofloxacin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Ciprofloxacin potently inhibits CYP1A2, which is the sole metabolic pathway for tizanidine, increasing its AUC by 10-fold.",
+      "clinical_effect": "Severe hypotension, excessive sedation, and bradycardia (potentially life-threatening)",
+      "management": "CONTRAINDICATED. Do NOT co-administer. Use alternative muscle relaxant or alternative antibiotic (non-CYP1A2 inhibitor).",
+      "monitoring": [
+        "Blood pressure",
+        "Heart rate",
+        "Sedation level"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA labeling",
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tamsulosin",
+      "drug_b": "sildenafil",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "pde5_inhibitor"
+      },
+      "severity": "Moderate",
+      "mechanism": "Both tamsulosin (alpha-1 blocker) and sildenafil (PDE5 inhibitor) cause vasodilation and reduce blood pressure through different mechanisms.",
+      "clinical_effect": "Additive hypotension, orthostatic dizziness, and syncope risk",
+      "management": "Initiate sildenafil at lowest dose. Ensure patient is stable on tamsulosin before adding PDE5 inhibitor. Separate doses by 4+ hours.",
+      "monitoring": [
+        "Blood pressure (including orthostatic)",
+        "Dizziness",
+        "Syncope episodes"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tamsulosin",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Ketoconazole potently inhibits CYP3A4 and CYP2D6, both of which metabolize tamsulosin, leading to significantly increased tamsulosin levels.",
+      "clinical_effect": "Severe hypotension, dizziness, and syncope due to excessive alpha-1 blockade",
+      "management": "Avoid combination. If unavoidable, reduce tamsulosin dose and monitor blood pressure closely.",
+      "monitoring": [
+        "Blood pressure (orthostatic)",
+        "Dizziness",
+        "Heart rate",
+        "Syncope"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Product labeling"
+      ]
+    },
+    {
+      "drug_a": "dutasteride",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Ketoconazole inhibits CYP3A4 which is involved in dutasteride metabolism, potentially increasing dutasteride exposure.",
+      "clinical_effect": "Increased dutasteride levels, though clinical significance is limited due to wide therapeutic window",
+      "management": "Monitor for increased side effects. No routine dose adjustment usually needed due to dutasteride's long half-life.",
+      "monitoring": [
+        "Sexual side effects",
+        "Breast tenderness/gynecomastia",
+        "PSA levels"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "dapoxetine",
+      "drug_b": "fluoxetine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "ssri"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "Both dapoxetine and fluoxetine are serotonin reuptake inhibitors. Combined use causes excessive serotonergic stimulation.",
+      "clinical_effect": "High risk of serotonin syndrome: hyperthermia, agitation, clonus, autonomic instability, potentially fatal",
+      "management": "CONTRAINDICATED. Do NOT combine. Wait at least 5 weeks after stopping fluoxetine (long half-life) before starting dapoxetine.",
+      "monitoring": [
+        "Serotonin syndrome symptoms",
+        "Mental status",
+        "Temperature",
+        "Neuromuscular signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Product labeling",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "solifenacin",
+      "drug_b": "clarithromycin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "macrolide"
+      },
+      "severity": "Moderate",
+      "mechanism": "Clarithromycin inhibits CYP3A4, which is the primary metabolic pathway for solifenacin, increasing its systemic exposure.",
+      "clinical_effect": "Increased anticholinergic effects: dry mouth, constipation, urinary retention, blurred vision, cognitive impairment",
+      "management": "Do not exceed solifenacin 5mg daily when combined with strong CYP3A4 inhibitors. Monitor for anticholinergic toxicity.",
+      "monitoring": [
+        "Anticholinergic side effects",
+        "QTc interval",
+        "Urinary retention",
+        "Cognitive function in elderly"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Product labeling"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "calcium_carbonate",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Calcium forms insoluble complexes with levothyroxine in the GI tract, significantly reducing its absorption.",
+      "clinical_effect": "Reduced levothyroxine absorption leading to hypothyroidism and elevated TSH",
+      "management": "Separate administration by at least 4 hours. Take levothyroxine on empty stomach, 30-60 minutes before breakfast.",
+      "monitoring": [
+        "TSH levels",
+        "Free T4",
+        "Hypothyroid symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "iron_supplements",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Iron forms insoluble complexes with levothyroxine in the GI tract, reducing absorption by up to 50%.",
+      "clinical_effect": "Reduced levothyroxine absorption leading to hypothyroidism despite adequate dosing",
+      "management": "Separate administration by at least 4 hours. Take levothyroxine in the morning and iron in the evening.",
+      "monitoring": [
+        "TSH levels",
+        "Free T4",
+        "Iron studies",
+        "Hypothyroid symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "omeprazole",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "PPIs increase gastric pH, which reduces the dissolution and absorption of levothyroxine tablets (which require acidic environment).",
+      "clinical_effect": "Reduced levothyroxine absorption, potentially requiring dose increase of 20-30%",
+      "management": "Monitor TSH after starting/stopping PPI. May need to increase levothyroxine dose. Consider liquid levothyroxine formulation.",
+      "monitoring": [
+        "TSH levels (recheck 6-8 weeks after PPI change)",
+        "Free T4",
+        "Hypothyroid symptoms"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "levothyroxine",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Moderate",
+      "mechanism": "Thyroid hormones increase catabolism of vitamin K-dependent clotting factors and may increase warfarin receptor affinity.",
+      "clinical_effect": "Increased warfarin sensitivity and elevated INR, especially when initiating or adjusting thyroid replacement",
+      "management": "Monitor INR closely when starting or adjusting levothyroxine. Warfarin dose reduction may be needed.",
+      "monitoring": [
+        "INR (frequent during thyroid dose changes)",
+        "Signs of bleeding",
+        "TSH"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "cabergoline",
+      "drug_b": "metoclopramide",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Cabergoline is a dopamine D2 agonist used for hyperprolactinemia. Metoclopramide is a dopamine D2 antagonist. Direct pharmacological antagonism.",
+      "clinical_effect": "Mutual antagonism: reduced cabergoline efficacy (elevated prolactin) and reduced metoclopramide prokinetic effect",
+      "management": "Avoid combination. Use alternative prokinetic (domperidone crosses BBB less, but still has some interaction). Consider erythromycin for motility.",
+      "monitoring": [
+        "Prolactin levels",
+        "GI motility symptoms",
+        "Extrapyramidal symptoms"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "testosterone",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Moderate",
+      "mechanism": "Androgens may suppress clotting factor synthesis and enhance fibrinolysis, increasing sensitivity to anticoagulants.",
+      "clinical_effect": "Increased INR and bleeding risk",
+      "management": "Monitor INR closely when starting or adjusting testosterone therapy. Reduce warfarin dose as needed.",
+      "monitoring": [
+        "INR (frequent initially)",
+        "Signs of bleeding",
+        "Hematocrit (testosterone raises this too)"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "alendronate",
+      "drug_b": "calcium_supplements",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Calcium forms chelation complexes with bisphosphonates in the GI tract, dramatically reducing alendronate absorption (normally only 0.6%).",
+      "clinical_effect": "Reduced alendronate absorption and loss of osteoporosis treatment efficacy",
+      "management": "Take alendronate on empty stomach with plain water, at least 30 minutes before any food, drink, or supplements including calcium.",
+      "monitoring": [
+        "Bone mineral density",
+        "Fracture risk assessment",
+        "Compliance with spacing instructions"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Product labeling"
+      ]
+    },
+    {
+      "drug_a": "allopurinol",
+      "drug_b": "azathioprine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, a critical enzyme for azathioprine/6-MP metabolism, increasing active thiopurine metabolites 3-4 fold.",
+      "clinical_effect": "Severe and potentially fatal myelosuppression, pancytopenia",
+      "management": "Reduce azathioprine dose by 75%. Monitor CBC weekly for at least 2 months. Consider febuxostat as alternative (SAME interaction exists).",
+      "monitoring": [
+        "CBC with differential (weekly x8, then monthly)",
+        "Signs of infection",
+        "Liver function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp",
+        "CPIC Guidelines"
+      ]
+    },
+    {
+      "drug_a": "allopurinol",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Moderate",
+      "mechanism": "Allopurinol may inhibit hepatic microsomal enzyme metabolism of warfarin, though the mechanism is not fully characterized.",
+      "clinical_effect": "Potentially increased INR and bleeding risk",
+      "management": "Monitor INR when initiating or changing allopurinol dose. Adjust warfarin as needed.",
+      "monitoring": [
+        "INR",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "allopurinol",
+      "drug_b": "ampicillin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Mechanism unclear but allopurinol increases the incidence of skin rash with ampicillin/amoxicillin from ~5% to ~20%.",
+      "clinical_effect": "Significantly increased incidence of maculopapular skin rash (not allergic in nature)",
+      "management": "Be aware of increased rash risk. Rash does not necessarily indicate true penicillin allergy. Consider alternative antibiotic if rash occurs.",
+      "monitoring": [
+        "Skin rash",
+        "Distinguish from true allergic reaction",
+        "Eosinophilia"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "febuxostat",
+      "drug_b": "azathioprine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Febuxostat inhibits xanthine oxidase (same mechanism as allopurinol), preventing azathioprine/6-MP metabolism and causing toxic accumulation.",
+      "clinical_effect": "Severe and potentially fatal myelosuppression identical to allopurinol-azathioprine interaction",
+      "management": "AVOID combination. If unavoidable, reduce azathioprine dose by 75% and monitor CBC very closely (weekly initially).",
+      "monitoring": [
+        "CBC with differential (weekly)",
+        "Signs of infection",
+        "Liver function"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "FDA labeling"
+      ]
+    },
+    {
+      "drug_a": "colchicine",
+      "drug_b": "cyclosporine",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Cyclosporine inhibits P-glycoprotein and may inhibit CYP3A4, both important for colchicine elimination. Cyclosporine also impairs renal function.",
+      "clinical_effect": "Significantly increased colchicine levels with risk of fatal colchicine toxicity (multi-organ failure, bone marrow suppression)",
+      "management": "Reduce colchicine dose significantly. Avoid in renal impairment. Monitor closely for toxicity signs.",
+      "monitoring": [
+        "CBC",
+        "Renal function",
+        "Liver function",
+        "CK levels",
+        "Signs of colchicine toxicity (diarrhea, myopathy)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "tadalafil",
+      "drug_b": "nitrates",
+      "also_applies_to": {
+        "drug_a_class": "pde5_inhibitor",
+        "drug_b_class": "nitrate"
+      },
+      "severity": "Contraindicated",
+      "mechanism": "PDE5 inhibitors potentiate the cGMP-mediated vasodilatory effect of nitrates, causing severe and potentially irreversible hypotension.",
+      "clinical_effect": "Severe, potentially fatal hypotension unresponsive to vasopressors",
+      "management": "ABSOLUTELY CONTRAINDICATED. Do not administer nitrates within 48 hours of tadalafil (longer half-life than sildenafil).",
+      "monitoring": [
+        "Blood pressure",
+        "Heart rate",
+        "Symptoms of hypotension"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ACC/AHA Guidelines",
+        "UpToDate",
+        "Product labeling"
+      ]
+    },
+    {
+      "drug_a": "omeprazole",
+      "drug_b": "clopidogrel",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "antiplatelet"
+      },
+      "severity": "Major",
+      "mechanism": "Omeprazole inhibits CYP2C19, which is required to convert clopidogrel (prodrug) to its active metabolite, reducing antiplatelet effect by 40-50%.",
+      "clinical_effect": "Reduced clopidogrel activation and antiplatelet effect, increased risk of cardiovascular events (stent thrombosis)",
+      "management": "Use pantoprazole (least CYP2C19 inhibition) instead of omeprazole. Avoid omeprazole and esomeprazole with clopidogrel.",
+      "monitoring": [
+        "Cardiovascular events",
+        "Platelet function testing (if available)",
+        "GI bleeding signs"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "FDA Drug Safety Communication",
+        "UpToDate",
+        "COGENT trial"
+      ]
+    },
+    {
+      "drug_a": "calcium",
+      "drug_b": "fluoroquinolones",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Moderate",
+      "mechanism": "Divalent and trivalent cations (Ca2+, Mg2+, Al3+, Fe2+) form insoluble chelation complexes with fluoroquinolones in the GI tract.",
+      "clinical_effect": "Reduced fluoroquinolone absorption by up to 90%, leading to treatment failure",
+      "management": "Take fluoroquinolone 2 hours before or 6 hours after calcium-containing products.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers",
+        "Compliance with spacing"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "iron",
+      "drug_b": "fluoroquinolones",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "fluoroquinolone"
+      },
+      "severity": "Moderate",
+      "mechanism": "Iron (Fe2+/Fe3+) forms insoluble chelation complexes with fluoroquinolones, dramatically reducing antibiotic absorption.",
+      "clinical_effect": "Reduced fluoroquinolone absorption by up to 75%, risk of antibiotic treatment failure",
+      "management": "Take fluoroquinolone at least 2 hours before or 6 hours after iron supplements.",
+      "monitoring": [
+        "Clinical response to antibiotic",
+        "Infection markers",
+        "Iron studies"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "ivermectin",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Moderate",
+      "mechanism": "Ivermectin may inhibit CYP2C9 or displace warfarin from protein binding, leading to increased free warfarin levels.",
+      "clinical_effect": "Increased INR and potential bleeding risk",
+      "management": "Monitor INR closely during and after ivermectin course. Adjust warfarin dose as needed.",
+      "monitoring": [
+        "INR",
+        "Signs of bleeding"
+      ],
+      "evidence_level": "Probable",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "albendazole",
+      "drug_b": "dexamethasone",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Moderate",
+      "mechanism": "Dexamethasone inhibits CYP-mediated metabolism of albendazole sulfoxide (active metabolite), increasing its plasma levels by 50%.",
+      "clinical_effect": "Increased albendazole sulfoxide levels. This is sometimes intentionally exploited in neurocysticercosis treatment.",
+      "management": "In neurocysticercosis, this interaction is often therapeutically beneficial. In other settings, monitor for increased albendazole side effects.",
+      "monitoring": [
+        "Liver function tests",
+        "CBC",
+        "Albendazole side effects (GI, headache)"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "WHO Guidelines for neurocysticercosis"
+      ]
+    },
+    {
+      "drug_a": "n_acetylcysteine",
+      "drug_b": "nitroglycerin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "nitrate"
+      },
+      "severity": "Moderate",
+      "mechanism": "N-acetylcysteine may potentiate the vasodilatory effects of nitroglycerin by replenishing sulfhydryl groups needed for nitrate bioactivation.",
+      "clinical_effect": "Enhanced hypotensive effect and headache. May also improve nitrate tolerance.",
+      "management": "Monitor blood pressure closely. May need to reduce nitroglycerin dose. Be prepared for more pronounced hypotension.",
+      "monitoring": [
+        "Blood pressure",
+        "Heart rate",
+        "Headache severity",
+        "Symptoms of hypotension"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "propofol",
+      "drug_b": "fentanyl",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "opioid"
+      },
+      "severity": "Moderate",
+      "mechanism": "Both propofol and fentanyl cause dose-dependent cardiorespiratory depression through different mechanisms (GABA-A and mu-opioid, respectively).",
+      "clinical_effect": "Additive cardiorespiratory depression: hypotension, bradycardia, respiratory depression, apnea",
+      "management": "Standard in anesthesia but requires careful titration. Reduce propofol induction dose by 20-30% when fentanyl is co-administered.",
+      "monitoring": [
+        "Blood pressure",
+        "Heart rate",
+        "Respiratory rate",
+        "SpO2",
+        "End-tidal CO2"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "Miller's Anesthesia",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "midazolam",
+      "drug_b": "ketoconazole",
+      "also_applies_to": {
+        "drug_a_class": "benzodiazepine",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Ketoconazole potently inhibits CYP3A4, which is the sole metabolic pathway for midazolam, increasing its AUC by 10-15 fold.",
+      "clinical_effect": "Dramatically prolonged and intensified sedation, respiratory depression, and potential coma",
+      "management": "Avoid oral midazolam with ketoconazole. If IV midazolam needed, reduce dose by 75% and monitor in ICU setting.",
+      "monitoring": [
+        "Sedation level (Ramsay/RASS scale)",
+        "Respiratory rate",
+        "SpO2",
+        "Blood pressure"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "Lexicomp"
+      ]
+    },
+    {
+      "drug_a": "ketamine",
+      "drug_b": "theophylline",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Both ketamine and theophylline lower the seizure threshold through different mechanisms. Theophylline antagonizes adenosine; ketamine affects NMDA receptors.",
+      "clinical_effect": "Significantly reduced seizure threshold with risk of tonic-clonic seizures during anesthesia",
+      "management": "Avoid ketamine in patients on theophylline. Use alternative anesthetic agent. If unavoidable, have anticonvulsant ready.",
+      "monitoring": [
+        "Seizure activity",
+        "EEG (if available)",
+        "Theophylline levels",
+        "Neurological status"
+      ],
+      "evidence_level": "Established",
+      "references": [
+        "Miller's Anesthesia",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "lidocaine",
+      "drug_b": "amiodarone",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": ""
+      },
+      "severity": "Major",
+      "mechanism": "Both lidocaine and amiodarone depress cardiac conduction and contractility. Amiodarone also inhibits CYP3A4, reducing lidocaine metabolism.",
+      "clinical_effect": "Additive cardiac depression: bradycardia, heart block, cardiac arrest, and lidocaine toxicity (seizures)",
+      "management": "Use combination with extreme caution. Reduce lidocaine dose. Continuous cardiac monitoring required.",
+      "monitoring": [
+        "Continuous ECG",
+        "Lidocaine levels",
+        "Blood pressure",
+        "Signs of toxicity (perioral numbness, seizures)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ACLS Guidelines",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "vitamin_k",
+      "drug_b": "warfarin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "Vitamin K is the pharmacological antidote to warfarin. It restores synthesis of vitamin K-dependent clotting factors (II, VII, IX, X).",
+      "clinical_effect": "Reversal of anticoagulant effect. Therapeutic use for warfarin over-anticoagulation or bleeding. Dietary vitamin K causes INR fluctuations.",
+      "management": "For reversal: IV vitamin K 1-10mg based on INR and bleeding. For dietary: maintain consistent vitamin K intake. Do not abruptly change intake.",
+      "monitoring": [
+        "INR (repeat 6-12 hours after vitamin K)",
+        "Signs of bleeding or thrombosis",
+        "Dietary vitamin K intake"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "ACCP Guidelines",
+        "UpToDate"
+      ]
+    },
+    {
+      "drug_a": "protamine",
+      "drug_b": "heparin",
+      "also_applies_to": {
+        "drug_a_class": "",
+        "drug_b_class": "anticoagulant"
+      },
+      "severity": "Major",
+      "mechanism": "Protamine is a strongly positively charged protein that binds to negatively charged heparin, forming an inactive stable complex and neutralizing anticoagulant activity.",
+      "clinical_effect": "Reversal of heparin anticoagulation (1mg protamine neutralizes ~100 units UFH). Intentional therapeutic use.",
+      "management": "Dose based on amount of heparin given and time elapsed. Give slowly IV (max 50mg over 10 min). Monitor for protamine reactions.",
+      "monitoring": [
+        "aPTT/ACT",
+        "Signs of bleeding",
+        "Anaphylactoid reactions to protamine",
+        "Blood pressure (protamine can cause hypotension)"
+      ],
+      "evidence_level": "Well-established",
+      "references": [
+        "UpToDate",
+        "ACCP Guidelines"
+      ]
+    }
+  ]
+}

@@ -1,33 +1,33 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Query, Request, Response
+from typing import List
 
-from app.api.schemas import DrugDetailsResponse, DrugResolveResponse, DrugSearchResponse
-from app.services.drugs_catalog import resolve_name, search_suggestions
-from app.services.drugs_details import get_drug_details
+from fastapi import APIRouter, HTTPException, Query
+from pydantic import BaseModel
+
+from app.api.schemas import DrugResolveResponse, DrugSearchResponse
+from app.services.drugs_curated import (
+    resolve_name,
+    search_suggestions,
+    get_drug_details,
+    get_drug_categories,
+    get_drugs_by_category,
+)
 
 router = APIRouter(tags=["drugs"])
 
 
-def _add_timing_headers(response: Response, request: Request, result: dict) -> None:
-    """Add timing and cache headers to response."""
-    timings = result.get("timings", {})
+# ---------------------------------------------------------------------------
+# Quick drug lookup schema (for popup)
+# ---------------------------------------------------------------------------
 
-    # Cache status
-    cache_hit = timings.get("cache_hit", False)
-    response.headers["X-Cache"] = "HIT" if cache_hit else "MISS"
-
-    # Timing headers
-    response.headers["X-Time-Total-ms"] = str(int(timings.get("total_ms", 0)))
-    response.headers["X-Time-LLM-ms"] = str(int(timings.get("llm_ms", 0)))
-    response.headers["X-Time-Retrieve-ms"] = str(int(timings.get("retrieval_ms", 0)))
-    response.headers["X-Time-Retrieval-ms"] = str(int(timings.get("retrieval_ms", 0)))
-
-    total_ctx = getattr(request.state, "timings", None)
-    if total_ctx is not None:
-        total_value = total_ctx.duration_ms("total")
-        if total_value is not None:
-            response.headers["X-Time-Total-ms"] = str(int(total_value))
+class DrugQuickInfo(BaseModel):
+    drug_name: str
+    adult_dose: str
+    pediatric_dose: str
+    renal_adjustment: str
+    brands_india: List[str]
+    found: bool = True
 
 
 @router.get("/drugs/search", response_model=DrugSearchResponse)
@@ -46,8 +46,61 @@ async def drugs_resolve(name: str = Query("", min_length=1)):
     )
 
 
-@router.get("/drugs/{name}", response_model=DrugDetailsResponse)
-async def drugs_detail(name: str, request: Request, response: Response, debug: bool = Query(False)):
-    result = get_drug_details(name, debug=debug, timings=getattr(request.state, "timings", None))
-    _add_timing_headers(response, request, result)
+@router.get("/drugs/quick/{name}", response_model=DrugQuickInfo)
+async def drugs_quick(name: str):
+    """Quick drug lookup from curated database — adult/pediatric dose, renal adjustment, Indian brands."""
+    details = get_drug_details(name)
+    if not details:
+        return DrugQuickInfo(
+            drug_name=name,
+            adult_dose="Drug not found in curated database",
+            pediatric_dose="Not available",
+            renal_adjustment="Not available",
+            brands_india=[],
+            found=False,
+        )
+
+    dosing = {}
+    for section in details.get("sections", []):
+        if section.get("key") == "dosing":
+            for bullet in section.get("bullets", []):
+                if "**Adult**" in bullet:
+                    dosing["adult"] = bullet.replace("**Adult**: ", "")
+                elif "**Pediatric**" in bullet:
+                    dosing["pediatric"] = bullet.replace("**Pediatric**: ", "")
+                elif "**Renal**" in bullet:
+                    dosing["renal"] = bullet.replace("**Renal**: ", "")
+
+    header = details.get("header", {})
+    return DrugQuickInfo(
+        drug_name=header.get("canonical_generic_name", name),
+        adult_dose=dosing.get("adult", "See full monograph"),
+        pediatric_dose=dosing.get("pediatric", "See full monograph"),
+        renal_adjustment=dosing.get("renal", "See full monograph"),
+        brands_india=header.get("common_brand_names", []),
+        found=True,
+    )
+
+
+@router.get("/drugs/categories")
+async def drugs_categories():
+    """Return all therapeutic categories with drug counts."""
+    return get_drug_categories()
+
+
+@router.get("/drugs/category/{category}")
+async def drugs_by_category(category: str):
+    """Return all drugs in a specific therapeutic category."""
+    result = get_drugs_by_category(category)
+    if not result:
+        raise HTTPException(status_code=404, detail=f"No drugs found in category '{category}'")
+    return result
+
+
+@router.get("/drugs/{name}")
+async def drugs_detail(name: str):
+    """Full drug monograph from curated clinical database."""
+    result = get_drug_details(name)
+    if not result:
+        raise HTTPException(status_code=404, detail=f"Drug '{name}' not found in curated database")
     return result

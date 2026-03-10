@@ -308,7 +308,7 @@ def retrieve_from_drug_catalog(q: str, limit: int = 20) -> List[str]:
     Retrieve suggestions from drug catalog.
     """
     try:
-        from app.services.drugs_catalog import search_suggestions
+        from app.services.drugs_curated import search_suggestions
         results = search_suggestions(q, limit=limit)
         # Results are dicts with 'display' key, not objects
         return [r.get('display') for r in results if isinstance(r, dict) and r.get('display')]
