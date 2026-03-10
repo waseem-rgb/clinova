@@ -108,16 +108,38 @@ def _count_quiz_questions() -> int:
     return len(data) if isinstance(data, list) else 0
 
 
+@lru_cache(maxsize=1)
+def _count_calculators() -> int:
+    """Count clinical calculators."""
+    try:
+        from app.services.calculators import CALCULATOR_LIST
+        return len(CALCULATOR_LIST)
+    except Exception:
+        return 0
+
+
+@lru_cache(maxsize=1)
+def _count_nlem_drugs() -> int:
+    """Count NLEM 2022 drugs in database."""
+    data = _safe_load_json(DATA_DIR / "curated_drugs.json")
+    if not isinstance(data, dict):
+        return 0
+    drugs = data.get("drugs", {})
+    return sum(1 for d in drugs.values() if d.get("nlem")) if isinstance(drugs, dict) else 0
+
+
 @router.get("/stats")
 async def get_stats() -> Dict[str, Any]:
     """Return live counts of all content types."""
     return {
         "treatment_conditions": _count_treatment_conditions(),
         "drugs": _count_drugs(),
+        "nlem_drugs": _count_nlem_drugs(),
         "drug_interaction_rules": _count_drug_interaction_rules(),
         "emergency_protocols": _count_emergency_protocols(),
         "topics": _count_topics(),
         "cme_courses": _count_courses(),
         "clinical_pearls": _count_clinical_pearls(),
         "quiz_questions": _count_quiz_questions(),
+        "calculators": _count_calculators(),
     }

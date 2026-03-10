@@ -31,6 +31,8 @@ from app.api.routes_learning import router as learning_router
 from app.api.topics import router as topics_router
 from app.api.topic_generator import router as topic_generator_router
 from app.api.integrations import router as integrations_router
+from app.api.stats import router as stats_router
+from app.api.routes_calculators import router as calculators_router
 from app.prescription.router import router as prescription_router
 from app.workspace.router import router as workspace_router
 from app.core.api_response import ok
@@ -118,6 +120,8 @@ app.include_router(articles_router, prefix="/api")
 app.include_router(learning_router, prefix="/api")
 app.include_router(topics_router, prefix="/api")
 app.include_router(topic_generator_router, prefix="/api")
+app.include_router(stats_router, prefix="/api")
+app.include_router(calculators_router, prefix="/api")
 
 # Integrations router - API-key protected endpoints for external projects
 app.include_router(integrations_router, prefix="/api")
