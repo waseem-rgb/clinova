@@ -8,10 +8,10 @@ import SidebarNav from "../components/SidebarNav";
 // ── Types ────────────────────────────────────────────────────────
 
 interface DrugSuggestion {
-  label: string;
-  generic: string;
-  class: string;
-  brands: string[];
+  display: string;
+  input: string;
+  canonical: string;
+  type: string;
 }
 
 interface DrugData {
@@ -200,11 +200,11 @@ export default function DrugDoseCalculator() {
       const res = await fetch(`${API_BASE}/drugs/search?q=${encodeURIComponent(q)}`, { signal: ac.signal });
       if (!res.ok) return;
       const data = await res.json();
-      const items = (data.suggestions || []).map((s: any) => ({
-        label: s.label || s.name || s,
-        generic: s.generic || s.label || s.name || s,
-        class: s.class || "",
-        brands: s.brands || [],
+      const items: DrugSuggestion[] = (data.suggestions || []).map((s: any) => ({
+        display: s.display || s.label || String(s),
+        input: s.input || s.label || String(s),
+        canonical: s.canonical || s.generic || s.label || String(s),
+        type: s.type || "",
       }));
       setSuggestions(items);
       if (items.length > 0) setShowDropdown(true);
@@ -282,10 +282,10 @@ export default function DrugDoseCalculator() {
   }
 
   function handleSelectDrug(s: DrugSuggestion) {
-    setQuery(s.generic || s.label);
+    setQuery(s.input);
     setSuggestions([]);
     setShowDropdown(false);
-    loadDrug(s.generic || s.label);
+    loadDrug(s.canonical);
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -322,33 +322,44 @@ export default function DrugDoseCalculator() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--page-bg)", padding: "24px 24px 24px 0" }}>
-      <div style={{ maxWidth: "100%", minWidth: 1200, margin: 0, display: "grid", gridTemplateColumns: "260px 1fr", gap: 24 }}>
+    <div style={{ minHeight: "100vh", background: "var(--bg-base)", display: "flex" }}>
+      <div className="sidebar-collapse" style={{ width: 240, minWidth: 240, minHeight: "100vh" }}>
         <SidebarNav />
+      </div>
 
-        <div style={{ maxWidth: 900 }}>
-          {/* Back button */}
-          <button
-            onClick={() => nav("/")}
-            style={{
-              border: "1px solid var(--border)", background: "var(--surface)",
-              padding: "8px 12px", borderRadius: 12, cursor: "pointer",
-              fontWeight: 800, color: "var(--ink)", boxShadow: "0 8px 18px rgba(15,23,42,0.08)",
-            }}
-          >
-            ← Back
-          </button>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        {/* Hero header */}
+        <div className="hero-section" style={{ padding: "0 32px" }}>
+          <div style={{ position: "relative", zIndex: 1, padding: "24px 0 20px" }}>
+            <button
+              onClick={() => nav("/")}
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: 6,
+                color: "rgba(255,255,255,0.7)",
+                padding: "5px 12px",
+                cursor: "pointer",
+                fontSize: 12,
+                fontWeight: 600,
+                marginBottom: 14,
+              }}
+            >
+              Home
+            </button>
+            <h1 style={{
+              margin: 0, fontSize: 32, fontFamily: "var(--font-display)",
+              fontStyle: "italic", color: "#fff", letterSpacing: -0.6,
+            }}>
+              Drug Dose Calculator
+            </h1>
+            <p style={{ color: "rgba(255,255,255,0.5)", marginTop: 6, fontSize: 14 }}>
+              Search a drug, enter patient details, get calculated doses instantly.
+            </p>
+          </div>
+        </div>
 
-          <h1 style={{
-            marginTop: 16, fontSize: 32, fontWeight: 700,
-            color: "var(--ink)", letterSpacing: -0.6,
-            fontFamily: "var(--font-display)",
-          }}>
-            Drug Dose Calculator
-          </h1>
-          <p style={{ color: "var(--muted)", marginTop: 4, fontSize: 14 }}>
-            Search a drug, enter patient details, get calculated doses instantly.
-          </p>
+        <div style={{ padding: "24px 32px 80px", maxWidth: 900 }}>
 
           {/* ── Drug Search ─────────────────────────────────── */}
           <div ref={containerRef} style={{ position: "relative", marginTop: 16 }}>
@@ -376,7 +387,7 @@ export default function DrugDoseCalculator() {
               }}>
                 {suggestions.map((s, i) => (
                   <div
-                    key={`${s.label}-${i}`}
+                    key={`${s.canonical}-${i}`}
                     onClick={() => handleSelectDrug(s)}
                     onMouseEnter={() => setActiveIdx(i)}
                     style={{
@@ -385,11 +396,10 @@ export default function DrugDoseCalculator() {
                       borderBottom: i < suggestions.length - 1 ? "1px solid var(--border)" : "none",
                     }}
                   >
-                    <div style={{ fontWeight: 700, color: "var(--ink)" }}>{s.generic || s.label}</div>
-                    {(s.brands.length > 0 || s.class) && (
-                      <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>
-                        {s.class && <span>{s.class}</span>}
-                        {s.brands.length > 0 && <span> — {s.brands.slice(0, 3).join(", ")}</span>}
+                    <div style={{ fontWeight: 700, color: "var(--ink)" }}>{s.display}</div>
+                    {s.type && (
+                      <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 2 }}>
+                        {s.type === "brand" ? "Brand name" : "Generic"}
                       </div>
                     )}
                   </div>
@@ -667,10 +677,10 @@ export default function DrugDoseCalculator() {
 
           {/* Empty State */}
           {!drug && !loading && (
-            <div style={{ marginTop: 40, padding: 32, textAlign: "center", color: "var(--muted)" }}>
-              <div style={{ fontSize: 48, marginBottom: 12 }}>💊</div>
-              <div style={{ fontWeight: 700, fontSize: 18 }}>Search for a drug to calculate doses</div>
-              <div style={{ marginTop: 8, maxWidth: 400, margin: "8px auto 0" }}>
+            <div style={{ marginTop: 40, padding: 32, textAlign: "center", color: "var(--text-muted)" }}>
+              <div style={{ fontSize: 40, marginBottom: 12, opacity: 0.5 }}>💊</div>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>Search for a drug to calculate doses</div>
+              <div style={{ marginTop: 8, maxWidth: 400, margin: "8px auto 0", fontSize: 14 }}>
                 Enter a generic name (amoxicillin) or Indian brand (Mox, Dolo, Augmentin) to get adult, pediatric, and renal-adjusted dosing.
               </div>
             </div>
@@ -688,16 +698,16 @@ function DoseCard({ title, color, highlighted, content, extra }: {
 }) {
   return (
     <div style={{
-      background: "var(--surface)", borderRadius: 16, padding: 16,
+      background: "#fff", borderRadius: 12, padding: 16,
       border: "1px solid var(--border)", borderLeft: `4px solid ${highlighted ? color : "var(--border)"}`,
       opacity: highlighted ? 1 : 0.7,
     }}>
-      <div style={{ fontWeight: 800, color, fontSize: 13, textTransform: "uppercase", letterSpacing: 0.5 }}>
+      <div style={{ fontWeight: 700, color, fontSize: 12, textTransform: "uppercase", letterSpacing: 0.5 }}>
         {title}
       </div>
       <div style={{
-        marginTop: 6, color: "var(--ink)", fontWeight: 700,
-        fontSize: 16, fontFamily: "'JetBrains Mono', monospace",
+        marginTop: 6, color: "var(--text-primary)", fontWeight: 700,
+        fontSize: 16, fontFamily: "var(--font-mono)",
       }}>
         {content}
       </div>

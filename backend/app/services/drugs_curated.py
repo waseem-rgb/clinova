@@ -246,6 +246,9 @@ def get_drug_details(name: str) -> Optional[Dict[str, Any]]:
         "drug_class": drug.get("drug_class", ""),
         "common_brand_names": drug.get("brands_india", []),
         "quick_flags": drug.get("quick_flags", []),
+        "forms": drug.get("forms", []),
+        "nlem": drug.get("nlem", False),
+        "pregnancy_category": drug.get("pregnancy_lactation", ""),
     }
 
     # Executive summary cards

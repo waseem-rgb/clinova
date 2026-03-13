@@ -1,494 +1,638 @@
 // frontend/src/pages/Calculators.tsx
-// Clinova — Clinical Calculator Hub
-import React, { useState, useMemo } from "react";
+// Clinova -- 335 Clinical Calculators — "Precision Medical Instrument" design
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CALCULATORS } from "../components/calculators/index";
+import { ALL_CALCULATORS, SPECIALTIES } from "../data/calculators_index";
+import type { Calculator } from "../data/calculators_index";
+import CalculatorDetail from "./CalculatorDetail";
 
-type Calc = (typeof CALCULATORS)[number];
+const DARK_TEAL = "#0a4a44";
+const TEAL = "#0f766e";
 
-const ALL_CATEGORIES = ["All", ...Array.from(new Set(CALCULATORS.map((c) => c.category)))];
+/* ── helpers ── */
+function calcNum(id: string): string {
+  return id.replace("calc_", "").replace(/^0+/, "") || "1";
+}
 
-function CalcCard({
+function calcNumPadded(id: string): string {
+  return "#" + id.replace("calc_", "");
+}
+
+/** Extract a short formula-like preview from the calculator description */
+function formulaPreview(calc: Calculator): string {
+  // Try to find a formula-like string in the reference or build one from inputs
+  const inputNames = calc.inputs.slice(0, 3).map((i) => i.label.split(" ")[0]);
+  if (inputNames.length === 0) return calc.specialty;
+  return "f(" + inputNames.join(", ") + (calc.inputs.length > 3 ? ", ..." : "") + ")";
+}
+
+/* ── Sidebar list item ── */
+function CalcListItem({
   calc,
   active,
   onClick,
 }: {
-  calc: Calc;
+  calc: Calculator;
   active: boolean;
   onClick: () => void;
 }) {
-  const [hovered, setHovered] = useState(false);
-  const highlighted = active || hovered;
-
   return (
     <button
+      className="calc-list-item"
+      data-active={active}
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      aria-label={`Open ${calc.title} calculator`}
-      aria-pressed={active}
-      style={{
-        width: "100%",
-        textAlign: "left",
-        padding: "12px 14px",
-        borderRadius: 12,
-        border: active
-          ? "2px solid var(--primary)"
-          : hovered
-          ? "2px solid var(--border)"
-          : "2px solid transparent",
-        background: active
-          ? "linear-gradient(135deg, rgba(10,110,94,0.12), rgba(10,110,94,0.06))"
-          : hovered
-          ? "var(--surface-2)"
-          : "transparent",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        transition: "all 0.15s ease",
-        transform: highlighted ? "translateX(2px)" : "none",
-      }}
     >
-      <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0 }}>{calc.emoji}</span>
-      <div style={{ minWidth: 0 }}>
-        <div
-          style={{
-            fontWeight: active ? 700 : 600,
-            fontSize: 13,
-            color: active ? "var(--primary)" : "var(--ink)",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {calc.title}
-        </div>
-        <div
-          style={{
-            fontSize: 11,
-            color: active ? "var(--primary)" : "var(--muted-2)",
-            marginTop: 2,
-            opacity: 0.85,
-          }}
-        >
-          {calc.category}
-        </div>
-      </div>
-      {active && (
-        <span
-          style={{
-            marginLeft: "auto",
-            width: 6,
-            height: 6,
-            borderRadius: "50%",
-            background: "var(--primary)",
-            flexShrink: 0,
-          }}
-        />
-      )}
+      <span className="calc-list-dot" />
+      <span className="calc-list-num">{calcNum(calc.id)}</span>
+      <span className="calc-list-name">{calc.name}</span>
     </button>
   );
 }
 
+/* ── Calculator card ── */
+function CalcCard({
+  calc,
+  onClick,
+}: {
+  calc: Calculator;
+  onClick: () => void;
+}) {
+  return (
+    <button className="calc-card" onClick={onClick}>
+      <span className="calc-card-id">{calcNumPadded(calc.id)}</span>
+      <div className="calc-card-name">{calc.name}</div>
+      <div className="calc-card-desc">{calc.description}</div>
+      <div className="calc-card-formula">{formulaPreview(calc)}</div>
+      <span className="calc-card-chip">{calc.specialty}</span>
+    </button>
+  );
+}
+
+/* ── Search icon (inline SVG) ── */
+function SearchIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="rgba(255,255,255,0.5)"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
+    >
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+/* ── Arrow icons ── */
+function ChevronLeft() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+function ChevronRight() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="9 6 15 12 9 18" />
+    </svg>
+  );
+}
+
+/* ════════════════════════════════════════════════ */
+/*                   MAIN PAGE                     */
+/* ════════════════════════════════════════════════ */
+
 export default function Calculators() {
   const navigate = useNavigate();
-  const [selectedId, setSelectedId] = useState<string>(CALCULATORS[0].id);
-  const [category, setCategory] = useState<string>("All");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [specialty, setSpecialty] = useState<string>("All");
   const [search, setSearch] = useState("");
+  const detailRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(() => {
-    return CALCULATORS.filter((c) => {
-      const matchCat = category === "All" || c.category === category;
+    return ALL_CALCULATORS.filter((c) => {
+      const matchSpec = specialty === "All" || c.specialty === specialty;
       const q = search.trim().toLowerCase();
-      const matchSearch = !q || c.title.toLowerCase().includes(q) || c.category.toLowerCase().includes(q);
-      return matchCat && matchSearch;
+      const matchSearch =
+        !q ||
+        c.name.toLowerCase().includes(q) ||
+        c.specialty.toLowerCase().includes(q) ||
+        c.description.toLowerCase().includes(q) ||
+        c.id.includes(q);
+      return matchSpec && matchSearch;
     });
-  }, [category, search]);
+  }, [specialty, search]);
 
-  const selected = CALCULATORS.find((c) => c.id === selectedId) ?? CALCULATORS[0];
-  const SelectedComponent = selected.component as React.ComponentType;
+  const selectedCalc = selectedId
+    ? ALL_CALCULATORS.find((c) => c.id === selectedId) ?? null
+    : null;
 
-  // If filtered list doesn't contain selected, auto-select first visible
-  const visibleIds = new Set(filtered.map((c) => c.id));
-  const effectiveSelected =
-    visibleIds.has(selectedId) ? selected : filtered[0] ?? CALCULATORS[0];
-  const EffectiveComponent = effectiveSelected.component as React.ComponentType;
+  useEffect(() => {
+    if (selectedCalc && detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedId]);
+
+  useEffect(() => {
+    if (selectedCalc && !filtered.find((c) => c.id === selectedId)) {
+      setSelectedId(null);
+    }
+  }, [filtered, selectedCalc, selectedId]);
+
+  const filteredForList = selectedCalc ? filtered : filtered.slice(0, 60);
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "var(--page-bg, #F8FAFB)",
-        paddingBottom: 80,
+        background: "#f7f8fa",
+        paddingBottom: 90,
         display: "flex",
         flexDirection: "column",
+        fontFamily: "'DM Sans', sans-serif",
       }}
     >
-      {/* ── Header ── */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, #064038 0%, var(--primary) 60%, #0A8070 100%)",
-          padding: "28px 24px 24px",
-          color: "#fff",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+      {/* ═══ HERO HEADER ═══ */}
+      <div className="calc-hero" style={{ padding: "0 24px" }}>
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            position: "relative",
+            zIndex: 1,
+            padding: "32px 0 28px",
+          }}
+        >
+          {/* Nav breadcrumb */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
             <button
               onClick={() => navigate("/")}
               style={{
-                background: "rgba(255,255,255,0.15)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                borderRadius: 8,
-                color: "#fff",
-                padding: "6px 14px",
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: 6,
+                color: "rgba(255,255,255,0.7)",
+                padding: "5px 12px",
                 cursor: "pointer",
-                fontSize: 13,
+                fontSize: 12,
                 fontWeight: 600,
+                fontFamily: "'DM Sans', sans-serif",
+                transition: "all 0.15s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.color = "rgba(255,255,255,0.7)";
               }}
             >
-              ← Home
+              Home
             </button>
+            {selectedCalc && (
+              <>
+                <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12 }}>/</span>
+                <button
+                  onClick={() => setSelectedId(null)}
+                  style={{
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    borderRadius: 6,
+                    color: "rgba(255,255,255,0.7)",
+                    padding: "5px 12px",
+                    cursor: "pointer",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    fontFamily: "'DM Sans', sans-serif",
+                    transition: "all 0.15s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                  }}
+                >
+                  All Calculators
+                </button>
+              </>
+            )}
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <span style={{ fontSize: 40 }}>🧮</span>
-            <div>
-              <h1 style={{ margin: 0, fontSize: 26, fontWeight: 900, letterSpacing: -0.5 }}>
-                Clinical Calculator Hub
-              </h1>
-              <p style={{ margin: "5px 0 0", fontSize: 14, opacity: 0.85 }}>
-                {CALCULATORS.length} validated calculators — BMI, GFR, APGAR, Wells, CURB-65, GCS &amp; more
-              </p>
-            </div>
-          </div>
+          {/* Title block */}
+          <h1
+            style={{
+              margin: 0,
+              fontSize: 36,
+              fontWeight: 400,
+              letterSpacing: -0.8,
+              color: "#fff",
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              lineHeight: 1.15,
+            }}
+          >
+            Clinical Calculators
+          </h1>
+          <p
+            style={{
+              margin: "8px 0 0",
+              fontSize: 14,
+              color: "rgba(255,255,255,0.5)",
+              fontWeight: 500,
+              letterSpacing: 0.3,
+            }}
+          >
+            {ALL_CALCULATORS.length} validated calculators
+            <span style={{ margin: "0 8px", opacity: 0.3 }}>|</span>
+            100% offline
+            <span style={{ margin: "0 8px", opacity: 0.3 }}>|</span>
+            Evidence-based
+          </p>
 
-          {/* Search bar */}
-          <div style={{ marginTop: 16, position: "relative" }}>
+          {/* Search */}
+          <div style={{ marginTop: 20, position: "relative", maxWidth: 520 }}>
+            <SearchIcon />
             <input
               type="text"
-              placeholder="Search calculators…"
+              className="calc-search"
+              placeholder={`Search ${ALL_CALCULATORS.length} calculators...`}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               style={{
                 width: "100%",
-                maxWidth: 440,
-                padding: "10px 16px 10px 38px",
+                padding: "13px 18px 13px 42px",
                 borderRadius: 10,
-                border: "1px solid rgba(255,255,255,0.35)",
-                background: "rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "rgba(255,255,255,0.08)",
                 color: "#fff",
-                fontSize: 14,
+                fontSize: 15,
+                fontWeight: 500,
                 outline: "none",
                 boxSizing: "border-box",
+                fontFamily: "'DM Sans', sans-serif",
+                transition: "all 0.2s ease",
               }}
             />
-            <span
-              style={{
-                position: "absolute",
-                left: 12,
-                top: "50%",
-                transform: "translateY(-50%)",
-                fontSize: 16,
-                opacity: 0.7,
-                pointerEvents: "none",
-              }}
-            >
-              🔍
-            </span>
           </div>
         </div>
       </div>
 
-      {/* ── Body: sidebar + main ── */}
+      {/* ═══ SPECIALTY TABS ═══ */}
+      <div
+        style={{
+          background: "#fff",
+          borderBottom: "1px solid #e5e7eb",
+          padding: "12px 24px",
+          overflowX: "auto",
+        }}
+        className="calc-tabs"
+        ref={tabsRef}
+      >
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            display: "flex",
+            gap: 7,
+            flexWrap: "nowrap",
+          }}
+        >
+          <button
+            className="calc-tab"
+            data-active={specialty === "All"}
+            onClick={() => setSpecialty("All")}
+          >
+            All
+            <span className="calc-tab-count">{ALL_CALCULATORS.length}</span>
+          </button>
+          {SPECIALTIES.map((s) => (
+            <button
+              key={s.name}
+              className="calc-tab"
+              data-active={specialty === s.name}
+              onClick={() => setSpecialty(s.name)}
+            >
+              {s.name}
+              <span className="calc-tab-count">{s.count}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ═══ BODY ═══ */}
       <div
         style={{
           maxWidth: 1200,
           margin: "0 auto",
           padding: "24px 24px 0",
           display: "flex",
-          gap: 20,
+          gap: 24,
           width: "100%",
           boxSizing: "border-box",
           flex: 1,
         }}
       >
-        {/* ── Left panel: category chips + calc list ── */}
-        <aside
-          style={{
-            width: 230,
-            flexShrink: 0,
-            position: "sticky",
-            top: 22,
-            alignSelf: "flex-start",
-          }}
-        >
-          {/* Category chips */}
+        {/* ── LEFT SIDEBAR ── */}
+        <aside className="calc-sidebar">
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 6,
-              marginBottom: 14,
-            }}
-          >
-            {ALL_CATEGORIES.map((cat) => {
-              const active = category === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setCategory(cat)}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 999,
-                    border: active ? "1.5px solid var(--primary)" : "1.5px solid var(--border)",
-                    background: active ? "var(--primary)" : "transparent",
-                    color: active ? "#fff" : "var(--muted)",
-                    fontSize: 11,
-                    fontWeight: active ? 700 : 500,
-                    cursor: "pointer",
-                    transition: "all 0.12s ease",
-                  }}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Calculator list */}
-          <div
-            style={{
-              background: "var(--surface)",
-              borderRadius: 14,
-              border: "1px solid var(--border)",
+              background: "#fff",
+              borderRadius: 12,
+              border: "1px solid #e5e7eb",
               padding: "8px 6px",
               display: "flex",
               flexDirection: "column",
-              gap: 2,
+              gap: 0,
             }}
           >
+            <div
+              style={{
+                padding: "6px 10px 8px",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "#9ca3af",
+                borderBottom: "1px solid #f3f4f6",
+                marginBottom: 4,
+              }}
+            >
+              {specialty === "All" ? "All" : specialty}
+              <span style={{ marginLeft: 4, fontFamily: "'JetBrains Mono', monospace", fontSize: 9 }}>
+                ({filtered.length})
+              </span>
+            </div>
+
             {filtered.length === 0 && (
               <div
                 style={{
                   padding: "20px 12px",
                   textAlign: "center",
-                  color: "var(--muted-2)",
+                  color: "#9ca3af",
                   fontSize: 13,
                 }}
               >
                 No calculators match.
               </div>
             )}
-            {filtered.map((calc) => (
-              <CalcCard
+            {filteredForList.map((calc) => (
+              <CalcListItem
                 key={calc.id}
                 calc={calc}
-                active={effectiveSelected.id === calc.id}
+                active={selectedCalc?.id === calc.id}
                 onClick={() => setSelectedId(calc.id)}
               />
             ))}
+            {!selectedCalc && filtered.length > 60 && (
+              <div
+                style={{
+                  padding: "10px 12px",
+                  textAlign: "center",
+                  color: "#9ca3af",
+                  fontSize: 11,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+              >
+                {filteredForList.length} of {filtered.length} shown
+              </div>
+            )}
           </div>
 
-          {/* Legend note */}
           <div
             style={{
               marginTop: 14,
               padding: "10px 12px",
-              background: "var(--surface-2)",
+              background: "#fff",
               borderRadius: 10,
               fontSize: 11,
-              color: "var(--muted)",
-              borderLeft: "3px solid var(--amber)",
+              color: "#9ca3af",
+              borderLeft: `3px solid ${DARK_TEAL}`,
               lineHeight: 1.5,
+              border: "1px solid #e5e7eb",
+              borderLeftColor: DARK_TEAL,
+              borderLeftWidth: 3,
             }}
           >
-            <strong style={{ color: "var(--ink)" }}>Note:</strong> All calculations are
-            based on validated clinical formulas. Always verify for each patient's
-            individual context.
+            <strong style={{ color: "#374151" }}>Clinical Note</strong>
+            <br />
+            All calculations use validated formulas. Always verify results in clinical context.
           </div>
         </aside>
 
-        {/* ── Right panel: active calculator ── */}
-        <main
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          {/* Calculator header */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              marginBottom: 18,
-              paddingBottom: 16,
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <span style={{ fontSize: 32 }}>{effectiveSelected.emoji}</span>
-            <div>
-              <h2
+        {/* ── MAIN CONTENT ── */}
+        <main style={{ flex: 1, minWidth: 0 }}>
+          {selectedCalc ? (
+            <div ref={detailRef}>
+              {/* Calculator detail header */}
+              <div
                 style={{
-                  margin: 0,
-                  fontSize: 20,
-                  fontWeight: 800,
-                  color: "var(--ink)",
-                  letterSpacing: -0.3,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 14,
+                  marginBottom: 20,
+                  paddingBottom: 18,
+                  borderBottom: "1px solid #e5e7eb",
                 }}
               >
-                {effectiveSelected.title}
-              </h2>
-              <span
-                style={{
-                  display: "inline-block",
-                  marginTop: 4,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  padding: "2px 8px",
-                  borderRadius: 999,
-                  background: "rgba(10,110,94,0.1)",
-                  color: "var(--primary)",
-                  letterSpacing: 0.6,
-                  textTransform: "uppercase",
-                }}
-              >
-                {effectiveSelected.category}
-              </span>
-            </div>
-
-            {/* Keyboard nav hint */}
-            <div
-              style={{
-                marginLeft: "auto",
-                display: "flex",
-                gap: 6,
-                alignItems: "center",
-              }}
-            >
-              {CALCULATORS.indexOf(effectiveSelected) > 0 && (
-                <button
-                  onClick={() => {
-                    const idx = CALCULATORS.indexOf(effectiveSelected);
-                    setSelectedId(CALCULATORS[idx - 1].id);
-                  }}
-                  title="Previous calculator"
+                <span
                   style={{
-                    padding: "5px 10px",
-                    borderRadius: 8,
-                    border: "1px solid var(--border)",
-                    background: "var(--surface)",
-                    cursor: "pointer",
-                    fontSize: 14,
-                    color: "var(--muted)",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    background: DARK_TEAL,
+                    color: "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 18,
+                    fontWeight: 800,
+                    flexShrink: 0,
+                    fontFamily: "'JetBrains Mono', monospace",
                   }}
                 >
-                  ‹
-                </button>
-              )}
-              {CALCULATORS.indexOf(effectiveSelected) < CALCULATORS.length - 1 && (
-                <button
-                  onClick={() => {
-                    const idx = CALCULATORS.indexOf(effectiveSelected);
-                    setSelectedId(CALCULATORS[idx + 1].id);
-                  }}
-                  title="Next calculator"
-                  style={{
-                    padding: "5px 10px",
-                    borderRadius: 8,
-                    border: "1px solid var(--border)",
-                    background: "var(--surface)",
-                    cursor: "pointer",
-                    fontSize: 14,
-                    color: "var(--muted)",
-                  }}
-                >
-                  ›
-                </button>
-              )}
-              <span style={{ fontSize: 12, color: "var(--muted-2)" }}>
-                {CALCULATORS.indexOf(effectiveSelected) + 1} / {CALCULATORS.length}
-              </span>
-            </div>
-          </div>
-
-          {/* Rendered calculator component */}
-          <div
-            style={{
-              background: "var(--surface)",
-              borderRadius: 16,
-              border: "1px solid var(--border)",
-              padding: "24px 24px",
-              boxShadow: "0 4px 20px rgba(10,110,94,0.06)",
-            }}
-          >
-            <EffectiveComponent />
-          </div>
-
-          {/* Quick-jump grid (all calcs thumbnails) */}
-          <div style={{ marginTop: 28 }}>
-            <div
-              style={{
-                fontSize: 12,
-                fontWeight: 700,
-                color: "var(--muted)",
-                letterSpacing: 0.8,
-                textTransform: "uppercase",
-                marginBottom: 10,
-              }}
-            >
-              All Calculators
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-                gap: 10,
-              }}
-            >
-              {CALCULATORS.map((calc) => {
-                const isActive = effectiveSelected.id === calc.id;
-                return (
-                  <button
-                    key={calc.id}
-                    onClick={() => setSelectedId(calc.id)}
+                  {calcNum(selectedCalc.id)}
+                </span>
+                <div style={{ flex: 1 }}>
+                  <h2
                     style={{
-                      padding: "12px 10px",
-                      borderRadius: 12,
-                      border: isActive
-                        ? "2px solid var(--primary)"
-                        : "1px solid var(--border)",
-                      background: isActive
-                        ? "linear-gradient(135deg, rgba(10,110,94,0.1), rgba(10,110,94,0.04))"
-                        : "var(--surface)",
-                      cursor: "pointer",
-                      textAlign: "center",
-                      transition: "all 0.12s ease",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 6,
+                      margin: 0,
+                      fontSize: 24,
+                      fontWeight: 400,
+                      color: "var(--text-primary)",
+                      letterSpacing: -0.5,
+                      fontFamily: "var(--font-display)",
+                      fontStyle: "italic",
+                      lineHeight: 1.2,
                     }}
                   >
-                    <span style={{ fontSize: 24 }}>{calc.emoji}</span>
+                    {selectedCalc.name}
+                  </h2>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 6 }}>
+                    <span className="calc-card-chip">{selectedCalc.specialty}</span>
                     <span
                       style={{
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: 11,
-                        fontWeight: isActive ? 700 : 500,
-                        color: isActive ? "var(--primary)" : "var(--ink)",
-                        lineHeight: 1.3,
-                        textAlign: "center",
+                        color: "#9ca3af",
                       }}
                     >
-                      {calc.title}
+                      {calcNumPadded(selectedCalc.id)}
                     </span>
-                  </button>
-                );
-              })}
+                  </div>
+                </div>
+
+                {/* Prev / Next */}
+                <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                  {(() => {
+                    const idx = filtered.indexOf(selectedCalc);
+                    return (
+                      <>
+                        {idx > 0 && (
+                          <button
+                            onClick={() => setSelectedId(filtered[idx - 1].id)}
+                            title="Previous"
+                            style={{
+                              padding: "7px 10px",
+                              borderRadius: 8,
+                              border: "1px solid #e5e7eb",
+                              background: "#fff",
+                              cursor: "pointer",
+                              color: "#6b7280",
+                              display: "flex",
+                              alignItems: "center",
+                              transition: "all 0.12s",
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.borderColor = DARK_TEAL; e.currentTarget.style.color = DARK_TEAL; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#e5e7eb"; e.currentTarget.style.color = "#6b7280"; }}
+                          >
+                            <ChevronLeft />
+                          </button>
+                        )}
+                        {idx < filtered.length - 1 && (
+                          <button
+                            onClick={() => setSelectedId(filtered[idx + 1].id)}
+                            title="Next"
+                            style={{
+                              padding: "7px 10px",
+                              borderRadius: 8,
+                              border: "1px solid #e5e7eb",
+                              background: "#fff",
+                              cursor: "pointer",
+                              color: "#6b7280",
+                              display: "flex",
+                              alignItems: "center",
+                              transition: "all 0.12s",
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.borderColor = DARK_TEAL; e.currentTarget.style.color = DARK_TEAL; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#e5e7eb"; e.currentTarget.style.color = "#6b7280"; }}
+                          >
+                            <ChevronRight />
+                          </button>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+
+              {/* Calculator form wrapper */}
+              <div
+                style={{
+                  background: "#fff",
+                  borderRadius: 14,
+                  border: "1px solid #e5e7eb",
+                  padding: "24px",
+                  boxShadow: "0 2px 12px rgba(10,74,68,0.04)",
+                }}
+              >
+                <CalculatorDetail key={selectedCalc.id} calc={selectedCalc} />
+              </div>
             </div>
-          </div>
+          ) : (
+            /* ═══ CARD GRID ═══ */
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  justifyContent: "space-between",
+                  marginBottom: 16,
+                }}
+              >
+                <div>
+                  <span
+                    style={{
+                      fontSize: 16,
+                      fontWeight: 800,
+                      color: "#111827",
+                      letterSpacing: -0.3,
+                    }}
+                  >
+                    {specialty === "All" ? "All Calculators" : specialty}
+                  </span>
+                  <span
+                    style={{
+                      marginLeft: 8,
+                      fontSize: 13,
+                      color: "#9ca3af",
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                  >
+                    {filtered.length}
+                  </span>
+                </div>
+                {search && (
+                  <button
+                    onClick={() => setSearch("")}
+                    style={{
+                      fontSize: 12,
+                      color: DARK_TEAL,
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontWeight: 600,
+                      fontFamily: "'DM Sans', sans-serif",
+                    }}
+                  >
+                    Clear search
+                  </button>
+                )}
+              </div>
+              <div className="calc-grid">
+                {filtered.map((calc) => (
+                  <CalcCard
+                    key={calc.id}
+                    calc={calc}
+                    onClick={() => setSelectedId(calc.id)}
+                  />
+                ))}
+              </div>
+              {filtered.length === 0 && (
+                <div
+                  style={{
+                    textAlign: "center",
+                    padding: "60px 20px",
+                    color: "#9ca3af",
+                  }}
+                >
+                  <div style={{ fontSize: 40, marginBottom: 12, opacity: 0.4 }}>0</div>
+                  <div style={{ fontSize: 14, fontWeight: 600 }}>No calculators found</div>
+                  <div style={{ fontSize: 13, marginTop: 4 }}>Try adjusting your search or filter</div>
+                </div>
+              )}
+            </div>
+          )}
         </main>
       </div>
     </div>

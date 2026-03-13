@@ -5,8 +5,9 @@ import { cleanTopicTitle, suggestByCollection } from "../api/topic";
 import type { CollectionKey } from "../api/topic";
 import SidebarNav from "../components/SidebarNav";
 import AutocompleteDropdown, { AutocompleteItem } from "../components/AutocompleteDropdown";
+import { ALL_CALCULATORS } from "../data/calculators_index";
 
-// ─── Emergency quick-access (text links) ─────────────────────────────────────
+// ─── Emergency quick-access pills ─────────────────────────────────────
 
 const EMERGENCY_ITEMS = [
   { label: "Snake Bite",  id: "snake-bite" },
@@ -17,115 +18,139 @@ const EMERGENCY_ITEMS = [
   { label: "PPH",         id: "obstetric-emergency" },
 ];
 
-function EmergencyLinks() {
+function EmergencyPills() {
   const navigate = useNavigate();
   return (
-    <div style={{ marginBottom: 28 }}>
-      <div style={{
-        fontSize: 10,
-        fontWeight: 600,
-        color: "var(--text-muted)",
-        letterSpacing: 0.7,
-        textTransform: "uppercase",
-        marginBottom: 8,
-      }}>
-        Emergency Protocols
-      </div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-        {EMERGENCY_ITEMS.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => navigate(`/emergency/${item.id}`)}
-            style={{
-              padding: "5px 12px",
-              borderRadius: 4,
-              border: "1px solid var(--critical-border)",
-              background: "transparent",
-              color: "var(--critical)",
-              cursor: "pointer",
-              fontWeight: 500,
-              fontSize: 12,
-              transition: "background 0.12s ease",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--critical-light)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
-          >
-            {item.label}
-          </button>
-        ))}
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+      {EMERGENCY_ITEMS.map((item) => (
         <button
-          onClick={() => navigate("/emergency")}
+          key={item.id}
+          onClick={() => navigate(`/emergency/${item.id}`)}
           style={{
-            padding: "5px 12px",
-            borderRadius: 4,
-            border: "none",
-            background: "none",
-            color: "var(--text-muted)",
+            padding: "6px 14px",
+            borderRadius: 999,
+            border: "1.5px solid rgba(15,118,110,0.3)",
+            background: "transparent",
+            color: "var(--teal-700)",
             cursor: "pointer",
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: 12,
-            textDecoration: "underline",
-            textDecorationColor: "var(--border)",
+            transition: "all 0.15s ease",
+            fontFamily: "var(--font-sans)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "var(--teal-700)";
+            e.currentTarget.style.color = "#fff";
+            e.currentTarget.style.borderColor = "var(--teal-700)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.color = "var(--teal-700)";
+            e.currentTarget.style.borderColor = "rgba(15,118,110,0.3)";
           }}
         >
-          All protocols
+          {item.label}
         </button>
-      </div>
+      ))}
+      <button
+        onClick={() => navigate("/emergency")}
+        style={{
+          padding: "6px 14px",
+          borderRadius: 999,
+          border: "none",
+          background: "none",
+          color: "var(--text-muted)",
+          cursor: "pointer",
+          fontWeight: 500,
+          fontSize: 12,
+          textDecoration: "underline",
+          textDecorationColor: "var(--border)",
+        }}
+      >
+        All protocols →
+      </button>
     </div>
   );
 }
 
-// ─── Stats grid (DM Mono numbers) ─────────────────────────────────────────────
+// ─── Stats grid ──────────────────────────────────────────────────────
+
+interface BackendStats {
+  treatment_conditions: number;
+  drugs: number;
+  drug_interaction_rules: number;
+  emergency_protocols: number;
+  topics: number;
+  cme_courses: number;
+  clinical_pearls: number;
+  quiz_questions: number;
+}
+
+function useBackendStats() {
+  const [data, setData] = useState<BackendStats | null>(null);
+  useEffect(() => {
+    fetch("/api/stats")
+      .then((r) => r.ok ? r.json() : null)
+      .then(setData)
+      .catch(() => setData(null));
+  }, []);
+  return data;
+}
 
 function StatsGrid() {
   const navigate = useNavigate();
+  const backend = useBackendStats();
+  const calculatorCount = ALL_CALCULATORS.length;
+
   const stats = [
-    { label: "Calculators",      value: "11",  sub: "BMI, GFR, APGAR, CURB-65…",    path: "/calculators" },
-    { label: "Treatment Guides", value: "30+", sub: "Diagnoses with regimens",        path: "/treatment" },
-    { label: "Drug Interactions",value: "50+", sub: "Checked instantly",              path: "/interactions" },
-    { label: "CME Courses",      value: "5",   sub: "Courses · Quizzes · Badges",     path: "/learning" },
+    { label: "Topics",            value: backend?.topics ?? null,              path: "/topics" },
+    { label: "Calculators",       value: calculatorCount,                      path: "/calculators" },
+    { label: "Drug Database",     value: backend?.drugs ?? null,               path: "/drug" },
+    { label: "Emergency Protocols", value: backend?.emergency_protocols ?? null, path: "/emergency" },
   ];
 
   return (
     <div style={{
       display: "grid",
       gridTemplateColumns: "repeat(4, 1fr)",
-      border: "1px solid var(--border)",
-      borderRadius: 8,
-      overflow: "hidden",
+      gap: 14,
       marginBottom: 28,
     }}>
-      {stats.map((s, i) => (
+      {stats.map((s) => (
         <button
           key={s.label}
           onClick={() => navigate(s.path)}
           style={{
-            padding: "16px 14px",
-            border: "none",
-            borderLeft: i > 0 ? "1px solid var(--border)" : "none",
-            background: "var(--bg-surface)",
+            padding: "20px 16px",
+            border: "1px solid var(--border)",
+            borderRadius: 12,
+            background: "#fff",
             cursor: "pointer",
             textAlign: "left",
-            transition: "background 0.12s ease",
+            transition: "all 0.15s ease",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = "var(--bg-raised)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = "var(--bg-surface)"; }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "var(--brand-border)";
+            e.currentTarget.style.boxShadow = "0 4px 16px rgba(15,118,110,0.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "var(--border)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
           <div style={{
             fontFamily: "var(--font-mono)",
-            fontSize: 22,
-            fontWeight: 500,
-            color: "var(--brand)",
-            letterSpacing: -0.5,
+            fontSize: 28,
+            fontWeight: 600,
+            color: "var(--teal-700)",
+            letterSpacing: -1,
             marginBottom: 4,
+            lineHeight: 1,
           }}>
-            {s.value}
+            {s.value != null ? s.value.toLocaleString() + "+" : "—"}
           </div>
-          <div style={{ fontWeight: 600, fontSize: 12, color: "var(--text-primary)", marginBottom: 2 }}>
+          <div style={{ fontWeight: 600, fontSize: 13, color: "var(--text-primary)", marginTop: 6 }}>
             {s.label}
-          </div>
-          <div style={{ fontSize: 11, color: "var(--text-subtle)" }}>
-            {s.sub}
           </div>
         </button>
       ))}
@@ -133,7 +158,7 @@ function StatsGrid() {
   );
 }
 
-// ─── Today's Pearl mini-card ──────────────────────────────────────────────────
+// ─── Today's Pearl ──────────────────────────────────────────────────
 
 function TodayPearlCard() {
   const navigate = useNavigate();
@@ -151,18 +176,18 @@ function TodayPearlCard() {
 
   return (
     <div style={{
-      background: "var(--bg-surface)",
-      borderRadius: 8,
+      background: "#fff",
+      borderRadius: 12,
       border: "1px solid var(--border)",
-      borderLeft: "3px solid var(--brand)",
-      padding: "14px 16px",
-      marginTop: 20,
+      borderLeft: "3px solid var(--teal-700)",
+      padding: "16px 20px",
+      marginTop: 24,
     }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span style={{
-            fontSize: 10, fontWeight: 600, padding: "2px 7px", borderRadius: 4,
-            background: "var(--brand-light)", color: "var(--brand)", letterSpacing: 0.5,
+            fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 4,
+            background: "var(--teal-50)", color: "var(--teal-700)", letterSpacing: 0.5,
             textTransform: "uppercase",
           }}>
             {pearl.category}
@@ -173,16 +198,19 @@ function TodayPearlCard() {
         </div>
         <button
           onClick={() => navigate("/learning")}
-          style={{ fontSize: 11, fontWeight: 500, color: "var(--brand)", background: "none", border: "none", cursor: "pointer" }}
+          style={{ fontSize: 12, fontWeight: 600, color: "var(--teal-700)", background: "none", border: "none", cursor: "pointer" }}
         >
           More →
         </button>
       </div>
-      <div style={{ fontWeight: 600, fontSize: 13, color: "var(--text-primary)", marginBottom: 4 }}>
+      <div style={{
+        fontWeight: 600, fontSize: 14, color: "var(--text-primary)", marginBottom: 6,
+        fontFamily: "var(--font-display)",
+      }}>
         {pearl.title}
       </div>
       <div style={{
-        fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55,
+        fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6,
         display: expanded ? "block" : "-webkit-box",
         WebkitLineClamp: expanded ? "unset" : 2,
         WebkitBoxOrient: "vertical" as React.CSSProperties["WebkitBoxOrient"],
@@ -192,7 +220,7 @@ function TodayPearlCard() {
       </div>
       <button
         onClick={() => setExpanded(!expanded)}
-        style={{ marginTop: 5, fontSize: 11, color: "var(--brand)", background: "none", border: "none", cursor: "pointer", padding: 0, fontWeight: 500 }}
+        style={{ marginTop: 6, fontSize: 12, color: "var(--teal-700)", background: "none", border: "none", cursor: "pointer", padding: 0, fontWeight: 600 }}
       >
         {expanded ? "Show less" : "Read more"}
       </button>
@@ -200,7 +228,7 @@ function TodayPearlCard() {
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
+// ─── Main page ────────────────────────────────────────────────────────
 
 export default function HomeSearch() {
   const navigate = useNavigate();
@@ -210,10 +238,12 @@ export default function HomeSearch() {
 
   const fetchSuggestions = useCallback(
     async (q: string, signal: AbortSignal): Promise<AutocompleteItem[]> => {
-      // Run Harrison index suggestions + structured topics search in parallel
-      const [harrisonList, topicsRes] = await Promise.allSettled([
+      const [harrisonList, topicsRes, semanticRes] = await Promise.allSettled([
         suggestByCollection(collection, q.trim(), 40, signal),
         fetch(`/api/topics/search?q=${encodeURIComponent(q.trim())}`, { signal })
+          .then((r) => r.ok ? r.json() : { results: [] })
+          .catch(() => ({ results: [] })),
+        fetch(`/api/search/semantic?q=${encodeURIComponent(q.trim())}&limit=5`, { signal })
           .then((r) => r.ok ? r.json() : { results: [] })
           .catch(() => ({ results: [] })),
       ]);
@@ -225,7 +255,6 @@ export default function HomeSearch() {
           }))
         : [];
 
-      // Structured topics come first in the list, styled with a badge
       const structuredTopics: AutocompleteItem[] = topicsRes.status === "fulfilled"
         ? (topicsRes.value.results ?? []).map((t: { slug: string; title: string; icd10?: string }) => ({
             id: `topic-${t.slug}`,
@@ -236,13 +265,24 @@ export default function HomeSearch() {
           }))
         : [];
 
-      // De-duplicate: if a Harrison suggestion matches a structured topic title, drop the Harrison one
-      const topicTitlesLower = new Set(structuredTopics.map((t) => t.text.toLowerCase()));
-      const filteredHarrison = harrisonItems.filter(
-        (item) => !topicTitlesLower.has(item.text.toLowerCase())
-      );
+      const semanticItems: AutocompleteItem[] = semanticRes.status === "fulfilled"
+        ? (semanticRes.value.results ?? []).map((r: { title: string; score: number }, idx: number) => ({
+            id: `semantic-${idx}-${r.title}`,
+            text: cleanTopicTitle(r.title),
+          }))
+        : [];
 
-      return [...structuredTopics, ...filteredHarrison].slice(0, 12);
+      const seen = new Set<string>();
+      const deduped: AutocompleteItem[] = [];
+
+      for (const item of [...structuredTopics, ...harrisonItems, ...semanticItems]) {
+        const key = item.text.toLowerCase();
+        if (seen.has(key) || !item.text.trim()) continue;
+        seen.add(key);
+        deduped.push(item);
+      }
+
+      return deduped.slice(0, 12);
     },
     [collection]
   );
@@ -276,144 +316,171 @@ export default function HomeSearch() {
       display: "flex",
     }}>
       {/* Sidebar */}
-      <div style={{ width: 240, minWidth: 240, minHeight: "100vh" }}>
+      <div className="sidebar-collapse" style={{ width: 240, minWidth: 240, minHeight: "100vh" }}>
         <SidebarNav />
       </div>
 
       {/* Main content */}
-      <div style={{ flex: 1, padding: "32px 40px 80px", maxWidth: 820 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
 
-        {/* Page heading */}
-        <div style={{ marginBottom: 28 }}>
+        {/* ── HERO SECTION ── */}
+        <div className="hero-section" style={{ padding: "0 40px" }}>
           <div style={{
-            fontSize: 32,
-            fontWeight: 600,
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            color: "var(--text-primary)",
-            letterSpacing: -0.5,
-            marginBottom: 4,
+            maxWidth: 800,
+            position: "relative",
+            zIndex: 1,
+            padding: "48px 0 40px",
           }}>
-            Clinova
-          </div>
-          <p style={{ margin: 0, fontSize: 14, color: "var(--text-secondary)" }}>
-            Evidence-based medicine for every doctor, everywhere.
-          </p>
-        </div>
+            <h1 style={{
+              margin: 0,
+              fontSize: 48,
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              color: "#fff",
+              letterSpacing: -1,
+              lineHeight: 1.1,
+            }}>
+              Clinova
+            </h1>
+            <p style={{
+              margin: "8px 0 0",
+              fontSize: 15,
+              color: "rgba(255,255,255,0.5)",
+              fontWeight: 500,
+              letterSpacing: 0.3,
+            }}>
+              Evidence-based medicine, point of care
+            </p>
 
-        {/* Emergency links */}
-        <EmergencyLinks />
-
-        {/* Search box */}
-        <div style={{
-          borderRadius: 8,
-          border: "1px solid var(--border)",
-          background: "var(--bg-surface)",
-          padding: "20px",
-          marginBottom: 20,
-          boxShadow: "var(--shadow-sm)",
-        }}>
-          <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-            <div style={{ flex: 1 }}>
-              <AutocompleteDropdown
-                query={query}
-                value={query}
-                onChange={setQuery}
-                fetchSuggestions={fetchSuggestions}
-                onSelect={handleSelect}
-                onSubmit={handleSubmit}
-                minChars={2}
-                debounceMs={200}
-                maxItems={12}
-                placeholder="Search conditions, drugs, protocols… (e.g. epilepsy, amoxicillin)"
-                inputStyle={{ padding: "14px 16px", fontSize: 15, borderRadius: 6 }}
-              />
-            </div>
-            <button
-              onClick={() => handleSubmit(query)}
-              disabled={!query.trim()}
-              style={{
-                padding: "14px 22px",
-                borderRadius: 6,
-                border: "none",
-                background: query.trim() ? "var(--brand)" : "var(--bg-raised)",
-                color: query.trim() ? "#fff" : "var(--text-subtle)",
-                cursor: query.trim() ? "pointer" : "not-allowed",
-                fontWeight: 600,
-                fontSize: 14,
-                transition: "background 0.15s ease",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Search
-            </button>
-          </div>
-
-          <div style={{ marginTop: 10, color: "var(--text-subtle)", fontSize: 11 }}>
-            <kbd style={{ background: "var(--bg-raised)", border: "1px solid var(--border)", padding: "1px 5px", borderRadius: 3, fontSize: 10 }}>↑↓</kbd>{" "}
-            navigate ·{" "}
-            <kbd style={{ background: "var(--bg-raised)", border: "1px solid var(--border)", padding: "1px 5px", borderRadius: 3, fontSize: 10 }}>Enter</kbd>{" "}
-            select ·{" "}
-            <kbd style={{ background: "var(--bg-raised)", border: "1px solid var(--border)", padding: "1px 5px", borderRadius: 3, fontSize: 10 }}>Esc</kbd>{" "}
-            close
-          </div>
-        </div>
-
-        {/* Stats grid */}
-        <StatsGrid />
-
-        {/* Popular Topics */}
-        <div>
-          <div style={{
-            fontSize: 10,
-            fontWeight: 600,
-            color: "var(--text-muted)",
-            letterSpacing: 0.7,
-            textTransform: "uppercase",
-            marginBottom: 10,
-          }}>
-            Popular Topics
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-            {[
-              "Hypertension", "Type 2 Diabetes", "Epilepsy", "Pneumonia",
-              "Heart Failure", "Asthma", "COPD", "Anemia",
-              "Hypothyroidism", "Hyperlipidemia",
-            ].map((topic) => (
+            {/* Search bar */}
+            <div style={{
+              marginTop: 28,
+              background: "#fff",
+              borderRadius: 14,
+              padding: "6px 6px 6px 0",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+            }}>
+              <div style={{ flex: 1 }}>
+                <AutocompleteDropdown
+                  query={query}
+                  value={query}
+                  onChange={setQuery}
+                  fetchSuggestions={fetchSuggestions}
+                  onSelect={handleSelect}
+                  onSubmit={handleSubmit}
+                  minChars={2}
+                  debounceMs={200}
+                  maxItems={12}
+                  placeholder="Search conditions, drugs, protocols..."
+                  inputStyle={{
+                    padding: "14px 18px",
+                    fontSize: 15,
+                    borderRadius: 10,
+                    border: "none",
+                    outline: "none",
+                    width: "100%",
+                    fontWeight: 500,
+                  }}
+                />
+              </div>
               <button
-                key={topic}
-                onClick={() => goToTopic(topic)}
+                onClick={() => handleSubmit(query)}
+                disabled={!query.trim()}
                 style={{
-                  padding: "6px 12px",
-                  borderRadius: 4,
-                  border: "1px solid var(--border)",
-                  background: "var(--bg-surface)",
-                  color: "var(--text-secondary)",
-                  cursor: "pointer",
-                  fontWeight: 500,
-                  fontSize: 12,
-                  transition: "all 0.12s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--brand-border)";
-                  e.currentTarget.style.color = "var(--brand)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border)";
-                  e.currentTarget.style.color = "var(--text-secondary)";
+                  padding: "12px 24px",
+                  borderRadius: 10,
+                  border: "none",
+                  background: query.trim() ? "var(--teal-700)" : "var(--bg-raised)",
+                  color: query.trim() ? "#fff" : "var(--text-subtle)",
+                  cursor: query.trim() ? "pointer" : "not-allowed",
+                  fontWeight: 600,
+                  fontSize: 14,
+                  transition: "background 0.15s ease",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
                 }}
               >
-                {topic}
+                Search
               </button>
-            ))}
+            </div>
           </div>
         </div>
 
-        {/* Today's Pearl */}
-        <TodayPearlCard />
+        {/* ── CONTENT BELOW HERO ── */}
+        <div style={{ padding: "28px 40px 80px", maxWidth: 860 }}>
 
-        <div style={{ marginTop: 24, color: "var(--text-subtle)", fontSize: 10, textAlign: "center" }}>
-          Powered by Harrison's Principles of Internal Medicine and other trusted medical references
+          {/* Emergency protocols */}
+          <div style={{ marginBottom: 28 }}>
+            <div style={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: "var(--text-muted)",
+              letterSpacing: 0.8,
+              textTransform: "uppercase",
+              marginBottom: 10,
+            }}>
+              Emergency Protocols
+            </div>
+            <EmergencyPills />
+          </div>
+
+          {/* Stats grid */}
+          <StatsGrid />
+
+          {/* Popular Topics */}
+          <div>
+            <div style={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: "var(--text-muted)",
+              letterSpacing: 0.8,
+              textTransform: "uppercase",
+              marginBottom: 10,
+            }}>
+              Popular Topics
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {[
+                "Hypertension", "Type 2 Diabetes", "Epilepsy", "Pneumonia",
+                "Heart Failure", "Asthma", "COPD", "Anemia",
+                "Hypothyroidism", "Hyperlipidemia",
+              ].map((topic) => (
+                <button
+                  key={topic}
+                  onClick={() => goToTopic(topic)}
+                  style={{
+                    padding: "7px 14px",
+                    borderRadius: 8,
+                    border: "1px solid var(--border)",
+                    background: "#fff",
+                    color: "var(--text-secondary)",
+                    cursor: "pointer",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    transition: "all 0.15s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "var(--teal-700)";
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.borderColor = "var(--teal-700)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "#fff";
+                    e.currentTarget.style.color = "var(--text-secondary)";
+                    e.currentTarget.style.borderColor = "var(--border)";
+                  }}
+                >
+                  {topic}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Today's Pearl */}
+          <TodayPearlCard />
         </div>
       </div>
     </div>

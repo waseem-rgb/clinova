@@ -1,5 +1,5 @@
 // frontend/src/components/SidebarNav.tsx
-// Clinova — Dark premium sidebar navigation
+// Clinova — Dark teal premium sidebar navigation
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -68,8 +68,7 @@ export default function SidebarNav() {
       style={{
         width: 240,
         minWidth: 240,
-        background: "var(--bg-sidebar)",
-        borderRight: "1px solid var(--border-sidebar)",
+        background: "var(--teal-900)",
         padding: "20px 0 24px",
         display: "flex",
         flexDirection: "column",
@@ -79,17 +78,30 @@ export default function SidebarNav() {
       }}
     >
       {/* Brand mark */}
-      <div style={{ padding: "0 18px 20px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <svg width="20" height="20" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-            <rect x="13" y="4"  width="10" height="28" rx="3" fill="#C9D1D9" />
-            <rect x="4"  y="13" width="28" height="10" rx="3" fill="#C9D1D9" />
+      <div style={{ padding: "0 18px 24px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+          <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <rect x="13" y="4"  width="10" height="28" rx="3" fill="#fff" />
+            <rect x="4"  y="13" width="28" height="10" rx="3" fill="#fff" />
           </svg>
-          <div style={{ fontWeight: 700, color: "#C9D1D9", letterSpacing: 0.3, fontSize: 15 }}>
+          <div style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 400,
+            color: "#fff",
+            letterSpacing: -0.3,
+            fontSize: 20,
+          }}>
             Clinova
           </div>
         </div>
-        <div style={{ color: "var(--text-sidebar-m)", fontSize: 10, marginTop: 4, paddingLeft: 28, letterSpacing: 0.3 }}>
+        <div style={{
+          color: "rgba(255,255,255,0.45)",
+          fontSize: 11,
+          marginTop: 3,
+          paddingLeft: 31,
+          letterSpacing: 0.2,
+          fontWeight: 500,
+        }}>
           Evidence-Based Medicine
         </div>
       </div>
@@ -101,11 +113,11 @@ export default function SidebarNav() {
               <div style={{
                 fontSize: 10,
                 fontWeight: 600,
-                letterSpacing: 0.7,
+                letterSpacing: 1,
                 textTransform: "uppercase",
-                color: "var(--text-sidebar-m)",
+                color: "#5eead4",
                 padding: "0 8px",
-                marginBottom: 4,
+                marginBottom: 6,
               }}>
                 {section.label}
               </div>
@@ -124,39 +136,46 @@ export default function SidebarNav() {
                     textAlign: "left",
                     display: "flex",
                     alignItems: "center",
-                    gap: 9,
-                    padding: "8px 8px",
-                    borderRadius: 6,
+                    gap: 10,
+                    padding: "8px 10px",
+                    borderRadius: 8,
                     border: "none",
                     borderLeft: active
-                      ? `2px solid ${isCritical ? "var(--critical)" : "var(--brand)"}`
-                      : "2px solid transparent",
-                    paddingLeft: active ? 6 : 8,
+                      ? `3px solid ${isCritical ? "var(--critical)" : "#5eead4"}`
+                      : "3px solid transparent",
+                    paddingLeft: active ? 7 : 10,
                     background: active
                       ? isCritical
-                        ? "rgba(207,34,46,0.10)"
-                        : "rgba(10,110,94,0.12)"
+                        ? "rgba(220,38,38,0.12)"
+                        : "rgba(94,234,212,0.1)"
                       : "transparent",
                     color: active
-                      ? isCritical ? "#F87171" : "#58A6FF"
-                      : isCritical ? "#F87171" : "var(--text-sidebar)",
+                      ? isCritical ? "#fca5a5" : "#fff"
+                      : isCritical ? "#fca5a5" : "rgba(255,255,255,0.75)",
                     cursor: "pointer",
-                    fontWeight: active ? 600 : 400,
+                    fontWeight: active ? 600 : 450,
                     fontSize: 13,
-                    transition: "background 0.1s ease, color 0.1s ease",
+                    transition: "all 0.12s ease",
                     marginBottom: 2,
+                    fontFamily: "var(--font-sans)",
                   }}
                   onMouseEnter={(e) => {
-                    if (!active) e.currentTarget.style.background = "var(--bg-sidebar-hover)";
+                    if (!active) {
+                      e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                      e.currentTarget.style.color = "#fff";
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    if (!active) e.currentTarget.style.background = "transparent";
+                    if (!active) {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = isCritical ? "#fca5a5" : "rgba(255,255,255,0.75)";
+                    }
                   }}
                 >
                   <Icon
-                    size={14}
+                    size={15}
                     strokeWidth={active ? 2.2 : 1.8}
-                    style={{ flexShrink: 0, opacity: active ? 1 : 0.75 }}
+                    style={{ flexShrink: 0, opacity: active ? 1 : 0.7 }}
                   />
                   <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     {item.label}
@@ -166,19 +185,6 @@ export default function SidebarNav() {
             })}
           </div>
         ))}
-      </div>
-
-      {/* Footer hint */}
-      <div style={{
-        margin: "0 10px",
-        padding: "10px 10px",
-        background: "rgba(255,255,255,0.04)",
-        borderRadius: 6,
-        border: "1px solid var(--border-sidebar)",
-      }}>
-        <p style={{ margin: 0, fontSize: 11, color: "var(--text-sidebar-m)", lineHeight: 1.5 }}>
-          Search any condition for evidence-based DDx, treatment, and drug guidance.
-        </p>
       </div>
     </aside>
   );
