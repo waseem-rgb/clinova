@@ -158,7 +158,8 @@ p { max-width: 680px; }
 .hero-section {
   position: relative;
   background: linear-gradient(135deg, #062e28 0%, var(--teal-900) 50%, #0d5c54 100%);
-  overflow: hidden;
+  overflow: visible;
+  z-index: 10;
 }
 .hero-section::before {
   content: '';
@@ -167,10 +168,15 @@ p { max-width: 680px; }
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
+  overflow: hidden;
 }
 
 /* ── Skeleton shimmer loading ── */
 @keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
@@ -283,6 +289,43 @@ p { max-width: 680px; }
 @media (max-width: 768px) {
   .sidebar-collapse { display: none !important; }
   .content-full { padding: 20px 16px !important; }
+}
+
+/* ── Mobile-first global fixes ── */
+body { overflow-x: hidden; }
+
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.1rem !important; }
+
+  /* Hide sidebar on mobile — all pages */
+  .sidebar-collapse,
+  aside[style*="width: 240px"],
+  aside[style*="width:240px"] {
+    display: none !important;
+  }
+
+  /* Hero sections: tighter on mobile */
+  .hero-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Tables scroll horizontally */
+  .clinical-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Topic view: single column */
+  .tv-grid { grid-template-columns: 1fr !important; }
+  .tv-left { display: none !important; }
+}
+
+/* Touch-friendly targets */
+@media (pointer: coarse) {
+  button, a, [role="button"] { min-height: 44px; }
+  input, select, textarea { font-size: 16px !important; /* Prevent iOS zoom */ }
 }
 
 /* ── TV (Topic View) layout classes ── */

@@ -9,6 +9,17 @@ import CalculatorDetail from "./CalculatorDetail";
 const DARK_TEAL = "#0a4a44";
 const TEAL = "#0f766e";
 
+const PINNED_IDS = [
+  "calc_042", // CrCl (Cockcroft-Gault)
+  "calc_001", // BMI
+  "calc_002", // BSA
+  "calc_041", // eGFR (CKD-EPI)
+  "calc_012", // MAP
+  "calc_016", // CHA₂DS₂-VASc
+  "calc_032", // Wells (DVT)
+  "calc_152", // APGAR
+];
+
 /* ── helpers ── */
 function calcNum(id: string): string {
   return id.replace("calc_", "").replace(/^0+/, "") || "1";
@@ -562,6 +573,21 @@ export default function Calculators() {
           ) : (
             /* ═══ CARD GRID ═══ */
             <div>
+              {/* Pinned top 8 */}
+              {specialty === "All" && !search && (
+                <div style={{ marginBottom: 28 }}>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#111827", marginBottom: 10, letterSpacing: -0.2 }}>
+                    Most Used
+                  </div>
+                  <div className="calc-grid">
+                    {PINNED_IDS.map((pid) => {
+                      const c = ALL_CALCULATORS.find((cc) => cc.id === pid);
+                      return c ? <CalcCard key={c.id} calc={c} onClick={() => setSelectedId(c.id)} /> : null;
+                    })}
+                  </div>
+                </div>
+              )}
+
               <div
                 style={{
                   display: "flex",

@@ -449,6 +449,35 @@ export default function PrescriptionStudio() {
     }
   }, [successMsg]);
 
+  // Load drugs from clinova_current_rx (added via Drug Database / Treatment pages)
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("clinova_current_rx");
+      if (!raw) return;
+      const rx = JSON.parse(raw);
+      if (!rx?.drugs?.length) return;
+      const imported: RxItem[] = rx.drugs.map((d: any) => ({
+        ...emptyRxItem,
+        generic: d.name || "",
+        dose: d.dose || "",
+        route: d.route || "",
+        frequency: d.frequency || "OD",
+      }));
+      setRxItems((prev) => {
+        const existing = prev.filter((p) => p.generic.trim());
+        const newDrugs = imported.filter(
+          (imp) => !existing.some((e) => e.generic.toLowerCase() === imp.generic.toLowerCase())
+        );
+        if (newDrugs.length === 0) return prev;
+        const merged = [...existing, ...newDrugs];
+        return merged.length > 0 ? merged : [{ ...emptyRxItem }];
+      });
+      // Clear the cross-page rx after importing
+      localStorage.removeItem("clinova_current_rx");
+      window.dispatchEvent(new Event("rx-updated"));
+    } catch {}
+  }, []);
+
   // ============================================================
   // Render Helpers
   // ============================================================
@@ -515,13 +544,12 @@ export default function PrescriptionStudio() {
       style={{
         minHeight: "100vh",
         background: "var(--page-bg)",
-        padding: "24px 24px 24px 0",
+        padding: "24px 16px",
       }}
     >
       <div
         style={{
           maxWidth: "100%",
-          minWidth: 1200,
           margin: 0,
           display: "grid",
           gridTemplateColumns: "260px 1fr",
@@ -725,6 +753,7 @@ export default function PrescriptionStudio() {
 
           {/* Doctor & Patient Info */}
           <div
+            className="rx-two-col"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
           >
             {/* Doctor Info */}
@@ -930,6 +959,7 @@ export default function PrescriptionStudio() {
               Diagnosis
             </h2>
             <div
+              className="rx-two-col"
               style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
             >
               <div>
@@ -1292,6 +1322,7 @@ export default function PrescriptionStudio() {
 
           {/* Investigations, Advice, Follow-up */}
           <div
+            className="rx-three-col"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}
           >
             <div style={cardStyle}>
@@ -1375,6 +1406,8 @@ export default function PrescriptionStudio() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              flexWrap: "wrap",
+              gap: 10,
             }}
           >
             <div style={{ display: "flex", gap: 10 }}>
@@ -1487,11 +1520,15 @@ export default function PrescriptionStudio() {
         </div>
       </div>
 
-      {/* CSS Animation for pulse */}
+      {/* CSS Animation for pulse + Mobile responsive */}
       <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
+        }
+        @media (max-width: 767px) {
+          .rx-two-col { grid-template-columns: 1fr !important; }
+          .rx-three-col { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

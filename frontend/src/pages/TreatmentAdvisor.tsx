@@ -42,13 +42,24 @@ export default function TreatmentAdvisor() {
     }
   }, []);
 
-  // Handle topic from URL query params (from DDx)
+  // Handle topic from URL query params (from DDx) + auto-submit
+  const [pendingAutoSubmit, setPendingAutoSubmit] = useState(false);
   useEffect(() => {
     const fromQuery = params.get("topic") || params.get("diagnosis") || "";
+    const shouldAutoSubmit = params.get("autosubmit") === "true";
     if (fromQuery && !input.topic) {
       setInput((prev) => ({ ...prev, topic: fromQuery }));
+      if (shouldAutoSubmit) setPendingAutoSubmit(true);
     }
   }, [params, input.topic]);
+
+  // Auto-submit once topic is set from URL
+  useEffect(() => {
+    if (pendingAutoSubmit && input.topic.trim() && !busy && !data) {
+      setPendingAutoSubmit(false);
+      runTx();
+    }
+  }, [pendingAutoSubmit, input.topic]);
 
   const updateField = <K extends keyof TreatmentInput>(key: K, value: TreatmentInput[K]) => {
     setInput((prev) => ({ ...prev, [key]: value }));
@@ -140,8 +151,8 @@ export default function TreatmentAdvisor() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--page-bg)", padding: "24px 24px 24px 0" }}>
-      <div style={{ maxWidth: "100%", minWidth: 1200, margin: 0, display: "grid", gridTemplateColumns: "260px 1fr", gap: 24 }}>
+    <div style={{ minHeight: "100vh", background: "var(--page-bg)", padding: "24px 16px" }}>
+      <div style={{ maxWidth: "100%", margin: 0, display: "grid", gridTemplateColumns: "260px 1fr", gap: 24 }}>
         <SidebarNav />
 
         <div>
@@ -318,6 +329,7 @@ export default function TreatmentAdvisor() {
             </div>
 
             <button
+              id="treatment-submit-btn"
               onClick={runTx}
               disabled={!input.topic.trim() || busy}
               style={{
@@ -538,6 +550,17 @@ export default function TreatmentAdvisor() {
   );
 }
 
+function addToRx(drugName: string, dose?: string, route?: string, frequency?: string) {
+  try {
+    const raw = localStorage.getItem("clinova_current_rx");
+    const rx = raw ? JSON.parse(raw) : { drugs: [], created: new Date().toISOString() };
+    if (rx.drugs.some((d: any) => d.name.toLowerCase() === drugName.toLowerCase())) return;
+    rx.drugs.push({ name: drugName, dose: dose || "", route: route || "", frequency: frequency || "", addedAt: new Date().toISOString() });
+    localStorage.setItem("clinova_current_rx", JSON.stringify(rx));
+    window.dispatchEvent(new Event("rx-updated"));
+  } catch {}
+}
+
 function SectionPlan({ title, plans, onDrugDetails, onCheckInteractions }: {
   title: string;
   plans: any[];
@@ -608,6 +631,23 @@ function SectionPlan({ title, plans, onDrugDetails, onCheckInteractions }: {
                             title={`Check interactions for ${row.generic}`}
                           >
                             Check
+                          </button>
+                          <button
+                            onClick={() => addToRx(row.generic, row.dose, row.route, row.frequency)}
+                            style={{
+                              padding: "4px 8px",
+                              borderRadius: 6,
+                              border: "1px solid var(--teal-700)",
+                              background: "var(--teal-700)",
+                              cursor: "pointer",
+                              fontWeight: 700,
+                              color: "#fff",
+                              fontSize: 11,
+                              whiteSpace: "nowrap",
+                            }}
+                            title={`Add ${row.generic} to prescription`}
+                          >
+                            +Rx
                           </button>
                         </div>
                       )}
